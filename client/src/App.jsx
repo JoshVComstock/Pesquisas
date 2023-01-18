@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import CentroForm from './Models/CentroForm'
+import CiudadesForm from './Models/CiudadesForm'
 import Centros from './pages/centros'
 
 
@@ -8,7 +8,8 @@ import Centros from './pages/centros'
 function App() {
   return (
     <>
-    <CentroForm/>
+    <Centros/>
+    <CiudadesForm/>
     </>
   )
 }
