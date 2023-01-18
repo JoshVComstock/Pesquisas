@@ -1,13 +1,12 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import '../pages/Centros.css';
 
-const Centros = () => {
-  const [centros, setCentros] = useState([]);
+const Redes = () => {
+    const [redes, setRedes] = useState([]);
 
-  async function MostrarCentros() {
-    const response = await fetch('http://127.0.0.1:8000/api/centros', {
+  async function MostrarRedes() {
+    const response = await fetch('http://127.0.0.1:8000/api/redes', {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -15,10 +14,10 @@ const Centros = () => {
       },
     })
     const respuesta = await response?.json();
-    setCentros(respuesta);
+    setRedes(respuesta);
   }
-  async function EliminarCentros(id) {
-    const response = await fetch('http://127.0.0.1:8000/api/centros/' + id, {
+  async function EliminarRedes(id) {
+    const response = await fetch('http://127.0.0.1:8000/api/redes/' + id, {
       method: 'DELETE',
       headers: {
         "Content-Type": "application/json",
@@ -26,64 +25,48 @@ const Centros = () => {
       },
     })
     if (response.ok) {
-      MostrarCentros();
+        MostrarRedes();
     }
   }
   useEffect(() => {
-    MostrarCentros();
+    MostrarRedes();
   }, [])
   return (
     <div>
       <table>
-        <thead>
+      <thead>
         <tr>
           <th>ID</th>
           <th>Nombre</th>
-          <th>Redes</th>
-          <th>Telefono</th>
-          <th>Ciudad</th>
-          <th>Área</th>
-          <th>Seguimiento</th>
-          <th>Contacto</th>
 
           <th>Acciones</th>
         </tr>
       </thead>
+      <tbody>
         {
-          centros.map((v, i) => (
-            <tbody key={i} >
+          redes.map((v, i) => (
+            <body key={i} >
               <tr  >
                 <th>{v.id}</th>
                 <th>{v.nombre}</th>
-                <th>{v.id_redes}</th>
-                <th>{v.telefono}</th>
-                <th>{v.id_ciudades}</th>
-                <th>{v.area}</th>
-                <th>{v.seguimiento_casos}</th>
-                <th>{v.contacto}</th>
                 <th>
                   <div className='Acciones'>
                     <div className='Editar'>
                       <button className='BotonEditar'>Editar</button>
                     </div>
                     <div className='Eliminar'>
-                      <button className='BotonEliminar' onClick={() => EliminarCentros(v.id)}>Eliminar</button>
+                      <button className='BotonEliminar' onClick={() => EliminarRedes(v.id)}>Eliminar</button>
                     </div>
                   </div>
                 </th>
               </tr>
-            </tbody>
+            </body>
           ))
         }
+      </tbody>
       </table>
-      
     </div>
   )
-};
-export default Centros
+}
 
-const Thead = styled.div`
-  border-bottom: 1px solid black;
-  display: flex;
-  justify-content: center;
-`;
+export default Redes
