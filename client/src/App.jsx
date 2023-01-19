@@ -1,23 +1,18 @@
 import { useState } from 'react'
-import { Routes, Route, HashRouter } from "react-router-dom";
-import { BrowserRouter } from 'react-router-dom';
 import reactLogo from './assets/react.svg'
 import CentroForm from './Models/CentroForm'
 import CiudadesForm from './Models/CiudadesForm'
+import EnfermedadesForm from './Models/EnfermedadesForm'
 import RedesForm from './Models/RedesForm'
-import Centros from './pages/Centros'
+import Centros from './pages/centros'
 import Ciudades from './pages/Ciudades'
+import Enfermedades from './pages/Enfermedades'
 import Redes from './pages/Redes'
-import Home from './pages/Home'
-import Navbar from './components/app/navbar'
-import Laboratorios from './pages/Laboratorios'
-import Provincias from './pages/Provincias'
-import { ModalContextProvider } from './context/modalContext';
-import Registro_provincias from './pages/Registro_provincias'
-import Modal  from './modal';
+
 function App() {
   return (
     <>
+
     <BrowserRouter>
     <ModalContextProvider>
         <Routes>
