@@ -2,15 +2,15 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
-import ProvinciasForm from '../models/ProvinciasForm';
+import MunicipiosForm from '../models/MunicipiosForm';
 
-const Provincias = () => {
-  const { openModal, closeModal } = useModal("Provincias", <ProvinciasForm />);
+const Municipios = () => {
+    const { openModal, closeModal } = useModal("Municipios", <MunicipiosForm />);
 
-  const [provincias, setProvincias] = useState([]);
+  const [municipios, setMunicipios] = useState([]);
 
-  async function MostrarProvincias() {
-    const response = await fetch('http://127.0.0.1:8000/api/provincias', {
+  async function MostrarMunicipios() {
+    const response = await fetch('http://127.0.0.1:8000/api/municipios', {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -18,10 +18,10 @@ const Provincias = () => {
       },
     })
     const respuesta = await response?.json();
-    setProvincias(respuesta);
+    setMunicipios(respuesta);
   }
-  async function EliminarProvincias(id) {
-    const response = await fetch('http://127.0.0.1:8000/api/provincias/' + id, {
+  async function EliminarMunicipios(id) {
+    const response = await fetch('http://127.0.0.1:8000/api/municipios/' + id, {
       method: 'DELETE',
       headers: {
         "Content-Type": "application/json",
@@ -29,20 +29,20 @@ const Provincias = () => {
       },
     })
     if (response.ok) {
-      MostrarProvincias();
+        MostrarMunicipios();
     }
   }
   useEffect(() => {
-    MostrarProvincias();
+    MostrarMunicipios();
   }, [])
   return (
     <div>
       <div className='Titulo'>
-        <div>Listado de Provincias</div>
+        <div>Listado de Municipios</div>
       </div>
       <br />
       <div>
-        <button type="submit" onClick={openModal}>Agregar una Nueva Provincia</button>
+        <button type="submit" onClick={openModal}>Agregar Nuevo Municipio</button>
       </div>
       <table>
         <thead>
@@ -55,11 +55,11 @@ const Provincias = () => {
           </tr>
         </thead>
         {
-          provincias.map((v, i) => (
+          municipios.map((v, i) => (
             <tbody key={i} >
               <tr  >
                 <th>{v.id}</th>
-                <th>{v.provincia}</th>
+                <th>{v.municipio}</th>
                 <th>{v.id_ciudades}</th>
                 <th>
                   <div className='Acciones'>
@@ -67,7 +67,7 @@ const Provincias = () => {
                       <button className='BotonEditar'>Editar</button>
                     </div>
                     <div className='Eliminar'>
-                      <button className='BotonEliminar' onClick={() => EliminarProvincias(v.id)}>Eliminar</button>
+                      <button className='BotonEliminar' onClick={() => EliminarMunicipios(v.id)}>Eliminar</button>
                     </div>
                   </div>
                 </th>
@@ -76,8 +76,9 @@ const Provincias = () => {
           ))
         }
       </table>
+
     </div>
   )
 }
 
-export default Provincias
+export default Municipios

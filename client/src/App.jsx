@@ -4,16 +4,19 @@ import CentroForm from './Models/CentroForm'
 import CiudadesForm from './Models/CiudadesForm'
 import EnfermedadesForm from './Models/EnfermedadesForm'
 import RedesForm from './Models/RedesForm'
+import MunicipiosForm from './Models/MunicipiosForm'
 import Centros from './pages/centros'
 import Ciudades from './pages/Ciudades'
 import Enfermedades from './pages/Enfermedades'
 import Redes from './pages/Redes'
+import Municipios from './pages/Municipios'
 import Navbar from './components/app/navbar'
 import Home from './pages/Home'
 import { ModalContextProvider } from './context/modalContext'
 import Laboratorios from './pages/Laboratorios'
 import Provincias from './pages/Provincias'
 import Registro_provincias from './pages/Registro_provincias'
+import Registro_municipios from './pages/Registro_municipios'
 import Modal from './modal'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 function App() {
@@ -31,6 +34,8 @@ function App() {
             <Route path='/laboratorios' element={<Laboratorios/>}/>
             <Route path='/provincias' element={<Provincias/>}/>
             <Route path='/registro_provincias' element={<Registro_provincias/>}/>
+            <Route path='/municipios' element={<Municipios/>}/>
+            <Route path='/registro_municipios' element={<Registro_municipios/>}/>
           </Route> 
         </Routes>
         <Modal/>

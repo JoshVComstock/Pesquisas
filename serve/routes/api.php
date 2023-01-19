@@ -8,6 +8,8 @@ use App\Http\Controllers\RedesController;
 use App\Http\Controllers\SeguimientosController;
 use App\Http\Controllers\EnfermedadesController;
 use App\Http\Controllers\LaboratoriosController;
+use App\Http\Controllers\MunicipiosController;
+use App\Http\Controllers\ProvinciasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +49,11 @@ Route::delete('/enfermedades/{id}', [EnfermedadesController::class, 'destroy']);
 Route::get('/laboratorios', [LaboratoriosController::class, 'index']);
 Route::post('/laboratorios', [LaboratoriosController::class, 'store']);
 Route::delete('/laboratorios/{id}', [LaboratoriosController::class, 'destroy']);
+
+Route::get('/municipios', [MunicipiosController::class, 'index']);
+Route::post('/municipios', [MunicipiosController::class, 'store']);
+Route::delete('/municipios/{id}', [MunicipiosController::class, 'destroy']);
+
+Route::get('/provincias', [ProvinciasController::class, 'index']);
+Route::post('/provincias', [ProvinciasController::class, 'store']);
+Route::delete('/provincias/{id}', [ProvinciasController::class, 'destroy']);
