@@ -13,6 +13,22 @@ function App() {
   return (
     <>
 
+    <BrowserRouter>
+    <ModalContextProvider>
+        <Routes>
+          <Route path='/' element={<Navbar/>}>
+            <Route path='' element={<Home/>}/>
+            <Route path='/centros' element={<Centros/>}/>
+            <Route path='/ciudades' element={<Ciudades/>}/>
+            <Route path='/redes' element={<Redes/>}/>
+            <Route path='/laboratorios' element={<Laboratorios/>}/>
+            <Route path='/provincias' element={<Provincias/>}/>
+            <Route path='/registro_provincias' element={<Registro_provincias/>}/>
+          </Route> 
+        </Routes>
+        <Modal/>
+        </ModalContextProvider>
+    </BrowserRouter>
     </>
   )
 }

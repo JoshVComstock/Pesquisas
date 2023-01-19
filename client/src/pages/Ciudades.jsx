@@ -1,8 +1,12 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useModal } from "../hooks/useModal";
+import Centros from './centros';
 
 const Ciudades = () => {
+  const { openModal, closeModal } = useModal("Centros");
+
   const [ciudades, setCiudades] = useState([]);
 
   async function mostrarciudades() {
@@ -44,8 +48,8 @@ const Ciudades = () => {
               <tr>
                 <th>Código</th>
                 <th>Ciudad</th>
-
                 <th>Acciones</th>
+                <th><Botonagregar type="submit" onClick={openModal}>Nuevo</Botonagregar></th>
               </tr>
             </thead>
             {
@@ -79,3 +83,11 @@ const Ciudades = () => {
 }
 
 export default Ciudades
+
+const Botonagregar=styled.button`
+  border: 2px solid black;
+  &:hover{
+    background: rgba(0,0,0,0.1);
+    cursor: pointer;
+  }
+`;
