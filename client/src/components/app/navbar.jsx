@@ -15,7 +15,7 @@ const Navbar = () => {
         <Linkes to='/provincias' >provincias</Linkes>
         <Linkes to='/registro_provincias' >registro_provincias</Linkes>
       </Header>
-      
+      <div></div>
        <div>
          <Outlet/>
        </div>

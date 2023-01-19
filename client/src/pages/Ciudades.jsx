@@ -2,10 +2,11 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
+import CentroForm from '../models/CentroForm';
 import Centros from './centros';
 
 const Ciudades = () => {
-  const { openModal, closeModal } = useModal("Centros");
+  const { openModal, closeModal } = useModal("Centros",<CentroForm/>);
 
   const [ciudades, setCiudades] = useState([]);
 
