@@ -2,27 +2,25 @@
 use App\Http\Controllers\CartillasController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+use App\Http\Controllers\CiudadesController;
+use App\Http\Controllers\CentrosController;
+use App\Http\Controllers\RedesController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/ciudades', [CiudadesController::class, 'index']);
+Route::post('/ciudad', [CiudadesController::class, 'store']);
+Route::delete('/ciudades/{id}', [CiudadesController::class, 'destroy']);
+
+Route::get('/centros', [CentrosController::class, 'index']);
+Route::post('/centros', [CentrosController::class, 'store']);
+Route::delete('/centros/{id}', [CentrosController::class, 'destroy']);
+
+Route::get('/redes', [RedesController::class, 'index']);
+Route::post('/redes', [RedesController::class, 'store']);
+Route::delete('/redes/{id}', [RedesController::class, 'destroy']);
+
 //Cartillas
 Route::get('/cartillas',[CartillasController::class,'index']);
-Route::put('use')
-
-Route::apiResource("user", UserController::class);
-Route::get('user/pic/{id}', [UserController::class, 'getPic']);
-Route::put('user/able/{id}', [UserController::class, 'able']);
-Route::get('user/getProfessors/{id}', [UserController::class, 'getProfessor']);
