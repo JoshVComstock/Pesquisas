@@ -8,7 +8,14 @@ import Centros from './pages/centros'
 import Ciudades from './pages/Ciudades'
 import Enfermedades from './pages/Enfermedades'
 import Redes from './pages/Redes'
-
+import Navbar from './components/app/navbar'
+import Home from './pages/Home'
+import { ModalContextProvider } from './context/modalContext'
+import Laboratorios from './pages/Laboratorios'
+import Provincias from './pages/Provincias'
+import Registro_provincias from './pages/Registro_provincias'
+import Modal from './modal'
+import { BrowserRouter,Routes,Route } from 'react-router-dom'
 function App() {
   return (
     <>

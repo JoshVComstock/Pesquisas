@@ -1,12 +1,4 @@
-import React from 'react'
 
-const Enfermedades = () => {
-  return (
-    <div>Enfermedades</div>
-  )
-}
-
-export default Enfermedades
 import React from 'react'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
