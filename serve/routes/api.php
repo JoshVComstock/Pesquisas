@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CiudadesController;
 use App\Http\Controllers\CentrosController;
 use App\Http\Controllers\RedesController;
+use App\Http\Controllers\SeguimientosController;
+use App\Http\Controllers\EnfermedadesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +34,11 @@ Route::delete('/centros/{id}', [CentrosController::class, 'destroy']);
 Route::get('/redes', [RedesController::class, 'index']);
 Route::post('/redes', [RedesController::class, 'store']);
 Route::delete('/redes/{id}', [RedesController::class, 'destroy']);
+
+Route::get('/seguimientos', [SeguimientosController::class, 'index']);
+Route::post('/seguimientos', [SeguimientosController::class, 'store']);
+Route::delete('/seguimientos/{id}', [SeguimientosController::class, 'destroy']);
+
+Route::get('/enfermedades', [EnfermedadesController::class, 'index']);
+Route::post('/enfermedades', [EnfermedadesController::class, 'store']);
+Route::delete('/enfermedades/{id}', [EnfermedadesController::class, 'destroy']);

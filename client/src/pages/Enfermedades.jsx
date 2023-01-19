@@ -2,11 +2,11 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const Centros = () => {
-  const [centros, setCentros] = useState([]);
+export const Enfermedades = () => {
+    const [enfermedades, setEnfermedades] = useState([]);
 
-  async function MostrarCentros() {
-    const response = await fetch('http://127.0.0.1:8000/api/centros', {
+  async function MostrarEnfermedades() {
+    const response = await fetch('http://127.0.0.1:8000/api/enfermedades', {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -14,10 +14,10 @@ const Centros = () => {
       },
     })
     const respuesta = await response?.json();
-    setCentros(respuesta);
+    setEnfermedades(respuesta);
   }
-  async function EliminarCentros(id) {
-    const response = await fetch('http://127.0.0.1:8000/api/centros/' + id, {
+  async function EliminarEnfermedades(id) {
+    const response = await fetch('http://127.0.0.1:8000/api/enfermedades/' + id, {
       method: 'DELETE',
       headers: {
         "Content-Type": "application/json",
@@ -25,48 +25,44 @@ const Centros = () => {
       },
     })
     if (response.ok) {
-      MostrarCentros();
+        MostrarEnfermedades();
     }
   }
   useEffect(() => {
-    MostrarCentros();
+    MostrarEnfermedades();
   }, [])
   return (
     <div>
+        <div className='Titulo'>
+          <div>Listado de Enfermedades</div>
+        </div>
+        <br />
       <table>
         <thead>
         <tr>
           <th>ID</th>
           <th>Nombre</th>
-          <th>Redes</th>
-          <th>Telefono</th>
-          <th>Ciudad</th>
-          <th>Área</th>
-          <th>Seguimiento</th>
-          <th>Contacto</th>
+          <th>Descripción</th>
+          <th>Extra</th>
 
           <th>Acciones</th>
         </tr>
       </thead>
         {
-          centros.map((v, i) => (
+          enfermedades.map((v, i) => (
             <tbody key={i} >
               <tr  >
                 <th>{v.id}</th>
                 <th>{v.nombre}</th>
-                <th>{v.id_redes}</th>
-                <th>{v.telefono}</th>
-                <th>{v.id_ciudades}</th>
-                <th>{v.area}</th>
-                <th>{v.seguimiento_casos}</th>
-                <th>{v.contacto}</th>
+                <th>{v.descripcion}</th>
+                <th>{v.extra}</th>
                 <th>
                   <div className='Acciones'>
                     <div className='Editar'>
                       <button className='BotonEditar'>Editar</button>
                     </div>
                     <div className='Eliminar'>
-                      <button className='BotonEliminar' onClick={() => EliminarCentros(v.id)}>Eliminar</button>
+                      <button className='BotonEliminar' onClick={() => EliminarEnfermedades(v.id)}>Eliminar</button>
                     </div>
                   </div>
                 </th>
@@ -78,11 +74,5 @@ const Centros = () => {
       
     </div>
   )
-};
-export default Centros
-
-const Thead = styled.div`
-  border-bottom: 1px solid black;
-  display: flex;
-  justify-content: center;
-`;
+}
+export default Enfermedades

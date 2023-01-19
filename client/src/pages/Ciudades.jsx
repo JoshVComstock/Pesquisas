@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import './Ciudades.css';
 
 const Ciudades = () => {
   const [ciudades, setCiudades] = useState([]);
