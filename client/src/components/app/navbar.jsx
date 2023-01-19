@@ -8,12 +8,13 @@ const Navbar = () => {
       <Header>
         <Img src="" alt="" />
         <Linkes to='/'>home</Linkes>
-        <Linkes to='/centros' >centros</Linkes>
-        <Linkes to='/ciudades' >ciudades</Linkes>    
-        <Linkes to='/redes' >redes</Linkes>
-        <Linkes to='/laboratorios' >laboratorios</Linkes>
-        <Linkes to='/provincias' >provincias</Linkes>
-        <Linkes to='/registro_provincias' >registro_provincias</Linkes>
+        <Linkes to='/enfermedades' >Enfermedades</Linkes>
+        <Linkes to='/redes' >Redes de Salud</Linkes>
+        <Linkes to='/centros' >Centros</Linkes>
+        <Linkes to='/ciudades' >Ciudades</Linkes>
+        <Linkes to='/laboratorios' >Laboratorios</Linkes>
+        <Linkes to='/provincias' >Provincias</Linkes>
+        <Linkes to='/registro_provincias' >Registro de Provincias</Linkes>
       </Header>
       <div></div>
        <div>

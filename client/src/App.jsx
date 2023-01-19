@@ -19,15 +19,15 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom'
 function App() {
   return (
     <>
-
     <BrowserRouter>
     <ModalContextProvider>
         <Routes>
           <Route path='/' element={<Navbar/>}>
             <Route path='' element={<Home/>}/>
             <Route path='/centros' element={<Centros/>}/>
-            <Route path='/ciudades' element={<Ciudades/>}/>
+            <Route path='/enfermedades' element={<Enfermedades/>}/>
             <Route path='/redes' element={<Redes/>}/>
+            <Route path='/ciudades' element={<Ciudades/>}/>
             <Route path='/laboratorios' element={<Laboratorios/>}/>
             <Route path='/provincias' element={<Provincias/>}/>
             <Route path='/registro_provincias' element={<Registro_provincias/>}/>
@@ -35,7 +35,7 @@ function App() {
         </Routes>
         <Modal/>
         </ModalContextProvider>
-    </BrowserRouter>
+  </BrowserRouter>
     </>
   )
 }
