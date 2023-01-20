@@ -2,11 +2,10 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
-import CentroForm from '../models/CentroForm';
-import Centros from './centros';
+import CiudadesForm from '../models/CiudadesForm';
 
 const Ciudades = () => {
-  const { openModal, closeModal } = useModal("Centros",<CentroForm/>);
+  const { openModal, closeModal } = useModal("Ciudades",<CiudadesForm/>);
 
   const [ciudades, setCiudades] = useState([]);
 
@@ -43,6 +42,9 @@ const Ciudades = () => {
           <div>Listado de Ciudades</div>
         </div>
         <br />
+        <div>
+          <button type="submit" onClick={openModal}>Registrar Nueva Ciudad</button>
+        </div>
         <div className='Tabla'>
           <table className='table'>
             <thead className='thead'>
@@ -50,7 +52,6 @@ const Ciudades = () => {
                 <th>Código</th>
                 <th>Ciudad</th>
                 <th>Acciones</th>
-                <th><Botonagregar type="submit" onClick={openModal}>Nuevo</Botonagregar></th>
               </tr>
             </thead>
             {

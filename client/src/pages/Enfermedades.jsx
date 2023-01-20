@@ -1,10 +1,13 @@
-
 import React from 'react'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useModal } from "../hooks/useModal";
+import EnfermedadesForm from '../models/EnfermedadesForm';
 
-export const Enfermedades = () => {
-    const [enfermedades, setEnfermedades] = useState([]);
+const Enfermedades = () => {
+  const { openModal, closeModal } = useModal("Enfermedades", <EnfermedadesForm />);
+
+  const [enfermedades, setEnfermedades] = useState([]);
 
   async function MostrarEnfermedades() {
     const response = await fetch('http://127.0.0.1:8000/api/enfermedades', {
@@ -26,7 +29,7 @@ export const Enfermedades = () => {
       },
     })
     if (response.ok) {
-        MostrarEnfermedades();
+      MostrarEnfermedades();
     }
   }
   useEffect(() => {
@@ -34,21 +37,24 @@ export const Enfermedades = () => {
   }, [])
   return (
     <div>
-        <div className='Titulo'>
-          <div>Listado de Enfermedades</div>
-        </div>
-        <br />
+      <div className='Titulo'>
+        <div>Listado de Enfermedades</div>
+      </div>
+      <br />
+      <div>
+        <button type="submit" onClick={openModal}>Agregar Nueva Enfermedad</button>
+      </div>
       <table>
         <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Descripción</th>
-          <th>Extra</th>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Extra</th>
 
-          <th>Acciones</th>
-        </tr>
-      </thead>
+            <th>Acciones</th>
+          </tr>
+        </thead>
         {
           enfermedades.map((v, i) => (
             <tbody key={i} >
@@ -72,8 +78,9 @@ export const Enfermedades = () => {
           ))
         }
       </table>
-      
+
     </div>
   )
 }
+
 export default Enfermedades

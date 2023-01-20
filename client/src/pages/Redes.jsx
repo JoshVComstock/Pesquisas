@@ -1,9 +1,13 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useModal } from "../hooks/useModal";
+import RedesForm from '../models/RedesForm';
 
 const Redes = () => {
-    const [redes, setRedes] = useState([]);
+  const { openModal, closeModal } = useModal("Redes de Salud",<RedesForm/>);
+  
+  const [redes, setRedes] = useState([]);
 
   async function MostrarRedes() {
     const response = await fetch('http://127.0.0.1:8000/api/redes', {
@@ -33,6 +37,13 @@ const Redes = () => {
   }, [])
   return (
     <div>
+      <div className='Titulo'>
+          <div>Listado de Redes de Salud</div>
+        </div>
+        <br />
+        <div>
+          <button type="submit" onClick={openModal}>Registrar Nueva Red de Salud</button>
+        </div>
       <table>
       <thead>
         <tr>

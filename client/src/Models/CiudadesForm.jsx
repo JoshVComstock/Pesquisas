@@ -26,9 +26,8 @@ const CiudadesForm = () => {
   };
   return (
     <div>
-        <h1>Ciudades</h1>
         <div>
-            <h3>Nombre</h3>
+            <label>Nombre:</label>
             <input type="text" 
               value={ciudad}
               onChange={(e) => setCiudad(e.target.value)}/>

@@ -26,7 +26,6 @@ const RedesForm = () => {
   };
   return (
     <div>
-        <h1>Redes de Salud</h1>
         <div>
             <h3>Nombre:</h3>
             <input type="text" 
