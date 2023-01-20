@@ -7,7 +7,7 @@ const Navbar = () => {
     <Divheader>
       <Header>
         <Img src="" alt="" />
-        <Linkes to='/'>home</Linkes>
+        <Linkes to='/'>login</Linkes>
         <Linkes to='/centros' >centros</Linkes>
         <Linkes to='/ciudades' >ciudades</Linkes>    
         <Linkes to='/redes' >redes</Linkes>

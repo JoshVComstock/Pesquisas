@@ -68,8 +68,6 @@ const Ciudades = () => {
                           <button className='BotonEliminar' onClick={() => eliminarciudades(v.id)}>Eliminar</button>
                         </div>
                       </div>
-
-
                     </td>
                   </tr>
                 </tbody>
@@ -79,7 +77,6 @@ const Ciudades = () => {
         </div>
       </div>
     </div>
-
   )
 }
 
