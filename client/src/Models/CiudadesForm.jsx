@@ -27,11 +27,18 @@ const CiudadesForm = () => {
   return (
     <div>
         <div>
-            <label>Nombre:</label>
-            <input type="text" 
-              value={ciudad}
-              onChange={(e) => setCiudad(e.target.value)}/>
-            <button type='submit' onClick={enviar}>Agregar</button>
+          <p>HOLA MUNDO</p>
+          <form action="" className='Form' id='Form'>
+            <div className='Form-group' id='Form-group'>
+              <label for='Nombre' className='Form-Label'>Nombre:</label>
+              <div className='Form-group-input'>
+                <input className='Form-input' name='Nombre' id='Nombre' type="text" placeholder='Ingrese una Ciudad' value={ciudad} onChange={(e) => setCiudad(e.target.value)}/>
+              </div>
+            </div>
+            <div>
+              <button type='submit' onClick={enviar}>Agregar</button>
+            </div>
+          </form>
         </div>
     </div>
   )

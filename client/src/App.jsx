@@ -14,6 +14,8 @@ import { ModalContextProvider } from "./context/modalContext";
 import Laboratorios from "./pages/Laboratorios";
 import Provincias from "./pages/Provincias";
 import Registro_provincias from "./pages/Registro_provincias";
+import Municipios from "./pages/Municipios";
+import Registro_municipios from "./pages/Registro_municipios";
 import Modal from "./modal";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
@@ -30,10 +32,9 @@ function App() {
               <Route path='/redes' element={<Redes />} />
               <Route path='/laboratorios' element={<Laboratorios />} />
               <Route path='/provincias' element={<Provincias />} />
-              <Route
-                path='/registro_provincias'
-                element={<Registro_provincias />}
-              />
+              <Route path='/registro_provincias' element={<Registro_provincias />}/>
+              <Route path='/municipios' element={<Municipios />}/>
+              <Route path='/registro_municipios' element={<Registro_municipios />}/>
             </Route>
           </Routes>
           <Modal/>

@@ -118,10 +118,10 @@ const LaboratoriosForm = () => {
           </div>
           <div>
             <label>Ciudad:</label>
-            <select value={id_ciudades} onChange={(e) => setId_ciudades(e.target.value)} >
+            <select value={id_ciudades} onChange={(e)=>setId_ciudades(e.target.value)} >
               {ciudades.map((v, i) => (
                 <option key={i} value={v.id}  >
-                  {v.nombre}
+                  {v.ciudad}
                 </option>
               ))}
             </select>
