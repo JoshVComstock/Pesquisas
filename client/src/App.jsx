@@ -24,7 +24,7 @@ function App() {
         <ModalContextProvider>
           <Routes>
             <Route path='/' element={<Navbar />}>
-              <Route path='' element={<Login />} />
+              <Route path='' element={<Home />} />
               <Route path='/centros' element={<Centros />} />
               <Route path='/ciudades' element={<Ciudades />} />
               <Route path='/redes' element={<Redes />} />
