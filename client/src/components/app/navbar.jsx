@@ -15,6 +15,7 @@ import Primeramuestraicons from "../../img/icons/Primeramuestra.jpg"
 import Rellamadosicons from "../../img/icons/Rellamados.jpg";
 import Madresicons from "../../img/icons/Madre.jpg";
 import Pacienteicons from "../../img/icons/Paciente.jpg";
+import Usericons from "../../img/user.jpg";
 const Navbar = () => {
   return (
     <Divheader>
@@ -35,7 +36,7 @@ const Navbar = () => {
         <Linkes to="/provincias"><Img src={Provinciasicons} alt="" /> Provincias</Linkes>
         <Linkes to="/registro_provincias"><Img src={Registropronviciasicons} alt="" /> Registro provincias</Linkes>
         <Linkes to="/"><Img src={Enfermedadesicons} alt="" /> Enfermedades</Linkes>
-        <Linkes to="/"><Img src={Madresicons} alt="" /> Madres</Linkes>
+        <Linkes to="/registro_usuario"><Img src={Usericons} alt="" /> Registrar Usuario</Linkes>
         <Linkes to="/"><Img src={Municiosicons} alt="" /> Municipios</Linkes>
         <Linkes to="/"><Img src={Pacienteicons} alt="" /> Pacientes</Linkes>
         <Linkes to="/"><Img src={Primeramuestraicons} alt="" /> Primera Muestra</Linkes>

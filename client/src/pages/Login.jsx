@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Avatar from "../img/medical-team.png";
-import User from "../img/user.png";
+import User from "../img/user.jpg";
 import Lock from "../img/lock.png";
 import { useState } from "react";
 const Login = () => {

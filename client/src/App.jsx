@@ -19,6 +19,7 @@ import Registro_municipios from "./pages/Registro_municipios";
 import Modal from "./modal";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 function App() {
   return (
     <>
@@ -35,6 +36,7 @@ function App() {
               <Route path='/registro_provincias' element={<Registro_provincias />}/>
               <Route path='/municipios' element={<Municipios />}/>
               <Route path='/registro_municipios' element={<Registro_municipios />}/>
+              <Route path='/registro_usuario' element={<Register />} />
             </Route>
           </Routes>
           <Modal/>
