@@ -3,6 +3,11 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
 import CiudadesForm from '../models/CiudadesForm';
+import '../pages/css/Ciudades.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faAdd} from '@fortawesome/free-solid-svg-icons';
+import {faEdit} from '@fortawesome/free-solid-svg-icons';
+import {faTrash} from '@fortawesome/free-solid-svg-icons';
 
 const Ciudades = () => {
   const { openModal, closeModal } = useModal("Ciudades",<CiudadesForm/>);
@@ -36,37 +41,36 @@ const Ciudades = () => {
     mostrarciudades();
   }, [])
   return (
-    <div className='Container'>
-      <div className='body'>
-        <div className='Titulo'>
-          <div>Listado de Ciudades</div>
+    <div className='body'>
+      <div className='Container'>
+        <div className='Div-Titulo'>
+          <div className='Titulo'>Listado de Ciudades</div>
         </div>
-        <br />
         <div>
-          <button type="submit" onClick={openModal}>Registrar Nueva Ciudad</button>
+          <button className='BotonAgregar' type="submit" onClick={openModal}><FontAwesomeIcon icon={faEdit}/> Registrar Ciudad</button>
         </div>
         <div className='Tabla'>
           <table className='table'>
             <thead className='thead'>
               <tr>
-                <th>Código</th>
-                <th>Ciudad</th>
-                <th>Acciones</th>
+                <th className='th'>Código</th>
+                <th className='th'>Ciudad</th>
+                <th className='th'>Acciones</th>
               </tr>
             </thead>
             {
               ciudades.map((v, i) => (
                 <tbody className='tbody' key={i} >
                   <tr  >
-                    <td>{v.id}</td>
-                    <td>{v.ciudad}</td>
-                    <td>
+                    <td className='td'>{v.id}</td>
+                    <td className='td'>{v.ciudad}</td>
+                    <td className='td'>
                       <div className='Acciones'>
                         <div>
-                          <button className='BotonEditar'>Editar</button>
+                          <button className='BotonEditar'><FontAwesomeIcon icon={faEdit}/>Editar</button>
                         </div>
                         <div>
-                          <button className='BotonEliminar' onClick={() => eliminarciudades(v.id)}>Eliminar</button>
+                          <button className='BotonEliminar' onClick={() => eliminarciudades(v.id)}><FontAwesomeIcon icon={faTrash}/>Eliminar</button>
                         </div>
                       </div>
                     </td>
@@ -82,11 +86,3 @@ const Ciudades = () => {
 }
 
 export default Ciudades
-
-const Botonagregar=styled.button`
-  border: 2px solid black;
-  &:hover{
-    background: rgba(0,0,0,0.1);
-    cursor: pointer;
-  }
-`;

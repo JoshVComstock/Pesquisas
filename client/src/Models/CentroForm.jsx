@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import styled from "styled-components";
 import Ciudades from "../pages/Ciudades";
+import '../pages/css/Centros.css';
 
 const CentroForm = ({MostrarCentros}) => {
   const [nombre, setNombre] = useState("");

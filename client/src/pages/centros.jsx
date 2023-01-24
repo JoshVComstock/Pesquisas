@@ -42,11 +42,11 @@ const Centros = () => {
       </div>
       <br />
       <div>
-        <button type="submit" onClick={openModal}>Agregar un Nuevo Centro de Salud</button>
+        <button className='btn-Agregar' type="submit" onClick={openModal}>Agregar Centro de Salud</button>
       </div>
       <table>
         <thead>
-          <tr>
+          <tr className='trhead'>
             <th>ID</th>
             <th>Nombre</th>
             <th>Dirección</th>
@@ -63,7 +63,7 @@ const Centros = () => {
         {
           centros.map((v, i) => (
             <tbody key={i} >
-              <tr  >
+              <tr className='trdatos'>
                 <th>{v.id}</th>
                 <th>{v.nombre}</th>
                 <th>{v.direccion}</th>

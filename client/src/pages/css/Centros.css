@@ -125,6 +125,45 @@ button:active {
     transform: translateX(0);
 }
 
+.btn-Agregar {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  background-color: rgb(6, 182, 68);
+  border: 3px solid rgb(25, 134, 85);
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 1;
+  font-family: inherit;
+  border-radius: 18px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+}
+
+.btn-Agregar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: rgb(105, 222, 158);
+  transform: translateX(-100%);
+  transition: all .3s;
+  z-index: -1;
+}
+
+.btn-Agregar:hover::before {
+  transform: translateX(0);
+}
+
 .inputbox {
     position: relative;
     width: 196px;
@@ -314,4 +353,18 @@ button:active {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .trhead{
+    max-width: 100%;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid rgba(0,0,0,.3);
+    border-top: 1px solid rgba(0,0,0,.3);
+    margin-bottom: 15px;
+  }
+  .trdatos{
+    display: flex;
+justify-content: space-around;
+border-bottom: 1px solid rgba(0,0,0,.3);
   }
