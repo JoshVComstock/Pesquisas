@@ -67,8 +67,8 @@ const Divheader = styled.div`
 `;
 const Header = styled.header`
   max-width: 200px;
-  height: 90vh;
-  background: #fff;
+  height: 100vh;
+  background: #034078;
   display: flex;
   flex-direction: column;
 `;
@@ -76,8 +76,7 @@ const Img = styled.img`
   width: 25px;
   height: 25px;
   margin: 0 10px;
-  filter: invert(73%) sepia(5%) saturate(0%) hue-rotate(222deg) brightness(95%)
-    contrast(92%);
+  filter: invert(99%) sepia(6%) saturate(2%) hue-rotate(92deg) brightness(112%) contrast(100%);
 `;
 const Linkes = styled(Link)`
   margin: 2px 15px;

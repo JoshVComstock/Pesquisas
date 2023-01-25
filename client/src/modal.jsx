@@ -69,7 +69,7 @@ const DivAtras = styled.div`
 
 const DivChildContainer = styled.div`
   z-index: 1;
-  border-radius: 5px;
+  border-radius: 10px;
   min-width: 400px;
   background-color: white;
   animation: move 1s;
@@ -83,6 +83,7 @@ const PTitulo = styled.p`
   font-size: 20px;
   display:flex;
   justify-content: center;
+  color: #fff;
 
 `;
 const DivCabecera = styled.div`
@@ -91,6 +92,7 @@ const DivCabecera = styled.div`
   display: flex ;
   justify-content: space-between;
   align-items: center;
+  background: #034078;
 `;
 const DivBody = styled.div`
   padding: 26px;
