@@ -3,21 +3,12 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
 import CiudadesForm from '../models/CiudadesForm';
-<<<<<<< HEAD
 import New from "./../img/new.jpg"
 import Pdf from "./../img/pdf.jpg"
 import Excel from "./../img/doc.jpg"
 import Searchicons from "./../img/search.jpg"
 import Editar from "./../img/icons/Editar.jpg"
 import Eliminar from "./../img/icons/Delete.jpg"
-=======
-import '../pages/css/Ciudades.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faAdd} from '@fortawesome/free-solid-svg-icons';
-import {faEdit} from '@fortawesome/free-solid-svg-icons';
-import {faTrash} from '@fortawesome/free-solid-svg-icons';
->>>>>>> e5ae54d56e97279ac7c7810e01b56d218e20767f
-
 const Ciudades = (mostrarciudades) => {
   const { openModal, closeModal } = useModal("Agregar Ciudad",<CiudadesForm mostrarciudades={mostrarciudades}/>);
   const [ciudades, setCiudades] = useState([]);
