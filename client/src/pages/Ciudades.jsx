@@ -61,7 +61,7 @@ const Ciudades = () => {
             {
               ciudades.map((v, i) => (
                 <tbody className='tbody' key={i} >
-                  <tr  >
+                  <tr >
                     <td className='td'>{v.id}</td>
                     <td className='td'>{v.ciudad}</td>
                     <td className='td'>

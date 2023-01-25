@@ -3,6 +3,11 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
 import CentroForm from '../models/CentroForm';
+import '../pages/css/Centros.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faAdd} from '@fortawesome/free-solid-svg-icons';
+import {faEdit} from '@fortawesome/free-solid-svg-icons';
+import {faTrash} from '@fortawesome/free-solid-svg-icons';
 
 const Centros = () => {
   const { openModal, closeModal } = useModal("Centros de Salud", <CentroForm />);
@@ -36,58 +41,61 @@ const Centros = () => {
     MostrarCentros();
   }, [])
   return (
-    <div>
-      <div className='Titulo'>
-        <div>Listado de Centros de Salud</div>
-      </div>
-      <br />
-      <div>
-        <button className='btn-Agregar' type="submit" onClick={openModal}>Agregar Centro de Salud</button>
-      </div>
-      <table>
-        <thead>
-          <tr className='trhead'>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Dirección</th>
-            <th>Redes</th>
-            <th>Teléfono</th>
-            <th>Ciudad</th>
-            <th>Área</th>
-            <th>Seguimiento</th>
-            <th>Contacto</th>
+    <div className='body'>
+      <div className='Container'>
+        <div cclassName='Div-Titulo'>
+          <div className='Titulo'>Listado de Centros de Salud</div>
+        </div>
+        <div>
+          <button className='BotonAgregar' type="submit" onClick={openModal}><FontAwesomeIcon icon={faEdit}/>Agregar Centro de Salud</button>
+        </div>
+        <div className='Tabla'>
+          <table className='table'>
+            <thead className='thead'>
+              <tr>
+                <th className='th'>ID</th>
+                <th className='th'>Nombre</th>
+                <th className='th'>Dirección</th>
+                <th className='th'>Redes</th>
+                <th className='th'>Teléfono</th>
+                <th className='th'>Ciudad</th>
+                <th className='th'>Área</th>
+                <th className='th'>Seguimiento</th>
+                <th className='th'>Contacto</th>
 
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        {
-          centros.map((v, i) => (
-            <tbody key={i} >
-              <tr className='trdatos'>
-                <th>{v.id}</th>
-                <th>{v.nombre}</th>
-                <th>{v.direccion}</th>
-                <th>{v.id_redes}</th>
-                <th>{v.telefono}</th>
-                <th>{v.id_ciudades}</th>
-                <th>{v.area}</th>
-                <th>{v.seguimiento_casos}</th>
-                <th>{v.contacto}</th>
-                <th>
-                  <div className='Acciones'>
-                    <div className='Editar'>
-                      <button className='BotonEditar'>Editar</button>
-                    </div>
-                    <div className='Eliminar'>
-                      <button className='BotonEliminar' onClick={() => EliminarCentros(v.id)}>Eliminar</button>
-                    </div>
-                  </div>
-                </th>
+                <th className='th'>Acciones</th>
               </tr>
-            </tbody>
-          ))
-        }
-      </table>
+            </thead>
+            {
+              centros.map((v, i) => (
+                <tbody className='tbody' key={i} >
+                  <tr>
+                    <th className='td'>{v.id}</th>
+                    <th className='td'>{v.nombre}</th>
+                    <th className='td'>{v.direccion}</th>
+                    <th className='td'>{v.id_redes}</th>
+                    <th className='td'>{v.telefono}</th>
+                    <th className='td'>{v.id_ciudades}</th>
+                    <th className='td'>{v.area}</th>
+                    <th className='td'>{v.seguimiento_casos}</th>
+                    <th className='td'>{v.contacto}</th>
+                    <th>
+                      <div className='Acciones'>
+                        <div>
+                          <button className='BotonEditar'><FontAwesomeIcon icon={faEdit}/>Editar</button>
+                        </div>
+                        <div>
+                          <button className='BotonEliminar' onClick={() => EliminarCentros(v.id)}><FontAwesomeIcon icon={faTrash}/>Eliminar</button>
+                        </div>
+                      </div>
+                    </th>
+                  </tr>
+                </tbody>
+              ))
+            }
+          </table>
+        </div>
+      </div>
     </div>
   )
 }

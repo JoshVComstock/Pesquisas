@@ -5,6 +5,7 @@
     min-height: 100vh;
 }
 .Container {
+    background-color: rgb(220, 197, 243);
     border: solid 1px rgb(255, 255, 255);
 }
 /*
@@ -22,6 +23,7 @@ background-color: linear-gradient(#F6CED8, #d95f7d);
     align-items: center;
     margin: 20px;
 }
+
 .Titulo {
     background-color: #165e66;
     /*background-color: rgb(113, 113, 185);*/
@@ -31,50 +33,66 @@ background-color: linear-gradient(#F6CED8, #d95f7d);
     color: white;
 }
 
-.BotonAgregar{
 
+
+.BotonAgregar{
     background-color: rgb(51, 163, 85);
     font-size: 18px;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 10px 20px 10px 20px;
     margin: 10px;
     border: solid 3px rgb(27, 181, 0);
     font-weight: bold;
     color: white;
     border: solid 2px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 .BotonEditar {
     background-color: rgb(220, 220, 114);
     font-size: 18px;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 5px 10px 5px 10px;
     margin: 1px;
     border: solid 3px rgb(161, 161, 70);
     font-weight: bold;
     color: white;
     border: solid 2px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 .BotonEliminar {
     background-color: rgb(239, 102, 102);
     font-size: 18px;
-    border-radius: 20px;
     padding: 5px 10px 5px 10px;
     margin: 1px;
     border: solid 3px rgb(178, 1, 1);
     font-weight: bold;
     color: white;
     border: solid 2px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
   .table{
     table-layout: fixed;
     border-collapse: collapse;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
   }
   .th{
     background-color: #5393e1f2;
     color: white;
-    padding: 10px 15px ;
+    padding: 10px 2px ;
     font-weight: 700;
     text-transform: uppercase;
   }
