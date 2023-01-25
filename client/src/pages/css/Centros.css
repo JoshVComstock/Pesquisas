@@ -1,317 +1,145 @@
-.Agregar {
-    align-items: center;
-    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
-    border: 0;
-    border-radius: 8px;
-    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    display: flex;
-    font-family: Phantomsans, sans-serif;
-    font-size: 18px;
-    justify-content: center;
-    line-height: 1em;
-    max-width: 100%;
-    min-width: 140px;
-    padding: 3px;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    cursor: pointer;
-    transition: all .3s;
+.body {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-button:active,
-button:hover {
-    outline: 0;
+.Container {
+  background-color: rgb(220, 197, 243);
+  border: solid 1px rgb(255, 255, 255);
 }
 
-button span {
-    background-color: rgb(5, 6, 45);
-    padding: 16px 24px;
-    border-radius: 6px;
-    width: 100%;
-    height: 100%;
-    transition: 300ms;
+.Div-Titulo {
+  display: flex;
+  align-items: center;
+  margin: 20px;
 }
 
-button:hover span {
-    background: none;
+.Titulo {
+  padding: 8px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(17, 149, 163);
+  border: solid 2px black;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
 }
 
-button:active {
-    transform: scale(0.9);
+.BotonAgregar {
+  display: inline-block;
+  font-size: 18px;
+  border-radius: 10px;
+  padding: 10px 20px 10px 20px;
+  margin: 10px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(6, 182, 68);
+  border: 3px solid rgb(25, 134, 85);
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 1;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
-
-
-.btn-Editar {
-    display: inline-block;
-    padding: 0.6rem 1.5rem;
-    font-size: 14px;
-    font-weight: 700;
-    color: black;
-    background-color: rgb(252, 240, 70);
-    border: 3px solid rgb(252, 240, 70);
-    cursor: pointer;
-    position: relative;
-    text-decoration: none;
-    overflow: hidden;
-    z-index: 1;
-    font-family: inherit;
-    border-radius: 18px;
-    -webkit-border-radius: 18px;
-    -moz-border-radius: 18px;
-    -ms-border-radius: 18px;
-    -o-border-radius: 18px;
+.BotonAgregar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: rgb(105, 222, 158);
+  transform: translateX(-100%);
+  transition: all .3s;
+  z-index: -1;
 }
 
-.btn-Editar::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    color: white;
-    background-color: rgb(173, 252, 70);
-    transform: translateX(-100%);
-    transition: all .3s;
-    z-index: -1;
+.BotonAgregar:hover::before {
+  transform: translateX(0);
 }
 
-.btn-Editar:hover::before {
-    transform: translateX(0);
+.Acciones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 
-.btn-Eliminar {
-    display: inline-block;
-    padding: 0.6rem 1.5rem;
-    font-size: 14px;
-    font-weight: 700;
-    color: black;
-    background-color: rgb(225, 137, 137);
-    border: 3px solid rgb(225, 137, 137);
-    cursor: pointer;
-    position: relative;
-    text-decoration: none;
-    overflow: hidden;
-    z-index: 1;
-    font-family: inherit;
-    border-radius: 18px;
-    -webkit-border-radius: 18px;
-    -moz-border-radius: 18px;
-    -ms-border-radius: 18px;
-    -o-border-radius: 18px;
+.BotonEditar {
+  background-color: rgb(220, 220, 114);
+  font-size: 18px;
+  border-radius: 10px;
+  padding: 10px 15px 10px 15px;
+  margin: 5px;
+  border: solid 3px rgb(161, 161, 70);
+  font-weight: bold;
+  color: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
-.btn-Eliminar::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    color: white;
-    background-color: rgb(253, 3, 3);
-    transform: translateX(-100%);
-    transition: all .3s;
-    z-index: -1;
+.BotonEliminar {
+  background-color: rgb(239, 102, 102);
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 10px;
+  padding: 10px 15px 10px 15px;
+  margin: 5px;
+  border: solid 3px rgb(178, 1, 1);
+  font-weight: bold;
+  color: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
-.btn-Eliminar:hover::before {
-    transform: translateX(0);
+.table {
+  background-color: white;
+  border-collapse: collapse;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 }
 
-.inputbox {
-    position: relative;
-    width: 196px;
-  }
-  
-  .inputbox input {
-    position: relative;
-    width: 100%;
-    padding: 20px 10px 10px;
-    background: transparent;
-    outline: none;
-    box-shadow: none;
-    border: none;
-    color: #23242a;
-    font-size: 1em;
-    letter-spacing: 0.05em;
-    transition: 0.5s;
-    z-index: 10;
-  }
-  
-  .inputbox span {
-    position: absolute;
-    left: 0;
-    padding: 20px 10px 10px;
-    font-size: 1em;
-    color: #8f8f8f;
-    letter-spacing: 00.05em;
-    transition: 0.5s;
-    pointer-events: none;
-  }
-  
-  .inputbox input:valid ~span,
-  .inputbox input:focus ~span {
-    color: #45f3ff;
-    transform: translateX(-10px) translateY(-34px);
-    font-size: 0,75em;
-  }
-  
-  .inputbox i {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: #45f3ff;
-    border-radius: 4px;
-    transition: 0.5s;
-    pointer-events: none;
-    z-index: 9;
-  }
-  
-  .inputbox input:valid ~i,
-  .inputbox input:focus ~i {
-    height: 44px;
-  }
-
-
-
-
-
-  .input-group {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    position: relative;
+.th {
+  background-color: #5393e1f2;
+  color: white;
+  padding: 10px 2px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
-  
-  .input {
-    width: 320px;
-    padding: 0 1rem;
-    color: black;
-    font-size: 15px;
-    border: 1px solid #5e4dcd;
-    border-radius: 6px 0 0 6px;
-    background-color: rgb(187, 187, 230);
-  }
-  .Buscar{
-    position: absolute;
-    left: 1rem;
-    fill: #777;
-    width: 1rem;
-    height: 1rem;
-  }
-  
-  .button--submit {
-    min-height: 50px;
-    width: 90px;
-    padding: .5em 1em;
-    border: none;
-    border-radius: 0 6px 6px 0;
-    background-color: #5e4dcd;
-    color: #fff;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background-color .3s ease-in-out;
-    -webkit-transition: background-color .3s ease-in-out;
-    -moz-transition: background-color .3s ease-in-out;
-    -ms-transition: background-color .3s ease-in-out;
-    -o-transition: background-color .3s ease-in-out;
+
+.td {
+  padding: 1px;
+  border-bottom: solid 1px rgb(20, 20, 20);
 }
-  
 
-
-  .body{
-    margin: 0;
-    border: 0;
-    box-sizing: border-box;
-    background-color: #F6CED8;
-    height: 1500px;
-  }
-  .MBody{
-    background-color: #2a2723;
-    color: white;
-  }
-  .EnLinea{
-    display: inline-flex;
-  }
-
-  .Titulo{
-    width: 45%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(17, 149, 163);
-    border-radius: 25px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    -ms-border-radius: 25px;
-    -o-border-radius: 25px;
-    color: white;
-    font-size: 35px;
-    font-weight: bold;
+.thead {
+  background-color: #a17fba;
 }
-  .Parametros{
-    background-color: aqua;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .Centrar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .Juntar{
-    display: flex;
-  }
 
-  .table{
-    background-color: white;
-    border-collapse: collapse;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-  }
-  .Acciones{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-  }
-  .thead{
-    background-color: #a17fba;
-  }
-  .BotonEditar{
-    background-color: rgb(220, 220, 114);
-    font-size: 18px;
-    border-radius: 20px;
-    padding: 10px 15px 10px 15px;
-    margin: 5px;
-    border: solid 3px rgb(161, 161, 70);
-    font-weight: bold;
-    color: white;
+tbody tr {
+  background-color: #cbd8e9;
+  cursor: pointer;
 }
-  .BotonEliminar{
-    background-color: rgb(239, 102, 102);
-    padding: 10px;
-    font-size: 18px;
-    border-radius: 20px;
-    padding: 10px 15px 10px 15px;
-    margin: 5px;
-    border: solid 3px rgb(178, 1, 1);
-    font-weight: bold;
-    color: white;
-  }
-  .Acciones{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+
+tbody tr:hover {
+  background: rgb(161, 190, 230);
+}
