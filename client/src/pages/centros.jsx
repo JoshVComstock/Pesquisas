@@ -3,11 +3,6 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
 import CentroForm from '../models/CentroForm';
-import '../pages/css/Centros.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faAdd} from '@fortawesome/free-solid-svg-icons';
-import {faEdit} from '@fortawesome/free-solid-svg-icons';
-import {faTrash} from '@fortawesome/free-solid-svg-icons';
 
 const Centros = () => {
   const { openModal, closeModal } = useModal("Centros de Salud", <CentroForm />);
