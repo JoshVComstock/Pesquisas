@@ -1,11 +1,36 @@
-.body{
+.body {
   display: flex;
   justify-content: center;
   min-height: 100vh;
 }
+
 .Container {
   background-color: rgb(220, 197, 243);
   border: solid 1px rgb(255, 255, 255);
+}
+
+.Div-Titulo {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+.Titulo {
+  padding: 8px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(17, 149, 163);
+  border: solid 2px black;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 .BotonAgregar {
@@ -47,70 +72,13 @@
   transform: translateX(0);
 }
 
-.Buscar {
-  position: absolute;
-  left: 1rem;
-  fill: #777;
-  width: 1rem;
-  height: 1rem;
-}
-
-.Div-Titulo{
-  display: flex;
-  align-items: center;
-  margin: 20px;
-}
-.Titulo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(17, 149, 163);
-  border: solid 2px black;
-  border-radius: 25px;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  -ms-border-radius: 25px;
-  -o-border-radius: 25px;
-  color: white;
-  font-size: 35px;
-  font-weight: bold;
-}
-.table {
-  background-color: white;
-  border-collapse: collapse;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-}
-.th{
-  background-color: #5393e1f2;
-  color: white;
-  padding: 10px 2px ;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-.td{
-  padding: 1px;
-  border-bottom: solid 1px rgb(20, 20, 20);
-}
-
-.thead {
-  background-color: #a17fba;
-}
-tbody tr {
-  background-color: #cbd8e9;
-  cursor: pointer;
-}
-tbody tr:hover {
-  background: rgb(161, 190, 230);
-}
-
 .Acciones {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
 }
+
 .BotonEditar {
   background-color: rgb(220, 220, 114);
   font-size: 18px;
@@ -140,4 +108,38 @@ tbody tr:hover {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+}
+
+.table {
+  background-color: white;
+  border-collapse: collapse;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.th {
+  background-color: #5393e1f2;
+  color: white;
+  padding: 10px 2px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.td {
+  padding: 1px;
+  border-bottom: solid 1px rgb(20, 20, 20);
+}
+
+.thead {
+  background-color: #a17fba;
+}
+
+tbody tr {
+  background-color: #cbd8e9;
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background: rgb(161, 190, 230);
 }
