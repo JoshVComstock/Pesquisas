@@ -20,29 +20,49 @@ import Modal from "./modal";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import { Navcontextprovider } from "./context/navcontext";
+import { Usercontextprovider } from "./context/userContext";
+import ProtectedRoute from "./wrappers/ProtectedRoute";
 function App() {
   return (
     <>
       <BrowserRouter>
         <ModalContextProvider>
-          <Routes>
-            <Route path='/' element={<Navbar />}>
-              <Route path='' element={<Home />} />
-              <Route path='/centros' element={<Centros />} />
-              <Route path='/ciudades' element={<Ciudades />} />
-              <Route path='/redes' element={<Redes />} />
-              <Route path='/laboratorios' element={<Laboratorios />} />
-              <Route path='/provincias' element={<Provincias />} />
-              <Route path='/registro_provincias' element={<Registro_provincias />}/>
-              <Route path='/municipios' element={<Municipios />}/>
-              <Route path='/registro_municipios' element={<Registro_municipios />}/>
-              <Route path='/registro_usuario' element={<Register />} />
-            </Route>
-          </Routes>
-          <Modal/>
+          <Usercontextprovider>
+            <Navcontextprovider>
+              <Routes>
+                <Route path="login" element={<Login />} />
+                <Route
+                  path="/"
+                  element={
+                    <ProtectedRoute>
+                      <Navbar />
+                    </ProtectedRoute>
+                  }
+                >
+                  <Route path="home " element={<Home />} />
+                  <Route path="centros" element={<Centros />} />
+                  <Route path="ciudades" element={<Ciudades />} />
+                  <Route path="redes" element={<Redes />} />
+                  <Route path="laboratorios" element={<Laboratorios />} />
+                  <Route path="provincias" element={<Provincias />} />
+                  <Route
+                    path="registro_provincias"
+                    element={<Registro_provincias />}
+                  />
+                  <Route path="municipios" element={<Municipios />} />
+                  <Route
+                    path="registro_municipios"
+                    element={<Registro_municipios />}
+                  />
+                  <Route path="registro_usuario" element={<Register />} />
+                </Route>
+              </Routes>
+              <Modal />
+            </Navcontextprovider>
+          </Usercontextprovider>
         </ModalContextProvider>
       </BrowserRouter>
-      
     </>
   );
 }

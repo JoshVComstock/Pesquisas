@@ -10,6 +10,8 @@ use App\Http\Controllers\EnfermedadesController;
 use App\Http\Controllers\LaboratoriosController;
 use App\Http\Controllers\MunicipiosController;
 use App\Http\Controllers\ProvinciasController;
+use App\Http\Controllers\UserController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +24,21 @@ use App\Http\Controllers\ProvinciasController;
 |
 */
 
+Route::post('register', [UserController::class, 'register']);
+Route::post('login', [UserController::class, 'login']);
+
+Route::group(['middleware' => ["auth:sanctum"]], function () {
+    Route::get('users-profile', [UserController::class, 'userProfile']);
+    Route::get('logout', [UserController::class, 'logout']);
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::get('/ciudades', [CiudadesController::class, 'index']);
-Route::post('/ciudad', [CiudadesController::class, 'store']);
+Route::post('/ciudades', [CiudadesController::class, 'store']);
+Route::put('/ciudades/{id}', [CiudadesController::class, 'update']);
 Route::delete('/ciudades/{id}', [CiudadesController::class, 'destroy']);
 
 Route::get('/centros', [CentrosController::class, 'index']);
