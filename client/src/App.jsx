@@ -4,7 +4,7 @@ import CentroForm from "./Models/CentroForm";
 import CiudadesForm from "./Models/CiudadesForm";
 import EnfermedadesForm from "./Models/EnfermedadesForm";
 import RedesForm from "./Models/RedesForm";
-import Centros from "./pages/centros";
+import Centros from "./pages/Centros";
 import Ciudades from "./pages/Ciudades";
 import Enfermedades from "./pages/Enfermedades";
 import Redes from "./pages/Redes";
@@ -40,10 +40,11 @@ function App() {
                     </ProtectedRoute>
                   }
                 >
-                  <Route path="home " element={<Home />} />
+                  <Route path="home" element={<Home />} />
                   <Route path="centros" element={<Centros />} />
                   <Route path="ciudades" element={<Ciudades />} />
                   <Route path="redes" element={<Redes />} />
+                  <Route path="enfermedades" element={<Enfermedades />} />
                   <Route path="laboratorios" element={<Laboratorios />} />
                   <Route path="provincias" element={<Provincias />} />
                   <Route

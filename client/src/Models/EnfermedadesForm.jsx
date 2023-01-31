@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 export const EnfermedadesForm = () => {
@@ -36,10 +36,10 @@ export const EnfermedadesForm = () => {
                 <div>
                     <h3>Ingrese una nueva Enfermedad</h3>
                 </div>
-                <form action="submit">
+                <form >
                     <div>
                         <label>Nombre:</label>
-                        <input name="Nombre" type="text" required value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                        <input  type="text" required value={nombre} onChange={(e) => setNombre(e.target.value)} />
                     </div>
                     <div>
                         <label>Descripción:</label>
@@ -58,4 +58,4 @@ export const EnfermedadesForm = () => {
         </div>
     )
 }
-export default EnfermedadesForm
+export default EnfermedadesForm;

@@ -78,7 +78,7 @@ async function Provincias() {
     });
     const respuesta = await response?.json();
     setProvincias(respuesta);
-    setId_provincias=provincias;
+    setId_provincias(provincias);
   }
 
   async function MostrarMunicipios() {

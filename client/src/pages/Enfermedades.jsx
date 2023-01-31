@@ -3,6 +3,34 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
 import EnfermedadesForm from '../models/EnfermedadesForm';
+import New from "./../img/new.jpg";
+import Pdf from "./../img/pdf.jpg";
+import Excel from "./../img/doc.jpg";
+import Searchicons from "./../img/search.jpg";
+import {
+  Container,
+  Titulo,
+  Divbotones,
+  Botonespdf,
+  Botonespdf1,
+  Botonespdf2,
+  Img,
+  Divsearchpadre,
+  Divsearch,
+  Search,
+  Botonsearch,
+  Botonacciones,
+  Iconsacciones,
+} from "../styles/crud";
+import {
+  Iconsacciones1,
+  Botonesacciones,
+  Divtabla,
+  Thead,
+  Tbody,
+  Th,
+  Trdatos,
+} from "../styles/crud";
 
 const Enfermedades = () => {
   const { openModal, closeModal } = useModal("Enfermedades", <EnfermedadesForm />);
@@ -36,26 +64,42 @@ const Enfermedades = () => {
     MostrarEnfermedades();
   }, [])
   return (
-    <div>
-      <div className='Titulo'>
-        <div>Listado de Enfermedades</div>
-      </div>
-      <br />
-      <div>
-        <button type="submit" onClick={openModal}>Agregar Nueva Enfermedad</button>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Extra</th>
-
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        {
+    <Container>
+      <Titulo>Enfermedades</Titulo>
+      <Divbotones>
+        <Botonespdf2 onClick={openModal}>
+          <Img src={New} alt="" /> Nuevo
+        </Botonespdf2>
+        <Botonespdf1>
+          <Img src={Pdf} alt="" />
+          PDF
+        </Botonespdf1>
+        <Botonespdf>
+          <Img src={Excel} alt="" />
+          Excel
+        </Botonespdf>{" "}
+      </Divbotones>
+      <Divsearchpadre>
+        <Divsearch>
+          <Search type="text" placeholder="Buscar" />
+          <Botonsearch>
+            <Img src={Searchicons} alt="" />{" "}
+          </Botonsearch>
+        </Divsearch>
+      </Divsearchpadre>
+      <Divtabla>
+        <table className="table">
+          <Thead>
+            <tr>
+              <th>Nº</th>
+              <th>NOMBRE</th>
+              <th>DESCRIPCION</th>
+              <th>EXTRA</th>
+              
+              <Th>ACCIONES</Th>
+            </tr>
+          </Thead>
+          {
           enfermedades.map((v, i) => (
             <tbody key={i} >
               <tr  >
@@ -69,7 +113,7 @@ const Enfermedades = () => {
                       <button className='BotonEditar'>Editar</button>
                     </div>
                     <div className='Eliminar'>
-                      <button className='BotonEliminar' onClick={() => EliminarEnfermedades(v.id)}>Eliminar</button>
+                      <button className='BotonEliminar'>Eliminar</button>
                     </div>
                   </div>
                 </th>
@@ -77,9 +121,9 @@ const Enfermedades = () => {
             </tbody>
           ))
         }
-      </table>
-
-    </div>
+        </table>
+      </Divtabla>
+    </Container>
   )
 }
 
