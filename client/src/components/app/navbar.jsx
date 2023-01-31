@@ -21,7 +21,7 @@ const Navbar = () => {
     <Divheader>
       <Header>
         <Logo>
-          <Imge src={Logos} alt="" />
+          <Imge src={Logos} alt="" width={'100px'}/>
         </Logo>
         <Linkes to="/">
           <Img src="src\img\Home.png" alt="" /> Home
@@ -66,31 +66,36 @@ const Divheader = styled.div`
   overflow-x: hidden;
 `;
 const Header = styled.header`
-  max-width: 200px;
+  width: 400px;
   height: 100vh;
-  background: #034078;
+  background: #f8f8f8;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
 `;
 const Img = styled.img`
   width: 25px;
   height: 25px;
   margin: 0 10px;
-  filter: invert(99%) sepia(6%) saturate(2%) hue-rotate(92deg) brightness(112%) contrast(100%);
+  filter: invert(99%) sepia(6%) saturate(2%) hue-rotate(92deg) brightness(112%) contrast(50%);
 `;
 const Linkes = styled(Link)`
-  margin: 2px 15px;
+ border-left: solid ;
+ border-left-color:#4650dd;
   padding: 10px 10px 10px 30px;
   cursor: pointer;
   text-decoration: none;
-  color: #aeaeae;
-  border-radius: 5px;
+  color: #adb5bd;
+  border-radius: -10px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin:5px;
   &:hover {
-    background: #0066ff;
+    background:#4650dd;
     color: #fff;
+    border-left: solid ;
+ border-left-color:#000000;
   }
   &:hover + Img {
     filter: invert(100%) sepia(98%) saturate(0%) hue-rotate(352deg)
@@ -100,41 +105,46 @@ const Linkes = styled(Link)`
 const Imge = styled.img`
 `;
 const Logo=styled.div`
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin:5px 0px ;
+  margin:50px 0px ;
+  
 `;
 const Navuser = styled.div`
-  min-width: calc(100% - 200px);
+  min-width: calc(100% - 250px);
   height: 100vh;
   display: flex;
   flex-direction: column;
 `;
 const Topnav = styled.div`
   max-width: 100%;
-  background: #fff;
+  background: #e2e2e9;
   display: flex;
   justify-content: flex-end;
   border-bottom: 0.5px solid rgba(0,0,0,.1);
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 /5%);
 `;
 const Topnavimg = styled.img`
   width: 33px;
   height: 33px;
   margin: 3px;
+  background-color:transparent;
 `;
 const Logout = styled.button`
   background: none;
   margin:0 15px;
   cursor: pointer;
+  color:#fff;
   &:hover {
-    color: #0066ff;
+    color: #94b5e6;
     text-decoration: underline;
   }
 `;
 const User = styled.div`
   display: flex;
+  color:#fff;
   flex-direction: column;
   align-items: center;
   margin-right: 35px;
@@ -143,6 +153,6 @@ const Nameuser=styled.label`
    cursor: pointer;
    margin: 2px;
    &:hover{
-    color:#0066ff;
+    color:#94b5e6;
    }
 `;

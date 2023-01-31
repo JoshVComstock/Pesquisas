@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import { useState,useEffect } from 'react';
 
 const CiudadesForm = ({mostrarciudades}) => {
+  // declaramos una variable
   const [ciudad, setCiudad] = useState("");
-  
+  // llamamos una funcion para que nos muestre la api
   const enviar = async (e) => {
     e.preventDefault();
     const response = await fetch("http://127.0.0.1:8000/api/ciudad", {
@@ -32,8 +33,9 @@ const CiudadesForm = ({mostrarciudades}) => {
             <Divinput>
               <Divinputlabel>
               <label>Nombre</label>
-                <Input type="text" placeholder='Ingrese Ciudad' value={ciudad} onChange={(e) => setCiudad(e.target.value)}/>
+                <Input type="text" placholder='Ingrese Ciudad' value={ciudad} onChange={(e) => setCiudad(e.target.value)}/>
               </Divinputlabel>
+              
             </Divinput>
             <Divboton>
               <Botonagregar type='submit' onClick={enviar}>Agregar</Botonagregar>

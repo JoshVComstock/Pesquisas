@@ -2,29 +2,38 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
+
 import CiudadesForm from '../models/CiudadesForm';
+
 import New from "./../img/new.jpg"
 import Pdf from "./../img/pdf.jpg"
 import Excel from "./../img/doc.jpg"
 import Searchicons from "./../img/search.jpg"
 import Editar from "./../img/icons/Editar.jpg"
 import Eliminar from "./../img/icons/Delete.jpg"
+
+// definimos variable a la espera de un estado
 const Ciudades = (mostrarciudades) => {
   const { openModal, closeModal } = useModal("Agregar Ciudad",<CiudadesForm mostrarciudades={mostrarciudades}/>);
   const [ciudades, setCiudades] = useState([]);
 
+  // funcion asincrona  que nos permiten llamar a la api
   async function mostrarciudades() {
     const response = await fetch('http://127.0.0.1:8000/api/ciudades', {
+      // metodo para atraer datos
       method: 'GET',
+      // nos permite extraer el contenido json
       headers: {
         "Content-Type": "application/json",
         "accept": "application/json",
       },
     })
+
     const respuesta = await response?.json();
     setCiudades(respuesta);
     closeModal();
   }
+  // funcion para eliminar cirudades con asincronas 
   async function eliminarciudades(id) {
     const response = await fetch('http://127.0.0.1:8000/api/ciudades/' + id, {
       method: 'DELETE',
@@ -33,13 +42,18 @@ const Ciudades = (mostrarciudades) => {
         "accept": "application/json",
       },
     })
+
+    // si encuentra el dato muestra
     if (response.ok) {
       mostrarciudades();
     }
   }
+  // llena los datos con los encontrados 
   useEffect(() => {
     mostrarciudades();
   }, [])
+
+  //  retorna un componente
   return (
     <Container>
        <Titulo>Todos los Usuarios</Titulo>

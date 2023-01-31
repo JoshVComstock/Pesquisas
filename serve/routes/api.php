@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\CiudadesController;
 use App\Http\Controllers\CentrosController;
 use App\Http\Controllers\RedesController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\EnfermedadesController;
 use App\Http\Controllers\LaboratoriosController;
 use App\Http\Controllers\MunicipiosController;
 use App\Http\Controllers\ProvinciasController;
+use App\Http\Controllers\Registro_provinciasController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/ciudades', [CiudadesController::class, 'index']);
-Route::post('/ciudad', [CiudadesController::class, 'store']);
+Route::post('/ciudades', [CiudadesController::class, 'store']);
 Route::delete('/ciudades/{id}', [CiudadesController::class, 'destroy']);
 
 Route::get('/centros', [CentrosController::class, 'index']);
@@ -57,3 +60,9 @@ Route::delete('/municipios/{id}', [MunicipiosController::class, 'destroy']);
 Route::get('/provincias', [ProvinciasController::class, 'index']);
 Route::post('/provincias', [ProvinciasController::class, 'store']);
 Route::delete('/provincias/{id}', [ProvinciasController::class, 'destroy']);
+// ------------ Regitro de provincias
+
+Route::get('/registro_provincias', [Registro_provinciasController::class, 'index']);
+Route::post('/registro_provincias', [Registro_provinciasController::class, 'store']);
+Route::delete('/registro_provincias/{id}', [Registro_provinciasController::class, 'destroy']);
+

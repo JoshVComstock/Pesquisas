@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Enfermedades;
 use Illuminate\Http\Request;
 
+
 class EnfermedadesController extends Controller
 {
     public function index()
