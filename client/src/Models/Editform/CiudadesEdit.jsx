@@ -3,32 +3,29 @@ import styled from 'styled-components'
 import { useState } from 'react';
 
 
-const CiudadesForm = ({mostrarciudades}) => {
-  // declaramos una variable
-  const [ciudad, setCiudad] = useState("");
-  const [loading, setLoading] = useState(false);
+
+const CiudadesEdit = ({ciudadactual,mostrarciudades}) => {
+  const [ciudad, setCiudad] = useState(ciudadactual.ciudad);
 
 
-  
-  const enviar = async (e) => {
+  const Editar = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const response = await fetch("http://127.0.0.1:8000/api/ciudades", {
-      method: "POST",
+    const response = await fetch("http://127.0.0.1:8000/api/ciudades/"+ciudadactual.id, {
+      method: "PUT",
       headers: {
         accept: "application/json",
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        ciudad: ciudad
+        ciudad:ciudad
       }),
       
     });
 
-    const respuesta = await response?.json();
-    if ((respuesta.mensaje = "Creado satisfactoriamente")) {
+    if ((response.ok)) {
       setCiudad(" ");
       mostrarciudades();
+      
     }
   };
   return (
@@ -38,12 +35,11 @@ const CiudadesForm = ({mostrarciudades}) => {
             <Divinput>
               <Divinputlabel>
               <label>Nombre</label>
-                <Input type="text" placholder='Ingrese Ciudad' value={ciudad} onChange={(e) => setCiudad(e.target.value)}/>
+                <Input type="text" placeholder='Ingrese Ciudad' value={ciudad} onChange={(e) => setCiudad(e.target.value)}/>
               </Divinputlabel>
-              
             </Divinput>
             <Divboton>
-              <Botonagregar type='submit' onClick={enviar} disabled={loading}>Agregar</Botonagregar>
+              <Botonagregar type='submit' onClick={Editar}>Editar</Botonagregar>
             </Divboton>
           </form>
         </div>
@@ -51,7 +47,7 @@ const CiudadesForm = ({mostrarciudades}) => {
   )
 }
 
-export default CiudadesForm
+export default CiudadesEdit
 
 const Container=styled.div`
 `;

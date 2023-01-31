@@ -1,11 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import New from "./../img/new.jpg"
 import Pdf from "./../img/pdf.jpg"
 import Excel from "./../img/doc.jpg"
 import Searchicons from "./../img/search.jpg"
+import { useuserContext } from "../context/userContext";
+import {useNavigate} from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate()
+  const { user } = useuserContext();
+
+  useEffect(()=>{
+    if(user.rol != "laboratorio"){
+      navigate("/laboratorio")
+    }
+  },[])
+
   return (
     <Container>
       <Titulo>Todos los Usuarios</Titulo>
