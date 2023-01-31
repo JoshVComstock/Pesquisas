@@ -65,6 +65,9 @@ const AdminComponent = () => {
   <Linkes to="/Rellamados">
     <Img src={Rellamadosicons} alt="" /> Rellamados
   </Linkes>
+  <Linkes to="/redsalud">
+    <Img src="" alt="" /> Red Salud
+  </Linkes>
   <Linkes to="/resultados">
     <img src="" alt="" /> Resultados
   </Linkes>

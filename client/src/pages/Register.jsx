@@ -12,9 +12,9 @@ const Register = () => {
   const { user } = useuserContext();
 
   useEffect(()=>{
-    if(user.rol != "laboratorio"){
-      navigate("/laboratorio")
-    }
+    // if(user.rol != "laboratorio"){
+    // //   navigate("/laboratorio")
+    // }
   },[])
 
   return (

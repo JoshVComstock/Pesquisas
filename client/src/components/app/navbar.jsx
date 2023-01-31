@@ -119,7 +119,7 @@ const Logo = styled.div`
   margin: 15px 0px 10px 0px;
 `;
 const Navuser = styled.div`
-  min-width: calc(100% - 300px);
+  min-width: calc(100% - 250px);
   height: 100vh;
   display: flex;
   flex-direction: column;

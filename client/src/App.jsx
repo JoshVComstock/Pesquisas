@@ -23,6 +23,8 @@ import Register from "./pages/Register";
 import { Navcontextprovider } from "./context/navcontext";
 import { Usercontextprovider } from "./context/userContext";
 import ProtectedRoute from "./wrappers/ProtectedRoute";
+import Redsalud from "./pages/RedSalud"
+
 function App() {
   return (
     <>
@@ -55,6 +57,8 @@ function App() {
                     path="registro_municipios"
                     element={<Registro_municipios />}
                   />
+
+                  <Route path="redsalud" element={<Redsalud />} />
                   <Route path="registro_usuario" element={<Register />} />
                 </Route>
               </Routes>
