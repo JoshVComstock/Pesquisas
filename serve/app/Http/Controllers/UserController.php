@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Dotenv\Repository\RepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -38,15 +39,19 @@ class UserController extends Controller
             "password" => "required"
 
         ]);
+
         $user = User::where("email", "=", $request->email)->first();
         if (isset($user->id)) {
             if (Hash::check($request->password, $user->password)) {
+                //get user
+                $userData = DB::select("select id, nombre, email, telefono, rol from users where email = '$request->email'");
                 //crear tokem
                 $token = $user->createToken("auth_token")->plainTextToken;
                 return response()->json([
                     "status" => 1,
                     "msg" => "Usuario logeado",
-                    "access_token" => $token
+                    "access_token" => $token,
+                    "user" => $userData,
                 ]);
             } else {
                 return response()->json([
@@ -69,8 +74,10 @@ class UserController extends Controller
             "data" => auth()->user()
         ]);
     }
+
     public function Logout()
-    {   auth()->user()->tokens()->delete();
+    {
+        auth()->user()->tokens()->delete();
         return response()->json([
             "status" => 0,
             "msg" => "Cierre de seccion",

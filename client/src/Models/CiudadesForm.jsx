@@ -2,9 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import { useState } from 'react';
 
+
 const CiudadesForm = ({mostrarciudades}) => {
   const [ciudad, setCiudad] = useState("");
   const [loading, setLoading] = useState(false);
+
+
   
   const enviar = async (e) => {
     e.preventDefault();
@@ -25,7 +28,6 @@ const CiudadesForm = ({mostrarciudades}) => {
     if ((respuesta.mensaje = "Creado satisfactoriamente")) {
       setCiudad(" ");
       mostrarciudades();
-
     }
   };
   return (

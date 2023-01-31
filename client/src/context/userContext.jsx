@@ -1,6 +1,7 @@
 import { useContext, useState, createContext, React, useEffect } from "react";
-
+import { useNavigate } from 'react-router-dom';
 export const UsersContext = createContext(null);
+
 export const useuserContext = () => {
   const context = useContext(UsersContext);
   if (!context) {
@@ -8,18 +9,21 @@ export const useuserContext = () => {
   }
   return context;
 };
+
 export const Usercontextprovider = ({ children }) => {
   const token = getCookie('token');
   const [user, setUser] = useState({isLogged:!!token});
+  const navegate=useNavigate();
+
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
   }
-  const getUser=async ()=>{
+
+  const getUser= ()=>{
          //esto agarra el token  
-        console.log(token);
-        const response=await fetch('http://127.0.0.1:8000/api/user-profile',{
+     /*    const response=await fetch('http://127.0.0.1:8000/api/user-profile',{
           method:'GET',
           headers:{
             "accept":"application/json",
@@ -27,6 +31,7 @@ export const Usercontextprovider = ({ children }) => {
             "authorization":`Bearer ${token}`
           },
         })
+        console.log(response)
         const responsejson= await response?.json();  
         console.log(responsejson);  //esto verifica los datos
         if(responsejson.message=="Unauthenticated.")
@@ -35,18 +40,34 @@ export const Usercontextprovider = ({ children }) => {
         }
         else{
             setUser({...responsejson.data, isLogged: true });
-        }
-    } 
-  
- /*  useEffect(() => {
-    if(Object.keys(user).length==1)
-    {
-        getUser();
-        
+        } */
+        const user = JSON.parse(localStorage.getItem("user"));
+    if(user){
+      const obj={
+        id:user.id,
+        email:user.email,
+        nombre:user.nombre,
+        telefono:user.telefono,
+        rol:user.rol,
+        isLogged:true,
+      }
+     setUser(obj); 
+    }else{
+      navegate("/login"); 
     }
-  }); */
+    }
+
+  
+  useEffect(() => {
+ /*    if(Object.keys(user).length==1)
+    {
+     
+    } */
+    getUser();
+  },[]);  
+
   return (
-    <UsersContext.Provider value={{ user, setUser }}>
+    <UsersContext.Provider value={{ user, setUser, getUser }}>
       {children}
     </UsersContext.Provider>
   );

@@ -10,13 +10,9 @@ import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
 import CiudadesEdit from "../models/Editform/CiudadesEdit";
-import { useuserContext } from "../context/userContext";
-import { useNavigate } from "react-router-dom";
 
-const Ciudades = () => {
+const Ciudades = (mostrarciudades) => {
   const [ciudadactual, setCiudadactual] = useState({});
-  const { user } = useuserContext();
-  const  navegate  = useNavigate();
   const { openModal: editarOpen, closeModal: editarClose } = useModal(
     "Editar ciudad",
     <CiudadesEdit
@@ -28,7 +24,6 @@ const Ciudades = () => {
     "Agregar Ciudad",
     <CiudadesForm mostrarciudades={mostrarciudades} />
   );
-
   const [ciudades, setCiudades] = useState([]);
   const [filtro, setFiltro] = useState("");
 
@@ -45,6 +40,7 @@ const Ciudades = () => {
     closeModal();
     editarClose();
   }
+
   async function eliminarciudades(id) {
     const response = await fetch("http://127.0.0.1:8000/api/ciudades/" + id, {
       method: "DELETE",
@@ -58,19 +54,14 @@ const Ciudades = () => {
     }
   }
   useEffect(() => {
-      mostrarciudades();
-
+    mostrarciudades();
   }, []);
+  
   useEffect(() => {
     if (Object.keys(ciudadactual).length != 0) {
       editarOpen();
     }
   }, [ciudadactual]);
-  useEffect(() => {
-    if (user.rol != "laboratorio") {
-      navegate("/laboratorios");
-    }
-  }, []);
   return (
     <Container>
       <Titulo>Ciudades</Titulo>
