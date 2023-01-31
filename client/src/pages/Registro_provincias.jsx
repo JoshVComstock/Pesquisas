@@ -11,8 +11,6 @@ import Editar from "./../img/icons/Editar.jpg"
 import Eliminar from "./../img/icons/Delete.jpg"
 
 
-// cpo
-
 import {
   Container,
   Titulo,
@@ -37,9 +35,6 @@ import {
   Th,
   Trdatos,
 } from "../styles/crud";
-
-
-// import 
 
 
 
@@ -107,8 +102,7 @@ const Registro_provincia = () => {
           <Search
             type="text"
             placeholder="Buscar"
-            value={filtro}
-            onChange={(e) => setFiltro(e.target.value)}
+           
           />
           <Botonsearch>
             <Img src={Searchicons} alt="" />{" "}
@@ -116,40 +110,41 @@ const Registro_provincia = () => {
         </Divsearch>
       </Divsearchpadre>
      <Divtabla>
-        <Tabla>
+        <table className='table'>
           <Thead>
             <tr>
-              <Td>Nº</Td>
-              <Td>Hora</Td>
-              <Td>Fecha</Td>
-              <Td>Provincias</Td>
-              <Td>Municipios</Td>
-              <Td>Centros</Td>
-              <Td>Cantidad Recibida</Td>
-              <Td>Cantidad Entregada</Td>
-              <Td>Codigo Tarjeta</Td>
-              <Td>Entregado Por</Td>
-              <Td>Telefono</Td>
-              <Td>Recibido Por</Td>
+              <th>Nº</th>
+              <th>Hora</th>
+              <th>Fecha</th>
+              <th>Provincias</th>
+              <th>Municipios</th>
+              <th>Centros</th>
+              <th>Cantidad Recibida</th>
+              <th>Cantidad Entregada</th>
+              <th>Codigo Tarjeta</th>
+              <th>Entregado Por</th>
+              <th>Telefono</th>
+              <th>Recibido Por</th>
+              <Th>Acciones</Th>
             </tr>
           </Thead>
           {
               registroprovincias.map((v, i) => (
                 <tbody key={i} >
-                  <Trdatos>
-                    <td>{v.id}</td>
-                    <td>{v.hora}</td>
-                    <td>{v.fecha}</td>
-                    <td>{v.id_provincias}</td>
-                    <td>{v.id_municipios}</td>
-                    <td>{v.id_centros}</td>
-                    <td>{v.cantidad_recibida}</td>
-                    <td>{v.cantidad_entregada}</td>
-                    <td>{v.cod_tarjeta}</td>
-                    <td>{v.	entregado_por}</td>
-                    <td>{v.	telefono}</td>
-                    <td>{v.recibido_por}</td>
-                    <td>
+                  <tr>
+                    <th>{v.id}</th>
+                    <th>{v.hora}</th>
+                    <th>{v.fecha}</th>
+                    <th>{v.id_provincias}</th>
+                    <th>{v.id_municipios}</th>
+                    <th>{v.id_centros}</th>
+                    <th>{v.cantidad_recibida}</th>
+                    <th>{v.cantidad_entregada}</th>
+                    <th>{v.cod_tarjeta}</th>
+                    <th>{v.	entregado_por}</th>
+                    <th>{v.	telefono}</th>
+                    <th>{v.recibido_por}</th>
+                    <th>
                       <Botonacciones >
                         <div>
                           <Botonesacciones><Iconsacciones src={Editar} alt="" /></Botonesacciones>
@@ -158,12 +153,12 @@ const Registro_provincia = () => {
                           <Botonesacciones onClick={()=>eliminarregistro(v.id)}> <Iconsacciones1 src={Eliminar} alt="" /></Botonesacciones>
                         </div>
                       </Botonacciones>
-                    </td>
-                  </Trdatos>
+                    </th>
+                  </tr>
                 </tbody>
               ))
             }
-        </Tabla>
+        </table>
       </Divtabla>
     </Container>
   )
