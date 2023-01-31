@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 
 const CiudadesForm = ({mostrarciudades}) => {
+  // declaramos una variable
   const [ciudad, setCiudad] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -37,8 +38,9 @@ const CiudadesForm = ({mostrarciudades}) => {
             <Divinput>
               <Divinputlabel>
               <label>Nombre</label>
-                <Input type="text" placeholder='Ingrese Ciudad' value={ciudad} onChange={(e) => setCiudad(e.target.value)}/>
+                <Input type="text" placholder='Ingrese Ciudad' value={ciudad} onChange={(e) => setCiudad(e.target.value)}/>
               </Divinputlabel>
+              
             </Divinput>
             <Divboton>
               <Botonagregar type='submit' onClick={enviar} disabled={loading}>Agregar</Botonagregar>

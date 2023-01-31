@@ -82,6 +82,7 @@ const Header = styled.header`
   background: #22577a;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
 `;
 const Img = styled.img`
   width: 25px;
@@ -125,7 +126,7 @@ const Navuser = styled.div`
 `;
 const Topnav = styled.div`
   max-width: 100%;
-  background: #fff;
+  background: #e2e2e9;
   display: flex;
   justify-content: flex-end;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
@@ -134,18 +135,21 @@ const Topnavimg = styled.img`
   width: 33px;
   height: 33px;
   margin: 3px;
+  background-color:transparent;
 `;
 const Logout = styled.button`
   background: none;
   margin: 0 15px;
   cursor: pointer;
+  color:#fff;
   &:hover {
-    color: #0066ff;
+    color: #94b5e6;
     text-decoration: underline;
   }
 `;
 const User = styled.div`
   display: flex;
+  color:#fff;
   flex-direction: column;
   align-items: center;
   margin-right: 35px;

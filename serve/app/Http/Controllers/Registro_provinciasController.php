@@ -15,7 +15,9 @@ class Registro_provinciasController extends Controller
         $provincias=new Registro_provincias();
         $provincias->hora=$request->hora;
         $provincias->fecha=$request->fecha;
+
         $provincias->id_provincias=$request->id_provincias;
+        
         $provincias->id_municipios=$request->id_municipios;
         $provincias->id_centros=$request->id_centros;
         $provincias->cantidad_recibida=$request->cantidad_recibida;
@@ -44,6 +46,7 @@ class Registro_provinciasController extends Controller
         $provincias->save();
         return $provincias;
     }
+    
     public function destroy($id)
     {
         return Registro_provincias::destroy($id);
