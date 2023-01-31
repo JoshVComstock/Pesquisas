@@ -3,6 +3,35 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
 import LaboratoriosForm from '../models/LaboratoriosForm';
+import New from "./../img/new.jpg";
+import Pdf from "./../img/pdf.jpg";
+import Excel from "./../img/doc.jpg";
+import Searchicons from "./../img/search.jpg";
+import {
+  Container,
+  Titulo,
+  Divbotones,
+  Botonespdf,
+  Botonespdf1,
+  Botonespdf2,
+  Img,
+  Divsearchpadre,
+  Divsearch,
+  Search,
+  Botonsearch,
+  Botonacciones,
+  Iconsacciones,
+} from "../styles/crud";
+import {
+  Iconsacciones1,
+  Botonesacciones,
+  Divtabla,
+  Thead,
+  Tbody,
+  Th,
+  Trdatos,
+} from "../styles/crud";
+
 
 const Laboratorios = () => {
   const { openModal, closeModal } = useModal("Laboratorios", <LaboratoriosForm />);
@@ -36,28 +65,45 @@ const Laboratorios = () => {
     MostrarLaboratorios();
   }, [])
   return (
-    <div>
-      <div className='Titulo'>
-        <div>Listado de Laboratorios</div>
-      </div>
-      <br />
-      <div>
-        <button type="submit" onClick={openModal}>Agregar un Nuevo Laboratorio</button>
-      </div>
-      <table>
-        <thead>
+    <Container>
+    <Titulo>Laborarios</Titulo>
+    <Divbotones>
+      <Botonespdf2 onClick={openModal}>
+        <Img src={New} alt="" /> Nuevo
+      </Botonespdf2>
+      <Botonespdf1>
+        <Img src={Pdf} alt="" />
+        PDF
+      </Botonespdf1>
+      <Botonespdf>
+        <Img src={Excel} alt="" />
+        Excel
+      </Botonespdf>{" "}
+    </Divbotones>
+    <Divsearchpadre>
+      <Divsearch>
+        <Search type="text" placeholder="Buscar" />
+        <Botonsearch>
+          <Img src={Searchicons} alt="" />{" "}
+        </Botonsearch>
+      </Divsearch>
+    </Divsearchpadre>
+    <Divtabla>
+      <table className="table">
+        <Thead>
           <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Dirección</th>
-            <th>Teléfono</th>
-            <th>Centro</th>
-            <th>Ciudad</th>
-            <th>Redes</th>
-
-            <th>Acciones</th>
+            <th>Nº</th>
+            <th>NOMBRE</th>
+            <th>DIRECCION</th>
+            <th>TELEFONO</th>
+            <th>CENTROS</th>
+            <th>CIUDADES</th>
+            <th>REDES</th>
+            <th>EXTRA</th>
+            
+            <Th>ACCIONES</Th>
           </tr>
-        </thead>
+        </Thead>
         {
           laboratorios.map((v, i) => (
             <tbody key={i} >
@@ -84,7 +130,8 @@ const Laboratorios = () => {
           ))
         }
       </table>
-    </div>
+    </Divtabla>
+  </Container>
   )
 }
 

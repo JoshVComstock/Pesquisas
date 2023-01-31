@@ -13,7 +13,6 @@ use App\Http\Controllers\MunicipiosController;
 use App\Http\Controllers\ProvinciasController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Registro_provinciasController;
-
 use GuzzleHttp\Middleware;
 
 /*
