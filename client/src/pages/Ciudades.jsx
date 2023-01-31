@@ -32,21 +32,19 @@ const Ciudades = () => {
   const [ciudades, setCiudades] = useState([]);
   const [filtro, setFiltro] = useState("");
 
-  // funcion asincrona  que nos permiten llamar a la api
   async function mostrarciudades() {
-    const response = await fetch('http://127.0.0.1:8000/api/ciudades', {
-      method: 'GET',
+    const response = await fetch("http://127.0.0.1:8000/api/ciudades", {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         accept: "application/json",
       },
-    })
+    });
     const respuesta = await response?.json();
     setCiudades(respuesta);
     closeModal();
     editarClose();
   }
-  // funcion para eliminar cirudades con asincronas 
   async function eliminarciudades(id) {
     const response = await fetch("http://127.0.0.1:8000/api/ciudades/" + id, {
       method: "DELETE",
@@ -54,15 +52,23 @@ const Ciudades = () => {
         "Content-Type": "application/json",
         accept: "application/json",
       },
-    })
+    });
     if (response.ok) {
       mostrarciudades();
     }
   }
-  // llena los datos con los encontrados 
   useEffect(() => {
-    mostrarciudades();
-  }, [])
+      mostrarciudades();
+
+  }, []);
+  useEffect(() => {
+    if (Object.keys(ciudadactual).length != 0) {
+      editarOpen();
+    }
+  }, [ciudadactual]);
+  useEffect(() => {
+    
+  }, []);
   return (
     <Container>
       <Titulo>Ciudades</Titulo>
