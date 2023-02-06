@@ -2,13 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { useState } from 'react';
 
-
 const CiudadesForm = ({mostrarciudades}) => {
   // declaramos una variable
   const [ciudad, setCiudad] = useState("");
   const [loading, setLoading] = useState(false);
-
-
   
   const enviar = async (e) => {
     e.preventDefault();

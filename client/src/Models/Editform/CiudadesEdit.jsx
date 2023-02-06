@@ -2,12 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { useState } from 'react';
 
-
-
 const CiudadesEdit = ({ciudadactual,mostrarciudades}) => {
   const [ciudad, setCiudad] = useState(ciudadactual.ciudad);
-
-
+  
   const Editar = async (e) => {
     e.preventDefault();
     const response = await fetch("http://127.0.0.1:8000/api/ciudades/"+ciudadactual.id, {

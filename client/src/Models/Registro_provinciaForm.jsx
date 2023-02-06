@@ -1,21 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { useState,useEffect } from "react"
+import { useState, useEffect } from "react"
 
-const Registro_provinciaForm = ({ mostrarregistroprovincias }) => {
+const Registro_provinciaForm = ({ mostrarRegistroPro }) => {
     // defino variables
     const [hora, setHora] = useState([]);
     const [fecha, setFecha] = useState([]);
-
     const [id_provincias, setId_provincias] = useState("");
     const [provincias , setProvincias] = useState([]);
-
     const [id_municipios , setId_municipios] = useState("");
     const [municipios , setMunicipios] = useState([]);
-
     const [id_centros, setId_centros] = useState("");
     const [centros, setCentros] = useState([]);
-
     const [cantidad_recibida, setCantidad_recibida] = useState("");
     const [cantidad_entregada, setCantidad_entregada] = useState("");
     const [cod_tarjeta, setCod_tarjeta] = useState("");
@@ -64,7 +60,7 @@ const Registro_provinciaForm = ({ mostrarregistroprovincias }) => {
       setEntregado_por(" ");
       setTelefono(" ");
       setRecibido_por(" ");
-      mostrarregistroprovincias();
+      mostrarRegistroPro();
     }
 };
 console.log(id_provincias+" id_provincias",id_municipios+ " idmunicipios ",id_centros+"centros");
@@ -78,7 +74,6 @@ async function Provincias() {
     });
     const respuesta = await response?.json();
     setProvincias(respuesta);
-    setId_provincias(provincias);
   }
 
   async function MostrarMunicipios() {
@@ -91,7 +86,6 @@ async function Provincias() {
     });
     const respuesta = await response?.json();
     setMunicipios(respuesta);
-    setId_municipios=municipios;
   }
 
   async function MostrarCentros() {
@@ -104,9 +98,7 @@ async function Provincias() {
     });
     const respuesta = await response?.json();
     setCentros(respuesta);
-    setId_centros=centros;
   }
-
 
   useEffect(() => {
     MostrarCentros();

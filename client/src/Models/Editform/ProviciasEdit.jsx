@@ -1,32 +1,29 @@
 import React from 'react'
+import styled from 'styled-components'
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
 
-const ProvinciasForm = ({MostrarProvincias}) => {
-  const [provincia, setProvincia] = useState("");
-  const [id_ciudad, setId_ciudad] = useState("");
+const ProviciasEdit = ({provinciaactual,MostrarProvincias}) => {
+  const [provincia, setProvincia] = useState(provinciaactual.provincia);
+  const [id_ciudad, setId_Ciudad] = useState(provinciaactual.id_ciudades);
   const [ciudades, setCiudades] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const enviar = async (e) => {
+  
+  const Editar = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const response = await fetch("http://127.0.0.1:8000/api/provincias", {
-      method: "POST",
+    const response = await fetch("http://127.0.0.1:8000/api/provincias/"+provinciaactual.id, {
+      method: "PUT",
       headers: {
         accept: "application/json",
         "content-type": "application/json",
       },
       body: JSON.stringify({
         provincia: provincia,
-        id_ciudad: id_ciudad,
+        id_ciudad: id_ciudad
       }),
     });
 
-    const respuesta = await response?.json();
-    if ((respuesta.mensaje = "Creado satisfactoriamente")) {
+    if ((response.ok)) {
       setProvincia("");
-      setId_ciudad("");
+      setId_Ciudad("");
       MostrarProvincias();
     }
   };
@@ -52,14 +49,14 @@ const ProvinciasForm = ({MostrarProvincias}) => {
           <form  >
             <Divinput>
               <Divinputlabel>
-                <label>Nombre</label>
-                <Input type="text" placholder='Ingrese Ciudad' value={provincia} onChange={(e) => setProvincia(e.target.value)}/>
+                <label>Nombre:</label>
+                <Input type="text" placeholder='Ingrese Ciudad' value={provincia} onChange={(e) => setProvincia(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divinput>
               <Divinputlabel>
-                <label>Ciudad</label>
-                <select value={id_ciudad} onChange={(e)=>setId_ciudad(e.target.value)} >
+                <label>Ciudad:</label>
+                <select value={id_ciudad} onChange={(e)=>setId_Ciudad(e.target.value)} >
                   {ciudades.map((v, i) => (
                     <option key={i} value={v.id}  >
                       {v.ciudad}
@@ -69,7 +66,7 @@ const ProvinciasForm = ({MostrarProvincias}) => {
               </Divinputlabel>
             </Divinput>
             <Divboton>
-              <Botonagregar type='submit' onClick={enviar} disabled={loading}>Agregar</Botonagregar>
+              <Botonagregar type='submit' onClick={Editar}>Editar</Botonagregar>
             </Divboton>
           </form>
         </div>
@@ -77,21 +74,21 @@ const ProvinciasForm = ({MostrarProvincias}) => {
   )
 }
 
-export default ProvinciasForm
+export default ProviciasEdit
 
-const Container = styled.div`
+const Container=styled.div`
 `;
-const Divinputlabel = styled.div`
+const Divinputlabel=styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Divinput = styled.div`
+const Divinput=styled.div`
   display: flex;
   flex-direction: column;
   margin: 5px;
   align-items: center;
 `;
-const Input = styled.input`
+const Input=styled.input`
   margin-top: 5px;
   margin-bottom: 5px;
   height: 30px;
@@ -103,11 +100,11 @@ const Input = styled.input`
   }
 
 `;
-const Divboton = styled.div`
+const Divboton=styled.div`
   display: flex;
   justify-content: center;
 `;
-const Botonagregar = styled.button`
+const Botonagregar=styled.button`
  padding: 10px;
  cursor: pointer;
  background:#034078;

@@ -3,8 +3,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
 import ProvinciasForm from '../models/ProvinciasForm';
-
-// clip
+import ProvinciasEdit from '../models/Editform/ProviciasEdit';
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
@@ -39,84 +38,63 @@ import {
   Trdatos,
 } from "../styles/crud";
 
-
-
 const Provincias = () => {
-  const { openModal, closeModal } = useModal("Provincias", <ProvinciasForm />);
+  const [provinciaactual, setProviciaactual] = useState({});
+  const { user } = useuserContext();
+  const navegate = useNavigate();
+  const { openModal: editarOpen, closeModal: editarClose } = useModal(
+    "Editar Provincia",
+    <ProvinciasEdit
+      provinciaactual={provinciaactual}
+      MostrarProvincias={MostrarProvincias}
+    />
+  );
+  const { openModal, closeModal } = useModal(
+    "Agregar Provicia",
+    <ProvinciasForm MostrarProvincias={MostrarProvincias} />
+  );
 
   const [provincias, setProvincias] = useState([]);
+  const [filtro, setFiltro] = useState("");
 
   async function MostrarProvincias() {
-    const response = await fetch('http://127.0.0.1:8000/api/provincias', {
-      method: 'GET',
+    const response = await fetch("http://127.0.0.1:8000/api/provincias", {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "accept": "application/json",
+        accept: "application/json",
       },
-    })
+    });
     const respuesta = await response?.json();
     setProvincias(respuesta);
+    closeModal();
+    editarClose();
   }
   async function EliminarProvincias(id) {
-    const response = await fetch('http://127.0.0.1:8000/api/provincias/' + id, {
-      method: 'DELETE',
+    const response = await fetch("http://127.0.0.1:8000/api/provincias/" + id, {
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "accept": "application/json",
+        accept: "application/json",
       },
-    })
+    });
     if (response.ok) {
       MostrarProvincias();
     }
   }
   useEffect(() => {
     MostrarProvincias();
-  }, [])
+  }, []);
+  useEffect(() => {
+    if (Object.keys(provinciaactual).length != 0) {
+      editarOpen();
+    }
+  }, [provinciaactual]);
+  useEffect(() => {}, []);
+  
   return (
-    // <div>
-    //   <div className='Titulo'>
-    //     <div>Listado de Provincias</div>
-    //   </div>
-    //   <br />
-    //   <div>
-    //     <button type="submit" onClick={openModal}>Agregar una Nueva Provincia</button>
-    //   </div>
-    //   <table>
-    //     <thead>
-    //       <tr>
-    //         <th>ID</th>
-    //         <th>Nombre</th>
-    //         <th>Ciudad</th>
-
-    //         <th>Acciones</th>
-    //       </tr>
-    //     </thead>
-    //     {
-    //       provincias.map((v, i) => (
-    //         <tbody key={i} >
-    //           <tr  >
-    //             <th>{v.id}</th>
-    //             <th>{v.provincia}</th>
-    //             <th>{v.id_ciudades}</th>
-    //             <th>
-    //               <div className='Acciones'>
-    //                 <div className='Editar'>
-    //                   <button className='BotonEditar'>Editar</button>
-    //                 </div>
-    //                 <div className='Eliminar'>
-    //                   <button className='BotonEliminar' onClick={() => EliminarProvincias(v.id)}>Eliminar</button>
-    //                 </div>
-    //               </div>
-    //             </th>
-    //           </tr>
-    //         </tbody>
-    //       ))
-    //     }
-    //   </table>
-    // </div>
-  // )
-  <Container>
-      <Titulo>PROVINCIAS</Titulo>
+    <Container>
+      <Titulo>Provincias</Titulo>
       <Divbotones>
         <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo
@@ -133,10 +111,10 @@ const Provincias = () => {
       <Divsearchpadre>
         <Divsearch>
           <Search
-            // type="text"
-            // placeholder="Buscar"
-            // value={filtro}
-            // onChange={''}
+            type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)}
           />
           <Botonsearch>
             <Img src={Searchicons} alt="" />{" "}
@@ -149,18 +127,20 @@ const Provincias = () => {
             <tr>
               <th>Nº</th>
               <th>PROVINCIA</th>
-              <Th>ID-CIUDADES</Th>
+              <th>CIUDAD</th>
+              <Th>ACCIONES</Th>
             </tr>
           </Thead>
-          {/* {ciudades
+          {provincias
             .filter((v) =>
-              v.ciudad.toLowerCase().includes(filtro.toLowerCase())
-            ) */}
-            {/* .map((v, i) => (
+              v.provincia.toLowerCase().includes(filtro.toLowerCase())
+            )
+            .map((v, i) => (
               <Tbody key={i}>
                 <tr>
                   <Trdatos>{i + 1}</Trdatos>
-                  <Trdatos>{v.ciudad}</Trdatos>
+                  <Trdatos>{v.provincia}</Trdatos>
+                  <Trdatos>{v.id_ciudades}</Trdatos>
                   <Trdatos>
                     <Botonacciones>
                       <div>
@@ -168,22 +148,20 @@ const Provincias = () => {
                           <Iconsacciones
                             src={Editar}
                             alt=""
-                            onClick={() => {
-                              setCiudadactual(v);
-                            }}
+                            onClick={() => {setProviciaactual(v);}}
                           />
                         </Botonesacciones>
                       </div>
                       <div>
-                        <Botonesacciones onClick={() => eliminarciudades(v.id)}>
+                        <Botonesacciones onClick={() => EliminarProvincias(v.id)}>
                           <Iconsacciones1 src={Eliminar} alt="" />
                         </Botonesacciones>
                       </div>
                     </Botonacciones>
                   </Trdatos>
                 </tr>
-              </Tbody> */}
-            {/* ))} */}
+              </Tbody>
+            ))}
         </table>
       </Divtabla>
     </Container>

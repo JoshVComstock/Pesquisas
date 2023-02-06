@@ -144,7 +144,9 @@ const Ciudades = () => {
                           <Iconsacciones
                             src={Editar}
                             alt=""
-                            onClick={() => {
+                            onClick={(
+                              
+                            ) => {
                               setCiudadactual(v);
                             }}
                           />

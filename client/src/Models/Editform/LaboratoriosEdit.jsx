@@ -1,48 +1,41 @@
 import React from 'react'
+import styled from 'styled-components'
 import { useState, useEffect } from 'react';
-import styled from "styled-components";
 
-const LaboratoriosForm = ({MostrarLaboratorios}) => {
-  const [nombre, setNombre] = useState("");
-  const [direccion, SetDireccion] = useState("");
-  const [telefono, setTelefono] = useState("");
-  const [id_centros, setId_centros] = useState("");
+const LaboratoriosEdit = ({laboratorioactual,MostrarLaboratorios}) => {
+  const [nombre, setNombre] = useState(laboratorioactual.nombre);
+  const [direccion, setDireccion] = useState(laboratorioactual.direccion);
+  const [telefono, setTelefono] = useState(laboratorioactual.telefono);
+  const [id_centros, setId_Centros] = useState(laboratorioactual.id_centros);
+  const [id_ciudades, setId_Ciudades] = useState(laboratorioactual.id_ciudades);
+  const [id_redes, setId_redes] = useState(laboratorioactual.id_redes);
   const [centros, setCentros] = useState([]);
-  const [id_ciudades, setId_ciudades] = useState("");
   const [ciudades, setCiudades] = useState([]);
-  const [id_redes, setId_redes] = useState("");
   const [redes, setRedes] = useState([]);
-  const [loading, setLoading] = useState(false);
 
-  const enviar = async (e) => {
+  const Editar = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const response = await fetch("http://127.0.0.1:8000/api/laboratorios", {
-      method: "POST",
+    const response = await fetch("http://127.0.0.1:8000/api/laboratorios/"+laboratorioactual.id, {
+      method: "PUT",
       headers: {
         accept: "application/json",
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        nombre: nombre,
-        direccion: direccion,
-        telefono: telefono,
-        id_centros: id_centros,
-        id_ciudades: id_ciudades,
-        id_redes: id_redes,
+        ciudad:ciudad
       }),
+      
     });
 
-    const respuesta = await response?.json();
-    if ((respuesta.mensaje = "Creado satisfactoriamente")) {
-
+    if ((response.ok)) {
       setNombre("");
-      SetDireccion("");
+      setDireccion("");
       setTelefono("");
-      setId_centros("");
-      setId_ciudades("");
+      setId_Centros("");
+      setId_Ciudades("");
       setId_redes("");
       MostrarLaboratorios();
+      
     }
   };
 
@@ -96,25 +89,25 @@ const LaboratoriosForm = ({MostrarLaboratorios}) => {
             <Divinput>
               <Divinputlabel>
                 <label>Nombre</label>
-                <Input name="Nombre" type="text" required value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+                <Input type="text" placeholder='Ingrese Nombre' value={nombre} onChange={(e) => setNombre(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divinput>
               <Divinputlabel>
                 <label>Dirección</label>
-                <Input name="Direccion" type="text" required value={direccion} onChange={(e) => SetDireccion(e.target.value)}/>
+                <Input type="text" placeholder='Ingrese Dirección' value={direccion} onChange={(e) => setDireccion(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divinput>
               <Divinputlabel>
                 <label>Teléfono</label>
-                <Input name="Telefono" type="text" required value={telefono} onChange={(e) => setTelefono(e.target.value)}/>
+                <Input type="text" placeholder='Ingrese Teléfono' value={telefono} onChange={(e) => setTelefono(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divinput>
               <Divinputlabel>
                 <label>Centro de Salud</label>
-                <select value={id_centros} onChange={(e) => setId_centros(e.target.value)} >
+                <select value={id_centros} onChange={(e) => setId_Centros(e.target.value)} >
                   {centros.map((v, i) => (
                     <option key={i} value={v.id}  >
                       {v.nombre}
@@ -126,7 +119,7 @@ const LaboratoriosForm = ({MostrarLaboratorios}) => {
             <Divinput>
               <Divinputlabel>
                 <label>Ciudad</label>
-                <select value={id_ciudades} onChange={(e)=>setId_ciudades(e.target.value)} >
+                <select value={id_ciudades} onChange={(e)=>setId_Ciudades(e.target.value)} >
                   {ciudades.map((v, i) => (
                     <option key={i} value={v.id}  >
                       {v.ciudad}
@@ -148,7 +141,7 @@ const LaboratoriosForm = ({MostrarLaboratorios}) => {
               </Divinputlabel>
             </Divinput>
             <Divboton>
-              <Botonagregar type='submit' onClick={enviar} disabled={loading}>Agregar</Botonagregar>
+              <Botonagregar type='submit' onClick={Editar}>Editar</Botonagregar>
             </Divboton>
           </form>
         </div>
@@ -156,7 +149,7 @@ const LaboratoriosForm = ({MostrarLaboratorios}) => {
   )
 }
 
-export default LaboratoriosForm
+export default LaboratoriosEdit
 
 const Container=styled.div`
 `;

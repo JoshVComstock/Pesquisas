@@ -3,14 +3,15 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
 import Registro_provinciaForm from "../Models/Registro_provinciaForm";
+import RegistroProvinciasEdit from "../Models/Editform/RegistroProvinciasEdit";
 import New from "./../img/new.jpg"
 import Pdf from "./../img/pdf.jpg"
 import Excel from "./../img/doc.jpg"
 import Searchicons from "./../img/search.jpg"
 import Editar from "./../img/icons/Editar.jpg"
 import Eliminar from "./../img/icons/Delete.jpg"
-
-
+import { useuserContext } from "../context/userContext";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Titulo,
@@ -36,14 +37,24 @@ import {
   Trdatos,
 } from "../styles/crud";
 
-
-
 const Registro_provincia = () => {
+  const [registroprovinciaactual, setReProvinciaactual] = useState({});
+  const { user } = useuserContext();
+  const navegate = useNavigate();
+  const { openModal: editarOpen, closeModal: editarClose } = useModal(
+    "Editar Registro Provincias",
+    <RegistroProvinciasEdit
+      registroprovinciaactual={registroprovinciaactual}
+      mostrarRegistroPro={mostrarRegistroPro}
+    />
+  );
+
   const { openModal, closeModal } = useModal(
     "Registro de provincias",
     <Registro_provinciaForm mostrarRegistroPro={mostrarRegistroPro} />
   );
   const [registroprovincias, setRegistroprovincias] = useState([]);
+  const [filtro, setFiltro] = useState("");
 
   async function mostrarRegistroPro  () {
     const response = await fetch(
@@ -59,7 +70,7 @@ const Registro_provincia = () => {
     const respuesta = await response?.json();
     setRegistroprovincias(respuesta);
     closeModal();
-    
+    editarClose();
   }
 
   async function eliminarregistro(id) {
@@ -80,7 +91,12 @@ const Registro_provincia = () => {
   useEffect(() => {
     mostrarRegistroPro();
   }, []);
-  
+  useEffect(() => {
+    if (Object.keys(registroprovinciaactual).length != 0) {
+      editarOpen();
+    }
+  }, [registroprovinciaactual]);
+  useEffect(() => {}, []);
   return (
     <Container>
       <Titulo>Ciudades</Titulo>
@@ -102,7 +118,8 @@ const Registro_provincia = () => {
           <Search
             type="text"
             placeholder="Buscar"
-           
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)}
           />
           <Botonsearch>
             <Img src={Searchicons} alt="" />{" "}
@@ -114,17 +131,17 @@ const Registro_provincia = () => {
           <Thead>
             <tr>
               <th>Nº</th>
-              <th>Hora</th>
-              <th>Fecha</th>
-              <th>Provincias</th>
-              <th>Municipios</th>
-              <th>Centros</th>
-              <th>Cantidad Recibida</th>
-              <th>Cantidad Entregada</th>
-              <th>Codigo Tarjeta</th>
-              <th>Entregado Por</th>
-              <th>Telefono</th>
-              <th>Recibido Por</th>
+              <th>HORA</th>
+              <th>FECHA</th>
+              <th>PROVINCIA</th>
+              <th>MUNICIPIO</th>
+              <th>CENTRO SALUD</th>
+              <th>C. RECIBIDA</th>
+              <th>C. ENTREGADA</th>
+              <th>COD. TARJETA</th>
+              <th>ENTREADO Por</th>
+              <th>TELÉFONO</th>
+              <th>RECIBIDO Por</th>
               <Th>Acciones</Th>
             </tr>
           </Thead>
