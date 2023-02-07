@@ -89,13 +89,13 @@ const CentroForm = ({MostrarCentros}) => {
           <Divinput>
             <Divinputlabel>
               <label>Nombre:</label>
-              <Input  name="Nombre" type="text" required value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+              <Input  name="Nombre" placeholder="Ingrese un Nombre" type="text" required value={nombre} onChange={(e) => setNombre(e.target.value)}/>
             </Divinputlabel>
           </Divinput>
           <Divinput>
             <Divinputlabel>
               <label>Dirección:</label>
-              <Input  name="Direccion" type="text" required value={direccion} onChange={(e) => SetDireccion(e.target.value)}/>
+              <Input  name="Direccion" placeholder="Ingrese una Dirección" type="text" required value={direccion} onChange={(e) => SetDireccion(e.target.value)}/>
             </Divinputlabel>
           </Divinput>
           <Divinput>
@@ -113,7 +113,7 @@ const CentroForm = ({MostrarCentros}) => {
           <Divinput>
             <Divinputlabel>
               <label>Teléfono:</label>
-              <Input name="Telefono" type="number" value={telefono} required onChange={(e) => setTelefono(e.target.value)}/>
+              <Input name="Telefono" placeholder="Ingrese un Teléfono" type="number" value={telefono} required onChange={(e) => setTelefono(e.target.value)}/>
             </Divinputlabel>
           </Divinput>
           <Divinput>
@@ -131,19 +131,19 @@ const CentroForm = ({MostrarCentros}) => {
           <Divinput>
             <Divinputlabel>
               <label>Área:</label>
-              <Input name="Area" type="text" value={area} required onChange={(e) => setArea(e.target.value)}/>
+              <Input name="Area" placeholder="Ingrese una Área" type="text" value={area} required onChange={(e) => setArea(e.target.value)}/>
             </Divinputlabel>
           </Divinput>
           <Divinput>
             <Divinputlabel>
               <label>Seguimiento de Casos:</label>
-              <Input name="Telefono" type="text" value={seguimiento_casos} required onChange={(e) => setSeguimiento_casos(e.target.value)}/>
+              <Input name="Telefono" placeholder="Seguimiento de Casos" type="text" value={seguimiento_casos} required onChange={(e) => setSeguimiento_casos(e.target.value)}/>
             </Divinputlabel>
           </Divinput>
           <Divinput>
             <Divinputlabel>
               <label>Contacto:</label>
-              <Input name="Contacto" type="number" required value={contacto} onChange={(e) => setContacto(e.target.value)}/>
+              <Input name="Contacto" placeholder="Ingrese un Contacto" type="number" required value={contacto} onChange={(e) => setContacto(e.target.value)}/>
             </Divinputlabel>
           </Divinput>
 

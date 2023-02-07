@@ -1,28 +1,27 @@
-import React from "react";
+import React from 'react'
 import styled from "styled-components";
 import { useState, useEffect } from "react"
 
-const Registro_provinciaForm = ({ mostrarRegistroPro }) => {
+const Registro_hospitalesForm = ({ MostrarReHospitales }) => {
+  // defino variables
   const [hora, setHora] = useState([]);
   const [fecha, setFecha] = useState([]);
-  const [id_provincias, setId_provincias] = useState("");
-  const [provincias, setProvincias] = useState([]);
-  const [id_municipios, setId_municipios] = useState("");
-  const [municipios, setMunicipios] = useState([]);
+  const [id_redes, setId_redes] = useState("");
   const [id_centros, setId_centros] = useState("");
-  const [centros, setCentros] = useState([]);
   const [cantidad_recibida, setCantidad_recibida] = useState("");
   const [cantidad_entregada, setCantidad_entregada] = useState("");
   const [cod_tarjeta, setCod_tarjeta] = useState("");
   const [entregado_por, setEntregado_por] = useState("");
   const [telefono, setTelefono] = useState("");
   const [recibido_por, setRecibido_por] = useState("");
+  const [redes , setRedes] = useState([]);
+  const [centros, setCentros] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const enviar = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const response = await fetch("http://127.0.0.1:8000/api/registro_provincias", {
+    const response = await fetch("http://127.0.0.1:8000/api/registro_hospitales", {
       method: "POST",
       headers: {
         accept: "application/json",
@@ -31,8 +30,7 @@ const Registro_provinciaForm = ({ mostrarRegistroPro }) => {
       body: JSON.stringify({
         hora: hora,
         fecha: fecha,
-        id_provincias: id_provincias,
-        id_municipios: id_municipios,
+        id_redes: id_redes,
         id_centros: id_centros,
         cantidad_recibida: cantidad_recibida,
         cantidad_entregada: cantidad_entregada,
@@ -44,12 +42,10 @@ const Registro_provinciaForm = ({ mostrarRegistroPro }) => {
 
     });
     const respuesta = await response?.json();
-
     if ((respuesta.ok)) {
       setHora(" ");
       setFecha(" ");
-      setId_provincias(" ");
-      setId_municipios(" ");
+      setId_redes(" ");
       setId_centros(" ");
       setCantidad_recibida(" ");
       setCantidad_entregada(" ");
@@ -57,24 +53,12 @@ const Registro_provinciaForm = ({ mostrarRegistroPro }) => {
       setEntregado_por(" ");
       setTelefono(" ");
       setRecibido_por(" ");
-      mostrarRegistroPro();
+      MostrarReHospitales();
     }
   };
-  
-  async function MostrarProvincias() {
-    const response = await fetch("http://127.0.0.1:8000/api/provincias", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    const respuesta = await response?.json();
-    setProvincias(respuesta);
-  }
 
-  async function MostrarMunicipios() {
-    const response = await fetch("http://127.0.0.1:8000/api/municipios", {
+  async function MostrarRedes() {
+    const response = await fetch("http://127.0.0.1:8000/api/redes", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -82,7 +66,7 @@ const Registro_provinciaForm = ({ mostrarRegistroPro }) => {
       },
     });
     const respuesta = await response?.json();
-    setMunicipios(respuesta);
+    setRedes(respuesta);
   }
 
   async function MostrarCentros() {
@@ -99,10 +83,8 @@ const Registro_provinciaForm = ({ mostrarRegistroPro }) => {
 
   useEffect(() => {
     MostrarCentros();
-    MostrarMunicipios();
-    MostrarProvincias();
+    MostrarRedes();
   }, []);
-
   return (
     <Container>
         <div>
@@ -121,23 +103,11 @@ const Registro_provinciaForm = ({ mostrarRegistroPro }) => {
             </Divinput>
             <Divinput>
               <Divinputlabel>
-                <label>Provincia:</label>
-                <select value={id_provincias} onChange={(e) => setId_provincias(e.target.value)} >
-                  {provincias.map((v, i) => (
+                <label>Red de Salud:</label>
+                <select value={id_redes} onChange={(e) => setId_redes(e.target.value)} >
+                  {redes.map((v, i) => (
                     <option key={i} value={v.id}  >
-                      {v.provincia}
-                    </option>
-                  ))}
-                </select>
-              </Divinputlabel>
-            </Divinput>
-            <Divinput>
-              <Divinputlabel>
-                <label>Municipio:</label>
-                <select value={id_municipios} onChange={(e) => setId_municipios(e.target.value)} >
-                  {municipios.map((v, i) => (
-                    <option key={i} value={v.id}  >
-                      {v.municipio}
+                      {v.nombre}
                     </option>
                   ))}
                 </select>
@@ -197,13 +167,10 @@ const Registro_provinciaForm = ({ mostrarRegistroPro }) => {
           </form>
         </div>
     </Container>
-  );
+  )
+}
 
-};
-
-
-
-export default Registro_provinciaForm;
+export default Registro_hospitalesForm
 
 const Container=styled.div`
 `;

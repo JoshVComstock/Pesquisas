@@ -32,7 +32,7 @@ const RedesEdit = ({redactual,MostrarRedes}) => {
             <Divinput>
               <Divinputlabel>
                 <label>Nombre:</label>
-                <Input type="text" placeholder='Ingrese un Nombre' value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+                <Input type="text" placeholder='Ingrese Red de Salud' value={nombre} onChange={(e) => setNombre(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divboton>

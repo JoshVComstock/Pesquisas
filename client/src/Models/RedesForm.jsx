@@ -34,10 +34,9 @@ const RedesForm = ({MostrarRedes}) => {
           <form  >
             <Divinput>
               <Divinputlabel>
-              <label>Nombre:</label>
-                <Input type="text" placholder='Ingrese una Red de Salud' value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+                <label>Nombre:</label>
+                <Input type="text" placeholder='Ingrese Red de Salud' value={nombre} onChange={(e) => setNombre(e.target.value)}/>
               </Divinputlabel>
-              
             </Divinput>
             <Divboton>
               <Botonagregar type='submit' onClick={enviar} disabled={loading}>Agregar</Botonagregar>

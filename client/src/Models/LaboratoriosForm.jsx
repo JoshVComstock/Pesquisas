@@ -96,19 +96,19 @@ const LaboratoriosForm = ({MostrarLaboratorios}) => {
             <Divinput>
               <Divinputlabel>
                 <label>Nombre</label>
-                <Input name="Nombre" type="text" required value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+                <Input name="Nombre" placeholder='Ingrese un Nombre' type="text" required value={nombre} onChange={(e) => setNombre(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divinput>
               <Divinputlabel>
                 <label>Dirección</label>
-                <Input name="Direccion" type="text" required value={direccion} onChange={(e) => SetDireccion(e.target.value)}/>
+                <Input name="Direccion" placeholder='Ingrese una Dirección' type="text" required value={direccion} onChange={(e) => SetDireccion(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divinput>
               <Divinputlabel>
                 <label>Teléfono</label>
-                <Input name="Telefono" type="text" required value={telefono} onChange={(e) => setTelefono(e.target.value)}/>
+                <Input name="Telefono" placeholder='Ingrese un Teléfono' type="text" required value={telefono} onChange={(e) => setTelefono(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divinput>

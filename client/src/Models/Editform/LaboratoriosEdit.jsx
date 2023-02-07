@@ -89,19 +89,19 @@ const LaboratoriosEdit = ({laboratorioactual,MostrarLaboratorios}) => {
             <Divinput>
               <Divinputlabel>
                 <label>Nombre</label>
-                <Input type="text" placeholder='Ingrese Nombre' value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+                <Input type="text" placeholder='Ingrese un Nombre' value={nombre} onChange={(e) => setNombre(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divinput>
               <Divinputlabel>
                 <label>Dirección</label>
-                <Input type="text" placeholder='Ingrese Dirección' value={direccion} onChange={(e) => setDireccion(e.target.value)}/>
+                <Input type="text" placeholder='Ingrese una Dirección' value={direccion} onChange={(e) => setDireccion(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divinput>
               <Divinputlabel>
                 <label>Teléfono</label>
-                <Input type="text" placeholder='Ingrese Teléfono' value={telefono} onChange={(e) => setTelefono(e.target.value)}/>
+                <Input type="text" placeholder='Ingrese un Teléfono' value={telefono} onChange={(e) => setTelefono(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divinput>

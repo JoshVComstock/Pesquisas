@@ -53,7 +53,7 @@ const ProvinciasForm = ({MostrarProvincias}) => {
             <Divinput>
               <Divinputlabel>
                 <label>Nombre</label>
-                <Input type="text" placholder='Ingrese Ciudad' value={provincia} onChange={(e) => setProvincia(e.target.value)}/>
+                <Input type="text" placeholder='Ingrese una Provincia' value={provincia} onChange={(e) => setProvincia(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divinput>

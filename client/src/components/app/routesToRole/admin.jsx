@@ -50,7 +50,7 @@ const AdminComponent = () => {
   <Linkes to="/registro_usuario">
     <Img src={Usericons} alt="" /> Registrar Usuario
   </Linkes>
-  <Linkes to="/Municipios">
+  <Linkes to="/municipios">
     <Img src={Municiosicons} alt="" /> Municipios
   </Linkes>
   <Linkes to="/pacientes">
@@ -59,14 +59,14 @@ const AdminComponent = () => {
   <Linkes to="/primera_muestra">
     <Img src={Primeramuestraicons} alt="" /> Primera Muestra
   </Linkes>
-  <Linkes to="/Registro_hospitales">
+  <Linkes to="/registro_hospitales">
     <Img src={Registrohospitalesicons} alt="" /> Registro Hospitales
   </Linkes>
-  <Linkes to="/Rellamados">
-    <Img src={Rellamadosicons} alt="" /> Rellamados
+  <Linkes to="/control_filtros">
+    <Img src={Municiosicons} alt="" /> Control de Filtros
   </Linkes>
-  <Linkes to="/redsalud">
-    <Img src="" alt="" /> Red Salud
+  <Linkes to="/rellamados">
+    <Img src={Rellamadosicons} alt="" /> Rellamados
   </Linkes>
   <Linkes to="/resultados">
     <img src="" alt="" /> Resultados

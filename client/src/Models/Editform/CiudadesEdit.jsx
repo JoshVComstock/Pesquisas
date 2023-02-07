@@ -14,15 +14,13 @@ const CiudadesEdit = ({ciudadactual,mostrarciudades}) => {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        ciudad:ciudad
+        ciudad: ciudad,
       }),
-      
     });
 
     if ((response.ok)) {
       setCiudad(" ");
       mostrarciudades();
-      
     }
   };
   return (
@@ -32,7 +30,7 @@ const CiudadesEdit = ({ciudadactual,mostrarciudades}) => {
             <Divinput>
               <Divinputlabel>
               <label>Nombre</label>
-                <Input type="text" placeholder='Ingrese Ciudad' value={ciudad} onChange={(e) => setCiudad(e.target.value)}/>
+                <Input type="text" placeholder='Ingrese una Ciudad' value={ciudad} onChange={(e) => setCiudad(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divboton>

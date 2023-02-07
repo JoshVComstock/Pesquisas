@@ -2,8 +2,8 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
-import Registro_provinciaForm from "../Models/Registro_provinciaForm";
-import RegistroProvinciasEdit from "../Models/Editform/RegistroProvinciasEdit";
+import Registro_hospitalesForm from "../Models/Registro_hospitalesForm";
+import RegistroHospitalesEdit from "../Models/Editform/RegistroHospitalesEdit";
 import New from "./../img/new.jpg"
 import Pdf from "./../img/pdf.jpg"
 import Excel from "./../img/doc.jpg"
@@ -37,28 +37,28 @@ import {
   Trdatos,
 } from "../styles/crud";
 
-const Registro_provincia = () => {
-  const [registroprovinciaactual, setReProvinciaactual] = useState({});
+const Registro_hospitales = () => {
+  const [registrohospitalactual, setReHospitalactual] = useState({});
   const { user } = useuserContext();
   const navegate = useNavigate();
   const { openModal: editarOpen, closeModal: editarClose } = useModal(
-    "Editar Registro Provincias",
-    <RegistroProvinciasEdit
-      registroprovinciaactual={registroprovinciaactual}
-      mostrarRegistroPro={mostrarRegistroPro}
+    "Editar Registro Hospitales",
+    <RegistroHospitalesEdit
+      registrohospitalactual={registrohospitalactual}
+      MostrarReHospitales={MostrarReHospitales}
     />
   );
 
   const { openModal, closeModal } = useModal(
-    "Registro de provincias",
-    <Registro_provinciaForm mostrarRegistroPro={mostrarRegistroPro} />
+    "Registro de Hospitales",
+    <Registro_hospitalesForm MostrarReHospitales={MostrarReHospitales} />
   );
-  const [registroprovincias, setRegistroprovincias] = useState([]);
+  const [registrohospitales, setRegistrohospitales] = useState([]);
   const [filtro, setFiltro] = useState("");
 
-  async function mostrarRegistroPro  () {
+  async function MostrarReHospitales() {
     const response = await fetch(
-      "http://127.0.0.1:8000/api/registro_provincias",
+      "http://127.0.0.1:8000/api/registro_hospitales",
       {
         method: "GET",
       headers: {
@@ -68,14 +68,14 @@ const Registro_provincia = () => {
       }
     );
     const respuesta = await response?.json();
-    setRegistroprovincias(respuesta);
+    setRegistrohospitales(respuesta);
     closeModal();
     editarClose();
   }
 
-  async function eliminarregistro(id) {
+  async function EliminarReHospitales(id) {
     const response = await fetch(
-      "http://127.0.0.1:8000/api/registro_provincias/" + id,
+      "http://127.0.0.1:8000/api/registro_hospitales/" + id,
       {
         method: "DELETE",
       headers: {
@@ -85,21 +85,21 @@ const Registro_provincia = () => {
       }
     );
     if (response.ok) {
-      mostrarRegistroPro();
+        MostrarReHospitales();
     }
   }
   useEffect(() => {
-    mostrarRegistroPro();
+    MostrarReHospitales();
   }, []);
   useEffect(() => {
-    if (Object.keys(registroprovinciaactual).length != 0) {
+    if (Object.keys(registrohospitalactual).length != 0) {
       editarOpen();
     }
-  }, [registroprovinciaactual]);
+  }, [registrohospitalactual]);
   useEffect(() => {}, []);
   return (
     <Container>
-      <Titulo>Registro de Provincias</Titulo>
+      <Titulo>Registro de Hospitales</Titulo>
       <Divbotones>
         <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo
@@ -133,8 +133,7 @@ const Registro_provincia = () => {
               <th>Nº</th>
               <th>HORA</th>
               <th>FECHA</th>
-              <th>PROVINCIA</th>
-              <th>MUNICIPIO</th>
+              <th>RED SALUD</th>
               <th>CENTRO SALUD</th>
               <th>C. RECIBIDA</th>
               <th>C. ENTREGADA</th>
@@ -146,14 +145,13 @@ const Registro_provincia = () => {
             </tr>
           </Thead>
           {
-              registroprovincias.map((v, i) => (
+              registrohospitales.map((v, i) => (
                 <tbody key={i} >
                   <tr>
                     <th>{v.id}</th>
                     <th>{v.hora}</th>
                     <th>{v.fecha}</th>
-                    <th>{v.id_provincias}</th>
-                    <th>{v.id_municipios}</th>
+                    <th>{v.id_redes}</th>
                     <th>{v.id_centros}</th>
                     <th>{v.cantidad_recibida}</th>
                     <th>{v.cantidad_entregada}</th>
@@ -164,10 +162,10 @@ const Registro_provincia = () => {
                     <th>
                       <Botonacciones >
                         <div>
-                          <Botonesacciones><Iconsacciones src={Editar} alt="" onClick={() => {setReProvinciaactual(v);}}/></Botonesacciones>
+                          <Botonesacciones><Iconsacciones src={Editar} alt="" onClick={() => {setReHospitalactual(v);}}/></Botonesacciones>
                         </div>
                         <div>
-                          <Botonesacciones onClick={()=>eliminarregistro(v.id)}> <Iconsacciones1 src={Eliminar} alt="" /></Botonesacciones>
+                          <Botonesacciones onClick={()=>EliminarReHospitales(v.id)}> <Iconsacciones1 src={Eliminar} alt="" /></Botonesacciones>
                         </div>
                       </Botonacciones>
                     </th>
@@ -181,5 +179,4 @@ const Registro_provincia = () => {
   )
 }
 
-export default Registro_provincia;
-
+export default Registro_hospitales

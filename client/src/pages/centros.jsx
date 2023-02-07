@@ -94,7 +94,7 @@ const Centros = () => {
 
   return (
     <Container>
-      <Titulo>Centros</Titulo>
+      <Titulo>Centros de Salud</Titulo>
       <Divbotones>
         <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo

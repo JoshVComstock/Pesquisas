@@ -2,29 +2,29 @@ import React from 'react'
 import styled from 'styled-components'
 import { useState, useEffect } from 'react';
 
-const ProviciasEdit = ({provinciaactual,MostrarProvincias}) => {
-  const [provincia, setProvincia] = useState(provinciaactual.provincia);
-  const [id_ciudad, setId_Ciudad] = useState(provinciaactual.id_ciudades);
+const MunicipiosEdit = ({municipioactual,MostrarMunicipios}) => {
+  const [municipio, setMunicipio] = useState(municipioactual.municipio);
+  const [id_ciudades, setId_Ciudades] = useState(municipioactual.id_ciudades);
   const [ciudades, setCiudades] = useState([]);
   
   const Editar = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/api/provincias/"+provinciaactual.id, {
+    const response = await fetch("http://127.0.0.1:8000/api/municipios/"+municipioactual.id, {
       method: "PUT",
       headers: {
         accept: "application/json",
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        provincia: provincia,
-        id_ciudad: id_ciudad
+        municipio: municipio,
+        id_ciudades: id_ciudades
       }),
     });
 
     if ((response.ok)) {
-      setProvincia("");
-      setId_Ciudad("");
-      MostrarProvincias();
+      setMunicipio("");
+      setId_Ciudades("");
+      MostrarMunicipios();
     }
   };
 
@@ -42,7 +42,6 @@ const ProviciasEdit = ({provinciaactual,MostrarProvincias}) => {
   useEffect(() => {
     MostrarCiudades();
   }, []);
-
   return (
     <Container>
         <div>
@@ -50,13 +49,13 @@ const ProviciasEdit = ({provinciaactual,MostrarProvincias}) => {
             <Divinput>
               <Divinputlabel>
                 <label>Nombre:</label>
-                <Input type="text" placeholder='Ingrese una Provincia' value={provincia} onChange={(e) => setProvincia(e.target.value)}/>
+                <Input type="text" placeholder='Ingrese un Municipio' value={municipio} onChange={(e) => setMunicipio(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divinput>
               <Divinputlabel>
                 <label>Ciudad:</label>
-                <select value={id_ciudad} onChange={(e)=>setId_Ciudad(e.target.value)} >
+                <select value={id_ciudades} onChange={(e)=>setId_Ciudades(e.target.value)} >
                   {ciudades.map((v, i) => (
                     <option key={i} value={v.id}  >
                       {v.ciudad}
@@ -74,7 +73,7 @@ const ProviciasEdit = ({provinciaactual,MostrarProvincias}) => {
   )
 }
 
-export default ProviciasEdit
+export default MunicipiosEdit
 
 const Container=styled.div`
 `;

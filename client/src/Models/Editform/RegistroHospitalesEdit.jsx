@@ -2,25 +2,23 @@ import React from 'react'
 import styled from 'styled-components'
 import { useState, useEffect } from 'react';
 
-const RegistroProvinciasEdit = ({ registroprovinciaactual, mostrarRegistroPro }) => {
-    const [hora, setHora] = useState(registroprovinciaactual.hora);
-    const [fecha, setFecha] = useState(registroprovinciaactual.fecha);
-    const [id_provincias, setId_Provincias] = useState(registroprovinciaactual.id_provincias);
-    const [id_municipios, setId_Municipios] = useState(registroprovinciaactual.id_municipios);
-    const [id_centros, setId_Centros] = useState(registroprovinciaactual.id_centros);
-    const [cantidad_recibida, setCantRecibida] = useState(registroprovinciaactual.cantidad_recibida);
-    const [cantidad_entregada, setCantEntregada] = useState(registroprovinciaactual.cantidad_entregada);
-    const [cod_tarjeta, setCodTarjeta] = useState(registroprovinciaactual.cod_tarjeta);
-    const [entregado_por, setEntregado] = useState(registroprovinciaactual.entregado_por);
-    const [telefono, setTelefono] = useState(registroprovinciaactual.telefono);
-    const [recibido_por, setRecibido] = useState(registroprovinciaactual.recibido_por);
-    const [provincias, setProvincias] = useState([]);
-    const [municipios, setMunicipios] = useState([]);
+const RegistroHospitalesEdit = ({ registrohospitalactual, MostrarReHospitales }) => {
+    const [hora, setHora] = useState(registrohospitalactual.hora);
+    const [fecha, setFecha] = useState(registrohospitalactual.fecha);
+    const [id_redes, setId_Redes] = useState(registrohospitalactual.id_redes);
+    const [id_centros, setId_Centros] = useState(registrohospitalactual.id_centros);
+    const [cantidad_recibida, setCantRecibida] = useState(registrohospitalactual.cantidad_recibida);
+    const [cantidad_entregada, setCantEntregada] = useState(registrohospitalactual.cantidad_entregada);
+    const [cod_tarjeta, setCodTarjeta] = useState(registrohospitalactual.cod_tarjeta);
+    const [entregado_por, setEntregado] = useState(registrohospitalactual.entregado_por);
+    const [telefono, setTelefono] = useState(registrohospitalactual.telefono);
+    const [recibido_por, setRecibido] = useState(registrohospitalactual.recibido_por);
+    const [redes, setRedes] = useState([]);
     const [centros, setCentros] = useState([]);
 
     const Editar = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://127.0.0.1:8000/api/registro_provincias/" + registroporvinciaactual.id, {
+        const response = await fetch("http://127.0.0.1:8000/api/registro_hospitales/" + registrohospitalactual.id, {
             method: "PUT",
             headers: {
                 accept: "application/json",
@@ -29,8 +27,7 @@ const RegistroProvinciasEdit = ({ registroprovinciaactual, mostrarRegistroPro })
             body: JSON.stringify({
                 hora: hora,
                 fecha: fecha,
-                id_provincias: id_provincias,
-                id_municipios: id_municipios,
+                id_redes: id_redes,
                 id_centros: id_centros,
                 cantidad_recibida: cantidad_recibida,
                 cantidad_entregada: cantidad_entregada,
@@ -45,8 +42,7 @@ const RegistroProvinciasEdit = ({ registroprovinciaactual, mostrarRegistroPro })
         if ((response.ok)) {
             setHora("");
             setFecha("");
-            setId_Provincias("");
-            setId_Municipios("");
+            setId_Redes("");
             setId_Centros("");
             setCantRecibida("");
             setCantEntregada("");
@@ -54,12 +50,11 @@ const RegistroProvinciasEdit = ({ registroprovinciaactual, mostrarRegistroPro })
             setEntregado("");
             setTelefono();
             setRecibido("");
-            mostrarRegistroPro();
+            MostrarReHospitales();
         }
     };
-
-    async function MostrarProvincias() {
-        const response = await fetch("http://127.0.0.1:8000/api/provincias", {
+    async function MostrarRedes() {
+        const response = await fetch("http://127.0.0.1:8000/api/redes", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -67,20 +62,8 @@ const RegistroProvinciasEdit = ({ registroprovinciaactual, mostrarRegistroPro })
             },
         });
         const respuesta = await response?.json();
-        setProvincias(respuesta);
+        setRedes(respuesta);
 
-    }
-
-    async function MostrarMunicipios() {
-        const response = await fetch("http://127.0.0.1:8000/api/municipios", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                accept: "application/json",
-            },
-        });
-        const respuesta = await response?.json();
-        setMunicipios(respuesta);
     }
     async function MostrarCentros() {
         const response = await fetch("http://127.0.0.1:8000/api/centros", {
@@ -95,12 +78,11 @@ const RegistroProvinciasEdit = ({ registroprovinciaactual, mostrarRegistroPro })
     }
 
     useEffect(() => {
-        MostrarMunicipios();
-        MostrarProvincias();
+        MostrarRedes();
         MostrarCentros();
     }, []);
-    return (
-        <Container>
+  return (
+    <Container>
         <div>
           <form  >
             <Divinput>
@@ -117,23 +99,11 @@ const RegistroProvinciasEdit = ({ registroprovinciaactual, mostrarRegistroPro })
             </Divinput>
             <Divinput>
               <Divinputlabel>
-                <label>Provincia:</label>
-                <select value={id_provincias} onChange={(e) => setId_Provincias(e.target.value)} >
-                  {provincias.map((v, i) => (
+                <label>Red de Salud:</label>
+                <select value={id_redes} onChange={(e) => setId_Redes(e.target.value)} >
+                  {redes.map((v, i) => (
                     <option key={i} value={v.id}  >
-                      {v.provincia}
-                    </option>
-                  ))}
-                </select>
-              </Divinputlabel>
-            </Divinput>
-            <Divinput>
-              <Divinputlabel>
-                <label>Municipio:</label>
-                <select value={id_municipios} onChange={(e) => setId_Municipios(e.target.value)} >
-                  {municipios.map((v, i) => (
-                    <option key={i} value={v.id}  >
-                      {v.municipio}
+                      {v.nombre}
                     </option>
                   ))}
                 </select>
@@ -151,6 +121,9 @@ const RegistroProvinciasEdit = ({ registroprovinciaactual, mostrarRegistroPro })
                 </select>
               </Divinputlabel>
             </Divinput>
+            <Divboton>
+              <Botonagregar type='submit' onClick={Editar}>Editar</Botonagregar>
+            </Divboton>
             <Divinput>
               <Divinputlabel>
                 <label>Cantidad Recibida:</label>
@@ -178,7 +151,7 @@ const RegistroProvinciasEdit = ({ registroprovinciaactual, mostrarRegistroPro })
             <Divinput>
               <Divinputlabel>
                 <label>Teléfono:</label>
-                <Input type="number" placeholder='Ingrese un Teléfono' value={telefono} onChange={(e) => setTelefono(e.target.value)}/>
+                <Input type="number" placeholder='Teléfono' value={telefono} onChange={(e) => setTelefono(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divinput>
@@ -193,10 +166,10 @@ const RegistroProvinciasEdit = ({ registroprovinciaactual, mostrarRegistroPro })
           </form>
         </div>
     </Container>
-    )
+  )
 }
 
-export default RegistroProvinciasEdit
+export default RegistroHospitalesEdit
 
 const Container = styled.div`
 `;

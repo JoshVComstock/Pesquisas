@@ -34,10 +34,9 @@ const CiudadesForm = ({mostrarciudades}) => {
           <form  >
             <Divinput>
               <Divinputlabel>
-              <label>Nombre</label>
-                <Input type="text" placholder='Ingrese Ciudad' value={ciudad} onChange={(e) => setCiudad(e.target.value)}/>
+                <label>Nombre</label>
+                <Input name="Nombre" type="text" placeholder="Ingrese una Ciudad" value={ciudad} onChange={(e) => setCiudad(e.target.value)}/>
               </Divinputlabel>
-              
             </Divinput>
             <Divboton>
               <Botonagregar type='submit' onClick={enviar} disabled={loading}>Agregar</Botonagregar>
@@ -72,7 +71,6 @@ const Input=styled.input`
   &:focus{
     border: 1.5px solid #034078;
   }
-
 `;
 const Divboton=styled.div`
   display: flex;
