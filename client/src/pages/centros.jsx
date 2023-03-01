@@ -3,6 +3,11 @@ import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
+import Editar from "./../img/icons/Editar.jpg";
+import Eliminar from "./../img/icons/Delete.jpg";
+import CentrosEdit from "../Models/Editform/CiudadesEdit";
+import { useuserContext } from "../context/userContext";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Titulo,
@@ -40,7 +45,7 @@ const Centros = () => {
   const [fecha, setFecha] = useState(Actualdate);
   return (
     <Container>
-      <Titulo>Centros</Titulo>
+      <Titulo>Centros de Salud</Titulo>
       <Divbotones>
         <Botonespdf2>
           <Img src={New} alt="" /> Nuevo
@@ -87,6 +92,7 @@ const Centros = () => {
             <tr>
               <th>Nº</th>
               <th>NOMBRE</th>
+              <th>DIRECCIÓN</th>
               <th>RED</th>
               <th>TELEFONO</th>
               <th>CIUDAD</th>

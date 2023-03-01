@@ -1,31 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 
-const RedesForm = ({MostrarRedes}) => {
-  // declaramos una variable
-  const [nombre, setNombre] = useState("");
-  const [loading, setLoading] = useState(false);
+const CiudadesEdit = ({ciudadactual,mostrarciudades}) => {
+  const [ciudad, setCiudad] = useState(ciudadactual.ciudad);
   
-  const enviar = async (e) => {
+  const Editar = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const response = await fetch("http://127.0.0.1:8000/api/redes", {
-      method: "POST",
+    const response = await fetch("http://127.0.0.1:8000/api/ciudades/"+ciudadactual.id, {
+      method: "PUT",
       headers: {
         accept: "application/json",
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        nombre: nombre
+        ciudad: ciudad,
       }),
-      
     });
 
-    const respuesta = await response?.json();
-    if ((respuesta.mensaje = "Creado satisfactoriamente")) {
-      setNombre(" ");
-      MostrarRedes();
+    if ((response.ok)) {
+      setCiudad(" ");
+      mostrarciudades();
     }
   };
   return (
@@ -34,12 +29,12 @@ const RedesForm = ({MostrarRedes}) => {
           <form  >
             <Divinput>
               <Divinputlabel>
-                <label>Nombre:</label>
-                <Input type="text" placeholder='Ingrese Red de Salud' value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+              <label>Nombre</label>
+                <Input type="text" placeholder='Ingrese una Ciudad' value={ciudad} onChange={(e) => setCiudad(e.target.value)}/>
               </Divinputlabel>
             </Divinput>
             <Divboton>
-              <Botonagregar type='submit' onClick={enviar} disabled={loading}>Agregar</Botonagregar>
+              <Botonagregar type='submit' onClick={Editar}>Editar</Botonagregar>
             </Divboton>
           </form>
         </div>
@@ -47,7 +42,7 @@ const RedesForm = ({MostrarRedes}) => {
   )
 }
 
-export default RedesForm
+export default CiudadesEdit
 
 const Container=styled.div`
 `;

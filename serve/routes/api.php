@@ -13,6 +13,8 @@ use App\Http\Controllers\MunicipiosController;
 use App\Http\Controllers\ProvinciasController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Registro_provinciasController;
+use App\Http\Controllers\Registro_hospitalesController;
+use App\Http\Controllers\Control_filtrosController;
 use GuzzleHttp\Middleware;
 
 /*
@@ -75,4 +77,12 @@ Route::delete('/provincias/{id}', [ProvinciasController::class, 'destroy']);
 Route::get('/registro_provincias', [Registro_provinciasController::class, 'index']);
 Route::post('/registro_provincias', [Registro_provinciasController::class, 'store']);
 Route::delete('/registro_provincias/{id}', [Registro_provinciasController::class, 'destroy']);
+
+Route::get('/registro_hospitales', [Registro_hospitalesController::class, 'index']);
+Route::post('/registro_hospitales', [Registro_hospitalesController::class, 'store']);
+Route::delete('/registro_hospitales/{id}', [Registro_hospitalesController::class, 'destroy']);
+
+Route::get('/control_filtros', [Control_filtrosController::class, 'index']);
+Route::post('/control_filtros', [Control_filtrosController::class, 'store']);
+Route::delete('/control_filtros/{id}', [Control_filtrosController::class, 'destroy']);
 

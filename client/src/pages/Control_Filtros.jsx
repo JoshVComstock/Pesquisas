@@ -2,8 +2,8 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
-import Registro_provinciaForm from "../Models/Registro_provinciaForm";
-import RegistroProvinciasEdit from "../Models/Editform/RegistroProvinciasEdit";
+import ControlFiltrosForm from "../Models/ControlFiltrosForm";
+import ControlFiltrosEdit from "../Models/Editform/ControlFiltrosEdit";
 import New from "./../img/new.jpg"
 import Pdf from "./../img/pdf.jpg"
 import Excel from "./../img/doc.jpg"
@@ -37,28 +37,28 @@ import {
   Trdatos,
 } from "../styles/crud";
 
-const Registro_provincia = () => {
-  const [registroprovinciaactual, setReProvinciaactual] = useState({});
+const Control_Filtros = () => {
+  const [controlfiltroactual, setControlfiltroactual] = useState({});
   const { user } = useuserContext();
   const navegate = useNavigate();
   const { openModal: editarOpen, closeModal: editarClose } = useModal(
-    "Editar Registro Provincias",
-    <RegistroProvinciasEdit
-      registroprovinciaactual={registroprovinciaactual}
-      mostrarRegistroPro={mostrarRegistroPro}
+    "Editar Control de Filtros",
+    <ControlFiltrosEdit
+      controlfiltroactual={controlfiltroactual}
+      MostrarControlFiltros={MostrarControlFiltros}
     />
   );
 
   const { openModal, closeModal } = useModal(
-    "Registro de provincias",
-    <Registro_provinciaForm mostrarRegistroPro={mostrarRegistroPro} />
+    "Registro de Control de Filtros",
+    <ControlFiltrosForm MostrarControlFiltros={MostrarControlFiltros} />
   );
-  const [registroprovincias, setRegistroprovincias] = useState([]);
+  const [controlfiltros, setControlfiltros] = useState([]);
   const [filtro, setFiltro] = useState("");
 
-  async function mostrarRegistroPro  () {
+  async function MostrarControlFiltros() {
     const response = await fetch(
-      "http://127.0.0.1:8000/api/registro_provincias",
+      "http://127.0.0.1:8000/api/control_filtros",
       {
         method: "GET",
       headers: {
@@ -68,14 +68,14 @@ const Registro_provincia = () => {
       }
     );
     const respuesta = await response?.json();
-    setRegistroprovincias(respuesta);
+    setControlfiltros(respuesta);
     closeModal();
     editarClose();
   }
 
-  async function eliminarregistro(id) {
+  async function EliminarConFiltros(id) {
     const response = await fetch(
-      "http://127.0.0.1:8000/api/registro_provincias/" + id,
+      "http://127.0.0.1:8000/api/control_filtros/" + id,
       {
         method: "DELETE",
       headers: {
@@ -85,21 +85,21 @@ const Registro_provincia = () => {
       }
     );
     if (response.ok) {
-      mostrarRegistroPro();
+        MostrarControlFiltros();
     }
   }
   useEffect(() => {
-    mostrarRegistroPro();
+    MostrarControlFiltros();
   }, []);
   useEffect(() => {
-    if (Object.keys(registroprovinciaactual).length != 0) {
+    if (Object.keys(controlfiltroactual).length != 0) {
       editarOpen();
     }
-  }, [registroprovinciaactual]);
+  }, [controlfiltroactual]);
   useEffect(() => {}, []);
   return (
     <Container>
-      <Titulo>Registro de Provincias</Titulo>
+      <Titulo>Control de Filtros</Titulo>
       <Divbotones>
         <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo
@@ -131,43 +131,37 @@ const Registro_provincia = () => {
           <Thead>
             <tr>
               <th>Nº</th>
-              <th>HORA</th>
               <th>FECHA</th>
-              <th>PROVINCIA</th>
-              <th>MUNICIPIO</th>
-              <th>CENTRO SALUD</th>
-              <th>C. RECIBIDA</th>
-              <th>C. ENTREGADA</th>
-              <th>COD. TARJETA</th>
+              <th>N. CORRELATIVO</th>
+              <th>COD. INICIAL</th>
+              <th>COD. FINAL</th>
+              <th>CANTIDAD</th>
+              <th>CENTRO</th>
               <th>ENTREADO Por</th>
-              <th>TELÉFONO</th>
               <th>RECIBIDO Por</th>
               <Th>Acciones</Th>
             </tr>
           </Thead>
           {
-              registroprovincias.map((v, i) => (
+              controlfiltros.map((v, i) => (
                 <tbody key={i} >
                   <tr>
                     <th>{v.id}</th>
-                    <th>{v.hora}</th>
                     <th>{v.fecha}</th>
-                    <th>{v.id_provincias}</th>
-                    <th>{v.id_municipios}</th>
+                    <th>{v.numero_correlativo}</th>
+                    <th>{v.cod_tarjeta_inicial}</th>
+                    <th>{v.cod_tarjeta_final}</th>
+                    <th>{v.cantidad}</th>
                     <th>{v.id_centros}</th>
-                    <th>{v.cantidad_recibida}</th>
-                    <th>{v.cantidad_entregada}</th>
-                    <th>{v.cod_tarjeta}</th>
-                    <th>{v.	entregado_por}</th>
-                    <th>{v.	telefono}</th>
+                    <th>{v.entregado_por}</th>
                     <th>{v.recibido_por}</th>
                     <th>
                       <Botonacciones >
                         <div>
-                          <Botonesacciones><Iconsacciones src={Editar} alt="" onClick={() => {setReProvinciaactual(v);}}/></Botonesacciones>
+                          <Botonesacciones><Iconsacciones src={Editar} alt="" onClick={() => {setControlfiltroactual(v);}}/></Botonesacciones>
                         </div>
                         <div>
-                          <Botonesacciones onClick={()=>eliminarregistro(v.id)}> <Iconsacciones1 src={Eliminar} alt="" /></Botonesacciones>
+                          <Botonesacciones onClick={()=>EliminarConFiltros(v.id)}> <Iconsacciones1 src={Eliminar} alt="" /></Botonesacciones>
                         </div>
                       </Botonacciones>
                     </th>
@@ -181,5 +175,4 @@ const Registro_provincia = () => {
   )
 }
 
-export default Registro_provincia;
-
+export default Control_Filtros

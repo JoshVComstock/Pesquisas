@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useModal } from "../hooks/useModal";
 import MunicipiosForm from "../models/MunicipiosForm";
-
-// clip
+import MunicipiosEdit from "../models/Editform/MunicipiosEdit";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
@@ -39,9 +38,23 @@ import {
 } from "../styles/crud";
 
 const Municipios = () => {
-  const { openModal, closeModal } = useModal("Municipios", <MunicipiosForm />);
+  const [municipioactual, setMunicipioactual] = useState({});
+  const { user } = useuserContext();
+  const navegate = useNavigate();
+  const { openModal: editarOpen, closeModal: editarClose } = useModal(
+    "Editar Municipio",
+    <MunicipiosEdit
+      municipioactual={municipioactual}
+      MostrarMunicipios={MostrarMunicipios}
+    />
+  );
+  const { openModal, closeModal } = useModal(
+    "Agregar Municipio",
+    <MunicipiosForm MostrarMunicipios={MostrarMunicipios} />
+  );
 
   const [municipios, setMunicipios] = useState([]);
+  const [filtro, setFiltro] = useState("");
 
   async function MostrarMunicipios() {
     const response = await fetch("http://127.0.0.1:8000/api/municipios", {
@@ -53,6 +66,8 @@ const Municipios = () => {
     });
     const respuesta = await response?.json();
     setMunicipios(respuesta);
+    closeModal();
+    editarClose();
   }
   async function EliminarMunicipios(id) {
     const response = await fetch("http://127.0.0.1:8000/api/municipios/" + id, {
@@ -69,55 +84,14 @@ const Municipios = () => {
   useEffect(() => {
     MostrarMunicipios();
   }, []);
+  useEffect(() => {
+    if (Object.keys(municipioactual).length != 0) {
+      editarOpen();
+    }
+  }, [municipioactual]);
+  useEffect(() => {}, []);
   return (
-  //   <div>
-  //     <div className="Titulo">
-  //       <div>Listado de Municipios</div>
-  //     </div>
-  //     <br />
-  //     <div>
-  //       <button type="submit" onClick={openModal}>
-  //         Agregar Nuevo Municipio
-  //       </button>
-  //     </div>
-  //     <table>
-  //       <thead>
-  //         <tr>
-  //           <th>ID</th>
-  //           <th>Nombre</th>
-  //           <th>Ciudad</th>
-
-  //           <th>Acciones</th>
-  //         </tr>
-  //       </thead>
-  //       {municipios.map((v, i) => (
-  //         <tbody key={i}>
-  //           <tr>
-  //             <th>{v.id}</th>
-  //             <th>{v.municipio}</th>
-  //             <th>{v.id_ciudades}</th>
-  //             <th>
-  //               <div className="Acciones">
-  //                 <div className="Editar">
-  //                   <button className="BotonEditar">Editar</button>
-  //                 </div>
-  //                 <div className="Eliminar">
-  //                   <button
-  //                     className="BotonEliminar"
-  //                     onClick={() => EliminarMunicipios(v.id)}
-  //                   >
-  //                     Eliminar
-  //                   </button>
-  //                 </div>
-  //               </div>
-  //             </th>
-  //           </tr>
-  //         </tbody>
-  //       ))}
-  //     </table>
-  //   </div>
-  // );
-  <Container>
+<Container>
       <Titulo>Municipios</Titulo>
       <Divbotones>
         <Botonespdf2 onClick={openModal}>
@@ -135,10 +109,10 @@ const Municipios = () => {
       <Divsearchpadre>
         <Divsearch>
           <Search
-            // type="text"
-            // placeholder="Buscar"
-            // value={filtro}
-            // onChange={''}
+            type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)}
           />
           <Botonsearch>
             <Img src={Searchicons} alt="" />{" "}
@@ -151,18 +125,20 @@ const Municipios = () => {
             <tr>
               <th>Nº</th>
               <th>MUNICIPIO</th>
-              <Th>ID-CIUDADES</Th>
+              <th>CIUDAD</th>
+              <Th>ACCIONES</Th>
             </tr>
           </Thead>
-          {/* {ciudades
+          {municipios
             .filter((v) =>
-              v.ciudad.toLowerCase().includes(filtro.toLowerCase())
-            ) */}
-            {/* .map((v, i) => (
+              v.municipio.toLowerCase().includes(filtro.toLowerCase())
+            )
+            .map((v, i) => (
               <Tbody key={i}>
                 <tr>
                   <Trdatos>{i + 1}</Trdatos>
-                  <Trdatos>{v.ciudad}</Trdatos>
+                  <Trdatos>{v.municipio}</Trdatos>
+                  <Trdatos>{v.id_ciudades}</Trdatos>
                   <Trdatos>
                     <Botonacciones>
                       <div>
@@ -170,22 +146,20 @@ const Municipios = () => {
                           <Iconsacciones
                             src={Editar}
                             alt=""
-                            onClick={() => {
-                              setCiudadactual(v);
-                            }}
+                            onClick={() => {setMunicipioactual(v);}}
                           />
                         </Botonesacciones>
                       </div>
                       <div>
-                        <Botonesacciones onClick={() => eliminarciudades(v.id)}>
+                        <Botonesacciones onClick={() => EliminarMunicipios(v.id)}>
                           <Iconsacciones1 src={Eliminar} alt="" />
                         </Botonesacciones>
                       </div>
                     </Botonacciones>
                   </Trdatos>
                 </tr>
-              </Tbody> */}
-            {/* ))} */}
+              </Tbody>
+            ))}
         </table>
       </Divtabla>
     </Container>

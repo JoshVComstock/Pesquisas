@@ -4,7 +4,7 @@ import CentroForm from "./Models/CentroForm";
 import CiudadesForm from "./Models/CiudadesForm";
 import EnfermedadesForm from "./Models/EnfermedadesForm";
 import RedesForm from "./Models/RedesForm";
-import Centros from "./pages/Centros";
+import Centros from "./pages/centros";
 import Ciudades from "./pages/Ciudades";
 import Enfermedades from "./pages/Enfermedades";
 import Redes from "./pages/Redes";
@@ -15,7 +15,7 @@ import Laboratorios from "./pages/Laboratorios";
 import Provincias from "./pages/Provincias";
 import Registro_provincias from "./pages/Registro_provincias";
 import Municipios from "./pages/Municipios";
-import Registro_municipios from "./pages/Registro_municipios";
+import Registro_hospitales from "./pages/Registro_hospitales";
 import Modal from "./modal";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
@@ -23,7 +23,7 @@ import Register from "./pages/Register";
 import { Navcontextprovider } from "./context/navcontext";
 import { Usercontextprovider } from "./context/userContext";
 import ProtectedRoute from "./wrappers/ProtectedRoute";
-import Redsalud from "./pages/RedSalud"
+import Control_Filtros from "./pages/Control_Filtros";
 
 function App() {
   return (
@@ -49,17 +49,10 @@ function App() {
                   <Route path="enfermedades" element={<Enfermedades />} />
                   <Route path="laboratorios" element={<Laboratorios />} />
                   <Route path="provincias" element={<Provincias />} />
-                  <Route
-                    path="registro_provincias"
-                    element={<Registro_provincias />}
-                  />
+                  <Route path="registro_provincias" element={<Registro_provincias />} />
                   <Route path="municipios" element={<Municipios />} />
-                  <Route
-                    path="registro_municipios"
-                    element={<Registro_municipios />}
-                  />
-
-                  <Route path="redsalud" element={<Redsalud />} />
+                  <Route path="registro_hospitales" element={<Registro_hospitales />} />
+                  <Route path="control_filtros" element={<Control_Filtros />} />
                   <Route path="registro_usuario" element={<Register />} />
                 </Route>
               </Routes>

@@ -3,10 +3,15 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
 import EnfermedadesForm from '../models/EnfermedadesForm';
+import EnfermedadesEdit from '../models/Editform/EnfermedadesEdit';
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
+import Editar from "./../img/icons/Editar.jpg";
+import Eliminar from "./../img/icons/Delete.jpg";
+import { useuserContext } from "../context/userContext";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Titulo,
@@ -33,9 +38,23 @@ import {
 } from "../styles/crud";
 
 const Enfermedades = () => {
-  const { openModal, closeModal } = useModal("Enfermedades", <EnfermedadesForm />);
+  const [enfermedadactual, setEnfermedadactual] = useState({});
+  const { user } = useuserContext();
+  const navegate = useNavigate();
+  const { openModal: editarOpen, closeModal: editarClose } = useModal(
+    "Editar ciudad",
+    <EnfermedadesEdit
+      enfermedadactual={enfermedadactual}
+      MostrarEnfermedades={MostrarEnfermedades}
+    />
+  );
+  const { openModal, closeModal } = useModal(
+    "Agregar Ciudad",
+    <EnfermedadesForm MostrarEnfermedades={MostrarEnfermedades} />
+  );
 
   const [enfermedades, setEnfermedades] = useState([]);
+  const [filtro, setFiltro] = useState("");
 
   async function MostrarEnfermedades() {
     const response = await fetch('http://127.0.0.1:8000/api/enfermedades', {
@@ -47,6 +66,8 @@ const Enfermedades = () => {
     })
     const respuesta = await response?.json();
     setEnfermedades(respuesta);
+    closeModal();
+    editarClose();
   }
   async function EliminarEnfermedades(id) {
     const response = await fetch('http://127.0.0.1:8000/api/enfermedades/' + id, {
@@ -62,7 +83,13 @@ const Enfermedades = () => {
   }
   useEffect(() => {
     MostrarEnfermedades();
-  }, [])
+  }, []);
+  useEffect(() => {
+    if (Object.keys(enfermedadactual).length != 0) {
+      editarOpen();
+    }
+  }, [enfermedadactual]);
+  useEffect(() => {}, []);
   return (
     <Container>
       <Titulo>Enfermedades</Titulo>
@@ -81,7 +108,12 @@ const Enfermedades = () => {
       </Divbotones>
       <Divsearchpadre>
         <Divsearch>
-          <Search type="text" placeholder="Buscar" />
+          <Search
+            type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)}
+          />
           <Botonsearch>
             <Img src={Searchicons} alt="" />{" "}
           </Botonsearch>
@@ -93,34 +125,47 @@ const Enfermedades = () => {
             <tr>
               <th>Nº</th>
               <th>NOMBRE</th>
-              <th>DESCRIPCION</th>
+              <th>DESCRIPCIÓN</th>
               <th>EXTRA</th>
-              
               <Th>ACCIONES</Th>
             </tr>
           </Thead>
-          {
-          enfermedades.map((v, i) => (
-            <tbody key={i} >
-              <tr  >
-                <th>{v.id}</th>
-                <th>{v.nombre}</th>
-                <th>{v.descripcion}</th>
-                <th>{v.extra}</th>
-                <th>
-                  <div className='Acciones'>
-                    <div className='Editar'>
-                      <button className='BotonEditar'>Editar</button>
-                    </div>
-                    <div className='Eliminar'>
-                      <button className='BotonEliminar'>Eliminar</button>
-                    </div>
-                  </div>
-                </th>
-              </tr>
-            </tbody>
-          ))
-        }
+          {enfermedades
+            .filter((v) =>
+              v.nombre.toLowerCase().includes(filtro.toLowerCase())
+            )
+            .map((v, i) => (
+              <Tbody key={i}>
+                <tr>
+                  <Trdatos>{i + 1}</Trdatos>
+                  <Trdatos>{v.nombre}</Trdatos>
+                  <Trdatos>{v.descripcion}</Trdatos>
+                  <Trdatos>{v.extra}</Trdatos>
+                  <Trdatos>
+                    <Botonacciones>
+                      <div>
+                        <Botonesacciones>
+                          <Iconsacciones
+                            src={Editar}
+                            alt=""
+                            onClick={(
+                              
+                            ) => {
+                              setEnfermedadactual(v);
+                            }}
+                          />
+                        </Botonesacciones>
+                      </div>
+                      <div>
+                        <Botonesacciones onClick={() => EliminarEnfermedades(v.id)}>
+                          <Iconsacciones1 src={Eliminar} alt="" />
+                        </Botonesacciones>
+                      </div>
+                    </Botonacciones>
+                  </Trdatos>
+                </tr>
+              </Tbody>
+            ))}
         </table>
       </Divtabla>
     </Container>

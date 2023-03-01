@@ -1,17 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 
-const RedesForm = ({MostrarRedes}) => {
-  // declaramos una variable
-  const [nombre, setNombre] = useState("");
-  const [loading, setLoading] = useState(false);
+const RedesEdit = ({redactual,MostrarRedes}) => {
+  const [nombre, setNombre] = useState(redactual.nombre);
   
-  const enviar = async (e) => {
+  const Editar = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const response = await fetch("http://127.0.0.1:8000/api/redes", {
-      method: "POST",
+    const response = await fetch("http://127.0.0.1:8000/api/redes/"+redactual.id, {
+      method: "PUT",
       headers: {
         accept: "application/json",
         "content-type": "application/json",
@@ -22,10 +19,10 @@ const RedesForm = ({MostrarRedes}) => {
       
     });
 
-    const respuesta = await response?.json();
-    if ((respuesta.mensaje = "Creado satisfactoriamente")) {
+    if ((response.ok)) {
       setNombre(" ");
       MostrarRedes();
+      
     }
   };
   return (
@@ -39,7 +36,7 @@ const RedesForm = ({MostrarRedes}) => {
               </Divinputlabel>
             </Divinput>
             <Divboton>
-              <Botonagregar type='submit' onClick={enviar} disabled={loading}>Agregar</Botonagregar>
+              <Botonagregar type='submit' onClick={Editar}>Editar</Botonagregar>
             </Divboton>
           </form>
         </div>
@@ -47,7 +44,7 @@ const RedesForm = ({MostrarRedes}) => {
   )
 }
 
-export default RedesForm
+export default RedesEdit
 
 const Container=styled.div`
 `;
