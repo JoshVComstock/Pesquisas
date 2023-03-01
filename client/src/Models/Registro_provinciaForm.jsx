@@ -248,7 +248,7 @@ const Registro_provinciaForm = ({ mostrarRegistroPro }) => {
 };
 
 
-
+}
 export default Registro_provinciaForm;
 
 const Container=styled.div`

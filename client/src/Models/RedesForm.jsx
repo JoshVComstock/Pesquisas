@@ -1,31 +1,42 @@
 import React from 'react'
-import styled from 'styled-components'
-import { useState,useEffect } from 'react';
+import styled from "styled-components";
+import { useState, useEffect } from "react";
+import { postRedes, updateRedes } from "../services/Redes";
 
-const RedesForm = ({MostrarRedes}) => {
+const RedesForm = ({getApi,redactual,setRedactual,closeModal}) => {
   // declaramos una variable
   const [nombre, setNombre] = useState("");
-  const [loading, setLoading] = useState(false);
-  
-  const enviar = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    const response = await fetch("http://127.0.0.1:8000/api/redes", {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        nombre: nombre
-      }),
-      
-    });
 
-    const respuesta = await response?.json();
-    if ((respuesta.mensaje = "Creado satisfactoriamente")) {
-      setNombre(" ");
-      MostrarRedes();
+  useEffect(() => {
+    if (Object.keys(redactual).length > 0) {
+      setNombre(redactual.nombre);
+    }
+    return () => {
+      setRedactual({});
+    };
+  }, [redactual]);
+
+  const updatepost = (e) => {
+    e.preventDefault();
+    if (Object.keys(redactual).length > 0) {
+      updateRedes(
+        {
+          id: redactual.id,
+          nombre: nombre,
+        },
+        () => {
+          setNombre("");
+          closeModal();
+          setRedactual({});
+          getApi();
+        }
+      );
+    } else {
+      postRedes(nombre, () => {
+        setNombre("");
+        getApi();
+        closeModal();
+      });
     }
   };
   return (
@@ -39,7 +50,8 @@ const RedesForm = ({MostrarRedes}) => {
               </Divinputlabel>
             </Divinput>
             <Divboton>
-              <Botonagregar type='submit' onClick={enviar} disabled={loading}>Agregar</Botonagregar>
+              <Botonagregar onClick={(e) => updatepost(e)}>
+              {Object.keys(redactual).length > 0 ? "Editar" : "Agregar"}</Botonagregar>
             </Divboton>
           </form>
         </div>
