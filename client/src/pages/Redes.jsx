@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
-import CiudadesForm from "../models/CiudadesForm";
+import RedesForm from "../models/RedesForm";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
@@ -40,7 +40,7 @@ const Redes = () => {
     Object.keys(redactual).length > 0
       ? "Editar Red de Salud"
       : "Agregar Red de Salud",
-    <CiudadesForm
+    <RedesForm
       getApi={getApi}
       redactual={redactual}
       setRedactual={setRedactual}
