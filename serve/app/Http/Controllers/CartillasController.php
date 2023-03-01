@@ -34,7 +34,6 @@ class CartillasController extends Controller
         $cartillas->direccion=$request->direccion;
         $cartillas->enfermedad_madre=$request->enfermedad_madre;
         $cartillas->save();
-
         return $cartillas;
     }
     public function update(Request $request, $id)

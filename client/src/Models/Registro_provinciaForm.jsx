@@ -50,8 +50,6 @@ const Registro_provinciaForm = ({ mostrarregistroprovincias }) => {
           
         });
         const respuesta = await response?.json();
-
-        // solo limpia los campos
     if ((respuesta.ok)) {
       setHora(" ");
       setFecha(" ");
@@ -104,22 +102,12 @@ async function Provincias() {
     });
     const respuesta = await response?.json();
     setCentros(respuesta);
-    setId_centros=centros;
+    setId_centros(centros);
   }
-
-
-  useEffect(() => {
-    MostrarCentros();
-    MostrarMunicipios();
-    Provincias();
-
-  }, []);
-
     return (
         <div>
           <form>
             <div>
-                
               <div>
                 <label htmlFor="">hora </label>
                 <Input
@@ -136,7 +124,6 @@ async function Provincias() {
                   onChange={(e) => setFecha(e.target.value)}
                 />
               </div>
-            {/* ----------- */}
             <div>
             <label>Centro de Salud:</label>
             <select value={centros} onChange={(e) => setId_centros(e.target.value)} >
@@ -147,9 +134,6 @@ async function Provincias() {
               ))}
             </select>
           </div>
-
-            {/* ----------- */}
-              {/* ----------- */}
               <div>
             <label> Municipio :</label>
             <select value={municipios} onChange={(e) => setId_municipios(e.target.value)} >

@@ -56,13 +56,7 @@ export const Usercontextprovider = ({ children }) => {
       navegate("/login"); 
     }
     }
-
-  
   useEffect(() => {
- /*    if(Object.keys(user).length==1)
-    {
-     
-    } */
     getUser();
   },[]);  
 

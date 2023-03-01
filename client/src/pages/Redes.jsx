@@ -3,16 +3,12 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
 import RedesForm from '../models/RedesForm';
-
-
-// clip
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
-import CiudadesEdit from "../models/Editform/CiudadesEdit";
 import { useuserContext } from "../context/userContext";
 import { useNavigate } from "react-router-dom";
 import {

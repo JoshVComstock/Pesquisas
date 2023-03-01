@@ -36,7 +36,7 @@ const Navbar = () => {
     localStorage.removeItem("user");
     navegation("/login");
   };
-
+ 
   return (
     <>
         <Divheader>

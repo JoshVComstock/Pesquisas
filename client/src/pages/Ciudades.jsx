@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import styled from "styled-components";
 import { useModal } from "../hooks/useModal";
 import CiudadesForm from "../models/CiudadesForm";
 import New from "./../img/new.jpg";
@@ -9,9 +8,6 @@ import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
-import CiudadesEdit from "../models/Editform/CiudadesEdit";
-import { useuserContext } from "../context/userContext";
-import { useNavigate } from "react-router-dom";
 import {
   Container,
   Titulo,
@@ -26,8 +22,6 @@ import {
   Botonsearch,
   Botonacciones,
   Iconsacciones,
-} from "../styles/crud";
-import {
   Iconsacciones1,
   Botonesacciones,
   Divtabla,
@@ -36,60 +30,29 @@ import {
   Th,
   Trdatos,
 } from "../styles/crud";
+import { UseFech } from "../hooks/useFech";
+import { deleteCiudades, getCiudades } from "../services/Ciudades";
 
 const Ciudades = () => {
   const [ciudadactual, setCiudadactual] = useState({});
-  const { user } = useuserContext();
-  const navegate = useNavigate();
-  const { openModal: editarOpen, closeModal: editarClose } = useModal(
-    "Editar ciudad",
-    <CiudadesEdit
+  const { getApi, data: ciudades } = UseFech(getCiudades);
+  const { openModal, closeModal } = useModal(
+    Object.keys(ciudadactual).length > 0 ? "Editar Ciudad" : "Agregar ciudad",
+    <CiudadesForm
+      getApi={getApi}
       ciudadactual={ciudadactual}
-      mostrarciudades={mostrarciudades}
+      setCiudadactual={setCiudadactual}
+      closeModal={() => {
+        closeModal();
+      }}
     />
   );
-  const { openModal, closeModal } = useModal(
-    "Agregar Ciudad",
-    <CiudadesForm mostrarciudades={mostrarciudades} />
-  );
-
-  const [ciudades, setCiudades] = useState([]);
   const [filtro, setFiltro] = useState("");
-
-  async function mostrarciudades() {
-    const response = await fetch("http://127.0.0.1:8000/api/ciudades", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    const respuesta = await response?.json();
-    setCiudades(respuesta);
-    closeModal();
-    editarClose();
-  }
-  async function eliminarciudades(id) {
-    const response = await fetch("http://127.0.0.1:8000/api/ciudades/" + id, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    if (response.ok) {
-      mostrarciudades();
-    }
-  }
   useEffect(() => {
-    mostrarciudades();
-  }, []);
-  useEffect(() => {
-    if (Object.keys(ciudadactual).length != 0) {
-      editarOpen();
+    if (Object.keys(ciudadactual).length > 0) {
+      openModal();
     }
   }, [ciudadactual]);
-  useEffect(() => {}, []);
   return (
     <Container>
       <Titulo>Ciudades</Titulo>
@@ -151,7 +114,11 @@ const Ciudades = () => {
                         </Botonesacciones>
                       </div>
                       <div>
-                        <Botonesacciones onClick={() => eliminarciudades(v.id)}>
+                        <Botonesacciones
+                          onClick={() => {
+                            deleteCiudades(v.id, getApi);
+                          }}
+                        >
                           <Iconsacciones1 src={Eliminar} alt="" />
                         </Botonesacciones>
                       </div>
@@ -165,5 +132,4 @@ const Ciudades = () => {
     </Container>
   );
 };
-
 export default Ciudades;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
@@ -15,25 +15,34 @@ import {
   Divsearch,
   Search,
   Botonsearch,
-  Botonacciones,
-  Iconsacciones,
-} from "../styles/crud";
-import {
-  Iconsacciones1,
-  Botonesacciones,
   Divtabla,
   Thead,
-  Tbody,
   Th,
-  Trdatos,
 } from "../styles/crud";
+import { UseFech } from "../hooks/useFech";
+import { getcentros } from "../services/centros";
 
 const Centros = () => {
+  const { data } = UseFech(getcentros);
+  const [sexo, setSexo] = useState("");
+  console.log(sexo);
+
+  const date = new Date();
+  const mes =
+    date.getMonth() < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+  const dia = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+  const Actualdate = date.getFullYear() + "-" + mes + "-" + dia;
+  const hora = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+  const minutos =
+    date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+  const horaactual = hora + ":" + minutos;
+  console.log(horaactual);
+  const [fecha, setFecha] = useState(Actualdate);
   return (
     <Container>
       <Titulo>Centros</Titulo>
       <Divbotones>
-        <Botonespdf2 onClick={""}>
+        <Botonespdf2>
           <Img src={New} alt="" /> Nuevo
         </Botonespdf2>
         <Botonespdf1>
@@ -44,6 +53,25 @@ const Centros = () => {
           <Img src={Excel} alt="" />
           Excel
         </Botonespdf>{" "}
+        <input
+          type="radio"
+          value="femenuno"
+          name="sexo"
+          onChange={(e) => setSexo(e.target.value)}
+        />
+        <input
+          type="radio"
+          value="Masculino"
+          name="sexo"
+          onChange={(e) => setSexo(e.target.value)}
+        />
+        <input
+          type="date"
+          value={fecha}
+          onChange={(e) => setFecha(e.target.value)}
+        />
+        <input type="time" value={horaactual} />
+        <input type="text" value={horaactual} />
       </Divbotones>
       <Divsearchpadre>
         <Divsearch>
@@ -68,6 +96,20 @@ const Centros = () => {
               <Th>ACCIONES</Th>
             </tr>
           </Thead>
+          <tbody>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </tbody>
         </table>
       </Divtabla>
     </Container>

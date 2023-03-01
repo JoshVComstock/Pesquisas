@@ -70,7 +70,7 @@ Route::delete('/municipios/{id}', [MunicipiosController::class, 'destroy']);
 Route::get('/provincias', [ProvinciasController::class, 'index']);
 Route::post('/provincias', [ProvinciasController::class, 'store']);
 Route::delete('/provincias/{id}', [ProvinciasController::class, 'destroy']);
-// ------------ Regitro de provincias
+
 
 Route::get('/registro_provincias', [Registro_provinciasController::class, 'index']);
 Route::post('/registro_provincias', [Registro_provinciasController::class, 'store']);
