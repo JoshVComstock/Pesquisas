@@ -53,6 +53,7 @@ const Ciudades = () => {
       openModal();
     }
   }, [ciudadactual]);
+
   return (
     <Container>
       <Titulo>Ciudades</Titulo>
@@ -107,9 +108,7 @@ const Ciudades = () => {
                           <Iconsacciones
                             src={Editar}
                             alt=""
-                            onClick={(
-                              
-                            ) => {
+                            onClick={() => {
                               setCiudadactual(v);
                             }}
                           />

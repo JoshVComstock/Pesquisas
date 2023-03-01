@@ -1,17 +1,13 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
-import EnfermedadesForm from '../models/EnfermedadesForm';
-import EnfermedadesEdit from '../models/Editform/EnfermedadesEdit';
+import EnfermedadesForm from "../models/EnfermedadesForm";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
-import { useuserContext } from "../context/userContext";
-import { useNavigate } from "react-router-dom";
 import {
   Container,
   Titulo,
@@ -26,8 +22,6 @@ import {
   Botonsearch,
   Botonacciones,
   Iconsacciones,
-} from "../styles/crud";
-import {
   Iconsacciones1,
   Botonesacciones,
   Divtabla,
@@ -36,60 +30,31 @@ import {
   Th,
   Trdatos,
 } from "../styles/crud";
+import { UseFech } from "../hooks/useFech";
+import { deleteEnfermedades, getEnfermedades } from "../services/Enfermedades";
 
 const Enfermedades = () => {
   const [enfermedadactual, setEnfermedadactual] = useState({});
-  const { user } = useuserContext();
-  const navegate = useNavigate();
-  const { openModal: editarOpen, closeModal: editarClose } = useModal(
-    "Editar ciudad",
-    <EnfermedadesEdit
+  const { getApi, data: enfermedades } = UseFech(getEnfermedades);
+  const { openModal, closeModal } = useModal(
+    Object.keys(enfermedadactual).length > 0 ? "Editar Enfermedad" : "Agregar Enfermedad",
+    <EnfermedadesForm
+      getApi={getApi}
       enfermedadactual={enfermedadactual}
-      MostrarEnfermedades={MostrarEnfermedades}
+      setEnfermedadactual={setEnfermedadactual}
+      closeModal={() => {
+        closeModal();
+      }}
     />
   );
-  const { openModal, closeModal } = useModal(
-    "Agregar Ciudad",
-    <EnfermedadesForm MostrarEnfermedades={MostrarEnfermedades} />
-  );
-
-  const [enfermedades, setEnfermedades] = useState([]);
   const [filtro, setFiltro] = useState("");
-
-  async function MostrarEnfermedades() {
-    const response = await fetch('http://127.0.0.1:8000/api/enfermedades', {
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-        "accept": "application/json",
-      },
-    })
-    const respuesta = await response?.json();
-    setEnfermedades(respuesta);
-    closeModal();
-    editarClose();
-  }
-  async function EliminarEnfermedades(id) {
-    const response = await fetch('http://127.0.0.1:8000/api/enfermedades/' + id, {
-      method: 'DELETE',
-      headers: {
-        "Content-Type": "application/json",
-        "accept": "application/json",
-      },
-    })
-    if (response.ok) {
-      MostrarEnfermedades();
-    }
-  }
   useEffect(() => {
-    MostrarEnfermedades();
-  }, []);
-  useEffect(() => {
-    if (Object.keys(enfermedadactual).length != 0) {
-      editarOpen();
+    if (Object.keys(enfermedadactual).length > 0) {
+      openModal();
     }
   }, [enfermedadactual]);
-  useEffect(() => {}, []);
+
+
   return (
     <Container>
       <Titulo>Enfermedades</Titulo>
@@ -157,7 +122,9 @@ const Enfermedades = () => {
                         </Botonesacciones>
                       </div>
                       <div>
-                        <Botonesacciones onClick={() => EliminarEnfermedades(v.id)}>
+                        <Botonesacciones onClick={() => {
+                            deleteEnfermedades(v.id, getApi);
+                          }}>
                           <Iconsacciones1 src={Eliminar} alt="" />
                         </Botonesacciones>
                       </div>
