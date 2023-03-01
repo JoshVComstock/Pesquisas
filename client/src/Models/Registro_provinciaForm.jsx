@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useState, useEffect } from "react"
 
 const Registro_provinciaForm = ({ mostrarRegistroPro }) => {
+
+  
   const [hora, setHora] = useState([]);
   const [fecha, setFecha] = useState([]);
   const [id_provincias, setId_provincias] = useState("");
@@ -248,7 +250,7 @@ const Registro_provinciaForm = ({ mostrarRegistroPro }) => {
 };
 
 
-
+}
 export default Registro_provinciaForm;
 
 const Container=styled.div`

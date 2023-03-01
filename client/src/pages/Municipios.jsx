@@ -1,17 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import styled from "styled-components";
 import { useModal } from "../hooks/useModal";
 import MunicipiosForm from "../models/MunicipiosForm";
-import MunicipiosEdit from "../models/Editform/MunicipiosEdit";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
-import { useuserContext } from "../context/userContext";
-import { useNavigate } from "react-router-dom";
 import {
   Container,
   Titulo,
@@ -26,8 +22,6 @@ import {
   Botonsearch,
   Botonacciones,
   Iconsacciones,
-} from "../styles/crud";
-import {
   Iconsacciones1,
   Botonesacciones,
   Divtabla,
@@ -36,60 +30,29 @@ import {
   Th,
   Trdatos,
 } from "../styles/crud";
+import { UseFech } from "../hooks/useFech";
+import { deleteMunicipios, getMunicipios } from "../services/Municipios";
 
 const Municipios = () => {
   const [municipioactual, setMunicipioactual] = useState({});
-  const { user } = useuserContext();
-  const navegate = useNavigate();
-  const { openModal: editarOpen, closeModal: editarClose } = useModal(
-    "Editar Municipio",
-    <MunicipiosEdit
+  const { getApi, data: municipios } = UseFech(getMunicipios);
+  const { openModal, closeModal } = useModal(
+    Object.keys(municipioactual).length > 0 ? "Editar m" : "Agregar m",
+    <MunicipiosForm
+      getApi={getApi}
       municipioactual={municipioactual}
-      MostrarMunicipios={MostrarMunicipios}
+      setMunicipioactual={setMunicipioactual}
+      closeModal={() => {
+        closeModal();
+      }}
     />
   );
-  const { openModal, closeModal } = useModal(
-    "Agregar Municipio",
-    <MunicipiosForm MostrarMunicipios={MostrarMunicipios} />
-  );
-
-  const [municipios, setMunicipios] = useState([]);
   const [filtro, setFiltro] = useState("");
-
-  async function MostrarMunicipios() {
-    const response = await fetch("http://127.0.0.1:8000/api/municipios", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    const respuesta = await response?.json();
-    setMunicipios(respuesta);
-    closeModal();
-    editarClose();
-  }
-  async function EliminarMunicipios(id) {
-    const response = await fetch("http://127.0.0.1:8000/api/municipios/" + id, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    if (response.ok) {
-      MostrarMunicipios();
-    }
-  }
   useEffect(() => {
-    MostrarMunicipios();
-  }, []);
-  useEffect(() => {
-    if (Object.keys(municipioactual).length != 0) {
-      editarOpen();
+    if (Object.keys(municipioactual).length > 0) {
+      openModal();
     }
   }, [municipioactual]);
-  useEffect(() => {}, []);
   return (
 <Container>
       <Titulo>Municipios</Titulo>
@@ -151,7 +114,9 @@ const Municipios = () => {
                         </Botonesacciones>
                       </div>
                       <div>
-                        <Botonesacciones onClick={() => EliminarMunicipios(v.id)}>
+                        <Botonesacciones onClick={() => {
+                            deleteMunicipios(v.id, getApi);
+                          }}>
                           <Iconsacciones1 src={Eliminar} alt="" />
                         </Botonesacciones>
                       </div>
