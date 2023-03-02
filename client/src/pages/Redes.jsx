@@ -8,6 +8,7 @@ import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
+import RedesForm from "../Models/RedesForm";
 import {
   Container,
   Titulo,
@@ -33,6 +34,7 @@ import {
 import { UseFech } from "../hooks/useFech";
 import { deleteRedes, getRedes } from "../services/Redes";
 
+
 const Redes = () => {
   const [redactual, setRedactual] = useState({});
   const { getApi, data: redes } = UseFech(getRedes);
@@ -40,7 +42,7 @@ const Redes = () => {
     Object.keys(redactual).length > 0
       ? "Editar Red de Salud"
       : "Agregar Red de Salud",
-    <CiudadesForm
+    <RedesForm
       getApi={getApi}
       redactual={redactual}
       setRedactual={setRedactual}

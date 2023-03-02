@@ -25,10 +25,10 @@ import {
   Th,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
-import { getcentros } from "../services/centros";
+import { getCentros } from "../services/centros";
 
 const Centros = () => {
-  const { data } = UseFech(getcentros);
+  const { data } = UseFech(getCentros);
   const [sexo, setSexo] = useState("");
   console.log(sexo);
 

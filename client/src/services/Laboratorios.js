@@ -3,7 +3,7 @@ const baseUrl =
     export const getLaboratorios = async () => {
 
     try {
-        const response = await fetch(`${baseUrl}ciudades`, {
+        const response = await fetch(`${baseUrl}laboratorios`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -16,9 +16,9 @@ const baseUrl =
         console.log(error);
     }
 };
-export const deleteCiudades = async (id, callback) => {
+export const deleteLaboratorios = async (id, callback) => {
   
-    const response = await fetch(`${baseUrl}ciudades/${id}`, {
+    const response = await fetch(`${baseUrl}laboratorios/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -30,29 +30,41 @@ export const deleteCiudades = async (id, callback) => {
         callback();
     }
 };
-export const updateCiudades = async (ciudadactual,callback) => {
-    const response = await fetch(`${baseUrl}ciudades/${ciudadactual.id}`, {
+export const updateLaboratorios = async (actual,callback) => {
+    const response = await fetch(`${baseUrl}laboratorios/${actual.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         accept: "application/json",
       },
       body: JSON.stringify({
-        ciudad:ciudadactual.ciudad,
+        nombre:actual.nombre,
+        direccion:actual.direccion,
+        telefono:actual.telefono	,
+        id_centros:actual.id_centros,
+        id_ciudades:actual.id_ciudades,
+        id_redes:actual.id_redes,
+
     })});
     if(response.ok){
       callback();
     }
   }
-  export const postCiudad = async (ciudad,callback) => {
-    const response = await fetch(`${baseUrl}ciudades`, {
+  export const postLaboratorio = async (nombre,direccion,telefono,id_centros,id_ciudades,id_redes,callback) => {
+    const response = await fetch(`${baseUrl}laboratorios`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         accept: "application/json",
       },
       body: JSON.stringify({
-        ciudad:ciudad,
+        nombre:nombre,
+        direccion:direccion,
+        telefono:telefono	,
+        id_centros:id_centros,
+        id_ciudades:id_ciudades,
+        id_redes:id_redes,
+
     })});
     if(response.ok){
       callback();

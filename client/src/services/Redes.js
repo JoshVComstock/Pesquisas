@@ -28,15 +28,17 @@ export const deleteRedes = async (id, callback) => {
         callback();
     }
 };
-export const updateRedes = async (Redactual,callback) => {
-    const response = await fetch(`${baseUrl}redes/${Redactual.id}`, {
+export const updateRedes = async (redactual,callback) => {
+  const response = await fetch(`${baseUrl}redes/${redactual.id}`, {
+
+    // const response = await fetch(`${baseUrl}redes/${redactual.id}`, { 
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         accept: "application/json",
       },
       body: JSON.stringify({
-        nombre:Redactual.nombre,
+        nombre:redactual.nombre,
     })});
     if(response.ok){
       callback();

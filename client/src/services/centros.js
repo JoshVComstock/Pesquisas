@@ -3,7 +3,7 @@ const baseUrl =
 
 export const getCentros = async () => {
     try {
-        const response = await fetch(`${baseUrl}ciudades`, {
+        const response = await fetch(`${baseUrl}centros`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

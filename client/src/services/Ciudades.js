@@ -31,6 +31,7 @@ export const deleteCiudades = async (id, callback) => {
     }
 };
 export const updateCiudades = async (ciudadactual,callback) => {
+  
     const response = await fetch(`${baseUrl}ciudades/${ciudadactual.id}`, {
       method: "PUT",
       headers: {
