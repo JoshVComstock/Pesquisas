@@ -1,9 +1,9 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React from "react";
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 import { useModal } from "../hooks/useModal";
-import ProvinciasForm from '../models/ProvinciasForm';
-import ProvinciasEdit from '../models/Editform/ProviciasEdit';
+import ProvinciasForm from "../models/ProvinciasForm";
+import ProvinciasEdit from "../models/Editform/ProviciasEdit";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
@@ -11,6 +11,8 @@ import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
 import { useuserContext } from "../context/userContext";
+import { UseFech } from "../hooks/useFech";
+import { getProvincias } from "../services/provincias";
 import { useNavigate } from "react-router-dom";
 import {
   Container,
@@ -26,8 +28,6 @@ import {
   Botonsearch,
   Botonacciones,
   Iconsacciones,
-} from "../styles/crud";
-import {
   Iconsacciones1,
   Botonesacciones,
   Divtabla,
@@ -39,58 +39,28 @@ import {
 
 const Provincias = () => {
   const [provinciaactual, setProviciaactual] = useState({});
+  const { getApi,data: provicias } = UseFech(getProvincias);
   const { user } = useuserContext();
   const navegate = useNavigate();
-  const { openModal: editarOpen, closeModal: editarClose } = useModal(
-    "Editar Provincia",
-    <ProvinciasEdit
-      provinciaactual={provinciaactual}
-      MostrarProvincias={MostrarProvincias}
+  const { openModal, closeModal } = useModal(
+    Object.keys(provinciaactual).length > 0 ? "Editar" : "Agregar",
+    <ProvinciasForm 
+    getApi={getApi}
+    provinciaactual={provinciaactual}
+    setProviciaactual={setProviciaactual}
+    closeModal={
+      ()=>{
+        closeModal();
+      }
+    }
     />
   );
-  const { openModal, closeModal } = useModal(
-    "Agregar Provicia",
-    <ProvinciasForm MostrarProvincias={MostrarProvincias} />
-  );
-
-  const [provincias, setProvincias] = useState([]);
   const [filtro, setFiltro] = useState("");
-
-  async function MostrarProvincias() {
-    const response = await fetch("http://127.0.0.1:8000/api/provincias", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    const respuesta = await response?.json();
-    setProvincias(respuesta);
-    closeModal();
-    editarClose();
-  }
-  async function EliminarProvincias(id) {
-    const response = await fetch("http://127.0.0.1:8000/api/provincias/" + id, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    if (response.ok) {
-      MostrarProvincias();
-    }
-  }
-  useEffect(() => {
-    MostrarProvincias();
-  }, []);
   useEffect(() => {
     if (Object.keys(provinciaactual).length != 0) {
       editarOpen();
     }
   }, [provinciaactual]);
-  useEffect(() => {}, []);
-  
   return (
     <Container>
       <Titulo>Provincias</Titulo>
@@ -130,7 +100,7 @@ const Provincias = () => {
               <Th>ACCIONES</Th>
             </tr>
           </Thead>
-          {provincias
+          {provicias
             .filter((v) =>
               v.provincia.toLowerCase().includes(filtro.toLowerCase())
             )
@@ -139,7 +109,7 @@ const Provincias = () => {
                 <tr>
                   <Trdatos>{i + 1}</Trdatos>
                   <Trdatos>{v.provincia}</Trdatos>
-                  <Trdatos>{v.id_ciudades}</Trdatos>
+                  <Trdatos>{v.ciudad}</Trdatos>
                   <Trdatos>
                     <Botonacciones>
                       <div>
@@ -147,12 +117,16 @@ const Provincias = () => {
                           <Iconsacciones
                             src={Editar}
                             alt=""
-                            onClick={() => {setProviciaactual(v);}}
+                            onClick={() => {
+                              setProviciaactual(v);
+                            }}
                           />
                         </Botonesacciones>
                       </div>
                       <div>
-                        <Botonesacciones onClick={() => EliminarProvincias(v.id)}>
+                        <Botonesacciones
+                          onClick={() => EliminarProvincias(v.id)}
+                        >
                           <Iconsacciones1 src={Eliminar} alt="" />
                         </Botonesacciones>
                       </div>
@@ -165,6 +139,6 @@ const Provincias = () => {
       </Divtabla>
     </Container>
   );
-}
+};
 
-export default Provincias
+export default Provincias;

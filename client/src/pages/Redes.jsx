@@ -25,8 +25,6 @@ import {
   Botonsearch,
   Botonacciones,
   Iconsacciones,
-} from "../styles/crud";
-import {
   Iconsacciones1,
   Botonesacciones,
   Divtabla,
@@ -41,11 +39,6 @@ const Redes = () => {
   const { user } = useuserContext();
   const navegate = useNavigate();
   const { openModal: editarOpen, closeModal: editarClose } = useModal(
-    "Editar Red de Salud",
-    <RedesEdit
-      redactual={redactual}
-      MostrarRedes={MostrarRedes}
-    />
   );
   const { openModal, closeModal } = useModal(
     "Agregar Redes de Salud",
