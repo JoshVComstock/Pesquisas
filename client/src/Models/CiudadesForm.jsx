@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { postCiudad, updateCiudades } from "../services/Ciudades";
+
 const CiudadesForm = ({getApi,ciudadactual,setCiudadactual,closeModal}) => {
   const [ciudad, setCiudad] = useState("");
 
@@ -13,6 +14,7 @@ const CiudadesForm = ({getApi,ciudadactual,setCiudadactual,closeModal}) => {
       setCiudadactual({});
     };
   }, [ciudadactual]);
+  
   const updatepost = (e) => {
     e.preventDefault();
     if (Object.keys(ciudadactual).length > 0) {

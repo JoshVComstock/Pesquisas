@@ -64,7 +64,8 @@ const Login = () => {
       <Divlogin>
         <Form>
           <Iavatar src={Avatar} alt="" />
-          <H2>Bienvenido</H2>
+          <H2>Tamizaje</H2>
+          <P>Neonatal</P>
           <Divinput>
             <Di>
               <I>
@@ -103,7 +104,7 @@ const Login = () => {
               <Label>Password</Label>
             </Dinput>
           </Divinput>
-          <Boton onClick={enviar}>Entrar</Boton>
+          <Boton onClick={enviar}>Ingresar</Boton>
         </Form>
       </Divlogin>
     </Container>
@@ -117,8 +118,11 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(to right bottom, #2a3763, #632a60);
+  font-family: 'Poppins', sans-serif;
 `;
 const Divlogin = styled.div`
+background-color:#1637615a;
   padding: 20px;
   border-radius: 5px;
   display: flex;
@@ -136,15 +140,18 @@ const Img = styled.img`
 `;
 const H2 = styled.h2`
   font-size: 2.9rem;
-  text-transform: uppercase;
   margin: 15px 0;
-  color: #333;
+  color: #ffffff;
+`;
+const P = styled.h2`
+  font-size: 1rem;
+  color: #ffffff;
 `;
 const Divinput = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding: 5px 0;
+ 
 `;
 const I = styled.div``;
 const Di = styled.i`
@@ -158,6 +165,7 @@ const Iavatar = styled.img`
 const Dinput = styled.div`
   position: relative;
   padding: 1rem;
+  width:100%;
 `;
 const Label = styled.label`
   position: absolute;
@@ -182,11 +190,13 @@ const Input = styled.input`
     transform: translateY(-1.2rem);
     font-size: 13px;
     color: #4285f4;
+    background-color:#ffffff;
   }
   &:not(:placeholder-shown) + Label {
     transform: translateY(-1.2rem);
     transition: 0.5s;
     font-size: 13px;
+    
   }
 `;
 const Span1 = styled.span`
@@ -199,21 +209,21 @@ const Span1 = styled.span`
   transition: 0.6s;
 `;
 const Boton = styled.button`
-  margin: 10px;
-  width: 50%;
+
+  width: 100%;
   position: relative;
-  padding: 10px 15px;
+  padding: 10px 0;
   border: none;
   outline: none;
-  background: #4285f4;
+  background: #0e2447;
   color: #fff;
   cursor: pointer;
   transition: 0.8s;
   overflow: hidden;
   font-size: 17px;
-  border: 1px solid white;
-  border-radius: 25px;
+
   &:hover {
-    background: #6e9fef;
+    background: #ffffffa9;
+    color:#4285f4;
   }
 `;

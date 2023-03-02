@@ -1,37 +1,55 @@
 import React from 'react'
-import { useState } from 'react';
-import styled from 'styled-components';
+import styled from "styled-components";
+import { useState, useEffect } from "react";
+import { postEnfermedades, updateEnfermedades } from "../services/Enfermedades";
 
-export const EnfermedadesForm = ({ MostrarEnfermedades }) => {
+
+export const EnfermedadesForm = ({ getApi, enfermedadactual, setEnfermedadactual, closeModal }) => {
     const [nombre, setNombre] = useState("");
     const [descripcion, setDescripcion] = useState("");
     const [extra, setExtra] = useState("");
-    const [loading, setLoading] = useState(false);
 
-    const enviar = async (e) => {
+    useEffect(() => {
+        if (Object.keys(enfermedadactual).length > 0) {
+            setNombre(enfermedadactual.nombre);
+            setDescripcion(enfermedadactual.descripcion);
+            setExtra(enfermedadactual.extra);
+        }
+        return () => {
+            setEnfermedadactual({});
+        };
+    }, [enfermedadactual]);
+
+    const updatepost = (e) => {
         e.preventDefault();
-        setLoading(true);
-        const response = await fetch("http://127.0.0.1:8000/api/enfermedades", {
-            method: "POST",
-            headers: {
-                accept: "application/json",
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({
-                nombre: nombre,
-                descripcion: descripcion,
-                extra: extra,
-            }),
-        });
-
-        const respuesta = await response?.json();
-        if ((respuesta.mensaje = "Creado satisfactoriamente")) {
-            setNombre("");
-            setDescripcion("");
-            setExtra("");
-            MostrarEnfermedades();
+        if (Object.keys(enfermedadactual).length > 0) {
+            updateEnfermedades(
+                {
+                    id: enfermedadactual.id,
+                    nombre: nombre,
+                    descripcion: descripcion,
+                    extra: extra,
+                },
+                () => {
+                    setNombre("");
+                    setDescripcion("");
+                    setExtra("");
+                    closeModal();
+                    setEnfermedadactual({});
+                    getApi();
+                }
+            );
+        } else {
+            postEnfermedades(nombre, descripcion, extra, () => {
+                setNombre("");
+                setDescripcion("");
+                setExtra("");
+                getApi();
+                closeModal();
+            });
         }
     };
+
     return (
         <Container>
             <div>
@@ -55,7 +73,8 @@ export const EnfermedadesForm = ({ MostrarEnfermedades }) => {
                         </Divinputlabel>
                     </Divinput>
                     <Divboton>
-                        <Botonagregar type='submit' onClick={enviar} disabled={loading}>Agregar</Botonagregar>
+                        <Botonagregar onClick={(e) => updatepost(e)}>
+                            {Object.keys(enfermedadactual).length > 0 ? "Editar" : "Agregar"}</Botonagregar>
                     </Divboton>
                 </form>
             </div>
@@ -63,19 +82,19 @@ export const EnfermedadesForm = ({ MostrarEnfermedades }) => {
     )
 }
 export default EnfermedadesForm;
-const Container=styled.div`
+const Container = styled.div`
 `;
-const Divinputlabel=styled.div`
+const Divinputlabel = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Divinput=styled.div`
+const Divinput = styled.div`
   display: flex;
   flex-direction: column;
   margin: 5px;
   align-items: center;
 `;
-const Input=styled.input`
+const Input = styled.input`
   margin-top: 5px;
   margin-bottom: 5px;
   height: 30px;
@@ -87,11 +106,11 @@ const Input=styled.input`
   }
 
 `;
-const Divboton=styled.div`
+const Divboton = styled.div`
   display: flex;
   justify-content: center;
 `;
-const Botonagregar=styled.button`
+const Botonagregar = styled.button`
  padding: 10px;
  cursor: pointer;
  background:#034078;

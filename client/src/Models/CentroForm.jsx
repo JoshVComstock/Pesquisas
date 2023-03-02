@@ -1,86 +1,85 @@
 import React from "react";
-import styled from 'styled-components'
-import { useState, useEffect } from 'react';
+import styled from "styled-components";
+import { useState, useEffect } from "react";
+import { postCiudad, updateCiudades } from "../services/Ciudades";
 import "../pages/css/Centros.css";
+import { UseFech } from "../hooks/useFech";
+import { getCiudades } from "../services/Ciudades";
+import { getRedes } from "../services/Redes";
 
-const CentroForm = ({MostrarCentros}) => {
+const CentroForm = ({getApi,centroactual,setCentroactual,closeModal}) => {
   const [nombre, setNombre] = useState("");
   const [direccion, SetDireccion] = useState("");
   const [id_redes, setId_redes] = useState("");
-  const [redes, setRedes] = useState([]);
+  const { data: ciudades } = UseFech(getCiudades);
   const [telefono, setTelefono] = useState("");
   const [id_ciudad, setId_ciudad] = useState("");
-  const [ciudades, setCiudades] = useState([]);
+  const { data: redes } = UseFech(getRedes);
   const [area, setArea] = useState("");
   const [seguimiento_casos, setSeguimiento_casos] = useState("");
   const [contacto, setContacto] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  const enviar = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    const response = await fetch("http://127.0.0.1:8000/api/centros", {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        nombre: nombre,
-        direccion: direccion,
-        id_redes: id_redes,
-        telefono: telefono,
-        id_ciudad: id_ciudad,
-        area: area,
-        seguimiento_casos: seguimiento_casos,
-        contacto: contacto,
-      }),
-    });
-
-    const respuesta = await response?.json();
-    if ((respuesta.mensaje = "Creado satisfactoriamente")) {
-     
-      setNombre("");
-      SetDireccion("");
-      setId_redes("");
-      setTelefono("");
-      setId_ciudad("");
-      setArea("");
-      setSeguimiento_casos("");
-      setContacto("");
-      MostrarCentros();
-    }
-  };
-
-  async function MostrarCiudades() {
-    const response = await fetch("http://127.0.0.1:8000/api/ciudades", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    const respuesta = await response?.json();
-    setCiudades(respuesta);
-
-  }
-
-  async function MostrarRedes() {
-    const response = await fetch("http://127.0.0.1:8000/api/redes", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    const respuesta = await response?.json();
-    setRedes(respuesta);
-  }
 
   useEffect(() => {
-    MostrarCiudades();
-    MostrarRedes();
-  }, []);
+    if (Object.keys(centroactual).length > 0) {
+      setNombre(centroactual.nombre);
+      SetDireccion(centroactual.direccion);
+      setId_redes(centroactual.id_redes);
+      setTelefono(centroactual.telefono);
+      setId_ciudad(centroactual.id_ciudad);
+      setArea(centroactual.area);
+      setSeguimiento_casos(centroactual.seguimiento_casos);
+      setContacto(centroactual.contacto);
+    }
+    return () => {
+      setCentroactual({});
+    };
+  }, [centroactual]);
+  
+  const updatepost = (e) => {
+    e.preventDefault();
+    if (Object.keys(centroactual).length > 0) {
+      updateCentros(
+        {
+          id: centroactual.id,
+          nombre: nombre,
+          direccion: direccion,
+          id_redes: id_redes,
+          telefono: telefono,
+          id_ciudad: id_ciudad,
+          area: area,
+          seguimiento_casos: seguimiento_casos,
+          contacto: contacto,
+
+        },
+        () => {
+          setNombre("");
+          SetDireccion("");
+          setId_redes("");
+          setTelefono("");
+          setId_ciudad("");
+          setArea("");
+          setSeguimiento_casos("");
+          setContacto("");
+          closeModal();
+          setCentroactual({});
+          getApi();
+        }
+      );
+    } else {
+      postCentro(nombre,direccion,id_redes,telefono,id_ciudad,area,seguimiento_casos,contacto, () => {
+        setNombre("");
+        SetDireccion("");
+        setId_redes("");
+        setTelefono("");
+        setId_ciudad("");
+        setArea("");
+        setSeguimiento_casos("");
+        setContacto("");
+        getApi();
+        closeModal();
+      });
+    }
+  };
 
   return (
     <Container>
@@ -148,7 +147,8 @@ const CentroForm = ({MostrarCentros}) => {
           </Divinput>
 
           <Divboton>
-            <Botonagregar type='submit' onClick={enviar} disabled={loading}>Registrar</Botonagregar>
+            <Botonagregar onClick={(e) => updatepost(e)}>
+              {Object.keys(centroactual).length > 0 ? "Editar" : "Agregar"}</Botonagregar>
           </Divboton>
         </form>
       </div>
