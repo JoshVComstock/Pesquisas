@@ -1,22 +1,24 @@
 const baseUrl =
     import.meta.env.VITE_BACKEND_URL
 
-export const getRedes = async () => {
+export const getProvincias = async () => {
     try {
-        const response = await fetch(`${baseUrl}redes`, {
+        const response = await fetch(`${baseUrl}provincias`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
             },
+
         })
         return response;
+
     } catch (error) {
         console.log(error);
     }
 };
-export const deleteRedes = async (id, callback) => {
+export const deleteProvincias = async (id, callback) => {
   
-    const response = await fetch(`${baseUrl}redes/${id}`, {
+    const response = await fetch(`${baseUrl}provincias/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -28,29 +30,31 @@ export const deleteRedes = async (id, callback) => {
         callback();
     }
 };
-export const updateRedes = async (redactual,callback) => {
-    const response = await fetch(`${baseUrl}redes/${redactual.id}`, {
+export const updateCiudades = async (provinciasactual,callback) => {
+    const response = await fetch(`${baseUrl}provincias/${provinciasactual.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         accept: "application/json",
       },
       body: JSON.stringify({
-        nombre:redactual.nombre,
+        provincia:provinciasactual.provincia,
+        id_ciudad:provinciasactual.id_ciudad,
     })});
     if(response.ok){
       callback();
     }
   }
-  export const postRedes = async (nombre,callback) => {
-    const response = await fetch(`${baseUrl}redes`, {
+  export const postCiudad = async (provincia,id_ciudad,callback) => {
+    const response = await fetch(`${baseUrl}provincias`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         accept: "application/json",
       },
       body: JSON.stringify({
-        nombre:nombre,
+        provincia: provincia,
+        id_ciudad: id_ciudad,
     })});
     if(response.ok){
       callback();

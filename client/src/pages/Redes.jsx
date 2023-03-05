@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
-import CiudadesForm from "../models/CiudadesForm";
+import RedesForm from "../models/RedesForm";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
@@ -37,19 +37,9 @@ import { deleteRedes, getRedes } from "../services/Redes";
 
 const Redes = () => {
   const [redactual, setRedactual] = useState({});
-  const { getApi, data: redes } = UseFech(getRedes);
-  const { openModal, closeModal } = useModal(
-    Object.keys(redactual).length > 0
-      ? "Editar Red de Salud"
-      : "Agregar Red de Salud",
-    <RedesForm
-      getApi={getApi}
-      redactual={redactual}
-      setRedactual={setRedactual}
-      closeModal={() => {
-        closeModal();
-      }}
-    />
+  const { user } = useuserContext();
+  const navegate = useNavigate();
+  const { openModal: editarOpen, closeModal: editarClose } = useModal(
   );
   const [filtro, setFiltro] = useState("");
   useEffect(() => {

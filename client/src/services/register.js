@@ -1,9 +1,9 @@
 const baseUrl =
     import.meta.env.VITE_BACKEND_URL
 
-export const getRedes = async () => {
+export const getRegister = async () => {
     try {
-        const response = await fetch(`${baseUrl}redes`, {
+        const response = await fetch(`${baseUrl}register`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -14,43 +14,41 @@ export const getRedes = async () => {
         console.log(error);
     }
 };
-export const deleteRedes = async (id, callback) => {
-  
-    const response = await fetch(`${baseUrl}redes/${id}`, {
+export const deleteRegister = async (id, callback) => {
+    const response = await fetch(`${baseUrl}register/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
             accept: "application/json",
         },
-
     })
     if (response.ok) {
         callback();
     }
 };
-export const updateRedes = async (redactual,callback) => {
-    const response = await fetch(`${baseUrl}redes/${redactual.id}`, {
+export const updateRegister = async (ciudadactual,callback) => {
+    const response = await fetch(`${baseUrl}ciudades/${ciudadactual.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         accept: "application/json",
       },
       body: JSON.stringify({
-        nombre:redactual.nombre,
+        ciudad:ciudadactual.ciudad,
     })});
     if(response.ok){
       callback();
     }
   }
-  export const postRedes = async (nombre,callback) => {
-    const response = await fetch(`${baseUrl}redes`, {
+  export const postR = async (ciudad,callback) => {
+    const response = await fetch(`${baseUrl}ciudades`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         accept: "application/json",
       },
       body: JSON.stringify({
-        nombre:nombre,
+        ciudad:ciudad,
     })});
     if(response.ok){
       callback();

@@ -16,45 +16,60 @@ export const getCentros = async () => {
         console.log(error);
     }
 };
-export const deleteCiudades = async (id, callback) => {
+export const deleteCentros = async (id, callback) => {
   
-    const response = await fetch(`${baseUrl}ciudades/${id}`, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-            accept: "application/json",
-        },
+  const response = await fetch(`${baseUrl}centros/${id}`, {
+      method: "DELETE",
+      headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+      },
 
-    })
-    if (response.ok) {
-        callback();
-    }
+  })
+  if (response.ok) {
+      callback();
+  }
 };
-export const updateCiudades = async (ciudadactual,callback) => {
-    const response = await fetch(`${baseUrl}ciudades/${ciudadactual.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-      body: JSON.stringify({
-        ciudad:ciudadactual.ciudad,
-    })});
-    if(response.ok){
-      callback();
-    }
+export const updateCentros = async (centroactual,callback) => {
+  const response = await fetch(`${baseUrl}centros/${centroactual.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },
+    body: JSON.stringify({
+      nombre:centroactual.nombre,
+      direccion:centroactual.direccion,
+      id_redes:centroactual.id_redes,
+      telefono:centroactual.telefono,
+      id_ciudades:centroactual.id_ciudades,
+      area:centroactual.area,
+      seguimiento_casos:centroactual.seguimiento_casos,
+      contacto:centroactual.contacto,
+
+  })});
+  if(response.ok){
+    callback();
   }
-  export const postCiudad = async (ciudad,callback) => {
-    const response = await fetch(`${baseUrl}ciudades`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-      body: JSON.stringify({
-        ciudad:ciudad,
-    })});
-    if(response.ok){
-      callback();
-    }
+}
+export const postCiudad = async (nombre,direccion,id_redes,telefono,id_ciudades,area,seguimiento_casos,contacto,callback) => {
+  const response = await fetch(`${baseUrl}centros`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },    
+    body: JSON.stringify({
+      nombre:nombre,
+      direccion:direccion,
+      id_redes:id_redes,
+      telefono:telefono,
+      id_ciudades:id_ciudades,
+      area:area,
+      seguimiento_casos:seguimiento_casos,
+      contacto:contacto,
+  })});
+  if(response.ok){
+    callback();
   }
+}

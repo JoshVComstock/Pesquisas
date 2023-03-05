@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
+import { useModal } from "../hooks/useModal";
+import CentroForm from "../models/CentroForm";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
-import CentrosEdit from "../Models/Editform/CiudadesEdit";
-import { useuserContext } from "../context/userContext";
-import { useNavigate } from "react-router-dom";
 import {
   Container,
   Titulo,
@@ -20,29 +20,40 @@ import {
   Divsearch,
   Search,
   Botonsearch,
+  Botonacciones,
+  Iconsacciones,
+  Iconsacciones1,
+  Botonesacciones,
   Divtabla,
   Thead,
+  Tbody,
   Th,
+  Trdatos,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
-import { getCentros } from "../services/centros";
+import { deleteCentros, getCentros } from "../services/Centros";
 
 const Centros = () => {
-  const { data } = UseFech(getCentros);
-  const [sexo, setSexo] = useState("");
-  console.log(sexo);
+  const [centroactual, setCentroactual] = useState({});
+  const { getApi, data: centros } = UseFech(getCentros);
+  const { openModal, closeModal } = useModal(
+    Object.keys(centroactual).length > 0 ? "Editar Centro de Salud" : "Agregar Centro de Salud",
+    <CentroForm
+      getApi={getApi}
+      centroactual={centroactual}
+      setCentroactual={setCentroactual}
+      closeModal={() => {
+        closeModal();
+      }}
+    />
+  );
+  const [filtro, setFiltro] = useState("");
+  useEffect(() => {
+    if (Object.keys(centroactual).length > 0) {
+      openModal();
+    }
+  }, [centroactual]);
 
-  const date = new Date();
-  const mes =
-    date.getMonth() < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
-  const dia = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-  const Actualdate = date.getFullYear() + "-" + mes + "-" + dia;
-  const hora = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
-  const minutos =
-    date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
-  const horaactual = hora + ":" + minutos;
-  console.log(horaactual);
-  const [fecha, setFecha] = useState(Actualdate);
   return (
     <Container>
       <Titulo>Centros de Salud</Titulo>
@@ -58,29 +69,15 @@ const Centros = () => {
           <Img src={Excel} alt="" />
           Excel
         </Botonespdf>{" "}
-        <input
-          type="radio"
-          value="femenuno"
-          name="sexo"
-          onChange={(e) => setSexo(e.target.value)}
-        />
-        <input
-          type="radio"
-          value="Masculino"
-          name="sexo"
-          onChange={(e) => setSexo(e.target.value)}
-        />
-        <input
-          type="date"
-          value={fecha}
-          onChange={(e) => setFecha(e.target.value)}
-        />
-        <input type="time" value={horaactual} />
-        <input type="text" value={horaactual} />
       </Divbotones>
       <Divsearchpadre>
         <Divsearch>
-          <Search type="text" placeholder="Buscar" />
+          <Search
+            type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)}
+          />
           <Botonsearch>
             <Img src={Searchicons} alt="" />{" "}
           </Botonsearch>
@@ -103,20 +100,49 @@ const Centros = () => {
               <Th>ACCIONES</Th>
             </tr>
           </Thead>
-          <tbody>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </tbody>
+          {centros
+            .filter((v) =>
+              v.nombre.toLowerCase().includes(filtro.toLowerCase())
+            )
+            .map((v, i) => (
+              <Tbody key={i}>
+                <tr>
+                  <Trdatos>{i + 1}</Trdatos>
+                  <Trdatos>{v.nombre}</Trdatos>
+                  <Trdatos>{v.direccion}</Trdatos>
+                  <Trdatos>{v.id_redes}</Trdatos>
+                  <Trdatos>{v.telefono}</Trdatos>
+                  <Trdatos>{v.id_cuidades}</Trdatos>
+                  <Trdatos>{v.area}</Trdatos>
+                  <Trdatos>{v.seguimiento_casos}</Trdatos>
+                  <Trdatos>{v.contacto}</Trdatos>
+                  <Trdatos>
+                    <Botonacciones>
+                      <div>
+                        <Botonesacciones>
+                          <Iconsacciones
+                            src={Editar}
+                            alt=""
+                            onClick={() => {
+                              setCentroactual(v);
+                            }}
+                          />
+                        </Botonesacciones>
+                      </div>
+                      <div>
+                        <Botonesacciones
+                          onClick={() => {
+                            deleteCentros(v.id, getApi);
+                          }}
+                        >
+                          <Iconsacciones1 src={Eliminar} alt="" />
+                        </Botonesacciones>
+                      </div>
+                    </Botonacciones>
+                  </Trdatos>
+                </tr>
+              </Tbody>
+            ))}
         </table>
       </Divtabla>
     </Container>

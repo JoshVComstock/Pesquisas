@@ -11,6 +11,5 @@ class Provincias extends Model
     protected $fillable = [
         'provincia',
         'id_ciudades'
-
     ];
 }
