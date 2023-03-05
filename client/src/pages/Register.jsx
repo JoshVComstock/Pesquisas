@@ -164,6 +164,7 @@ const Divtabla=styled.div`
     display: flex;
     justify-content: center;
     
+    
 `;
 const Tabla=styled.table`
     width: 95%;
