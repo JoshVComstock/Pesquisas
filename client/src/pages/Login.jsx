@@ -106,6 +106,8 @@ const Login = () => {
           </Divinput>
           <Boton onClick={enviar}>Ingresar</Boton>
         </Form>
+        <Section><h3>Bienvenido al sistema</h3> <br /><P>
+        Terminos y condiciones</P> </Section>
       </Divlogin>
     </Container>
   );
@@ -118,15 +120,72 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right bottom, #2a3763, #632a60);
+  background: #ffffff;
   font-family: 'Poppins', sans-serif;
+ overflow:hidden;
+ color:#000000;
+  &::before{
+    position: absolute;
+    content: "";
+    background-color: #2b44d1;
+    height: 100vh;
+    width:100vh;
+    border-radius:50vw 50vw;
+    z-index: 1;
+    left: -30%;
+    top:-20%;
+  box-shadow: 5px 5px 6px 8px rgba(0, 0, 0, 0.3);
+    
+  }
+`;
+
+const Section = styled.section`
+width:300px;
+height:100%;
+text-align:center;
+color :#ffffff;
+background-color:#2b44d1;
+display:flex;
+gap:1em;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+position:relative;
+&::after{
+  position: absolute;
+    content: "";
+    background-color: #d12bd17b;
+    height: 100px;
+    width:100px;
+    border-radius:50px 50px  ;
+    z-index: 1;
+    right:0;
+    bottom:0;
+}&::before{
+  position: absolute;
+    content: "";
+    background-color: #510d669d;
+    height: 100px;
+    width:100px;
+    border-radius:50px 50px  ;
+    z-index: 1;
+    right:30px;
+    bottom:20px;
+}
 `;
 const Divlogin = styled.div`
-background-color:#1637615a;
+background-color:transparent;
   padding: 20px;
   border-radius: 5px;
   display: flex;
-  box-shadow: 5px 5px 6px 8px rgba(0, 0, 0, 0.3);
+
+  width:50%;
+  height:60%;
+  z-index: 2;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
 `;
 const Form = styled.form`
   display: flex;
@@ -141,11 +200,11 @@ const Img = styled.img`
 const H2 = styled.h2`
   font-size: 2.9rem;
   margin: 15px 0;
-  color: #ffffff;
+
 `;
 const P = styled.h2`
   font-size: 1rem;
-  color: #ffffff;
+  
 `;
 const Divinput = styled.div`
   display: flex;

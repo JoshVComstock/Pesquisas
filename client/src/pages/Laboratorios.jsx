@@ -1,17 +1,22 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+
+import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
-import LaboratoriosForm from '../models/LaboratoriosForm';
-import LaboratoriosEdit from '../models/Editform/LaboratoriosEdit';
+
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
+
+import styled from 'styled-components';
+import LaboratoriosForm from '../models/LaboratoriosForm';
+// import LaboratoriosEdit from '../models/Editform/LaboratoriosEdit';
+
 import { useuserContext } from "../context/userContext";
 import { useNavigate } from "react-router-dom";
+
 import {
   Container,
   Titulo,
@@ -37,60 +42,35 @@ import {
   Trdatos,
 } from "../styles/crud";
 
+import { UseFech } from "../hooks/useFech";
+import { deleteLaboratorios, getLaboratorios } from "../services/Laboratorios";
 
 const Laboratorios = () => {
-  const [laboratorioactual, setLaboratorioactual] = useState({});
-  const { user } = useuserContext();
-  const navegate = useNavigate();
-  const { openModal: editarOpen, closeModal: editarClose } = useModal(
-    "Editar Laboraorio",
-    <LaboratoriosEdit
-      laboratorioactual={laboratorioactual}
-      MostrarLaboratorios={MostrarLaboratorios}
+  const [actual, setLaboratorioactual] = useState({});
+
+  const { getApi, data: laboratorios } = UseFech(getLaboratorios);
+  const { openModal, closeModal } = useModal(
+    Object.keys(actual).length > 0 ? "Editar Registro de Laboratorio" : "Agregar Laboratorio",
+    <LaboratoriosForm
+      getApi={getApi}
+      actual={actual}
+      setLaboratorioactual={setLaboratorioactual}
+      closeModal={() => {
+        closeModal();
+      }}
     />
   );
-  const { openModal, closeModal } = useModal(
-    "Agregar Laboratorio",
-    <LaboratoriosForm MostrarLaboratorios={MostrarLaboratorios} />
-  );
 
-  const [laboratorios, setLaboratorios] = useState([]);
   const [filtro, setFiltro] = useState("");
+  useEffect(() => {
+    if (Object.keys(actual).length > 0) {
+      openModal();
+    }
+  }, [actual]);
 
-  async function MostrarLaboratorios() {
-    const response = await fetch("http://127.0.0.1:8000/api/laboratorios", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    const respuesta = await response?.json();
-    setLaboratorios(respuesta);
-    closeModal();
-    editarClose();
-  }
-  async function EliminarLaboratorios(id) {
-    const response = await fetch("http://127.0.0.1:8000/api/laboratorios/" + id, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    if (response.ok) {
-      MostrarLaboratorios();
-    }
-  }
-  useEffect(() => {
-    MostrarLaboratorios();
-  }, []);
-  useEffect(() => {
-    if (Object.keys(laboratorioactual).length != 0) {
-      editarOpen();
-    }
-  }, [laboratorioactual]);
-  useEffect(() => {}, []);
+
+  const { user } = useuserContext();
+  const navegate = useNavigate();
   
   return (
     <Container>
@@ -161,7 +141,7 @@ const Laboratorios = () => {
                         </Botonesacciones>
                       </div>
                       <div>
-                        <Botonesacciones onClick={() => EliminarLaboratorios(v.id)}>
+                        <Botonesacciones onClick={() => deleteLaboratorios(v.id)}>
                           <Iconsacciones1 src={Eliminar} alt="" />
                         </Botonesacciones>
                       </div>

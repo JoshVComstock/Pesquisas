@@ -1,93 +1,90 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
+import React from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
-const LaboratoriosForm = ({MostrarLaboratorios}) => {
+import { postLaboratorio, updateLaboratorios } from "../services/Laboratorios";
+import { getRedes } from "../services/Redes";
+import { getCiudades } from "../services/Ciudades";
+import { getCentros } from "../services/centros";
+import { UseFech } from "../hooks/useFech";
+const LaboratoriosForm = ({
+  getApi,
+  actual,
+  setLaboratorioactual,
+  closeModal,
+}) => {
   const [nombre, setNombre] = useState("");
-  const [direccion, SetDireccion] = useState("");
+  const [direccion, setDireccion] = useState("");
   const [telefono, setTelefono] = useState("");
+  // 
   const [id_centros, setId_centros] = useState("");
-  const [centros, setCentros] = useState([]);
   const [id_ciudades, setId_ciudades] = useState("");
-  const [ciudades, setCiudades] = useState([]);
   const [id_redes, setId_redes] = useState("");
-  const [redes, setRedes] = useState([]);
-  const [loading, setLoading] = useState(false);
 
-  const enviar = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    const response = await fetch("http://127.0.0.1:8000/api/laboratorios", {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        nombre: nombre,
-        direccion: direccion,
-        telefono: telefono,
-        id_centros: id_centros,
-        id_ciudades: id_ciudades,
-        id_redes: id_redes,
-      }),
-    });
 
-    const respuesta = await response?.json();
-    if ((respuesta.mensaje = "Creado satisfactoriamente")) {
-
-      setNombre("");
-      SetDireccion("");
-      setTelefono("");
-      setId_centros("");
-      setId_ciudades("");
-      setId_redes("");
-      MostrarLaboratorios();
-    }
-  };
-
-  async function MostrarCentros() {
-    const response = await fetch("http://127.0.0.1:8000/api/centros", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    const respuesta = await response?.json();
-    setCentros(respuesta);
-  }
-
-  async function MostrarCiudades() {
-    const response = await fetch("http://127.0.0.1:8000/api/ciudades", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    const respuesta = await response?.json();
-    setCiudades(respuesta);
-
-  }
-
-  async function MostrarRedes() {
-    const response = await fetch("http://127.0.0.1:8000/api/redes", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    const respuesta = await response?.json();
-    setRedes(respuesta);
-  }
+  const { loading, res } = UseFech(getRedes, getCiudades, getCentros);
 
   useEffect(() => {
-    MostrarCentros();
-    MostrarCiudades();
-    MostrarRedes();
-  }, []);
+    if (Object.keys(actual).length > 0) {
+      setNombre(actual.nombre);
+      setDireccion(actual.direccion);
+      setTelefono(actual.telefono);
+      setId_centros(actual.id_centros);
+      setId_ciudades(actual.id_ciudades);
+      setId_redes(actual.id_redes);
+    }
+    return () => {
+      setLaboratorioactual({});
+    };
+  }, [actual]);
+
+  const updatepost = (e) => {
+    e.preventDefault();
+    if (Object.keys(actual).length > 0) {
+      updateLaboratorios(
+        {
+          id: actual.id,
+          nombre: nombre,
+          direccion: direccion,
+          telefono: telefono,
+          id_centros: id_centros,
+          id_ciudades: id_ciudades,
+          id_redes: id_redes,
+        },
+        () => {
+          setLaboratorioactual({});
+          setNombre("");
+          setDireccion("");
+          setTelefono("");
+          setId_centros("");
+          setId_ciudades("");
+          setId_redes("");
+          closeModal();
+
+          getApi();
+        }
+      );
+    } else {
+      postLaboratorio(
+        nombre,
+        direccion,
+        telefono,
+        id_centros,
+        id_ciudades,
+        id_redes,
+        () => {
+          setNombre("");
+          setDireccion("");
+          setTelefono("");
+          setId_centros("");
+          id_ciudades("");
+          id_redes("");
+          getApi();
+          closeModal();
+        }
+      );
+    }
+  };
 
   return (
     <Container>
@@ -156,36 +153,34 @@ const LaboratoriosForm = ({MostrarLaboratorios}) => {
           </form>
         </div>
     </Container>
-  )
-}
+  );
+};
 
-export default LaboratoriosForm
+export default LaboratoriosForm;
 
-const Container=styled.div`
-`;
-const Divinputlabel=styled.div`
+const Container = styled.div``;
+const Divinputlabel = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Divinput=styled.div`
+const Divinput = styled.div`
   display: flex;
   flex-direction: column;
   margin: 5px;
   align-items: center;
 `;
-const Input=styled.input`
+const Input = styled.input`
   margin-top: 5px;
   margin-bottom: 5px;
   height: 30px;
   border-radius: 5px;
-  border: 1px solid rgba(0,0,0,.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   outline: none;
-  &:focus{
+  &:focus {
     border: 1.5px solid #034078;
   }
-
 `;
-const Divboton=styled.div`
+const Divboton = styled.div`
   display: flex;
   justify-content: center;
 `;

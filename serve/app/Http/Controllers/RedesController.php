@@ -12,17 +12,17 @@ class RedesController extends Controller
     }
     public function store(Request $request)
     {
-        $redes=new Redes();
-        $redes->nombre=$request->nombre;
-        $redes->save();
-        return $redes;
+        $Redes=new Redes();
+        $Redes->nombre=$request->nombre;
+        $Redes->save();
+        return $Redes;
     }
     public function update(Request $request, $id)
     {
-        $redes=Redes::find($id);
-        $redes->nombre=$request->nombre;
-        $redes->save();
-        return $redes;
+        $Redes=Redes::find($id);
+        $Redes->nombre=$request->nombre;
+        $Redes->save();
+        return $Redes;
     }
     public function destroy($id)
     {

@@ -8,6 +8,7 @@ import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
+import RedesForm from "../Models/RedesForm";
 import {
   Container,
   Titulo,
@@ -32,6 +33,7 @@ import {
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteRedes, getRedes } from "../services/Redes";
+
 
 const Redes = () => {
   const [redactual, setRedactual] = useState({});
