@@ -18,16 +18,21 @@ const Ciudadgrafic = () => {
   const COLOR = ["blue", "6bec", "#ce93d3", "#5c6bc0"];
   return (
     
-      <ResponsiveContainer width="50%" aspect={2}>
-        <PieChart>
-          <Pie dataKey="id" data={ciudad} innerRadius={5} >
-            {ciudad.map((v, i) => (
-              <Cell key={`cell- ${i}`} fill={COLOR[i % COLOR.length]} />
-            ))}
-          </Pie>
-          <Tooltip />
-        </PieChart>
-      </ResponsiveContainer>
+      <div>
+        <h1>sdfsd
+          
+        </h1>
+        <ResponsiveContainer width="50%" aspect={2}>
+          <PieChart>
+            <Pie dataKey="id" data={ciudad} innerRadius={5} >
+              {ciudad.map((v, i) => (
+                <Cell key={`cell- ${i}`} fill={COLOR[i % COLOR.length]} />
+              ))}
+            </Pie>
+            <Tooltip />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
     
   );
 };
