@@ -31,6 +31,7 @@ const MunicipiosForm = ({
         {
           id: municipioactual.id,
           municipio: municipio,
+          id_ciudades:id_ciudades,
         },
         () => {
           setMunicipio("");
@@ -66,13 +67,14 @@ const MunicipiosForm = ({
           <Divinput>
             <Divinputlabel>
               <label>Ciudad</label>
-              <select onChange={(e) => setId_ciudades(e.target.value)}>
+              <Select onChange={(e) => setId_ciudades(e.target.value)}>
+                <option >Seleccione Ciudad</option>
                 {ciudad.map((v, i) => (
                   <option key={i} value={v.id}>
                     {v.ciudad}
                   </option>
                 ))}
-              </select>
+              </Select>
             </Divinputlabel>
           </Divinput>
           <Divboton>
@@ -123,4 +125,12 @@ const Botonagregar = styled.button`
   &:hover {
     background: #0077b6;
   }
+`;
+const Select = styled.select`
+  width: 180px;
+  outline: none;
+  font-size: 16px;
+  padding: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
 `;

@@ -13,7 +13,6 @@ export const UseFech = (ruta) => {
   useEffect(() => {
     getApi();
   }, []);
-  console.log(data);
   return {
     loading,
     getApi,

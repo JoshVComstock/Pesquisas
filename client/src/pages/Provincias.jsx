@@ -1,19 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import styled from "styled-components";
 import { useModal } from "../hooks/useModal";
 import ProvinciasForm from "../models/ProvinciasForm";
-import ProvinciasEdit from "../models/Editform/ProviciasEdit";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
-import { useuserContext } from "../context/userContext";
 import { UseFech } from "../hooks/useFech";
-import { getProvincias } from "../services/provincias";
-import { useNavigate } from "react-router-dom";
+import { deleteProvincias, getProvincias } from "../services/provincias";
 import {
   Container,
   Titulo,
@@ -39,26 +35,22 @@ import {
 
 const Provincias = () => {
   const [provinciaactual, setProviciaactual] = useState({});
-  const { getApi,data: provicias } = UseFech(getProvincias);
-  const { user } = useuserContext();
-  const navegate = useNavigate();
+  const { getApi, data: provicias } = UseFech(getProvincias);
   const { openModal, closeModal } = useModal(
     Object.keys(provinciaactual).length > 0 ? "Editar" : "Agregar",
-    <ProvinciasForm 
-    getApi={getApi}
-    provinciaactual={provinciaactual}
-    setProviciaactual={setProviciaactual}
-    closeModal={
-      ()=>{
+    <ProvinciasForm
+      getApi={getApi}
+      provinciaactual={provinciaactual}
+      setProviciaactual={setProviciaactual}
+      closeModal={() => {
         closeModal();
-      }
-    }
+      }}
     />
   );
   const [filtro, setFiltro] = useState("");
   useEffect(() => {
     if (Object.keys(provinciaactual).length != 0) {
-      editarOpen();
+      openModal();
     }
   }, [provinciaactual]);
   return (
@@ -75,7 +67,7 @@ const Provincias = () => {
         <Botonespdf>
           <Img src={Excel} alt="" />
           Excel
-        </Botonespdf>{" "}
+        </Botonespdf>
       </Divbotones>
       <Divsearchpadre>
         <Divsearch>
@@ -125,7 +117,7 @@ const Provincias = () => {
                       </div>
                       <div>
                         <Botonesacciones
-                          onClick={() => EliminarProvincias(v.id)}
+                          onClick={() => deleteProvincias(v.id, getApi)}
                         >
                           <Iconsacciones1 src={Eliminar} alt="" />
                         </Botonesacciones>

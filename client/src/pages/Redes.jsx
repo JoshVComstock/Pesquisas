@@ -35,9 +35,17 @@ import { deleteRedes, getRedes } from "../services/Redes";
 
 const Redes = () => {
   const [redactual, setRedactual] = useState({});
-  const { user } = useuserContext();
-  const navegate = useNavigate();
-  const { openModal: editarOpen, closeModal: editarClose } = useModal(
+  const { data: redes, getApi } = UseFech(getRedes);
+  const { openModal, closeModal } = useModal(
+    Object.keys(redactual).length > 0 ? "Editar" : "Agregar",
+    <RedesForm
+      getApi={getApi}
+      redactual={redactual}
+      setRedactual={setRedactual}
+      closeModal={() => {
+        closeModal();
+      }}
+    />
   );
   const [filtro, setFiltro] = useState("");
   useEffect(() => {
@@ -107,9 +115,11 @@ const Redes = () => {
                         </Botonesacciones>
                       </div>
                       <div>
-                        <Botonesacciones onClick={() => {
+                        <Botonesacciones
+                          onClick={() => {
                             deleteRedes(v.id, getApi);
-                          }}>
+                          }}
+                        >
                           <Iconsacciones1 src={Eliminar} alt="" />
                         </Botonesacciones>
                       </div>

@@ -114,37 +114,40 @@ const LaboratoriosForm = ({MostrarLaboratorios}) => {
             <Divinput>
               <Divinputlabel>
                 <label>Centro de Salud</label>
-                <select value={id_centros} onChange={(e) => setId_centros(e.target.value)} >
+                <Select value={id_centros} onChange={(e) => setId_centros(e.target.value)} >
+                  <option value="">Seleccione Centro</option>
                   {centros.map((v, i) => (
                     <option key={i} value={v.id}  >
                       {v.nombre}
                     </option>
                   ))}
-                </select>
+                </Select>
               </Divinputlabel>
             </Divinput>
             <Divinput>
               <Divinputlabel>
                 <label>Ciudad</label>
-                <select value={id_ciudades} onChange={(e)=>setId_ciudades(e.target.value)} >
+                <Select value={id_ciudades} onChange={(e)=>setId_ciudades(e.target.value)} >
+                  <option value="">Seleccione Ciudad</option>
                   {ciudades.map((v, i) => (
                     <option key={i} value={v.id}  >
                       {v.ciudad}
                     </option>
                   ))}
-                </select>
+                </Select>
               </Divinputlabel>
             </Divinput>
             <Divinput>
               <Divinputlabel>
                 <label>Red de Salud</label>
-                <select value={id_redes} onChange={(e) => setId_redes(e.target.value)} >
+                <Select value={id_redes} onChange={(e) => setId_redes(e.target.value)} >
+                  <option value="">Seleccione Red</option>
                   {redes.map((v, i) => (
                     <option key={i} value={v.id}  >
                       {v.nombre}
                     </option>
                   ))}
-                </select>
+                </Select>
               </Divinputlabel>
             </Divinput>
             <Divboton>
@@ -195,4 +198,12 @@ const Botonagregar=styled.button`
  &:hover{
   background: #0077b6;
  }
+`;
+const Select = styled.select`
+  width: 180px;
+  outline: none;
+  font-size: 16px;
+  padding: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
 `;

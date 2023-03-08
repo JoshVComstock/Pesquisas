@@ -52,7 +52,7 @@ export const updateCentros = async (centroactual,callback) => {
     callback();
   }
 }
-export const postCiudad = async (nombre,direccion,id_redes,telefono,id_ciudades,area,seguimiento_casos,contacto,callback) => {
+export const postCentros = async (nombre,direccion,id_redes,telefono,id_ciudades,area,seguimiento_casos,contacto,callback) => {
   const response = await fetch(`${baseUrl}centros`, {
     method: "POST",
     headers: {

@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { postCiudad, updateCiudades } from "../services/Ciudades";
 import "../pages/css/Centros.css";
 import { UseFech } from "../hooks/useFech";
 import { getCiudades } from "../services/Ciudades";
 import { getRedes } from "../services/Redes";
+import { postCentros, updateCentros } from "../services/centros";
 
-const CentroForm = ({getApi,centroactual,setCentroactual,closeModal}) => {
+const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
   const [nombre, setNombre] = useState("");
   const [direccion, SetDireccion] = useState("");
   const [id_redes, setId_redes] = useState("");
@@ -34,7 +34,7 @@ const CentroForm = ({getApi,centroactual,setCentroactual,closeModal}) => {
       setCentroactual({});
     };
   }, [centroactual]);
-  
+
   const updatepost = (e) => {
     e.preventDefault();
     if (Object.keys(centroactual).length > 0) {
@@ -49,7 +49,6 @@ const CentroForm = ({getApi,centroactual,setCentroactual,closeModal}) => {
           area: area,
           seguimiento_casos: seguimiento_casos,
           contacto: contacto,
-
         },
         () => {
           setNombre("");
@@ -66,18 +65,28 @@ const CentroForm = ({getApi,centroactual,setCentroactual,closeModal}) => {
         }
       );
     } else {
-      postCentro(nombre,direccion,id_redes,telefono,id_ciudad,area,seguimiento_casos,contacto, () => {
-        setNombre("");
-        SetDireccion("");
-        setId_redes("");
-        setTelefono("");
-        setId_ciudad("");
-        setArea("");
-        setSeguimiento_casos("");
-        setContacto("");
-        getApi();
-        closeModal();
-      });
+      postCentros(
+        nombre,
+        direccion,
+        id_redes,
+        telefono,
+        id_ciudad,
+        area,
+        seguimiento_casos,
+        contacto,
+        () => {
+          setNombre("");
+          SetDireccion("");
+          setId_redes("");
+          setTelefono("");
+          setId_ciudad("");
+          setArea("");
+          setSeguimiento_casos("");
+          setContacto("");
+          getApi();
+          closeModal();
+        }
+      );
     }
   };
 
@@ -88,67 +97,118 @@ const CentroForm = ({getApi,centroactual,setCentroactual,closeModal}) => {
           <Divinput>
             <Divinputlabel>
               <label>Nombre:</label>
-              <Input  name="Nombre" placeholder="Ingrese un Nombre" type="text" required value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+              <Input
+                name="Nombre"
+                placeholder="Ingrese un Nombre"
+                type="text"
+                required
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+              />
             </Divinputlabel>
           </Divinput>
           <Divinput>
             <Divinputlabel>
               <label>Dirección:</label>
-              <Input  name="Direccion" placeholder="Ingrese una Dirección" type="text" required value={direccion} onChange={(e) => SetDireccion(e.target.value)}/>
+              <Input
+                name="Direccion"
+                placeholder="Ingrese una Dirección"
+                type="text"
+                required
+                value={direccion}
+                onChange={(e) => SetDireccion(e.target.value)}
+              />
             </Divinputlabel>
           </Divinput>
           <Divinput>
             <Divinputlabel>
               <label>Red de Salud:</label>
-              <select value={id_redes} onChange={(e)=>setId_redes(e.target.value)} >
+              <Select
+                value={id_redes}
+                onChange={(e) => setId_redes(e.target.value)}
+              >
+                <option> Seleccione una red </option>
                 {redes.map((v, i) => (
-                  <option key={i} value={v.id}  >
+                  <option key={i} value={v.id}>
                     {v.nombre}
                   </option>
                 ))}
-              </select>
+              </Select>
             </Divinputlabel>
           </Divinput>
           <Divinput>
             <Divinputlabel>
               <label>Teléfono:</label>
-              <Input name="Telefono" placeholder="Ingrese un Teléfono" type="number" value={telefono} required onChange={(e) => setTelefono(e.target.value)}/>
+              <Input
+                name="Telefono"
+                placeholder="Ingrese un Teléfono"
+                type="number"
+                value={telefono}
+                required
+                onChange={(e) => setTelefono(e.target.value)}
+              />
             </Divinputlabel>
           </Divinput>
           <Divinput>
             <Divinputlabel>
               <label>Ciudad:</label>
-              <select value={id_ciudad} onChange={(e)=>setId_ciudad(e.target.value)} >
+              <Select
+                value={id_ciudad}
+                onChange={(e) => setId_ciudad(e.target.value)}
+              >
+                <option >Seleccione ciudad</option>
                 {ciudades.map((v, i) => (
-                  <option key={i} value={v.id}  >
+                  <option key={i} value={v.id}>
                     {v.ciudad}
                   </option>
                 ))}
-              </select>
+              </Select>
             </Divinputlabel>
           </Divinput>
           <Divinput>
             <Divinputlabel>
               <label>Área:</label>
-              <Input name="Area" placeholder="Ingrese una Área" type="text" value={area} required onChange={(e) => setArea(e.target.value)}/>
+              <Input
+                name="Area"
+                placeholder="Ingrese una Área"
+                type="text"
+                value={area}
+                required
+                onChange={(e) => setArea(e.target.value)}
+              />
             </Divinputlabel>
           </Divinput>
           <Divinput>
             <Divinputlabel>
               <label>Seguimiento de Casos:</label>
-              <Input name="Telefono" placeholder="Seguimiento de Casos" type="text" value={seguimiento_casos} required onChange={(e) => setSeguimiento_casos(e.target.value)}/>
+              <Input
+                name="Telefono"
+                placeholder="Seguimiento de Casos"
+                type="text"
+                value={seguimiento_casos}
+                required
+                onChange={(e) => setSeguimiento_casos(e.target.value)}
+              />
             </Divinputlabel>
           </Divinput>
           <Divinput>
             <Divinputlabel>
               <label>Contacto:</label>
-              <Input name="Contacto" placeholder="Ingrese un Contacto" type="number" required value={contacto} onChange={(e) => setContacto(e.target.value)}/>
+              <Input
+                name="Contacto"
+                placeholder="Ingrese un Contacto"
+                type="number"
+                required
+                value={contacto}
+                onChange={(e) => setContacto(e.target.value)}
+              />
             </Divinputlabel>
           </Divinput>
 
           <Divboton>
             <Botonagregar onClick={(e) => updatepost(e)}>
-              {Object.keys(centroactual).length > 0 ? "Editar" : "Agregar"}</Botonagregar>
+              {Object.keys(centroactual).length > 0 ? "Editar" : "Agregar"}
+            </Botonagregar>
           </Divboton>
         </form>
       </div>
@@ -158,41 +218,47 @@ const CentroForm = ({getApi,centroactual,setCentroactual,closeModal}) => {
 
 export default CentroForm;
 
-const Container=styled.div`
-`;
-const Divinputlabel=styled.div`
+const Container = styled.div``;
+const Divinputlabel = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Divinput=styled.div`
+const Divinput = styled.div`
   display: flex;
   flex-direction: column;
   margin: 5px;
   align-items: center;
 `;
-const Input=styled.input`
+const Input = styled.input`
   margin-top: 5px;
   margin-bottom: 5px;
   height: 30px;
   border-radius: 5px;
-  border: 1px solid rgba(0,0,0,.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   outline: none;
-  &:focus{
+  &:focus {
     border: 1.5px solid #034078;
   }
-
 `;
-const Divboton=styled.div`
+const Divboton = styled.div`
   display: flex;
   justify-content: center;
 `;
-const Botonagregar=styled.button`
- padding: 10px;
- cursor: pointer;
- background:#034078;
- color: #fff;
- border-radius: 7px;
- &:hover{
-  background: #0077b6;
- }
+const Botonagregar = styled.button`
+  padding: 10px;
+  cursor: pointer;
+  background: #034078;
+  color: #fff;
+  border-radius: 7px;
+  &:hover {
+    background: #0077b6;
+  }
+`;
+const Select = styled.select`
+  width: 180px;
+  outline: none;
+  font-size: 16px;
+  padding: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
 `;

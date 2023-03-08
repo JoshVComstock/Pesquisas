@@ -58,7 +58,7 @@ const Centros = () => {
     <Container>
       <Titulo>Centros de Salud</Titulo>
       <Divbotones>
-        <Botonespdf2>
+        <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo
         </Botonespdf2>
         <Botonespdf1>
@@ -109,9 +109,9 @@ const Centros = () => {
                   <Trdatos>{i + 1}</Trdatos>
                   <Trdatos>{v.nombre}</Trdatos>
                   <Trdatos>{v.direccion}</Trdatos>
-                  <Trdatos>{v.id_redes}</Trdatos>
+                  <Trdatos>{v.red}</Trdatos>
                   <Trdatos>{v.telefono}</Trdatos>
-                  <Trdatos>{v.id_cuidades}</Trdatos>
+                  <Trdatos>{v.ciudad}</Trdatos>
                   <Trdatos>{v.area}</Trdatos>
                   <Trdatos>{v.seguimiento_casos}</Trdatos>
                   <Trdatos>{v.contacto}</Trdatos>

@@ -99,7 +99,7 @@ const Register = () => {
                   <Trdatos>{v.email}</Trdatos>
                   <Trdatos>{v.telefono}</Trdatos>
                   <Trdatos>{v.rol}</Trdatos>
-                  <Trdatos>{v.password}</Trdatos>
+                  <Trdatos>********</Trdatos>
                   <Trdatos>
                     <Botonacciones>
                       <div>

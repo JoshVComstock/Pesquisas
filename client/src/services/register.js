@@ -3,7 +3,7 @@ const baseUrl =
 
 export const getRegister = async () => {
     try {
-        const response = await fetch(`${baseUrl}register`, {
+        const response = await fetch(`${baseUrl}registeruser`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
