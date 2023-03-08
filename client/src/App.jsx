@@ -24,6 +24,8 @@ import { Navcontextprovider } from "./context/navcontext";
 import { Usercontextprovider } from "./context/userContext";
 import ProtectedRoute from "./wrappers/ProtectedRoute";
 import Control_Filtros from "./pages/Control_Filtros";
+import Cartillas from "./pages/Cartillas";
+import Cartilla from "./models/Cartilla";
 
 function App() {
   return (
@@ -49,6 +51,7 @@ function App() {
                   <Route path="enfermedades" element={<Enfermedades />} />
                   <Route path="laboratorios" element={<Laboratorios />} />
                   <Route path="provincias" element={<Provincias />} />
+                  <Route path="cartilla" element={<Cartilla/>}/>
                   <Route path="registro_provincias" element={<Registro_provincias />} />
                   <Route path="municipios" element={<Municipios />} />
                   <Route path="registro_hospitales" element={<Registro_hospitales />} />

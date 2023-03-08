@@ -26,13 +26,9 @@ class CartillasController extends Controller
         $cartillas->transfusion=$request->transfusion;
         $cartillas->antibioticos=$request->antibioticos;
         $cartillas->ci=$request->ci;
-        $cartillas->nombre_madre=$request->nombre_madre;
         $cartillas->id_ciudades=$request->id_ciudades;
         $cartillas->id_centros=$request->id_centros;
-        $cartillas->telefono1=$request->telefono1;
-        $cartillas->telefono2=$request->telefono2;
-        $cartillas->direccion=$request->direccion;
-        $cartillas->enfermedad_madre=$request->enfermedad_madre;
+        $cartillas->id_madres=$request->id_madres;
         $cartillas->save();
         return $cartillas;
     }
@@ -53,13 +49,9 @@ class CartillasController extends Controller
         $cartillas->transfusion=$request->transfusion;
         $cartillas->antibioticos=$request->antibioticos;
         $cartillas->ci=$request->ci;
-        $cartillas->nombre_madre=$request->nombre_madre;
         $cartillas->id_ciudades=$request->id_ciudades;
         $cartillas->id_centros=$request->id_centros;
-        $cartillas->telefono1=$request->telefono1;
-        $cartillas->telefono2=$request->telefono2;
-        $cartillas->direccion=$request->direccion;
-        $cartillas->enfermedad_madre=$request->enfermedad_madre;
+        $cartillas->id_madres=$request->id_madres;
         $cartillas->save();
         return $cartillas;
     }

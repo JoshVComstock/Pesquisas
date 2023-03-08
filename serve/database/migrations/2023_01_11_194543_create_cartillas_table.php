@@ -30,14 +30,11 @@ class CreateCartillasTable extends Migration
             $table->string('transfusion');
             $table->string('antibioticos');
             $table->integer('ci');
-            $table->string('nombre_madre');
             $table->foreignId('id_ciudades')->constrained('ciudades')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('id_centros')->constrained('centros')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->integer('telefono1');
-            $table->integer('telefono2');
-            $table->string('direccion');
-            $table->string('enfermedad_madre');
+            $table->foreignId('id_madres')->constrained('madres')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
+            
         });
     }
 

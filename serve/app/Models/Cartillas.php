@@ -23,7 +23,7 @@ class Cartillas extends Model
         'transfusion',
         'antibioticos',
         'ci',
-        'nombre_madre',
+        'id_madres',
         'id_ciudades',
         'id_centros',
         'telefono1',

@@ -16,6 +16,7 @@ import Rellamadosicons from "../../../img/icons/Rellamados.jpg";
 import Madresicons from "../../../img/icons/Madre.jpg";
 import Pacienteicons from "../../../img/icons/Paciente.jpg";
 import Usericons from "../../../img/user.jpg";
+import Cartilla from "../../../img/icons/Primeramuestra.jpg"
 
 
 const AdminComponent = () => {
@@ -52,6 +53,9 @@ const AdminComponent = () => {
   </Linkes>
   <Linkes to="/municipios">
     <Img src={Municiosicons} alt="" /> Municipios
+  </Linkes>
+  <Linkes to="/cartilla">
+    <Img src={Cartilla} alt="" /> Cartilla
   </Linkes>
   <Linkes to="/pacientes">
     <Img src={Pacienteicons} alt="" /> /Pacientes

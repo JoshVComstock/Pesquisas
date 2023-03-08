@@ -10,13 +10,8 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function Userregister()
-    {
-        return User::all();
-    }
-    public function Desencriptar(){
-        
-    }
+   
+  
     public function register(Request $request)
     {
         $request->validate([
