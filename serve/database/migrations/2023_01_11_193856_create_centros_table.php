@@ -17,9 +17,10 @@ class CreateCentrosTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('direccion');
-            $table->foreignId('id_redes')->constrained('redes')->cascadeOnUpdate()->cascadeOnDelete();
+            //$table->foreignId('id_redes')->constrained('redes')->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('telefono');
-            $table->foreignId('id_ciudades')->constrained('ciudades')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('id_municipios')->constrained('municipios')->cascadeOnUpdate()->cascadeOnDelete();
+            //$table->foreignId('id_ciudades')->constrained('ciudades')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('area');
             $table->string('seguimiento_casos');
             $table->string('contacto');

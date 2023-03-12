@@ -14,14 +14,15 @@ class MadresController extends Controller
     {
         $madre=new Madres();
         $madre->nombre=$request->nombre;
-        $madre->ap_paterno=$request->ap_paterno;
-        $madre->ap_materno=$request->ap_materno;
+        $madre->apellidos=$request->apellidos;
         $madre->ci=$request->ci;
         $madre->id_ciudades=$request->id_ciudades;
         $madre->direccion=$request->direccion;
         $madre->telefono1=$request->telefono1;
         $madre->telefono2=$request->telefono2;
-        $madre->id_enfermedades=$request->id_enfermedades;
+        $madre->tratamiento_hipertiroidismo=$request->tratamiento_hipertiroidismo;
+        $madre->tratamiento_hipotiroidismo=$request->tratamiento_hipotiroidismo;
+        $madre->enfermedad=$request->enfermedad;
         $madre->detalle_direccion=$request->detalle_direccion;
         $madre->save();
         return $madre;
@@ -30,14 +31,15 @@ class MadresController extends Controller
     {
         $madre=Madres::find($id);
         $madre->nombre=$request->nombre;
-        $madre->ap_paterno=$request->ap_paterno;
-        $madre->ap_materno=$request->ap_materno;
+        $madre->apellidos=$request->apellidos;
         $madre->ci=$request->ci;
         $madre->id_ciudades=$request->id_ciudades;
         $madre->direccion=$request->direccion;
         $madre->telefono1=$request->telefono1;
         $madre->telefono2=$request->telefono2;
-        $madre->id_enfermedades=$request->id_enfermedades;
+        $madre->tratamiento_hipertiroidismo=$request->tratamiento_hipertiroidismo;
+        $madre->tratamiento_hipotiroidismo=$request->tratamiento_hipotiroidismo;
+        $madre->enfermedad=$request->enfermedad;
         $madre->detalle_direccion=$request->detalle_direccion;
         $madre->save();
         return $madre;

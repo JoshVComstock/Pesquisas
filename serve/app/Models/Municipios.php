@@ -10,6 +10,6 @@ class Municipios extends Model
     use HasFactory;
     protected $fillable = [
         'municipio',
-        'id_ciudades'
+        'id_provincias'
     ];
 }

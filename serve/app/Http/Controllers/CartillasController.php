@@ -13,22 +13,16 @@ class CartillasController extends Controller
     public function store(Request $request)
     {   $cartillas=new Cartillas();
         $cartillas->codigo_barras=$request->codigo_barras;
-        $cartillas->primer_apellido=$request->primer_apellido;
-        $cartillas->segundo_apellido=$request->segundo_apellido;
-        $cartillas->nombre_bebe=$request->nombre_bebe;
-        $cartillas->fecha_nacimiento=$request->fecha_nacimiento;
         $cartillas->fecha_toma_muestra=$request->fecha_toma_muestra;
         $cartillas->nacimiento_termino=$request->nacimiento_termino;
-        $cartillas->edad_gestional=$request->edad_gestional;
-        $cartillas->sexo=$request->sexo;
+        $cartillas->edad_gestional_semanas=$request->edad_gestional_semanas;
+        $cartillas->edad_gestional_dia=$request->edad_gestional_dia;
         $cartillas->muestra=$request->muestra;
         $cartillas->peso_nacimiento=$request->peso_nacimiento;
         $cartillas->transfusion=$request->transfusion;
+        $cartillas->fecha=$request->fecha;
         $cartillas->antibioticos=$request->antibioticos;
-        $cartillas->ci=$request->ci;
-        $cartillas->id_ciudades=$request->id_ciudades;
         $cartillas->id_centros=$request->id_centros;
-        $cartillas->id_madres=$request->id_madres;
         $cartillas->save();
         return $cartillas;
     }
@@ -36,22 +30,16 @@ class CartillasController extends Controller
     {
         $cartillas= Cartillas::find($id);
         $cartillas->codigo_barras=$request->codigo_barras;
-        $cartillas->primer_apellido=$request->primer_apellido;
-        $cartillas->segundo_apellido=$request->segundo_apellido;
-        $cartillas->nombre_bebe=$request->nombre_bebe;
-        $cartillas->fecha_nacimiento=$request->fecha_nacimiento;
         $cartillas->fecha_toma_muestra=$request->fecha_toma_muestra;
         $cartillas->nacimiento_termino=$request->nacimiento_termino;
-        $cartillas->edad_gestional=$request->edad_gestional;
-        $cartillas->sexo=$request->sexo;
+        $cartillas->edad_gestional_semanas=$request->edad_gestional_semanas;
+        $cartillas->edad_gestional_dia=$request->edad_gestional_dia;
         $cartillas->muestra=$request->muestra;
         $cartillas->peso_nacimiento=$request->peso_nacimiento;
         $cartillas->transfusion=$request->transfusion;
+        $cartillas->fecha=$request->fecha;
         $cartillas->antibioticos=$request->antibioticos;
-        $cartillas->ci=$request->ci;
-        $cartillas->id_ciudades=$request->id_ciudades;
         $cartillas->id_centros=$request->id_centros;
-        $cartillas->id_madres=$request->id_madres;
         $cartillas->save();
         return $cartillas;
     }

@@ -14,7 +14,7 @@ class CentrosController extends Controller
      */
     public function index()
     {
-        return DB::select('SELECT ce.nombre,ce.direccion,r.nombre as red,ce.telefono, c.ciudad,ce.area,ce.seguimiento_casos,ce.contacto FROM redes as r , ciudades as c, centros as ce WHERE ce.id_redes=r.id and ce.id_ciudades=c.id;
+        return DB::select('SELECT ce.nombre,ce.direccion,ce.telefono, c.ciudad,ce.area,ce.seguimiento_casos,ce.contacto FROM  ciudades as c, centros as ce WHERE ce.id_ciudades=c.id;
         ');
     }
     public function store(Request $request)
@@ -22,9 +22,8 @@ class CentrosController extends Controller
         $centros= new Centros();
         $centros->nombre=$request->nombre;
         $centros->direccion=$request->direccion;
-        $centros->id_redes=$request->id_redes;
         $centros->telefono=$request->telefono;
-        $centros->id_ciudades=$request->ciudades;
+        $centros->id_municipios=$request->id_municipios;
         $centros->area=$request->area;
         $centros->seguimiento_casos=$request->seguimiento_casos;
         $centros->contacto=$request->contacto;
@@ -37,9 +36,8 @@ class CentrosController extends Controller
         $centros= Centros::find($id);
         $centros->nombre=$request->nombre;
         $centros->direccion=$request->direccion;
-        $centros->id_redes=$request->id_redes;
         $centros->telefono=$request->telefono;
-        $centros->id_ciudades=$request->ciudades;
+        $centros->id_municipios=$request->id_municipios;
         $centros->area=$request->area;
         $centros->seguimiento_casos=$request->seguimiento_casos;
         $centros->contacto=$request->contacto;

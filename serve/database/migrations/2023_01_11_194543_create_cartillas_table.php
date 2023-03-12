@@ -17,22 +17,24 @@ class CreateCartillasTable extends Migration
         Schema::create('cartillas', function (Blueprint $table) {
             $table->id();
             $table->integer('codigo_barras');
-            $table->string('primer_apellido');
-            $table->string('segundo_apellido');
-            $table->string('nombre_bebe');
-            $table->dateTime('fecha_nacimiento');
+            //$table->string('primer_apellido');
+            //$table->string('segundo_apellido');
+            //$table->string('nombre_bebe');
+            //$table->dateTime('fecha_nacimiento');
             $table->dateTime('fecha_toma_muestra');
-            $table->string('nacimiento_termino');
-            $table->string('edad_gestional');
-            $table->string('sexo');
-            $table->string('muestra');
+            $table->boolean('nacimiento_termino')->nullable();
+            $table->integer('edad_gestional_semanas');
+            $table->integer('edad_gestional_dia')->nullable();
+            //$table->string('sexo',1);
+            $table->integer('muestra');
             $table->double('peso_nacimiento');
-            $table->string('transfusion');
-            $table->string('antibioticos');
-            $table->integer('ci');
-            $table->foreignId('id_ciudades')->constrained('ciudades')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->boolean('transfusion')->nullable();
+            $table->date('fecha')->nullable();
+            $table->string('antibioticos')->nullable();
+            //$table->integer('ci');
+            //$table->foreignId('id_ciudades')->constrained('ciudades')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('id_centros')->constrained('centros')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('id_madres')->constrained('madres')->cascadeOnDelete()->cascadeOnUpdate();
+           // $table->foreignId('id_madres')->constrained('madres')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
             
         });

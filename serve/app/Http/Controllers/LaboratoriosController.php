@@ -18,7 +18,6 @@ class LaboratoriosController extends Controller
         $laboratorio->telefono=$request->telefono;
         $laboratorio->id_centros=$request->id_centros;
         $laboratorio->id_ciudades=$request->id_ciudades;
-        $laboratorio->id_redes=$request->id_redes;
         $laboratorio->save();
         return $laboratorio;
     }
@@ -30,7 +29,6 @@ class LaboratoriosController extends Controller
         $laboratorio->telefono=$request->telefono;
         $laboratorio->id_centros=$request->id_centros;
         $laboratorio->id_ciudades=$request->id_ciudades;
-        $laboratorio->id_redes=$request->id_redes;
         $laboratorio->save();
         return $laboratorio;
     }
