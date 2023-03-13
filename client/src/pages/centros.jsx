@@ -85,7 +85,7 @@ const Centros = () => {
       </Divsearchpadre>
       <Divtabla>
         
-        <table className="table">
+        <table class="table">
           <Thead>
             <tr>
               <th>Nº</th>

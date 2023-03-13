@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-
 import { postLaboratorio, updateLaboratorios } from "../services/Laboratorios";
 import { getRedes } from "../services/Redes";
 import { getCiudades } from "../services/Ciudades";

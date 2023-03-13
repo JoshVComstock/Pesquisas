@@ -1,12 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
-import CentroForm from "./Models/CentroForm";
-import CiudadesForm from "./Models/CiudadesForm";
-import EnfermedadesForm from "./Models/EnfermedadesForm";
-import RedesForm from "./Models/RedesForm";
 import Centros from "./pages/centros";
 import Ciudades from "./pages/Ciudades";
-import Enfermedades from "./pages/Enfermedades";
 import Redes from "./pages/Redes";
 import Navbar from "./components/app/navbar";
 import Home from "./pages/Home";
@@ -24,7 +19,6 @@ import { Navcontextprovider } from "./context/navcontext";
 import { Usercontextprovider } from "./context/userContext";
 import ProtectedRoute from "./wrappers/ProtectedRoute";
 import Control_Filtros from "./pages/Control_Filtros";
-import Cartillas from "./pages/Cartillas";
 import Cartilla from "./models/Cartilla";
 
 function App() {
@@ -48,7 +42,6 @@ function App() {
                   <Route path="centros" element={<Centros />} />
                   <Route path="ciudades" element={<Ciudades />} />
                   <Route path="redes" element={<Redes />} />
-                  <Route path="enfermedades" element={<Enfermedades />} />
                   <Route path="laboratorios" element={<Laboratorios />} />
                   <Route path="provincias" element={<Provincias />} />
                   <Route path="cartilla" element={<Cartilla/>}/>

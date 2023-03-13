@@ -19,6 +19,7 @@ class Cartillas extends Model
         'transfusion',
         'fecha',
         'antibioticos',
-        'id_centros'
+        'id_centros',
+        'id_pacientes'
     ];
 }

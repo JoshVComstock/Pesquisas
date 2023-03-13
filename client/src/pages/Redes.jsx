@@ -32,8 +32,6 @@ import {
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteRedes, getRedes } from "../services/Redes";
-
-
 const Redes = () => {
   const [redactual, setRedactual] = useState({});
   const { data: redes, getApi } = UseFech(getRedes);

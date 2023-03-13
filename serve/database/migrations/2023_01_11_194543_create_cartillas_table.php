@@ -34,6 +34,7 @@ class CreateCartillasTable extends Migration
             //$table->integer('ci');
             //$table->foreignId('id_ciudades')->constrained('ciudades')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('id_centros')->constrained('centros')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('id_pacientes')->constrained('pacientes')->cascadeOnUpdate()->cascadeOnDelete();
            // $table->foreignId('id_madres')->constrained('madres')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
             

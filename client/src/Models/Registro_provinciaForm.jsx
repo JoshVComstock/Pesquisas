@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 
-const Registro_provinciaForm = ({ mostrarRegistroPro }) => {
-
-  
+const Registro_provinciaForm = () => {
   const [hora, setHora] = useState([]);
   const [fecha, setFecha] = useState([]);
   const [id_provincias, setId_provincias] = useState("");
@@ -19,7 +17,6 @@ const Registro_provinciaForm = ({ mostrarRegistroPro }) => {
   const [entregado_por, setEntregado_por] = useState("");
   const [telefono, setTelefono] = useState("");
   const [recibido_por, setRecibido_por] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const enviar = async (e) => {
     e.preventDefault();

@@ -1,20 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import "../pages/css/Centros.css";
 import { UseFech } from "../hooks/useFech";
 import { getCiudades } from "../services/Ciudades";
-import { getRedes } from "../services/Redes";
 import { postCentros, updateCentros } from "../services/centros";
+import { getMunicipios } from "../services/Municipios";
 
 const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
   const [nombre, setNombre] = useState("");
   const [direccion, SetDireccion] = useState("");
-  const [id_redes, setId_redes] = useState("");
   const { data: ciudades } = UseFech(getCiudades);
   const [telefono, setTelefono] = useState("");
-  const [id_ciudad, setId_ciudad] = useState("");
-  const { data: redes } = UseFech(getRedes);
+  const [id_municipios, setId_municipios] = useState("");
+  const { data: municipios } = UseFech(getMunicipios);
   const [area, setArea] = useState("");
   const [seguimiento_casos, setSeguimiento_casos] = useState("");
   const [contacto, setContacto] = useState("");
@@ -23,9 +21,8 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
     if (Object.keys(centroactual).length > 0) {
       setNombre(centroactual.nombre);
       SetDireccion(centroactual.direccion);
-      setId_redes(centroactual.id_redes);
       setTelefono(centroactual.telefono);
-      setId_ciudad(centroactual.id_ciudad);
+      setId_municipios(centroactual.id_municipios);
       setArea(centroactual.area);
       setSeguimiento_casos(centroactual.seguimiento_casos);
       setContacto(centroactual.contacto);
@@ -43,9 +40,8 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
           id: centroactual.id,
           nombre: nombre,
           direccion: direccion,
-          id_redes: id_redes,
           telefono: telefono,
-          id_ciudad: id_ciudad,
+          id_municipios: id_municipios,
           area: area,
           seguimiento_casos: seguimiento_casos,
           contacto: contacto,
@@ -53,9 +49,8 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
         () => {
           setNombre("");
           SetDireccion("");
-          setId_redes("");
           setTelefono("");
-          setId_ciudad("");
+          setId_municipios("");
           setArea("");
           setSeguimiento_casos("");
           setContacto("");
@@ -68,18 +63,16 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
       postCentros(
         nombre,
         direccion,
-        id_redes,
         telefono,
-        id_ciudad,
+        id_municipios,
         area,
         seguimiento_casos,
         contacto,
         () => {
           setNombre("");
           SetDireccion("");
-          setId_redes("");
           setTelefono("");
-          setId_ciudad("");
+          setId_municipios("");
           setArea("");
           setSeguimiento_casos("");
           setContacto("");
@@ -122,15 +115,15 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
           </Divinput>
           <Divinput>
             <Divinputlabel>
-              <label>Red de Salud:</label>
+              <label>Municipio:</label>
               <Select
-                value={id_redes}
-                onChange={(e) => setId_redes(e.target.value)}
+                value={id_municipios}
+                onChange={(e) => setId_municipios(e.target.value)}
               >
-                <option> Seleccione una red </option>
-                {redes.map((v, i) => (
+                <option> Seleccione una municipio </option>
+                {municipios.map((v, i) => (
                   <option key={i} value={v.id}>
-                    {v.nombre}
+                    {v.municipio}
                   </option>
                 ))}
               </Select>
@@ -147,22 +140,6 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
                 required
                 onChange={(e) => setTelefono(e.target.value)}
               />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
-              <label>Ciudad:</label>
-              <Select
-                value={id_ciudad}
-                onChange={(e) => setId_ciudad(e.target.value)}
-              >
-                <option >Seleccione ciudad</option>
-                {ciudades.map((v, i) => (
-                  <option key={i} value={v.id}>
-                    {v.ciudad}
-                  </option>
-                ))}
-              </Select>
             </Divinputlabel>
           </Divinput>
           <Divinput>

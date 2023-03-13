@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartillasController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -94,3 +95,6 @@ Route::delete('/registro_hospitales/{id}', [Registro_hospitalesController::class
 Route::get('/control_filtros', [Control_filtrosController::class, 'index']);
 Route::post('/control_filtros', [Control_filtrosController::class, 'store']);
 Route::delete('/control_filtros/{id}', [Control_filtrosController::class, 'destroy']);
+
+Route::get('/cartillas', [CartillasController::class, 'index']);
+Route::post('/cartillas', [CartillasController::class, 'store']);

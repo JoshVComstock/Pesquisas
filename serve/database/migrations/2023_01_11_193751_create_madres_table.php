@@ -23,7 +23,7 @@ class CreateMadresTable extends Migration
             $table->string('direccion');
             $table->integer('telefono1');
             $table->integer('telefono2');
-            $table->string('tratamiento_hipertiroidismo');
+            $table->string('tratamiento_hipertiroidismo')->nullable();
             $table->string('tratamiento_hipotiroidismo');
             $table->string('enfermedad');
            // $table->foreignId('');

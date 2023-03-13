@@ -45,9 +45,6 @@ const AdminComponent = () => {
   <Linkes to="/registro_provincias">
     <Img src={Registropronviciasicons} alt="" /> Registro provincias
   </Linkes>
-  <Linkes to="/enfermedades">
-    <Img src={Enfermedadesicons} alt="" /> Enfermedades
-  </Linkes>
   <Linkes to="/registro_usuario">
     <Img src={Usericons} alt="" /> Registrar Usuario
   </Linkes>
