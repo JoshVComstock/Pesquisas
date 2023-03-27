@@ -12,8 +12,6 @@ import Eliminar from "./../img/icons/Delete.jpg";
 import { UseFech } from "../hooks/useFech";
 import { deleteRegistroprovincias,getRegistroprovincias } from "../services/Registroprovincias";
 
-import { useuserContext } from "../context/userContext";
-import { useNavigate } from "react-router-dom";
 import {
   Container,
   Titulo,
@@ -61,72 +59,11 @@ const Registro_provincia = () => {
       openModal();
     }
   }, [registroactual]);
-
-
-//   const [registroprovinciaactual, setReProvinciaactual] = useState({});
-//   const { user } = useuserContext();
-//   const navegate = useNavigate();
-//   const { openModal: editarOpen, closeModal: editarClose } = useModal(
-//     "Editar Registro Provincias",
-//     <RegistroProvinciasEdit
-//       registroprovinciaactual={registroprovinciaactual}
-//       mostrarRegistroPro={mostrarRegistroPro}
-//     />
-//   );
-
-//   const { openModal, closeModal } = useModal(
-//     "Registro de provincias",
-//     <Registro_provinciaForm mostrarRegistroPro={mostrarRegistroPro} />
-//   );
-//   const [registroprovincias, setRegistroprovincias] = useState([]);
-//   const [filtro, setFiltro] = useState("");
-
-//   async function mostrarRegistroPro  () {
-//     const response = await fetch(
-//       "http://127.0.0.1:8000/api/registro_provincias",
-//       {
-//         method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//         accept: "application/json",
-//       },
-//       }
-//     );
-//     const respuesta = await response?.json();
-//     setRegistroprovincias(respuesta);
-//     closeModal();
-//     editarClose();
-//   }
-
-//   async function eliminarregistro(id) {
-//     const response = await fetch(
-//       "http://127.0.0.1:8000/api/registro_provincias/" + id,
-//       {
-//         method: "DELETE",
-//       headers: {
-//         "Content-Type": "application/json",
-//         accept: "application/json",
-//       },
-//       }
-//     );
-//     if (response.ok) {
-//       mostrarRegistroPro();
-//     }
-//   }
-//   useEffect(() => {
-//     mostrarRegistroPro();
-//   }, []);
-//   useEffect(() => {
-//     if (Object.keys(registroprovinciaactual).length != 0) {
-//       editarOpen();
-//     }
-//   }, [registroprovinciaactual]);
-//   useEffect(() => {}, []);
   return (
     <Container>
       <Titulo>Registro de Provincias</Titulo>
       <Divbotones>
-        <Botonespdf2 onClick={openModal}>
+      <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo
         </Botonespdf2>
         <Botonespdf1>
@@ -189,10 +126,17 @@ const Registro_provincia = () => {
                     <th>
                       <Botonacciones >
                         <div>
-                          <Botonesacciones><Iconsacciones src={Editar} alt="" onClick={() => {setReProvinciaactual(v);}}/></Botonesacciones>
+                          <Botonesacciones><Iconsacciones src={Editar}
+                            alt=""
+                            onClick={() => {
+                              setRegistroactual(v);
+                            }}/></Botonesacciones>
                         </div>
                         <div>
-                          <Botonesacciones onClick={()=>eliminarregistro(v.id)}> <Iconsacciones1 src={Eliminar} alt="" /></Botonesacciones>
+                          
+                          <Botonesacciones  onClick={() => {
+                            deleteRegistroprovincias(v.id, getApi);
+                          }}> <Iconsacciones1 src={Eliminar} alt="" /></Botonesacciones>
                         </div>
                       </Botonacciones>
                     </th>

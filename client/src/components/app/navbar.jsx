@@ -76,6 +76,11 @@ const Divheader = styled.div`
   overflow-y: hidden;
   overflow-x: hidden;
 `;
+
+
+// reserar4live
+
+
 const Header = styled.header`
   min-width: 250px;
   height: 100vh;
@@ -83,6 +88,8 @@ const Header = styled.header`
   display: flex;
   flex-direction: column;
   box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+  overflow-x: scroll;
+
 `;
 const Img = styled.img`
   width: 25px;

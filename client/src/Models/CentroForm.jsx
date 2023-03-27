@@ -9,7 +9,7 @@ import { getRedes } from "../services/Redes";
 
 const CentroForm = ({getApi,centroactual,setCentroactual,closeModal}) => {
   const [nombre, setNombre] = useState("");
-  const [direccion, SetDireccion] = useState("");
+  const [direccion, setDireccion] = useState("");
   const [id_redes, setId_redes] = useState("");
   const { data: ciudades } = UseFech(getCiudades);
   const [telefono, setTelefono] = useState("");
@@ -22,7 +22,7 @@ const CentroForm = ({getApi,centroactual,setCentroactual,closeModal}) => {
   useEffect(() => {
     if (Object.keys(centroactual).length > 0) {
       setNombre(centroactual.nombre);
-      SetDireccion(centroactual.direccion);
+      setDireccion(centroactual.direccion);
       setId_redes(centroactual.id_redes);
       setTelefono(centroactual.telefono);
       setId_ciudad(centroactual.id_ciudad);
@@ -53,7 +53,7 @@ const CentroForm = ({getApi,centroactual,setCentroactual,closeModal}) => {
         },
         () => {
           setNombre("");
-          SetDireccion("");
+          setDireccion("");
           setId_redes("");
           setTelefono("");
           setId_ciudad("");
@@ -68,7 +68,7 @@ const CentroForm = ({getApi,centroactual,setCentroactual,closeModal}) => {
     } else {
       postCentro(nombre,direccion,id_redes,telefono,id_ciudad,area,seguimiento_casos,contacto, () => {
         setNombre("");
-        SetDireccion("");
+        setDireccion("");
         setId_redes("");
         setTelefono("");
         setId_ciudad("");
@@ -94,7 +94,7 @@ const CentroForm = ({getApi,centroactual,setCentroactual,closeModal}) => {
           <Divinput>
             <Divinputlabel>
               <label>Dirección:</label>
-              <Input  name="Direccion" placeholder="Ingrese una Dirección" type="text" required value={direccion} onChange={(e) => SetDireccion(e.target.value)}/>
+              <Input  name="Direccion" placeholder="Ingrese una Dirección" type="text" required value={direccion} onChange={(e) => setDireccion(e.target.value)}/>
             </Divinputlabel>
           </Divinput>
           <Divinput>

@@ -8,7 +8,6 @@ export const getProvincias = async () => {
             headers: {
                 "Content-Type": "application/json"
             },
-
         })
         return response;
 

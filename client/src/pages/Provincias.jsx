@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useModal } from "../hooks/useModal";
 import ProvinciasForm from "../models/ProvinciasForm";
-import ProvinciasEdit from "../models/Editform/ProviciasEdit";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
@@ -12,7 +11,7 @@ import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
 import { useuserContext } from "../context/userContext";
 import { UseFech } from "../hooks/useFech";
-import { getProvincias } from "../services/provincias";
+import { getProvincias ,deleteProvincias} from "../services/provincias";
 import { useNavigate } from "react-router-dom";
 import {
   Container,
@@ -57,7 +56,7 @@ const Provincias = () => {
   );
   const [filtro, setFiltro] = useState("");
   useEffect(() => {
-    if (Object.keys(provinciaactual).length != 0) {
+    if (Object.keys(provinciaactual).length > 0) {
       editarOpen();
     }
   }, [provinciaactual]);
