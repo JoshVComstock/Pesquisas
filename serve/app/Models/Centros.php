@@ -11,11 +11,10 @@ class Centros extends Model
     protected $fillable = [
         'nombre',
         'direccion',
-        'id_redes',
         'telefono',
-        'id_ciudades',
+        'id_municipios',
         'area',
         'seguimiento_casos',
-        'contacto'
+        'contacto',
     ];
 }

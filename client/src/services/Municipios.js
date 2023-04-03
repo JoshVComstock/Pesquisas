@@ -35,6 +35,7 @@ export const updateMunicipios = async (municipioactual,callback) => {
       },
       body: JSON.stringify({
         municipio:municipioactual.municipio,
+        id_ciudades:municipioactual.id_ciudades,
     })});
     if(response.ok){
       callback();

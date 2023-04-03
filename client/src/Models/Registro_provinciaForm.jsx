@@ -3,23 +3,9 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { UseFech } from "../hooks/useFech";
 
-import {
-  postRegistroprovincia,
-  updateRegistroprovincias,
-} from "../services/Registroprovincias";
-import { getProvincias } from "../services/provincias";
-import { getMunicipios } from "../services/Municipios";
-import { getCentros } from "../services/centros";
-
-const Registro_provinciaForm = ({
-  getApi,
-  registroactual,
-  setRegistroactual,
-  closeModal,
-}) => {
-  const [hora, setHora] = useState("");
-  const [fecha, setFecha] = useState("");
-
+const Registro_provinciaForm = () => {
+  const [hora, setHora] = useState([]);
+  const [fecha, setFecha] = useState([]);
   const [id_provincias, setId_provincias] = useState("");
   const { data: provincias } = UseFech(getProvincias);
 

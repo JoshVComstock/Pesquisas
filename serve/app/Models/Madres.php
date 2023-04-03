@@ -9,15 +9,17 @@ class Madres extends Model
 {
     use HasFactory;
     protected $fillable = [
+
         'nombre',
-        'ap_paterno',
-        'ap_materno',
+        'apellidos',
         'ci',
         'id_ciudades',
         'direccion',
         'telefono1',
         'telefono2',
-        'id_enfermedades',
-        'detalle_direccion'
+        'tratamiento_hipertiroidismo',
+        'tratamiento_hipotiroidismo',
+        'enfermedad',
+        'detalle_direccion',
     ];
 }

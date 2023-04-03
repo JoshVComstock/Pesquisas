@@ -16,11 +16,14 @@ import Rellamadosicons from "../../../img/icons/Rellamados.jpg";
 import Madresicons from "../../../img/icons/Madre.jpg";
 import Pacienteicons from "../../../img/icons/Paciente.jpg";
 import Usericons from "../../../img/user.jpg";
+import Cartilla from "../../../img/icons/Primeramuestra.jpg"
 
+import styled from "styled-components"
 
 const AdminComponent = () => {
   return (
-    <>
+    <Master>
+     
     <Linkes to="/home">
     <Img src="src\img\Home.png" alt="" /> Home
   </Linkes>
@@ -44,14 +47,14 @@ const AdminComponent = () => {
   <Linkes to="/registro_provincias">
     <Img src={Registropronviciasicons} alt="" /> Registro provincias
   </Linkes>
-  <Linkes to="/enfermedades">
-    <Img src={Enfermedadesicons} alt="" /> Enfermedades
-  </Linkes>
   <Linkes to="/registro_usuario">
     <Img src={Usericons} alt="" /> Registrar Usuario
   </Linkes>
   <Linkes to="/municipios">
     <Img src={Municiosicons} alt="" /> Municipios
+  </Linkes>
+  <Linkes to="/cartilla">
+    <Img src={Cartilla} alt="" /> Cartilla
   </Linkes>
   <Linkes to="/pacientes">
     <Img src={Pacienteicons} alt="" /> /Pacientes
@@ -69,10 +72,18 @@ const AdminComponent = () => {
     <Img src={Rellamadosicons} alt="" /> Rellamados
   </Linkes>
   <Linkes to="/resultados">
-    <img src="" alt="" /> /Resultados
+    <Img src="" alt="" /> /Resultados
   </Linkes>
- </>
+ </Master>
   )
 }
 
 export default AdminComponent
+
+export const Master = styled.div`
+display: flex;
+  flex-direction: column;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+  overflow-y: scroll;
+
+`;

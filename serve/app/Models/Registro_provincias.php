@@ -11,8 +11,8 @@ class Registro_provincias extends Model
     protected $fillable = [
         'hora',
         'fecha',
-        'id_provincias',
-        'id_municipios',
+        //'id_provincias',
+        //'id_municipios',
         'id_centros',
         'cantidad_recibida',
         'cantidad_entregada',

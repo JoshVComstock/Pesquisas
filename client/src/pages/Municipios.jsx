@@ -101,7 +101,7 @@ const Municipios = () => {
                 <tr>
                   <Trdatos>{i + 1}</Trdatos>
                   <Trdatos>{v.municipio}</Trdatos>
-                  <Trdatos>{v.id_ciudades}</Trdatos>
+                  <Trdatos>{v.ciudad}</Trdatos>
                   <Trdatos>
                     <Botonacciones>
                       <div>

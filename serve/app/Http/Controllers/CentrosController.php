@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Centros;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CentrosController extends Controller
 {
@@ -13,15 +14,16 @@ class CentrosController extends Controller
      */
     public function index()
     {
-        return Centros::all();
+        return DB::select('SELECT ce.nombre,ce.direccion,ce.telefono, c.ciudad,ce.area,ce.seguimiento_casos,ce.contacto FROM  ciudades as c, centros as ce WHERE ce.id_ciudades=c.id;
+        ');
     }
     public function store(Request $request)
     {
         $centros= new Centros();
         $centros->nombre=$request->nombre;
-        $centros->id_redes=$request->id_redes;
+        $centros->direccion=$request->direccion;
         $centros->telefono=$request->telefono;
-        $centros->id_ciudades=$request->ciudades;
+        $centros->id_municipios=$request->id_municipios;
         $centros->area=$request->area;
         $centros->seguimiento_casos=$request->seguimiento_casos;
         $centros->contacto=$request->contacto;
@@ -33,9 +35,9 @@ class CentrosController extends Controller
     {
         $centros= Centros::find($id);
         $centros->nombre=$request->nombre;
-        $centros->id_redes=$request->id_redes;
+        $centros->direccion=$request->direccion;
         $centros->telefono=$request->telefono;
-        $centros->id_ciudades=$request->ciudades;
+        $centros->id_municipios=$request->id_municipios;
         $centros->area=$request->area;
         $centros->seguimiento_casos=$request->seguimiento_casos;
         $centros->contacto=$request->contacto;

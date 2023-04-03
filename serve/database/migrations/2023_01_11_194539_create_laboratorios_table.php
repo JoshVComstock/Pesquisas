@@ -20,7 +20,7 @@ class CreateLaboratoriosTable extends Migration
             $table->integer('telefono');
             $table->foreignId('id_centros')->constrained('centros')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('id_ciudades')->constrained('ciudades')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('id_redes')->constrained('redes')->cascadeOnUpdate()->cascadeOnDelete();
+            //$table->foreignId('id_redes')->constrained('redes')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

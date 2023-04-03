@@ -9,6 +9,8 @@ class Registro_provinciasController extends Controller
 {
     public function index()
     {
+        // return DB::select('SELECT p.id,p.provincia,c.ciudad,c.id as id_ciudades FROM provincias as p, ciudades as c WHERE p.id_ciudades=c.id;
+        // ');
         return Registro_provincias::all();
     }
     public function store(Request $request)
@@ -16,10 +18,6 @@ class Registro_provinciasController extends Controller
         $provincias = new Registro_provincias();
         $provincias->hora = $request->hora;
         $provincias->fecha = $request->fecha;
-
-        $provincias->id_provincias = $request->id_provincias;
-
-        $provincias->id_municipios = $request->id_municipios;
         $provincias->id_centros = $request->id_centros;
         $provincias->cantidad_recibida = $request->cantidad_recibida;
         $provincias->cantidad_entregada = $request->cantidad_entregada;
@@ -35,8 +33,6 @@ class Registro_provinciasController extends Controller
         $provincias = Registro_provincias::find($id);
         $provincias->hora = $request->hora;
         $provincias->fecha = $request->fecha;
-        $provincias->id_provincias = $request->id_provincias;
-        $provincias->id_municipios = $request->id_municipios;
         $provincias->id_centros = $request->id_centros;
         $provincias->cantidad_recibida = $request->cantidad_recibida;
         $provincias->cantidad_entregada = $request->cantidad_entregada;

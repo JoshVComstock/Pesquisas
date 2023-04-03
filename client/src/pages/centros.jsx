@@ -31,13 +31,13 @@ import {
   Trdatos,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
-import { deleteCentros, getCentros } from "../services/Centros";
+import { deleteCentros, getCentros } from "../services/centros";
 
 const Centros = () => {
   const [centroactual, setCentroactual] = useState({});
   const { getApi, data: centros } = UseFech(getCentros);
   const { openModal, closeModal } = useModal(
-    Object.keys(centroactual).length > 0 ? "Editar Centro de Salud" : "Agregar Centro de Salud",
+    Object.keys(centroactual).lengTh > 0 ? "Editar Centro de Salud" : "Agregar Centro de Salud",
     <CentroForm
       getApi={getApi}
       centroactual={centroactual}
@@ -49,7 +49,7 @@ const Centros = () => {
   );
   const [filtro, setFiltro] = useState("");
   useEffect(() => {
-    if (Object.keys(centroactual).length > 0) {
+    if (Object.keys(centroactual).lengTh > 0) {
       openModal();
     }
   }, [centroactual]);
@@ -58,7 +58,7 @@ const Centros = () => {
     <Container>
       <Titulo>Centros de Salud</Titulo>
       <Divbotones>
-        <Botonespdf2>
+        <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo
         </Botonespdf2>
         <Botonespdf1>
@@ -84,19 +84,17 @@ const Centros = () => {
         </Divsearch>
       </Divsearchpadre>
       <Divtabla>
-        
-        <table className="table">
           <Thead>
             <tr>
-              <th>Nº</th>
-              <th>NOMBRE</th>
-              <th>DIRECCIÓN</th>
-              <th>RED</th>
-              <th>TELEFONO</th>
-              <th>CIUDAD</th>
-              <th>AREA</th>
-              <th>SEGUIMIENTO</th>
-              <th>CONTACTO</th>
+              <Th>Nº</Th>
+              <Th>NOMBRE</Th>
+              <Th>DIRECCIÓN</Th>
+              <Th>RED</Th>
+              <Th>TELEFONO</Th>
+              <Th>CIUDAD</Th>
+              <Th>AREA</Th>
+              <Th>SEGUIMIENTO</Th>
+              <Th>CONTACTO</Th>
               <Th>ACCIONES</Th>
             </tr>
           </Thead>
@@ -110,9 +108,9 @@ const Centros = () => {
                   <Trdatos>{i + 1}</Trdatos>
                   <Trdatos>{v.nombre}</Trdatos>
                   <Trdatos>{v.direccion}</Trdatos>
-                  <Trdatos>{v.id_redes}</Trdatos>
+                  <Trdatos>{v.red}</Trdatos>
                   <Trdatos>{v.telefono}</Trdatos>
-                  <Trdatos>{v.id_cuidades}</Trdatos>
+                  <Trdatos>{v.ciudad}</Trdatos>
                   <Trdatos>{v.area}</Trdatos>
                   <Trdatos>{v.seguimiento_casos}</Trdatos>
                   <Trdatos>{v.contacto}</Trdatos>
@@ -143,7 +141,6 @@ const Centros = () => {
                 </tr>
               </Tbody>
             ))}
-        </table>
       </Divtabla>
     </Container>
   );

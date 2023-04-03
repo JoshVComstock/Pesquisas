@@ -15,7 +15,6 @@ export const getRedes = async () => {
     }
 };
 export const deleteRedes = async (id, callback) => {
-  
     const response = await fetch(`${baseUrl}redes/${id}`, {
         method: "DELETE",
         headers: {

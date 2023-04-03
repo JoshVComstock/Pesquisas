@@ -29,7 +29,8 @@ export const deleteProvincias = async (id, callback) => {
         callback();
     }
 };
-export const updateCiudades = async (provinciasactual,callback) => {
+export const updateProvincia = async (provinciasactual,callback) => {
+  console.log(provinciasactual)
     const response = await fetch(`${baseUrl}provincias/${provinciasactual.id}`, {
       method: "PUT",
       headers: {
@@ -38,13 +39,13 @@ export const updateCiudades = async (provinciasactual,callback) => {
       },
       body: JSON.stringify({
         provincia:provinciasactual.provincia,
-        id_ciudad:provinciasactual.id_ciudad,
+        id_ciudades:provinciasactual.id_ciudades,
     })});
     if(response.ok){
       callback();
     }
   }
-  export const postCiudad = async (provincia,id_ciudad,callback) => {
+  export const postProvincia = async (provincia,id_ciudad,callback) => {
     const response = await fetch(`${baseUrl}provincias`, {
       method: "POST",
       headers: {
@@ -53,9 +54,10 @@ export const updateCiudades = async (provinciasactual,callback) => {
       },
       body: JSON.stringify({
         provincia: provincia,
-        id_ciudad: id_ciudad,
+        id_ciudades: id_ciudad,
     })});
     if(response.ok){
       callback();
     }
   }
+  

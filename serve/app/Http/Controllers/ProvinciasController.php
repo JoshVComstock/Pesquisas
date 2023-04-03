@@ -10,7 +10,7 @@ class ProvinciasController extends Controller
 {
     public function index()
     {
-        return DB::select('SELECT p.provincia,c.ciudad FROM provincias as p, ciudades as c WHERE p.id_ciudades=c.id;
+        return DB::select('SELECT p.id,p.provincia,c.ciudad,c.id as id_ciudades FROM provincias as p, ciudades as c WHERE p.id_ciudades=c.id;
         ');
     }
     public function store(Request $request)

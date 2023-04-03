@@ -18,7 +18,7 @@ class CreatePacientesTable extends Migration
             $table->string('nombre');
             $table->string('ap_paterno');
             $table->string('ap_materno');
-            $table->string('sexo');
+            $table->string('sexo',1);
             $table->date('fecha_nacimiento');
             $table->time('hora_nacimiento');
             $table->foreignId('id_madres')->constrained('madres')->cascadeOnUpdate()->cascadeOnDelete(); 

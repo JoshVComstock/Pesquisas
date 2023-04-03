@@ -4,9 +4,7 @@ import { useState, useEffect } from "react";
 import { postRedes, updateRedes } from "../services/Redes";
 
 const RedesForm = ({getApi,redactual,setRedactual,closeModal}) => {
-  // declaramos una variable
   const [nombre, setNombre] = useState("");
-
   useEffect(() => {
     if (Object.keys(redactual).length > 0) {
       setNombre(redactual.nombre);

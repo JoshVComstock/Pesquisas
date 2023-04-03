@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useState, useEffect } from "react"
 
 const Registro_hospitalesForm = ({ MostrarReHospitales }) => {
-  // defino variables
   const [hora, setHora] = useState([]);
   const [fecha, setFecha] = useState([]);
   const [id_redes, setId_redes] = useState("");
