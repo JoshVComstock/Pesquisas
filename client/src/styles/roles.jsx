@@ -6,26 +6,29 @@ export const Img = styled.img`
   width: 22px;
   height: 22px;
   margin: 0 10px;
-  filter: invert(100%) sepia(0%) saturate(2%) hue-rotate(5deg) brightness(112%)
-    contrast(30%);
+  background: #fff;
+  border-radius:50%;
+
 `;
 
 export const Linkes = styled(Link)`
-  padding: 10px 10px 10px 30px;
+  padding: 8px 10px 8px 15px;
   cursor: pointer;
   text-decoration: none;
-  color: #ffffff;
+  color: #000000;
   display: flex;
   flex-direction: row;
   align-items: center;
   font-size: 14px;
-  border-bottom: solid 1px #383333b7;
-
-  
+  width: 80%;
+  border-radius: 0 2em 2em 0;
+  border-left: solid 0.2em blue;
   &:hover {
-    background: blue;
-    color: #ffffff;
+    background: #fff;
+    color: rgb(0, 156, 255);
     border-radius: 0px -20px 10px 0px;
+    border-left: solid 0.5em blue;
+  
   }
   &:hover Img {
     filter: invert(100%) sepia(0%) saturate(5518%) hue-rotate(211deg)

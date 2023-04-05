@@ -4,6 +4,8 @@
   border: 0;
   box-sizing: border-box;
   font-family: 'Kanit', sans-serif;
+  font-weight: lighter;
+
 }
 ::-webkit-scrollbar {
   width: 9px;
@@ -15,4 +17,6 @@
 ::-webkit-scrollbar-thumb {
   background: #ffffff93;
   border-radius: 2em;
+}
+button{
 }

@@ -83,7 +83,7 @@ export default AdminComponent
 export const Master = styled.div`
 display: flex;
   flex-direction: column;
-  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
   overflow-y: scroll;
+  gap:0.2em;
 
 `;

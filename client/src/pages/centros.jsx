@@ -29,6 +29,7 @@ import {
   Tbody,
   Th,
   Trdatos,
+  Dippadretabla
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCentros, getCentros } from "../services/centros";
@@ -56,7 +57,19 @@ const Centros = () => {
 
   return (
     <Container>
-      <Titulo>Centros de Salud</Titulo>
+     <Divsearchpadre>
+        <Divsearch>
+          <Search
+            type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)}
+          />
+          <Botonsearch>
+            <Img src={Searchicons} alt="" />{" "}
+          </Botonsearch>
+        </Divsearch>
+      </Divsearchpadre>
       <Divbotones>
         <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo
@@ -70,31 +83,20 @@ const Centros = () => {
           Excel
         </Botonespdf>{" "}
       </Divbotones>
-      <Divsearchpadre>
-        <Divsearch>
-          <Search
-            type="text"
-            placeholder="Buscar"
-            value={filtro}
-            onChange={(e) => setFiltro(e.target.value)}
-          />
-          <Botonsearch>
-            <Img src={Searchicons} alt="" />{" "}
-          </Botonsearch>
-        </Divsearch>
-      </Divsearchpadre>
+      <Titulo>Centros de Salud</Titulo>
+    <Dippadretabla>
       <Divtabla>
           <Thead>
             <tr>
               <Th>Nº</Th>
-              <Th>NOMBRE</Th>
-              <Th>DIRECCIÓN</Th>
-              <Th>RED</Th>
-              <Th>TELEFONO</Th>
-              <Th>CIUDAD</Th>
-              <Th>AREA</Th>
-              <Th>SEGUIMIENTO</Th>
-              <Th>CONTACTO</Th>
+              <Th>Nombre</Th>
+              <Th>Drirección</Th>
+              <Th>Red</Th>
+              <Th>Telefono</Th>
+              <Th>Ciaudad</Th>
+              <Th>Area</Th>
+              <Th>Seguimientos</Th>
+              <Th>Contacto</Th>
               <Th>ACCIONES</Th>
             </tr>
           </Thead>
@@ -118,13 +120,11 @@ const Centros = () => {
                     <Botonacciones>
                       <div>
                         <Botonesacciones>
-                          <Iconsacciones
-                            src={Editar}
-                            alt=""
+                          <Iconsacciones 
                             onClick={() => {
                               setCentroactual(v);
                             }}
-                          />
+                          >Editar</Iconsacciones>
                         </Botonesacciones>
                       </div>
                       <div>
@@ -133,7 +133,9 @@ const Centros = () => {
                             deleteCentros(v.id, getApi);
                           }}
                         >
-                          <Iconsacciones1 src={Eliminar} alt="" />
+                          <Iconsacciones1>
+                            Eliminar
+                          </Iconsacciones1>
                         </Botonesacciones>
                       </div>
                     </Botonacciones>
@@ -142,6 +144,7 @@ const Centros = () => {
               </Tbody>
             ))}
       </Divtabla>
+      </Dippadretabla>
     </Container>
   );
 };

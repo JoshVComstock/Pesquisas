@@ -42,7 +42,7 @@ const Navbar = () => {
        
         <Header>
           <Logo>
-            <H>Tamizaje</H>
+            <H>TAMIZAJE</H>
           </Logo>
        {user.rol == "administrador" && (
        <AdminComponent/>
@@ -78,82 +78,81 @@ const Divheader = styled.div`
 `
 
 const Header = styled.header`
-  min-width: 280px;
+  min-width: 240px;
   height: 100vh;
   background:rgb(243, 246, 249);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 8px 2px;
 `;
-const Imge = styled.img``;
 const Logo = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 15px 0px 3em 0px;
+  margin: 5px 0px 3em 0px;
+  border-radius:50%;
 `;
 const Navuser = styled.div`
-  min-width: calc(100% - 280px);
+  min-width: calc(100% - 240px);
   height: 100vh;
   display: flex;
   flex-direction: column;
 `;
 const Topnav = styled.div`
   width: 90%;
+  height: 7vh;
   background: rgb(243, 246, 249);
   display: flex;
   justify-content: flex-end;
   display: flex;
   align-items: center;
-  gap:1em;
+  gap:0.2em;
   margin:0 auto;
 
 `;
 const Topnavimg = styled.img`
   width: 30px;
   height: 30px;
-  margin: 1px;
   background-color:transparent;
+  border-radius:50%;
 `;
 const Logout = styled.button`
-  background: #142033;
+  background: #4c8cf5;
   cursor: pointer;
   color:#ffffff;
   padding: 0.1em 2.5em;
   height: 2em;
-  border-radius: 1em;
+  border-radius: 0.4em;
   transition:all 1s;
   &:hover {
-    background: blue;
-    color: #fff;
+    background: rgb(255, 255, 255);
+    color: #000;
   }
 `;
 const User = styled.div`
   display: flex;
-  color:#ffffff;
-  flex-direction: column;
+  color:#000000;
+  flex-direction: row;
   align-items: center;
-  margin-right: 35px;
-  background: #142033;
   padding: 0 2.5em;
-
+gap:1em;
 `;
 const Nameuser = styled.label`
   cursor: pointer;
-  margin: 2px;
+  margin: 2px 0;
   &:hover {
-    color: #0066ff;
+    color: #rgb(0, 156, 255);
   }
 `;
 const H = styled.h1`
     color: rgb(0, 156, 255);
  font-size:1.3em;
-
-font-weight:lighter;
 margin:0 10px;
+font-weight: 600;
 &::first-letter{
-font-size: 1.5em;
+font-size: 1.2em;
+
+
 }
 `;
 

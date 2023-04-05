@@ -28,7 +28,7 @@ import {
   Thead,
   Tbody,
   Th,
-  Trdatos,
+  Trdatos,Dippadretabla,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
@@ -83,9 +83,9 @@ const Ciudades = () => {
           </Botonsearch>
         </Divsearch>
       </Divsearchpadre>
+      <Dippadretabla>
       <Divtabla>
- 
-          <Thead>
+            <Thead>
               <Th>Nº</Th>
               <Th>CIUDAD</Th>
               <Th>ACCIONES</Th>
@@ -104,12 +104,11 @@ const Ciudades = () => {
                       <div>
                         <Botonesacciones>
                           <Iconsacciones
-                            src={Editar}
-                            alt=""
                             onClick={() => {
                               setCiudadactual(v);
                             }}
-                          />
+
+                          >Editar</Iconsacciones>
                         </Botonesacciones>
                       </div>
                       <div>
@@ -118,7 +117,7 @@ const Ciudades = () => {
                             deleteCiudades(v.id, getApi);
                           }}
                         >
-                          <Iconsacciones1 src={Eliminar} alt="" />
+                          <Iconsacciones1 >Eliinar</Iconsacciones1>
                         </Botonesacciones>
                       </div>
                     </Botonacciones>
@@ -127,6 +126,7 @@ const Ciudades = () => {
               </Tbody>
             ))}
       </Divtabla>
+      </Dippadretabla>
     </Container>
   );
 };

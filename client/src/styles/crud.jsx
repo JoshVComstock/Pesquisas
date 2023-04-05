@@ -2,187 +2,124 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: calc(100%-300px);
-  display: flex;
-  flex-direction: column;
+  display:flex;
+  flex-direction: column; 
+  height:100%;
 `;
 export const Titulo = styled.label`
-  font-size: 25px;
-  margin: 20px;
-  display: block;
-  cursor: default;
-  margin-left: 50px;
-  
+font-size: 1.5em;
+margin: 0 0 0 5em;
+
 `;
 export const Divbotones = styled.div`
-  display: flex;
+  display:flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  margin:1.5em 0 1.5em 0 ;
 `;
 export const Botonespdf = styled.button`
-  border-radius: 0px 5px 5px 0px;
-  padding: 10px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.1);
-  &:hover {
-    color: #fff;
-    background: #0066ff;
-  }
-  &:hover Img {
-    filter: invert(100%) sepia(31%) saturate(2%) hue-rotate(198deg)
-      brightness(107%) contrast(101%);
-  }
+padding: 0.8em 4.5em;
+display:flex;
+justify-content: center;
+align-items: center;
+background: rgb(243, 246, 249);
+color: rgb(0, 156, 255);
+font-size: 1em;
+
 `;
 export const Botonespdf1 = styled.button`
-  padding: 0px 15px 0px 15px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  &:hover Img {
-    filter: invert(100%) sepia(31%) saturate(2%) hue-rotate(198deg)
-      brightness(107%) contrast(101%);
-  }
-  background: rgba(0, 0, 0, 0.1);
-  &:hover {
-    color: #fff;
-    background: #0066ff;
-  }
+padding: 0.8em 4.5em;
+display:flex;
+justify-content: center;
+align-items: center;
+background: rgb(243, 246, 249);
+color: rgb(0, 156, 255);
+font-size: 1em;
 `;
 export const Botonespdf2 = styled.button`
-  border-radius: 5px 0px 0px 5px;
-  padding: 10px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.1);
-  margin-left: 50px;
-  &:hover {
-    color: #fff;
-    background: #0066ff;
-  }
-  &:hover Img {
-    filter: invert(100%) sepia(31%) saturate(2%) hue-rotate(198deg)
-      brightness(107%) contrast(101%);
-  }
+padding: 0.8em 4.5em;
+display:flex;
+justify-content: center;
+align-items: center;
+background: rgb(243, 246, 249);
+color: rgb(0, 156, 255);
+font-size: 1em;
 `;
 export const Img = styled.img`
-  width: 20px;
-  height: 20px;
+
 `;
 export const Divsearchpadre = styled.div`
-  max-width: 100%;
-  display: flex;
-  justify-content: flex-end;
+
 `;
 export const Divsearch = styled.div`
-  width: 100%;
-  max-width: 700px;
-  display: flex;
-  align-items: center;
-  border-radius: 60px;
-  padding: 10px 20px;
-  height: 40px;
-  margin: 10px;
+  
 `;
 export const Search = styled.input`
-  background: transparent;
-  flex: 1;
-  outline: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  font-size: 16px;
-  color: #000;
-  &:focus {
-    border-bottom: 1px solid #0066ff;
-  }
+ 
 `;
 export const Botonsearch = styled.button`
-  border: 0;
-  border-radius: 50%;
-  width: 30px;
-  height: 29px;
-  cursor: pointer;
-  &:hover {
-    background: #0066ff;
-  }
-  &:hover Img {
-    filter: invert(100%) sepia(31%) saturate(2%) hue-rotate(198deg)
-      brightness(107%) contrast(101%);
-  }
+ 
 `;
 export const Botonacciones = styled.div`
-  display: flex;
-  margin: 5px;
+display:flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+gap:0.2em;
 `;
-export const Iconsacciones = styled.img`
-  cursor: pointer;
-  width: 25px;
-  height: 25px;
-  background: transparent;
-  filter: invert(74%) sepia(20%) saturate(1367%) hue-rotate(148deg)
-    brightness(94%) contrast(89%);
+export const Iconsacciones = styled.button`
+background: rgb(0, 156, 255);
+width:70px;
+  height:25px;
+cursor: pointer;
+border-radius: 0.3em;
+color:#fff;
 `;
-export const Iconsacciones1 = styled.img`
-  cursor: pointer;
-  width: 25px;
-  height: 25px;
-  background: transparent;
-  filter: invert(57%) sepia(96%) saturate(7239%) hue-rotate(342deg)
-    brightness(102%) contrast(80%);
+export const Iconsacciones1 = styled.button`
+ background: rgb(0, 156, 255);
+ width:70px;
+  height:25px;
+cursor: pointer;
+border-radius: 0.3em;
+color:#fff;
 `;
 export const Botonesacciones = styled.button`
-  background: transparent;
+ 
 `;
 
-
 export const Divtabla = styled.table`
-  width: 60em;
-  justify-content: center;
-  text-align: center;
-  padding: 10px 50px;
-  background: #22577a;
-  margin: 0 auto ;
-  overflow-x: scroll;
-  table-layout: fixed;
-  border-collapse: collapse;
-  box-shadow: 0 0 5px 0.3px;
+  width: 90%;
+  padding: 3em;
+  margin:1em auto;
+border-collapse: collapse;
 
 `;
 export const Thead = styled.thead`
-  background: #142033;
-  margin-bottom: 15px;
-  color: white;
-  height: 42px;
-  font-weight: lighter;
-  width: 100%;
- 
+color: #000;
 
 `;
+
+
+export const Dippadretabla = styled.div`
+  padding: 1em 0em;
+  width: 80%;
+  margin:1em auto;
+  background: rgb(243, 246, 249);
+`;
 export const Tbody = styled.tbody`
-  color: #000;
-  font-weight: lighter;
-  width: 100%;
-  border-collapse: collapse;
 
 
 `;
 export const Th = styled.th`
-  width: 10%;
-  font-weight: lighter;
+  border:solid 0.5px #00000044;
+  padding: 0em;
   border-collapse: collapse;
+  padding: 1em 0em;
+  font-weight: 600;
 
 `;
 export const Trdatos = styled.td`
-  background: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  font-weight: lighter;
-  border-collapse: collapse;
-  &:last-child{
-    display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  
-}
+  border:solid 0.5px;
+  border:solid 0.5px #00000044;
+ 
 `;
