@@ -1,6 +1,5 @@
-
-import React from 'react'
-import { Linkes, Img } from '../../../styles/roles';
+import React from "react";
+import { Linkes, Img } from "../../../styles/roles";
 import Centros from "../../../img/icons/Centros.jpg";
 import Logos from "../../../img/logoo.jpg";
 import City from "../../../img/icons/City.jpg";
@@ -16,64 +15,73 @@ import Rellamadosicons from "../../../img/icons/Rellamados.jpg";
 import Madresicons from "../../../img/icons/Madre.jpg";
 import Pacienteicons from "../../../img/icons/Paciente.jpg";
 import Usericons from "../../../img/user.jpg";
-import Cartilla from "../../../img/icons/Primeramuestra.jpg"
+import Cartilla from "../../../img/icons/Primeramuestra.jpg";
 
+import styled from "styled-components";
 
 const AdminComponent = () => {
   return (
     <>
-    <Linkes to="/home">
-    <Img src="src\img\Home.png" alt="" /> Home
-  </Linkes>
-  <Linkes to="/centros">
-    <Img src={Centros} alt="" /> Centros
-  </Linkes>
-  <Linkes to="/ciudades">
-    <Img src={City} alt="" />
-    Ciudades
-  </Linkes>
-  <Linkes to="/redes">
-    <Img src={Redess} alt="" /> Redes
-  </Linkes>
-  <Linkes to="/laboratorios">
-    {" "}
-    <Img src={Laboratorioicons} alt="" /> Laboratorios
-  </Linkes>
-  <Linkes to="/provincias">
-    <Img src={Provinciasicons} alt="" /> Provincias
-  </Linkes>
-  {/* <Linkes to="/registro_provincias">
+      <Linkes to="/home">
+        <Img src="src\img\Home.png" alt="" /> Home
+      </Linkes>
+      <Linkes to="/centros">
+        <Img src={Centros} alt="" /> Centros
+      </Linkes>
+      <Linkes to="/ciudades">
+        <Img src={City} alt="" />
+        Ciudades
+      </Linkes>
+      <Linkes to="/redes">
+        <Img src={Redess} alt="" /> Redes
+      </Linkes>
+      <Linkes to="/laboratorios">
+        {" "}
+        <Img src={Laboratorioicons} alt="" /> Laboratorios
+      </Linkes>
+      <Linkes to="/provincias">
+        <Img src={Provinciasicons} alt="" /> Provincias
+      </Linkes>
+      {/* <Linkes to="/registro_provincias">
     <Img src={Registropronviciasicons} alt="" /> Registro provincias
   </Linkes> */}
-  <Linkes to="/registro_usuario">
-    <Img src={Usericons} alt="" /> Registrar Usuario
-  </Linkes>
-  <Linkes to="/municipios">
-    <Img src={Municiosicons} alt="" /> Municipios
-  </Linkes>
-  <Linkes to="/cartilla">
-    <Img src={Cartilla} alt="" /> Cartilla
-  </Linkes>
-  {/* <Linkes to="/pacientes">
+      <Linkes to="/registro_usuario">
+        <Img src={Usericons} alt="" /> Registrar Usuario
+      </Linkes>
+      <Linkes to="/municipios">
+        <Img src={Municiosicons} alt="" /> Municipios
+      </Linkes>
+      <Linkes to="/cartilla">
+        <Img src={Cartilla} alt="" /> Cartilla
+      </Linkes>
+      {/* <Linkes to="/pacientes">
     <Img src={Pacienteicons} alt="" /> /Pacientes
   </Linkes> */}
-  {/* <Linkes to="/primera_muestra">
+      {/* <Linkes to="/primera_muestra">
     <Img src={Primeramuestraicons} alt="" /> /Primera Muestra
   </Linkes> */}
- {/*  <Linkes to="/Registro_hospitales">
+      {/*  <Linkes to="/Registro_hospitales">
     <Img src={Registrohospitalesicons} alt="" /> /Registro Hospitales
   </Linkes> */}
- {/*  <Linkes to="/Rellamados">
+      {/*  <Linkes to="/Rellamados">
     <Img src={Rellamadosicons} alt="" /> /Rellamados
   </Linkes> */}
-  {/* <Linkes to="/rellamados">
+      {/* <Linkes to="/rellamados">
     <Img src={Rellamadosicons} alt="" /> Rellamados
-  </Linkes> */}
-{/*   <Linkes to="/resultados">
+  </Linkes>
+  <Linkes to="/resultados">
     <img src="" alt="" /> /Resultados
-  </Linkes> */}
- </>
-  )
-}
+  </Linkes>
+</>*/}
+    </>
+  );
+};
 
-export default AdminComponent
+export default AdminComponent;
+
+export const Master = styled.div`
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+  overflow-y: scroll;
+`;

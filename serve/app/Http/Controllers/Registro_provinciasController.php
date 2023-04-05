@@ -9,6 +9,8 @@ class Registro_provinciasController extends Controller
 {
     public function index()
     {
+        // return DB::select('SELECT p.id,p.provincia,c.ciudad,c.id as id_ciudades FROM provincias as p, ciudades as c WHERE p.id_ciudades=c.id;
+        // ');
         return Registro_provincias::all();
     }
     public function store(Request $request)

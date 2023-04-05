@@ -87,11 +87,9 @@ const Ciudades = () => {
       <Divtabla>
         <Tabla >
           <Thead>
-            <tr>
-              <th>Nº</th>
-              <th>CIUDAD</th>
+              <Th>Nº</Th>
+              <Th>CIUDAD</Th>
               <Th>ACCIONES</Th>
-            </tr>
           </Thead>
           {ciudades
             .filter((v) =>
@@ -100,9 +98,9 @@ const Ciudades = () => {
             .map((v, i) => (
               <Tbody key={i}>
                 <tr>
-                  <Trdatos>{i + 1}</Trdatos>
-                  <Trdatos>{v.ciudad}</Trdatos>
-                  <Trdatos>
+                  <Trdatos data-label="Nº">{i + 1}</Trdatos>
+                  <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
+                  <Trdatos data-label="ACCIONES">
                     <Botonacciones>
                       <div>
                         <Botonesacciones>

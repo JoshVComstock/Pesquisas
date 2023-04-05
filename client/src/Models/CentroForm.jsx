@@ -203,6 +203,7 @@ const Divinput = styled.div`
   flex-direction: column;
   margin: 5px;
   align-items: center;
+  a
 `;
 const Input = styled.input`
   margin-top: 5px;

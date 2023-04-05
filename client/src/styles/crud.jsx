@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: calc(100%-200px);
+  width: calc(100%-300px);
   display: flex;
   flex-direction: column;
 `;
@@ -11,6 +11,7 @@ export const Titulo = styled.label`
   display: block;
   cursor: default;
   margin-left: 50px;
+  
 `;
 export const Divbotones = styled.div`
   display: flex;
@@ -134,28 +135,56 @@ export const Iconsacciones1 = styled.img`
 export const Botonesacciones = styled.button`
   background: transparent;
 `;
-export const Divtabla = styled.div`
-  width: 100%;
-  display: flex;
+
+
+export const Divtabla = styled.table`
+  width: 60em;
   justify-content: center;
   text-align: center;
   padding: 10px 50px;
+  background: #22577a;
+  margin: 0 auto ;
+  overflow-x: scroll;
+  table-layout: fixed;
+  border-collapse: collapse;
+  box-shadow: 0 0 5px 0.3px;
+
 `;
 export const Thead = styled.thead`
-  background: #22577a;
+  background: #142033;
   margin-bottom: 15px;
   color: white;
-  height: 40px;
+  height: 42px;
+  font-weight: lighter;
+  width: 100%;
+ 
+
 `;
 export const Tbody = styled.tbody`
   color: #000;
+  font-weight: lighter;
+  width: 100%;
+  border-collapse: collapse;
+
+
 `;
 export const Th = styled.th`
   width: 10%;
+  font-weight: lighter;
+  border-collapse: collapse;
+
 `;
 export const Trdatos = styled.td`
   background: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-weight: lighter;
+  border-collapse: collapse;
+  &:last-child{
+    display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  
+}
 `;
 export const Tabla = styled.table`
   width: 100%;

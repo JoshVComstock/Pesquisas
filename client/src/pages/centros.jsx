@@ -38,7 +38,7 @@ const Centros = () => {
   const [centroactual, setCentroactual] = useState({});
   const { getApi, data: cntros } = UseFech(getCentros);
   const { openModal, closeModal } = useModal(
-    Object.keys(centroactual).length > 0 ? "Editar Centro de Salud" : "Agregar Centro de Salud",
+    Object.keys(centroactual).lengTh > 0 ? "Editar Centro de Salud" : "Agregar Centro de Salud",
     <CentroForm
       getApi={getApi}
       centroactual={centroactual}
@@ -50,7 +50,7 @@ const Centros = () => {
   );
   const [filtro, setFiltro] = useState("");
   useEffect(() => {
-    if (Object.keys(centroactual).length > 0) {
+    if (Object.keys(centroactual).lengTh > 0) {
       openModal();
     }
   }, [centroactual]);

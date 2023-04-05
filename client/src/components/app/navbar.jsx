@@ -1,10 +1,9 @@
 import React from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import Logos from "../../img/logoo.jpg";
 import { useNavContext } from "../../context/navcontext";
 import { useuserContext } from "../../context/userContext";
-import Login from "../../pages/Login";
 import AdminComponent from "./routesToRole/admin";
 import LaboratorioComponent from "./routesToRole/laboratorio";
 
@@ -40,9 +39,10 @@ const Navbar = () => {
   return (
     <>
         <Divheader>
+       
         <Header>
           <Logo>
-            <Imge src={Logos} alt="" />
+            <H>Tamizaje</H>
           </Logo>
        {user.rol == "administrador" && (
        <AdminComponent/>
@@ -68,47 +68,22 @@ const Navbar = () => {
     </>
   );
 };
+
 export default Navbar;
 
 const Divheader = styled.div`
   display: flex;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  overflow-x: hidden;
-`;
+  justify-content: center;
+  align-items: center;
+`
+
 const Header = styled.header`
-  min-width: 250px;
+  min-width: 280px;
   height: 100vh;
-  background: #22577a;
+  background:rgb(243, 246, 249);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
-`;
-const Img = styled.img`
-  width: 25px;
-  height: 25px;
-  margin: 0 10px;
-  filter: invert(99%) sepia(6%) saturate(2%) hue-rotate(92deg) brightness(112%)
-    contrast(100%);
-`;
-const Linkes = styled(Link)`
-  padding: 10px 10px 10px 30px;
-  cursor: pointer;
-  text-decoration: none;
-  color: #aeaeae;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-size: 15px;
-  &:hover {
-    background: #fff;
-    color: #0066ff;
-    border-radius: 0px -20px 10px 0px;
-  }
-  &:hover Img {
-    filter: invert(25%) sepia(42%) saturate(5518%) hue-rotate(211deg)
-      brightness(100%) contrast(102%);
-  }
+  box-shadow: 0 0 8px 2px;
 `;
 const Imge = styled.img``;
 const Logo = styled.div`
@@ -116,43 +91,53 @@ const Logo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 15px 0px 10px 0px;
+  margin: 15px 0px 3em 0px;
 `;
 const Navuser = styled.div`
-  min-width: calc(100% - 250px);
+  min-width: calc(100% - 280px);
   height: 100vh;
   display: flex;
   flex-direction: column;
 `;
 const Topnav = styled.div`
-  max-width: 100%;
-  background: #e2e2e9;
+  width: 90%;
+  background: rgb(243, 246, 249);
   display: flex;
   justify-content: flex-end;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap:1em;
+  margin:0 auto;
+
 `;
 const Topnavimg = styled.img`
-  width: 33px;
-  height: 33px;
-  margin: 3px;
+  width: 30px;
+  height: 30px;
+  margin: 1px;
   background-color:transparent;
 `;
 const Logout = styled.button`
-  background: none;
-  margin: 0 15px;
+  background: #142033;
   cursor: pointer;
-  color:#fff;
+  color:#ffffff;
+  padding: 0.1em 2.5em;
+  height: 2em;
+  border-radius: 1em;
+  transition:all 1s;
   &:hover {
-    color: #94b5e6;
-    text-decoration: underline;
+    background: blue;
+    color: #fff;
   }
 `;
 const User = styled.div`
   display: flex;
-  color:#fff;
+  color:#ffffff;
   flex-direction: column;
   align-items: center;
   margin-right: 35px;
+  background: #142033;
+  padding: 0 2.5em;
+
 `;
 const Nameuser = styled.label`
   cursor: pointer;
@@ -161,3 +146,14 @@ const Nameuser = styled.label`
     color: #0066ff;
   }
 `;
+const H = styled.h1`
+    color: rgb(0, 156, 255);
+ font-size:1.3em;
+
+font-weight:lighter;
+margin:0 10px;
+&::first-letter{
+font-size: 1.5em;
+}
+`;
+
