@@ -16,7 +16,7 @@ class CreateResultadosTable extends Migration
         Schema::create('resultados', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_cartillas')->constrained('cartillas')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('nombre_bebe');
+            $table->foreignId('id_laboratorio')->constrained('laboratorios')->cascadeOnUpdate()->cascadeOnDelete();
             $table->dateTime('fecha_ingreso');
             $table->dateTime('fecha_resultado');
             $table->dateTime('fecha_entregado');

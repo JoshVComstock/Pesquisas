@@ -29,6 +29,7 @@ import {
   Tbody,
   Th,
   Trdatos,
+  Tabla
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
@@ -84,7 +85,7 @@ const Ciudades = () => {
         </Divsearch>
       </Divsearchpadre>
       <Divtabla>
-        <table className="table">
+        <Tabla >
           <Thead>
             <tr>
               <th>Nº</th>
@@ -128,7 +129,7 @@ const Ciudades = () => {
                 </tr>
               </Tbody>
             ))}
-        </table>
+        </Tabla>
       </Divtabla>
     </Container>
   );

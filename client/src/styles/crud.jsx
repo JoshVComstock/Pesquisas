@@ -157,3 +157,11 @@ export const Trdatos = styled.td`
   background: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 `;
+export const Tabla = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  overflow-y: scroll;
+`;

@@ -3,19 +3,12 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { postMunicipios, updateMunicipios } from "../services/Municipios";
 import { UseFech } from "../hooks/useFech";
-import { getCiudades } from "../services/Ciudades";
-
-const MunicipiosForm = ({
-  getApi,
-  municipioactual,
-  setMunicipioactual,
-  closeModal,
-}) => {
+import { getProvincias } from "../services/provincias";
+const MunicipiosForm = ({getApi, municipioactual, setMunicipioactual,closeModal}) => {
 
  const [municipio, setMunicipio] = useState("");
-  const [id_ciudades, setId_ciudades] = useState("");
-  const { data: ciudad } = UseFech(getCiudades);
-
+  const [id_provincias, setId_provincias] = useState("");
+  const { data: provincia } = UseFech(getProvincias);
   useEffect(() => {
     if (Object.keys(municipioactual).length > 0) {
       setMunicipio(municipioactual.municipio);
@@ -24,6 +17,7 @@ const MunicipiosForm = ({
       setMunicipioactual({});
     };
   }, [municipioactual]);
+
   const updatepost = (e) => {
     e.preventDefault();
     if (Object.keys(municipioactual).length > 0) {
@@ -31,7 +25,7 @@ const MunicipiosForm = ({
         {
           id: municipioactual.id,
           municipio: municipio,
-          id_ciudades:id_ciudades,
+          id_provincias:id_provincias,
         },
         () => {
           setMunicipio("");
@@ -41,7 +35,7 @@ const MunicipiosForm = ({
         }
       );
     } else {
-      postMunicipios(municipio, id_ciudades, () => {
+      postMunicipios(municipio, id_provincias, () => {
         setMunicipio("");
         getApi();
         closeModal();
@@ -66,12 +60,12 @@ const MunicipiosForm = ({
           </Divinput>
           <Divinput>
             <Divinputlabel>
-              <label>Ciudad</label>
-              <Select onChange={(e) => setId_ciudades(e.target.value)}>
-                <option >Seleccione Ciudad</option>
-                {ciudad.map((v, i) => (
+              <label>Provicia</label>
+              <Select onChange={(e) => setId_provincias(e.target.value)}>
+                <option >Seleccione Provincia</option>
+                {provincia.map((v, i) => (
                   <option key={i} value={v.id}>
-                    {v.ciudad}
+                    {v.provincia}
                   </option>
                 ))}
               </Select>

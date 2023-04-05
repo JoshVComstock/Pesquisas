@@ -29,6 +29,7 @@ import {
 } from "../styles/crud";
 
 const Cartillas = () => {
+  
   return (
     <Container>
       <Titulo>Cartilla</Titulo>

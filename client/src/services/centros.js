@@ -47,6 +47,7 @@ export const updateCentros = async (centroactual,callback) => {
       contacto:centroactual.contacto,
 
   })});
+  console.log(centroactual.id);
   if(response.ok){
     callback();
   }

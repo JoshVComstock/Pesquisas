@@ -1,116 +1,142 @@
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
-
+import { horaactual, Actualdate } from "../services/date";
 const Cartilla = () => {
+  const [sexo, setSexo] = useState("");
+  const [fecha, setFecha] = useState(Actualdate);
   return (
     <Container>
-      <Containerhijo>
-        <label id="labelprimerapellido" htmlFor="">
-          PRIMER APELLIDO
-        </label>
-        <input type="text" id="inputapellido" />
-
-        <label htmlFor="" id="labelsegungoapellido">
-          SEGUNDO APELLIDO
-        </label>
-        <input type="text" id="inputseundoapelldo" />
-
-        <label htmlFor="" id="labelnombre">
-          NOMBRE
-        </label>
-        <input type="text" id="inputnombre" />
-
-        <label htmlFor="" id="labelfechanacimiento">
-          FECHA NACIMIENTO
-        </label>
-
-        <label htmlFor="" id="labelhora">
-          HORA
-        </label>
-        <input type="time" id="inputhora" />
-
-        <label htmlFor="" id="labelfecha">
-          FECHA
-        </label>
-        <input type="date" id="inputfecha" />
-
-        <label htmlFor="" id="labelsexo">
-          SEXO
-        </label>
-
-        <label htmlFor="" id="labelm">
-          M
-        </label>
-        <input type="radio" name="sexo" id="inputm" />
-
-        <label htmlFor="" id="labelf">
-          F
-        </label>
-        <input type="radio" name="sexo" id="inputf" />
-
-        <label htmlFor="" id="labelfechamuestra">
-          FECHA DE TOMA DE MUESTRA
-        </label>
-
-        <label htmlFor="" id="labelhoramuestra">
-          HORA
-        </label>
-        <input type="time" id="inputhoramuestra" />
-
-        <label htmlFor="" id="labelfechamuestra">
-          FECHA
-        </label>
-        <input type="date" id="inputfechamuestra" />
-
-        <label htmlFor="" id="labelmuestra">
-          MUESTRA
-        </label>
-        <input type="number" id="inputmuestra" />
-
-        <label htmlFor="" id="labelnacimientotermino">
-          NACIMIENTO A TERMINO
-        </label>
-        <input type="checkbox" name="" id="inputnacimientotermino" />
-
-        <label htmlFor="" id="labeledadgestion">
-          EDAD GESTACIONAL
-        </label>
-
-        <label htmlFor="" id="labelsemanas">
-          SEMANAS
-        </label>
-        <input type="number" id="inputsemanas" />
-
-        <label htmlFor="" id="labeldias">
-          DIAS
-        </label>
-        <input type="number" id="inputdias" />
-
-        <label htmlFor="" id="labelpesonacer">
-          PESO AL NACER
-        </label>
-        <input type="number" id="inputpesonacer" />
-
-        <label htmlFor="" id="labeltransfunsion">
-          TRANSFUNSION
-        </label>
-        <input type="checkbox" name="" id="inputtransfuncion" />
-
-        <label htmlFor="" id="labelfecha">
-          FECHA
-        </label>
-        <input type="date" id="inpufecha" />
-
-        <label htmlFor="" id="labelantibioticos">
-          ANTIBIOTICOS
-        </label>
-        <input type="text" id="inputantiobioticos" />
-
-        <label htmlFor="" id="labelredcentro">
-          RED / CENTRO DE SALUD
-        </label>
-        <input type="text" id="inputredcentro" />
-      </Containerhijo>
+      <h2>
+        SERVICIO DEPARTAMENTAL DE SALUD - SEDES - SANTA CRUZ PROGRAMA
+        DEPARTAMENTAL DE TAMIZAJE NEONATAL
+      </h2>
+      <Card>
+        <Divname>
+          <Labelname htmlFor="">
+            <strong>PRIMER APELLIDO</strong>
+          </Labelname>
+          <Inputname type="text" />
+        </Divname>
+        <Divname>
+          <Labelname htmlFor="">
+            <strong>SEGUNDO APELLIDO</strong>
+          </Labelname>
+          <Inputname type="text" />
+        </Divname>
+        <Divname>
+          <Labelname htmlFor="">
+            <strong>NOMBRE</strong>
+          </Labelname>
+          <Inputname type="text" />
+        </Divname>
+        <Divname>
+          <Labelname>
+            <strong>FECHA DE NACIMIENTO:</strong>
+          </Labelname>
+          <Divdatetime>
+            <Divinputdate>
+              <Labeldate htmlFor="">HORA</Labeldate>
+              <Inputname
+                type="time"
+                name=""
+                onChange={(e) => setFecha(e.target.value)}
+              />
+            </Divinputdate>
+            <Divinputdate>
+              <Labeldate htmlFor="">FECHA</Labeldate>
+              <Inputname type="date" />
+            </Divinputdate>
+            <Divinputdate>
+              <Labeldate htmlFor="">SEXO</Labeldate>
+              <Divsexo>
+                <Divinputsex>
+                  <Labeldate htmlFor="">M</Labeldate>
+                  <Inputsexo
+                    type="radio"
+                    name="sexo"
+                    value={"MASCULINO"}
+                    onChange={(e) => setSexo(e.target.value)}
+                  />
+                </Divinputsex>
+                <Divinputsex>
+                  <Labeldate htmlFor="">F</Labeldate>
+                  <Inputsexo
+                    type="radio"
+                    name="sexo"
+                    value={"FEMENINO"}
+                    onChange={(e) => setSexo(e.target.value)}
+                  />
+                </Divinputsex>
+              </Divsexo>
+            </Divinputdate>
+          </Divdatetime>
+        </Divname>
+        <Divname>
+          <Labelname htmlFor="">
+            <strong>FECHA DE TOMA DE MUESTRA:</strong>
+          </Labelname>
+          <Divdatetime>
+            <Divinputdate>
+              <Labeldate htmlFor="">HORA</Labeldate>
+              <Inputname
+                type="time"
+                name=""
+                value={horaactual}
+                onChange={(e) => setFecha(e.target.value)}
+              />
+            </Divinputdate>
+            <Divinputdate>
+              <Labeldate htmlFor="">FECHA</Labeldate>
+              <Inputname type="date" value={Actualdate} />
+            </Divinputdate>
+            <Divinputdate>
+              <Labeldate htmlFor="">MUESTRA</Labeldate>
+              <Inputname type="number" />
+            </Divinputdate>
+          </Divdatetime>
+        </Divname>
+        <Divname>
+          <Labeldate htmlFor="">
+            <strong>NACIMIENTO A TERMINO:</strong>
+          </Labeldate>
+          <Divinputdate>
+            <Labeldate htmlFor="">SI</Labeldate>
+            <Inputsexo type="radio" name="nacitermino" />
+            <Labeldate htmlFor="">NO</Labeldate>
+            <Inputsexo type="radio" name="nacitermino" />
+          </Divinputdate>
+          <Labeldate htmlFor="">
+            <strong>EDAD GESTIONAL:</strong>{" "}
+          </Labeldate>
+          <Edadges>
+            <Labeldate htmlFor="">SEMANAS</Labeldate>
+            <Inputname type="number" />
+            <Labeldate htmlFor="">DIAS</Labeldate>
+            <Inputname type="number" />
+          </Edadges>
+          <Labeldate htmlFor="">
+            <strong>PESO AL NACER:</strong>
+          </Labeldate>
+          <Pesnacerinput>
+            <Inputname type="number" />
+            <P>g</P>
+          </Pesnacerinput>
+        </Divname>
+        <Divname>
+          <Labeldate htmlFor=""><strong>TRANSFUNSION:</strong></Labeldate>
+          <Divinputdate>
+            <Labeldate htmlFor="">SI</Labeldate>
+            <Inputsexo type="radio" />
+            <Labeldate htmlFor="">NO</Labeldate>
+            <Inputsexo type="radio" />
+          </Divinputdate>
+          <Labeldate htmlFor=""><strong>FECHA</strong></Labeldate>
+          <Inputname type="date" />
+          <Labeldate htmlFor=""><strong>ANTIBIOTICOS</strong></Labeldate>
+          <Inputname type="text" />
+        </Divname>
+      </Card>
     </Container>
   );
 };
@@ -120,81 +146,101 @@ export default Cartilla;
 const Container = styled.div`
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
-const Containerhijo = styled.div`
+const Card = styled.div`
+  padding-top: 10px;
+  width: 1200px;
+  height: 500px;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 5px 2px 5px 2px rgba(0, 0, 0, 0.2);
+`;
+const Divname = styled.div`
   width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-rows: repeat(7,auto);
-  grid-template-columns: repeat(20,1fr);
-  grid-template-areas:
-  "1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2"
-  "3 3 3 3 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4"
-  "5 5 5 5 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6"
-  "7 7 7 7 8 8 9 9 9 10 10 11 11 11 12 12 13 14 15 16"
-  "17 17 17 17 18 18 19 19 19 20 20 21 21 21 22 22 23 23 23 23"
-  ""
-  "" ;
-  input{
-    border: 1px solid black;
-  }
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
 
-  #labelprimerapellido{
-   grid-area: 1;
-  }
-  #inputprimerapellido{
-   grid-area: 2;
-  }
-  #labelsegundoapellido{
-   grid-area: 3;
-  }
-  #inputsegundoapellido{
-   grid-area: 4;
-  }
-  #labelnombre{
-   grid-area: 5;
-  }
-  #inputnombre{
-   grid-area: 6;
-  }
-  #labelfechanacimiento{
-   grid-area: 7;
-  }
-  #labelhora{
-   grid-area: 8;
-  }
-  #inputhora{
-   grid-area: 9;
-  }
-  #labelfecha{
-   grid-area: 10;
-  }
-  #inputfecha{
-   grid-area: 11;
-  }
-  #labelsexo{
-   grid-area: 12;
-  }
-  #labelm{
-   grid-area: 13;
-  }
-  #inputm{
-   grid-area: 14;
-  }
-  #labelf{
-   grid-area: 15;
-  }
-  #inputf{
-   grid-area: 16;
-  }
-  #labelm{
-   grid-area: 13;
-  }
-  #inputm{
-   grid-area: 14;
-  }
-  #labelfechamuestra{
-    grid-area: 15;
+  align-items: center;
+`;
+const Labelname = styled.label`
+  margin: 10px;
+  width: 15%;
+  user-select: none;
+`;
+const Inputname = styled.input`
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  width: 80%;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  outline: none;
+  padding: 10px;
+  
+  &:focus {
+    border: 1.5px solid #034078;
   }
 `;
-
+const Divdate = styled.div`
+  display: flex;
+`;
+const Divdatetime = styled.div`
+  display: flex;
+`;
+const Divinputdate = styled.div`
+  display: flex;
+  margin: 5px;
+  justify-content: center;
+  align-items: center;
+`;
+const Labeldate = styled.label`
+  margin-right: 10px;
+  margin-left: 10px;
+  user-select: none;
+`;
+const Divsexo = styled.div`
+  display: flex;
+  margin: 5px;
+  justify-content: center;
+  align-items: center;
+`;
+const Divinputsex = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+const Inputsexo = styled.input`
+  width: 17px;
+  height: 17px;
+  margin-top: 5px;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
+  &:focus {
+    border: 1.5px solid #034078;
+  }
+`;
+const Edadges = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+const Pesnacerinput = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+`;
+const P=styled.div`
+  margin-left: 20px;
+`;

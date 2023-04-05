@@ -29,15 +29,17 @@ import {
   Tbody,
   Th,
   Trdatos,
+  Tabla,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteMunicipios, getMunicipios } from "../services/Municipios";
-
 const Municipios = () => {
   const [municipioactual, setMunicipioactual] = useState({});
-  const { getApi, data: municipios } = UseFech(getMunicipios);
+  const { getApi, data: mnicipios } = UseFech(getMunicipios);
   const { openModal, closeModal } = useModal(
-    Object.keys(municipioactual).length > 0 ? "Editar m" : "Agregar m",
+    Object.keys(municipioactual).length > 0
+      ? "Editar Municipio"
+      : "Agregar Municipio",
     <MunicipiosForm
       getApi={getApi}
       municipioactual={municipioactual}
@@ -54,7 +56,7 @@ const Municipios = () => {
     }
   }, [municipioactual]);
   return (
-<Container>
+    <Container>
       <Titulo>Municipios</Titulo>
       <Divbotones>
         <Botonespdf2 onClick={openModal}>
@@ -78,12 +80,12 @@ const Municipios = () => {
             onChange={(e) => setFiltro(e.target.value)}
           />
           <Botonsearch>
-            <Img src={Searchicons} alt="" />{" "}
+            <Img src={Searchicons} alt="" />
           </Botonsearch>
         </Divsearch>
       </Divsearchpadre>
       <Divtabla>
-        <table className="table">
+        <Tabla>
           <Thead>
             <tr>
               <th>Nº</th>
@@ -92,7 +94,7 @@ const Municipios = () => {
               <Th>ACCIONES</Th>
             </tr>
           </Thead>
-          {municipios
+          {mnicipios
             .filter((v) =>
               v.municipio.toLowerCase().includes(filtro.toLowerCase())
             )
@@ -101,7 +103,7 @@ const Municipios = () => {
                 <tr>
                   <Trdatos>{i + 1}</Trdatos>
                   <Trdatos>{v.municipio}</Trdatos>
-                  <Trdatos>{v.ciudad}</Trdatos>
+                  <Trdatos>{v.provincia}</Trdatos>
                   <Trdatos>
                     <Botonacciones>
                       <div>
@@ -109,14 +111,18 @@ const Municipios = () => {
                           <Iconsacciones
                             src={Editar}
                             alt=""
-                            onClick={() => {setMunicipioactual(v);}}
+                            onClick={() => {
+                              setMunicipioactual(v);
+                            }}
                           />
                         </Botonesacciones>
                       </div>
                       <div>
-                        <Botonesacciones onClick={() => {
+                        <Botonesacciones
+                          onClick={() => {
                             deleteMunicipios(v.id, getApi);
-                          }}>
+                          }}
+                        >
                           <Iconsacciones1 src={Eliminar} alt="" />
                         </Botonesacciones>
                       </div>
@@ -125,7 +131,7 @@ const Municipios = () => {
                 </tr>
               </Tbody>
             ))}
-        </table>
+        </Tabla>
       </Divtabla>
     </Container>
   );

@@ -42,9 +42,9 @@ const AdminComponent = () => {
   <Linkes to="/provincias">
     <Img src={Provinciasicons} alt="" /> Provincias
   </Linkes>
-  <Linkes to="/registro_provincias">
+  {/* <Linkes to="/registro_provincias">
     <Img src={Registropronviciasicons} alt="" /> Registro provincias
-  </Linkes>
+  </Linkes> */}
   <Linkes to="/registro_usuario">
     <Img src={Usericons} alt="" /> Registrar Usuario
   </Linkes>
@@ -54,24 +54,24 @@ const AdminComponent = () => {
   <Linkes to="/cartilla">
     <Img src={Cartilla} alt="" /> Cartilla
   </Linkes>
-  <Linkes to="/pacientes">
+  {/* <Linkes to="/pacientes">
     <Img src={Pacienteicons} alt="" /> /Pacientes
-  </Linkes>
-  <Linkes to="/primera_muestra">
+  </Linkes> */}
+  {/* <Linkes to="/primera_muestra">
     <Img src={Primeramuestraicons} alt="" /> /Primera Muestra
-  </Linkes>
-  <Linkes to="/Registro_hospitales">
+  </Linkes> */}
+ {/*  <Linkes to="/Registro_hospitales">
     <Img src={Registrohospitalesicons} alt="" /> /Registro Hospitales
-  </Linkes>
-  <Linkes to="/Rellamados">
+  </Linkes> */}
+ {/*  <Linkes to="/Rellamados">
     <Img src={Rellamadosicons} alt="" /> /Rellamados
-  </Linkes>
-  <Linkes to="/rellamados">
+  </Linkes> */}
+  {/* <Linkes to="/rellamados">
     <Img src={Rellamadosicons} alt="" /> Rellamados
-  </Linkes>
-  <Linkes to="/resultados">
+  </Linkes> */}
+{/*   <Linkes to="/resultados">
     <img src="" alt="" /> /Resultados
-  </Linkes>
+  </Linkes> */}
  </>
   )
 }

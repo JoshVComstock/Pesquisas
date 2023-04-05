@@ -35,13 +35,13 @@ export const updateMunicipios = async (municipioactual,callback) => {
       },
       body: JSON.stringify({
         municipio:municipioactual.municipio,
-        id_ciudades:municipioactual.id_ciudades,
+        id_provincias:municipioactual.id_provincias,
     })});
     if(response.ok){
       callback();
     }
   }
-  export const postMunicipios = async (municipio,id_ciudades,callback) => {
+  export const postMunicipios = async (municipio,id_provincias,callback) => {
     const response = await fetch(`${baseUrl}municipios`, {
       method: "POST",
       headers: {
@@ -50,7 +50,7 @@ export const updateMunicipios = async (municipioactual,callback) => {
       },
       body: JSON.stringify({
         municipio: municipio,
-        id_ciudades: id_ciudades,
+        id_provincias: id_provincias,
     })});
     if(response.ok){
       callback();

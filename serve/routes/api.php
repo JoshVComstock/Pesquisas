@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Registro_provinciasController;
 use App\Http\Controllers\Registro_hospitalesController;
 use App\Http\Controllers\Control_filtrosController;
+use App\Http\Controllers\ResultsController;
 use GuzzleHttp\Middleware;
 
 /*
@@ -98,3 +99,5 @@ Route::delete('/control_filtros/{id}', [Control_filtrosController::class, 'destr
 
 Route::get('/cartillas', [CartillasController::class, 'index']);
 Route::post('/cartillas', [CartillasController::class, 'store']);
+
+Route::post('/resulst',[ResultsController::class,'results']);

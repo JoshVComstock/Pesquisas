@@ -29,13 +29,14 @@ import {
   Tbody,
   Th,
   Trdatos,
+  Tabla,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
-import { deleteCentros, getCentros } from "../services/Centros";
+import { deleteCentros, getCentros } from "../services/centros";
 
 const Centros = () => {
   const [centroactual, setCentroactual] = useState({});
-  const { getApi, data: centros } = UseFech(getCentros);
+  const { getApi, data: cntros } = UseFech(getCentros);
   const { openModal, closeModal } = useModal(
     Object.keys(centroactual).length > 0 ? "Editar Centro de Salud" : "Agregar Centro de Salud",
     <CentroForm
@@ -85,22 +86,21 @@ const Centros = () => {
       </Divsearchpadre>
       <Divtabla>
         
-        <table class="table">
+        <Tabla>
           <Thead>
             <tr>
               <th>Nº</th>
               <th>NOMBRE</th>
               <th>DIRECCIÓN</th>
-              <th>RED</th>
               <th>TELEFONO</th>
-              <th>CIUDAD</th>
+              <th>MUNICIPIO</th>
               <th>AREA</th>
               <th>SEGUIMIENTO</th>
               <th>CONTACTO</th>
               <Th>ACCIONES</Th>
             </tr>
           </Thead>
-          {centros
+          {cntros
             .filter((v) =>
               v.nombre.toLowerCase().includes(filtro.toLowerCase())
             )
@@ -110,9 +110,8 @@ const Centros = () => {
                   <Trdatos>{i + 1}</Trdatos>
                   <Trdatos>{v.nombre}</Trdatos>
                   <Trdatos>{v.direccion}</Trdatos>
-                  <Trdatos>{v.red}</Trdatos>
                   <Trdatos>{v.telefono}</Trdatos>
-                  <Trdatos>{v.ciudad}</Trdatos>
+                  <Trdatos>{v.municipio}</Trdatos>
                   <Trdatos>{v.area}</Trdatos>
                   <Trdatos>{v.seguimiento_casos}</Trdatos>
                   <Trdatos>{v.contacto}</Trdatos>
@@ -143,7 +142,7 @@ const Centros = () => {
                 </tr>
               </Tbody>
             ))}
-        </table>
+        </Tabla>
       </Divtabla>
     </Container>
   );
