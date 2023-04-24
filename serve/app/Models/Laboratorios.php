@@ -12,8 +12,6 @@ class Laboratorios extends Model
         'nombre',
         'direccion',
         'telefono',
-        'id_centros',
-        'id_ciudades',
-    
+        'id_provincias',
     ];
 }

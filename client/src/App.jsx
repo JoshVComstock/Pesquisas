@@ -19,7 +19,7 @@ import { Navcontextprovider } from "./context/navcontext";
 import { Usercontextprovider } from "./context/userContext";
 import ProtectedRoute from "./wrappers/ProtectedRoute";
 import Control_Filtros from "./pages/Control_Filtros";
-import Cartilla from "./models/Cartilla";
+import Cartilla from "./Models/Cartilla";
 
 function App() {
   return (

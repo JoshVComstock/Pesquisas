@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 use App\Models\Laboratorios;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LaboratoriosController extends Controller
 {
     public function index()
     {
-        return Laboratorios::all();
+        return DB::select('SELECT l.id,l.nombre,l.direccion,l.telefono,p.provincia,p.id as idprovincia from laboratorios as l, provincias as p WHERE l.id_provincias=p.id');
     }
     public function store(Request $request)
     {
@@ -16,8 +17,7 @@ class LaboratoriosController extends Controller
         $laboratorio->nombre=$request->nombre;
         $laboratorio->direccion=$request->direccion;
         $laboratorio->telefono=$request->telefono;
-        $laboratorio->id_centros=$request->id_centros;
-        $laboratorio->id_ciudades=$request->id_ciudades;
+        $laboratorio->id_provincias=$request->id_provincias;
         $laboratorio->save();
         return $laboratorio;
     }
@@ -27,8 +27,7 @@ class LaboratoriosController extends Controller
         $laboratorio->nombre=$request->nombre;
         $laboratorio->direccion=$request->direccion;
         $laboratorio->telefono=$request->telefono;
-        $laboratorio->id_centros=$request->id_centros;
-        $laboratorio->id_ciudades=$request->id_ciudades;
+        $laboratorio->id_provincias=$request->id_provincias;
         $laboratorio->save();
         return $laboratorio;
     }

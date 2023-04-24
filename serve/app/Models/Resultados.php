@@ -10,7 +10,7 @@ class Resultados extends Model
     use HasFactory;
     protected $fillable = [
         'id_cartillas',
-        'nombre_bebe',
+        'id_laboratorio',
         'fecha_ingreso',
         'fecha_resultado',
         'fecha_entregado',

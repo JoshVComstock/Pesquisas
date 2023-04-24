@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
-// import RedesForm from "../models/RedesForm";
+import RedesForm from "../models/RedesForm";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
@@ -29,6 +29,7 @@ import {
   Tbody,
   Th,
   Trdatos,
+  Tabla,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteRedes, getRedes } from "../services/Redes";
@@ -83,7 +84,7 @@ const Redes = () => {
         </Divsearch>
       </Divsearchpadre>
       <Divtabla>
-        <table className="table">
+        <Tabla>
           <Thead>
             <tr>
               <th>Nº</th>
@@ -127,7 +128,7 @@ const Redes = () => {
                 </tr>
               </Tbody>
             ))}
-        </table>
+        </Tabla>
       </Divtabla>
     </Container>
   );

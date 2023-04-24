@@ -10,7 +10,7 @@ class MunicipiosController extends Controller
 {
     public function index()
     {
-        return DB::select('SELECT m.id,m.municipio,c.ciudad,c.id as id_ciudades FROM municipios as m, ciudades as c WHERE m.id_ciudades=c.id');
+        return DB::select('SELECT m.id,m.municipio,p.id as idprovi,p.provincia FROM municipios as m, provincias as p WHERE m.id_provincias=p.id');
     }
     public function store(Request $request)
     {

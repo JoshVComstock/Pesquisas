@@ -12,7 +12,8 @@ class CartillasController extends Controller
 {
     public function index()
     {
-        return DB::select('select m.nombre, m.apellidos ,p.nombre,p.ap_paterno,c.codigo_barras,c.fecha_toma_muestra from madres as m,pacientes as p, cartillas as c where c.id=p.id and p.id=m.id');
+        return DB::select('select m.nombre as madre, m.apellidos,m.ci ,p.nombre,p.ap_paterno,c.codigo_barras,c.fecha_toma_muestra from madres as m,pacientes as p, cartillas as c where c.id_pacientes=p.id and p.id_madres=m.id;
+        ');
     }
     public function store(Request $request)
     {

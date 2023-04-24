@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
-import CiudadesForm from "../models/CiudadesForm";
+import CiudadesForm from "../Models/CiudadesForm";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
@@ -28,7 +28,8 @@ import {
   Thead,
   Tbody,
   Th,
-  Trdatos,Dippadretabla,
+  Trdatos,Dippadretabla,Sectiontabla,
+  Tabla
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
@@ -83,12 +84,17 @@ const Ciudades = () => {
           </Botonsearch>
         </Divsearch>
       </Divsearchpadre>
+     
       <Dippadretabla>
+      <Sectiontabla>
       <Divtabla>
-            <Thead>
-              <Th>Nº</Th>
+        <Tabla >
+          <Thead>
+          <tr>
+          <Th>Nº</Th>
               <Th>CIUDAD</Th>
               <Th>ACCIONES</Th>
+          </tr>
           </Thead>
           {ciudades
             .filter((v) =>
@@ -96,7 +102,7 @@ const Ciudades = () => {
             )
             .map((v, i) => (
               <Tbody key={i}>
-                <tr>
+                <tr >
                   <Trdatos data-label="Nº">{i + 1}</Trdatos>
                   <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
                   <Trdatos data-label="ACCIONES">
@@ -125,8 +131,11 @@ const Ciudades = () => {
                 </tr>
               </Tbody>
             ))}
+        </Tabla>
       </Divtabla>
+      </Sectiontabla>
       </Dippadretabla>
+      
     </Container>
   );
 };

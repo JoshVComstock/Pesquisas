@@ -8,10 +8,8 @@ export const getCentros = async () => {
             headers: {
                 "Content-Type": "application/json"
             },
-
         })
         return response;
-
     } catch (error) {
         console.log(error);
     }
@@ -47,6 +45,7 @@ export const updateCentros = async (centroactual,callback) => {
       contacto:centroactual.contacto,
 
   })});
+  console.log(centroactual.id);
   if(response.ok){
     callback();
   }

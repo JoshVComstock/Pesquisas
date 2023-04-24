@@ -31,6 +31,7 @@ import {
   Tbody,
   Th,
   Trdatos,
+  Tabla,
 } from "../styles/crud";
 
 const Provincias = () => {
@@ -83,7 +84,7 @@ const Provincias = () => {
         </Divsearch>
       </Divsearchpadre>
       <Divtabla>
-        <table className="table">
+        <Tabla >
           <Thead>
             <tr>
               <th>Nº</th>
@@ -127,7 +128,7 @@ const Provincias = () => {
                 </tr>
               </Tbody>
             ))}
-        </table>
+        </Tabla>
       </Divtabla>
     </Container>
   );

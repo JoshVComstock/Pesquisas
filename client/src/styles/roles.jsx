@@ -7,31 +7,26 @@ export const Img = styled.img`
   height: 22px;
   margin: 0 10px;
   background: #fff;
-  border-radius:50%;
-
+`;
+export const Imga = styled.img`
+  width: 10px;
+  height: 8px;
+  margin: 0 20%;
+  background: #fff;
+  transition:all ease 2s;
 `;
 
 export const Linkes = styled(Link)`
-  padding: 8px 10px 8px 15px;
+  background: transparent;
   cursor: pointer;
   text-decoration: none;
-  color: #000000;
+  color: #0d145b;
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 14px;
-  width: 80%;
-  border-radius: 0 2em 2em 0;
-  border-left: solid 0.2em blue;
-  &:hover {
-    background: #fff;
-    color: rgb(0, 156, 255);
-    border-radius: 0px -20px 10px 0px;
-    border-left: solid 0.5em blue;
-  
-  }
-  &:hover Img {
-    filter: invert(100%) sepia(0%) saturate(5518%) hue-rotate(211deg)
-      brightness(100%) contrast(102%);
-  }
+  width: 90%;
+  margin:0.5em 0;
+  font-size:0.95em;
+  margin-left:10%;
+ 
 `;

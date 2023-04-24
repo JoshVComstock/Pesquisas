@@ -14,7 +14,7 @@ class ResultadosController extends Controller
     {
         $resultados=new Resultados();
         $resultados->id_cartillas=$request->id_cartillas;
-        $resultados->nombre_bebe=$request->nombre_bebe;
+        $resultados->id_laboratorio=$request->id_laboratorio;
         $resultados->fecha_ingreso=$request->fecha_ingreso;
         $resultados->fecha_resultado=$request->fecha_resultado;
         $resultados->fecha_entregado=$request->fecha_entregado;
@@ -30,7 +30,7 @@ class ResultadosController extends Controller
     {
         $resultados=Resultados::find($id);
         $resultados->id_cartillas=$request->id_cartillas;
-        $resultados->nombre_bebe=$request->nombre_bebe;
+        $resultados->id_laboratorio=$request->id_laboratorio;
         $resultados->fecha_ingreso=$request->fecha_ingreso;
         $resultados->fecha_resultado=$request->fecha_resultado;
         $resultados->fecha_entregado=$request->fecha_entregado;
@@ -40,7 +40,6 @@ class ResultadosController extends Controller
         $resultados->valor_referencia=$request->valor_referencia;
         $resultados->observaciones=$request->observaciones;
         $resultados->save();
-        return $resultados;
     }
     public function destroy($id)
     {

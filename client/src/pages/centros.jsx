@@ -10,6 +10,7 @@ import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
 import {
   Container,
+  Dippadretabla,
   Titulo,
   Divbotones,
   Botonespdf,
@@ -29,14 +30,14 @@ import {
   Tbody,
   Th,
   Trdatos,
-  Dippadretabla
+  Tabla,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCentros, getCentros } from "../services/centros";
 
 const Centros = () => {
   const [centroactual, setCentroactual] = useState({});
-  const { getApi, data: centros } = UseFech(getCentros);
+  const { getApi, data: cntros } = UseFech(getCentros);
   const { openModal, closeModal } = useModal(
     Object.keys(centroactual).lengTh > 0 ? "Editar Centro de Salud" : "Agregar Centro de Salud",
     <CentroForm
@@ -86,21 +87,22 @@ const Centros = () => {
       <Titulo>Centros de Salud</Titulo>
     <Dippadretabla>
       <Divtabla>
+        
+        <Tabla>
           <Thead>
             <tr>
-              <Th>Nº</Th>
-              <Th>Nombre</Th>
-              <Th>Drirección</Th>
-              <Th>Red</Th>
-              <Th>Telefono</Th>
-              <Th>Ciaudad</Th>
-              <Th>Area</Th>
-              <Th>Seguimientos</Th>
-              <Th>Contacto</Th>
+              <th>Nº</th>
+              <th>NOMBRE</th>
+              <th>DIRECCIÓN</th>
+              <th>TELEFONO</th>
+              <th>MUNICIPIO</th>
+              <th>AREA</th>
+              <th>SEGUIMIENTO</th>
+              <th>CONTACTO</th>
               <Th>ACCIONES</Th>
             </tr>
           </Thead>
-          {centros
+          {cntros
             .filter((v) =>
               v.nombre.toLowerCase().includes(filtro.toLowerCase())
             )
@@ -110,9 +112,8 @@ const Centros = () => {
                   <Trdatos>{i + 1}</Trdatos>
                   <Trdatos>{v.nombre}</Trdatos>
                   <Trdatos>{v.direccion}</Trdatos>
-                  <Trdatos>{v.red}</Trdatos>
                   <Trdatos>{v.telefono}</Trdatos>
-                  <Trdatos>{v.ciudad}</Trdatos>
+                  <Trdatos>{v.municipio}</Trdatos>
                   <Trdatos>{v.area}</Trdatos>
                   <Trdatos>{v.seguimiento_casos}</Trdatos>
                   <Trdatos>{v.contacto}</Trdatos>
@@ -143,6 +144,7 @@ const Centros = () => {
                 </tr>
               </Tbody>
             ))}
+        </Tabla>
       </Divtabla>
       </Dippadretabla>
     </Container>

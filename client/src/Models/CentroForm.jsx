@@ -9,7 +9,6 @@ import { getMunicipios } from "../services/Municipios";
 const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
   const [nombre, setNombre] = useState("");
   const [direccion, SetDireccion] = useState("");
-  const { data: ciudades } = UseFech(getCiudades);
   const [telefono, setTelefono] = useState("");
   const [id_municipios, setId_municipios] = useState("");
   const { data: municipios } = UseFech(getMunicipios);
@@ -22,7 +21,6 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
       setNombre(centroactual.nombre);
       SetDireccion(centroactual.direccion);
       setTelefono(centroactual.telefono);
-      setId_municipios(centroactual.id_municipios);
       setArea(centroactual.area);
       setSeguimiento_casos(centroactual.seguimiento_casos);
       setContacto(centroactual.contacto);
@@ -205,7 +203,7 @@ const Divinput = styled.div`
   flex-direction: column;
   margin: 5px;
   align-items: center;
-  a
+  
 `;
 const Input = styled.input`
   margin-top: 5px;
