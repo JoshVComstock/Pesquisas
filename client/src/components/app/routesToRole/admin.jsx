@@ -61,7 +61,6 @@ const AdminComponent = () => {
         <Img src={Provinciasicons} alt="" /> Provincias
       </Linkes>
       <Linkes to="/laboratorios">
-        {" "}
         <Img src={Laboratorioicons} alt="" /> Laboratorios
       </Linkes>
           </Options>
@@ -159,7 +158,7 @@ export const Master = styled.nav`
       padding: 3em 0em 1em 2.5em;
     }
   }
-  height: 90vh;
+  height: 100vh;
   overflow-y: scroll;
 `;
 

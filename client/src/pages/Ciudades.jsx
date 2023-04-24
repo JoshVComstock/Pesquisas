@@ -34,11 +34,17 @@ import {
   Tabla,
   Sectionpa,
   Divreport,
+  Divbotonesa
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
 
 const Ciudades = () => {
+
+// solo para el select
+const [isExpanded, setIsExpanded] = useState(false);
+//------
+
   const [ciudadactual, setCiudadactual] = useState({});
   const { getApi, data: ciudades } = UseFech(getCiudades);
   const { openModal, closeModal } = useModal(
@@ -111,7 +117,7 @@ const Ciudades = () => {
           Excel
         </Botonespdf>{" "}
       </Divbotones> */}
-        <Divsearchpadre>
+        {/* <Divsearchpadre>
           <Divsearch>
             <Search
               type="text"
@@ -123,11 +129,27 @@ const Ciudades = () => {
               <Img src={Searchicons} alt="" />{" "}
             </Botonsearch>
           </Divsearch>
-        </Divsearchpadre>
+        </Divsearchpadre> */}
+<Divbotonesa>
+<div  onClick={() => setIsExpanded(!isExpanded)}>
+ <section>
+ Escoge
+  <img src="src\img\abajo.png" alt="" />
+  </section>
+{isExpanded && (
+<option onClick={openModal}> 
+Nuevo
+</option>
+)}
 
+
+</div>
+</Divbotonesa>
         <Dippadretabla>
+        <h2>Registros Ciudades</h2>
           <Sectiontabla>
             <Divtabla>
+           
               <Tabla>
                 <Thead>
                   <tr>
