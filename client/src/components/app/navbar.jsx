@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import styled, {keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Logos from "../../img/logoo.jpg";
 import { useNavContext } from "../../context/navcontext";
 import { useuserContext } from "../../context/userContext";
@@ -17,50 +17,43 @@ const Navbar = () => {
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
   const Cerrasesion = async () => {
-/*     const token = getCookie("token"); 
-    const response = await fetch("http://127.0.0.1:8000/api/logout", {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-        authorization: `Bearer ${token}`,
-      },
-    });
-    if (response.ok) {
-      document.cookie = `token=; max-age=0`;
-      setUser({ isLogged: false });
-      console.log("llego");
-      navegation("/login");
-    } */
     localStorage.removeItem("user");
     navegation("/login");
   };
- 
+
   return (
     <>
-        <Divheader>
-       
-        <Header>
+      <Divheader>
+        <Topnav>
           <Logo>
             <H>Tamizaje</H>
           </Logo>
-       {user.rol == "administrador" && (
-       <AdminComponent/>
-       )}
+          <User>
+          <Topnavimg src="src\img\avatar.png" alt="" />
+          <Select>
+                <Option>{user.nombre}</Option>
+                  <Option >
+                  <Logout onClick={Cerrasesion}>Salir</Logout>
+                  </Option>
+              </Select>
 
+<<<<<<< HEAD
        {user.rol == "laboratorio" && (
              <LaboratorioComponent />
        )}
         </Header>
+=======
+          </User>
+        </Topnav>
+>>>>>>> 19514aa8d7739593b0b66a378791c2c255ed0071
         <Navuser>
-          <Topnav>
-            <Logout onClick={Cerrasesion}>Salir</Logout>
-            <User>
-              <Topnavimg src="src\img\avatar.png" alt="" />
-              <Nameuser>{user.nombre}</Nameuser>
-            </User>
-          </Topnav>
-          <Outlet />
+          <Header>
+            {user.rol == "administrador" && <AdminComponent />}
+            {user.rol == "laboratorio" && <LaboratorioComponent />}
+          </Header>
+          <Divo>
+            <Outlet />
+          </Divo>
         </Navuser>
       </Divheader>
     </>
@@ -70,11 +63,12 @@ const Navbar = () => {
 export default Navbar;
 
 const Divheader = styled.div`
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-`
+  flex-direction: column;
 
+<<<<<<< HEAD
 const Header = styled.header`
   min-width: 280px;
   height: 100vh;
@@ -82,76 +76,79 @@ const Header = styled.header`
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 8px 2px;
+=======
+>>>>>>> 19514aa8d7739593b0b66a378791c2c255ed0071
 `;
-const Imge = styled.img``;
-const Logo = styled.div`
+
+const Select = styled.select`
+border:none;
+text-align:center;
+transition: height 0.5s ease;
+outline: none;
+cursor:pointer;
+`;
+
+const Option = styled.option`
+outline: none;
+border:none;
+text-align:start;
+color: blue;
+
+&::first-letter {
+  font-size: 1.2em;}
+`;
+const Topnav = styled.div`
   width: 100%;
+  height: 12vh;
+  background-color: #fdfdfd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  box-shadow: 0px 0px 2px 0px #0000004e;
+  padding:0 3em;
+  z-index:2;
+`;
+
+const Logo = styled.div`
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+`;
+const Navuser = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+`;
+
+const Topnavimg = styled.img`
+height: 35px;
+filter: saturate(0%) ;`;
+const Logout = styled.button`
+`;
+const User = styled.div`
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 15px 0px 3em 0px;
-`;
-const Navuser = styled.div`
-  min-width: calc(100% - 280px);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-`;
-const Topnav = styled.div`
-  width: 90%;
-  background: rgb(243, 246, 249);
-  display: flex;
-  justify-content: flex-end;
-  display: flex;
-  align-items: center;
-  gap:1em;
-  margin:0 auto;
-
-`;
-const Topnavimg = styled.img`
-  width: 30px;
-  height: 30px;
-  margin: 1px;
-  background-color:transparent;
-`;
-const Logout = styled.button`
-  background: #142033;
-  cursor: pointer;
-  color:#ffffff;
-  padding: 0.1em 2.5em;
-  height: 2em;
-  border-radius: 1em;
-  transition:all 1s;
-  &:hover {
-    background: blue;
-    color: #fff;
-  }
-`;
-const User = styled.div`
-  display: flex;
-  color:#ffffff;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 35px;
-  background: #142033;
-  padding: 0 2.5em;
-
-`;
-const Nameuser = styled.label`
-  cursor: pointer;
-  margin: 2px;
-  &:hover {
-    color: #0066ff;
-  }
 `;
 const H = styled.h1`
-    color: rgb(0, 156, 255);
- font-size:1.3em;
-
-font-weight:lighter;
-margin:0 10px;
-&::first-letter{
-font-size: 1.5em;
-}
+  color: #000000;
+  font-size: 1.3em;
+  &::first-letter {
+    font-size: 1.2em;
+    color: blue;
+  }
 `;
+const Divo = styled.div`
+width: 100%;
 
+`;
+const Header = styled.header`
+width:300px;
+box-shadow: 0px 0px 2px 0px #0000004e;
+z-index:1;
+height:100%;
+`;

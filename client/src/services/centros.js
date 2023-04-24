@@ -8,10 +8,8 @@ export const getCentros = async () => {
             headers: {
                 "Content-Type": "application/json"
             },
-
         })
         return response;
-
     } catch (error) {
         console.log(error);
     }

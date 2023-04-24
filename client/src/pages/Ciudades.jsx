@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
-import CiudadesForm from "../models/CiudadesForm";
+import CiudadesForm from "../Models/CiudadesForm";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
@@ -30,7 +30,15 @@ import {
   Tbody,
   Th,
   Trdatos,
+<<<<<<< HEAD
   Tabla,
+=======
+  Dippadretabla,
+  Sectiontabla,
+  Tabla,
+  Sectionpa,
+  Divreport,
+>>>>>>> 19514aa8d7739593b0b66a378791c2c255ed0071
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
@@ -74,8 +82,44 @@ const Ciudades = () => {
 
   return (
     <Container>
-      <Titulo>Ciudades</Titulo>
-      <Divbotones>
+      <Sectionpa>
+        {/* <Titulo>Ciudades</Titulo> */}
+        <Divreport>
+          <div>
+          <img src="src\img\gestion.png" alt="" />
+            <section>
+              <h3>126</h3>
+              <p>gestion</p>
+            </section>
+         
+          </div>
+          <div>
+          <img src="src\img\gestion.png" alt="" />
+            <section>
+              <h3>126</h3>
+              <p>gestion</p>
+            </section>
+         
+          </div>
+          <div>
+          <img src="src\img\gestion.png" alt="" />
+            <section>
+              <h3>126</h3>
+              <p>gestion</p>
+            </section>
+         
+          </div>
+          <div>
+          <img src="src\img\gestion.png" alt="" />
+            <section>
+              <h3>126</h3>
+              <p>gestion</p>
+            </section>
+         
+          </div>
+      
+        </Divreport>
+        {/* <Divbotones>
         <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo
         </Botonespdf2>
@@ -87,6 +131,7 @@ const Ciudades = () => {
           <Img src={Excel} alt="" />
           Excel
         </Botonespdf>{" "}
+<<<<<<< HEAD
       </Divbotones>
       <Divsearchpadre>
         <Divsearch>
@@ -146,6 +191,75 @@ const Ciudades = () => {
             ))}
         </Tabla>
       </Divtabla>
+=======
+      </Divbotones> */}
+        <Divsearchpadre>
+          <Divsearch>
+            <Search
+              type="text"
+              placeholder="Buscar"
+              value={filtro}
+              onChange={(e) => setFiltro(e.target.value)}
+            />
+            <Botonsearch>
+              <Img src={Searchicons} alt="" />{" "}
+            </Botonsearch>
+          </Divsearch>
+        </Divsearchpadre>
+
+        <Dippadretabla>
+          <Sectiontabla>
+            <Divtabla>
+              <Tabla>
+                <Thead>
+                  <tr>
+                    <Th>Nº</Th>
+                    <Th>CIUDAD</Th>
+                    <Th>ACCIONES</Th>
+                  </tr>
+                </Thead>
+                {ciudades
+                  .filter((v) =>
+                    v.ciudad.toLowerCase().includes(filtro.toLowerCase())
+                  )
+                  .map((v, i) => (
+                    <Tbody key={i}>
+                      <tr>
+                        <Trdatos data-label="Nº">{i + 1}</Trdatos>
+                        <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
+                        <Trdatos data-label="ACCIONES">
+                          <Botonacciones>
+                            <div>
+                              <Botonesacciones>
+                                <Iconsacciones
+                                  onClick={() => {
+                                    setCiudadactual(v);
+                                  }}
+                                >
+                                  Editar
+                                </Iconsacciones>
+                              </Botonesacciones>
+                            </div>
+                            <div>
+                              <Botonesacciones
+                                onClick={() => {
+                                  deleteCiudades(v.id, getApi);
+                                }}
+                              >
+                                <Iconsacciones1>Eliinar</Iconsacciones1>
+                              </Botonesacciones>
+                            </div>
+                          </Botonacciones>
+                        </Trdatos>
+                      </tr>
+                    </Tbody>
+                  ))}
+              </Tabla>
+            </Divtabla>
+          </Sectiontabla>
+        </Dippadretabla>
+      </Sectionpa>
+>>>>>>> 19514aa8d7739593b0b66a378791c2c255ed0071
     </Container>
   );
 };

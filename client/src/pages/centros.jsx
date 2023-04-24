@@ -10,6 +10,7 @@ import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
 import {
   Container,
+  Dippadretabla,
   Titulo,
   Divbotones,
   Botonespdf,
@@ -57,7 +58,19 @@ const Centros = () => {
 
   return (
     <Container>
-      <Titulo>Centros de Salud</Titulo>
+     <Divsearchpadre>
+        <Divsearch>
+          <Search
+            type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)}
+          />
+          <Botonsearch>
+            <Img src={Searchicons} alt="" />{" "}
+          </Botonsearch>
+        </Divsearch>
+      </Divsearchpadre>
       <Divbotones>
         <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo
@@ -71,19 +84,8 @@ const Centros = () => {
           Excel
         </Botonespdf>{" "}
       </Divbotones>
-      <Divsearchpadre>
-        <Divsearch>
-          <Search
-            type="text"
-            placeholder="Buscar"
-            value={filtro}
-            onChange={(e) => setFiltro(e.target.value)}
-          />
-          <Botonsearch>
-            <Img src={Searchicons} alt="" />{" "}
-          </Botonsearch>
-        </Divsearch>
-      </Divsearchpadre>
+      <Titulo>Centros de Salud</Titulo>
+    <Dippadretabla>
       <Divtabla>
         
         <Tabla>
@@ -119,13 +121,11 @@ const Centros = () => {
                     <Botonacciones>
                       <div>
                         <Botonesacciones>
-                          <Iconsacciones
-                            src={Editar}
-                            alt=""
+                          <Iconsacciones 
                             onClick={() => {
                               setCentroactual(v);
                             }}
-                          />
+                          >Editar</Iconsacciones>
                         </Botonesacciones>
                       </div>
                       <div>
@@ -134,7 +134,9 @@ const Centros = () => {
                             deleteCentros(v.id, getApi);
                           }}
                         >
-                          <Iconsacciones1 src={Eliminar} alt="" />
+                          <Iconsacciones1>
+                            Eliminar
+                          </Iconsacciones1>
                         </Botonesacciones>
                       </div>
                     </Botonacciones>
@@ -144,6 +146,7 @@ const Centros = () => {
             ))}
         </Tabla>
       </Divtabla>
+      </Dippadretabla>
     </Container>
   );
 };

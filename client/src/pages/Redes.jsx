@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
-// import RedesForm from "../models/RedesForm";
+import RedesForm from "../models/RedesForm";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";

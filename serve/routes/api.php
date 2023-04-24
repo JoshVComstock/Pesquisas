@@ -21,20 +21,9 @@ use App\Http\Controllers\Control_filtrosController;
 use App\Http\Controllers\ResultsController;
 use GuzzleHttp\Middleware;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
 Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
-Route::get('registeruser', [UserController::class, 'Userregister']);
+Route::get('registeruser', [UserController::class, 'register']);
 
 Route::group(['middleware' => ["auth:sanctum"]], function () {
     Route::get('users-profile', [UserController::class, 'userProfile']);
