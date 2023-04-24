@@ -4,7 +4,15 @@ export const Container = styled.div`
 width:100%;
 height:100%;
 background-color:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
 `;
+export const Sectionpa = styled.section`
+width:95%;
+height:95%;
+`;
+
 export const Titulo = styled.label`
 color: #000000;
   margin: 0 20px;
@@ -12,6 +20,69 @@ color: #000000;
   &::first-letter {
     font-size: 1.5em;
   }
+`;
+export const Divreport = styled.div`
+width:100%;
+height:12em;
+display:flex;
+flex-wrap:nowrap;
+gap:2em;
+& div{
+width:calc(100% / 4);
+height:80%;
+background-color:#fff;
+display:flex;
+flex-direction:row;
+transition: all .2s ease-in-out;
+border:solid 1px #0002; 
+justify-content:space-around;
+padding:1em;
+position:relative;
+z-index:1;
+border-radius:5px;
+&::before{
+content:"";
+bottom:-0.8em;
+position:absolute;
+border:solid 1px #0002; 
+width:90%;
+height:0.69em;
+background-color:#fff;
+z-index:1;
+border-radius:0 0 5px 5px;
+}
+&:hover{
+  &::before{
+    display:none;
+  }
+  transform:scale(1.02);
+border:solid 1px #0000; 
+  box-shadow:0 0 5px #0003;
+}
+& img{
+  width:50px;
+  height:50px;
+}
+& section{
+display:flex;
+flex-direction:column;
+justify-content:space-around;
+width:50%;
+& h3{
+  background-color:blue;
+  width:100%;
+  height:50%;
+  color:#fff;
+  text-align:center;
+  font-size:1.5em;
+  border:solid 1px #0002;
+&::first-letter
+{
+  font-size:1.6em;
+}
+}
+}
+}
 `;
 export const Divbotones = styled.div`
   display:flex;

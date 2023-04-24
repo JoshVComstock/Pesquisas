@@ -159,7 +159,7 @@ export const Master = styled.nav`
       padding: 3em 0em 1em 2.5em;
     }
   }
-  height: 80vh;
+  height: 90vh;
   overflow-y: scroll;
 `;
 

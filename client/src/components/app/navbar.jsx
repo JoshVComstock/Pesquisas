@@ -119,7 +119,7 @@ const User = styled.div`
 `;
 const H = styled.h1`
   color: #000000;
-  font-size: 1.2em;
+  font-size: 1.3em;
   &::first-letter {
     font-size: 1.2em;
     color: blue;
