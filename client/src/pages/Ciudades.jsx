@@ -8,6 +8,7 @@ import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 import {
   Container,
   Titulo,
@@ -29,14 +30,15 @@ import {
   Tbody,
   Th,
   Trdatos,
-  Tabla
+  Tabla,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
-
+import { getciudadpdf } from "../reports/ciudadpdf";
 const Ciudades = () => {
   const [ciudadactual, setCiudadactual] = useState({});
   const { getApi, data: ciudades } = UseFech(getCiudades);
+  const { data } = UseFech(getciudadpdf);
   const { openModal, closeModal } = useModal(
     Object.keys(ciudadactual).length > 0 ? "Editar Ciudad" : "Agregar ciudad",
     <CiudadesForm
@@ -54,6 +56,21 @@ const Ciudades = () => {
       openModal();
     }
   }, [ciudadactual]);
+  const mostrarpdf = async () => {
+    const response = await fetch(
+      `${baseUrl}Ciudades-pdf`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    return response;
+  };
 
   return (
     <Container>
@@ -62,7 +79,7 @@ const Ciudades = () => {
         <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo
         </Botonespdf2>
-        <Botonespdf1>
+        <Botonespdf1 onClick={mostrarpdf}>
           <Img src={Pdf} alt="" />
           PDF
         </Botonespdf1>
@@ -85,11 +102,11 @@ const Ciudades = () => {
         </Divsearch>
       </Divsearchpadre>
       <Divtabla>
-        <Tabla >
+        <Tabla>
           <Thead>
-              <Th>Nº</Th>
-              <Th>CIUDAD</Th>
-              <Th>ACCIONES</Th>
+            <Th>Nº</Th>
+            <Th>CIUDAD</Th>
+            <Th>ACCIONES</Th>
           </Thead>
           {ciudades
             .filter((v) =>

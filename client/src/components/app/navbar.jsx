@@ -51,8 +51,6 @@ const Navbar = () => {
        {user.rol == "laboratorio" && (
              <LaboratorioComponent />
        )}
-
-
         </Header>
         <Navuser>
           <Topnav>
@@ -80,7 +78,7 @@ const Divheader = styled.div`
 const Header = styled.header`
   min-width: 280px;
   height: 100vh;
-  background:rgb(243, 246, 249);
+  background:rgb(10, 74, 138);
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 8px 2px;

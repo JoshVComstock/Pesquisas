@@ -20,6 +20,7 @@ import { Usercontextprovider } from "./context/userContext";
 import ProtectedRoute from "./wrappers/ProtectedRoute";
 import Control_Filtros from "./pages/Control_Filtros";
 import Cartilla from "./models/Cartilla";
+import Resultadoform from "./models/Resultadoform";
 
 function App() {
   return (
@@ -44,12 +45,19 @@ function App() {
                   <Route path="redes" element={<Redes />} />
                   <Route path="laboratorios" element={<Laboratorios />} />
                   <Route path="provincias" element={<Provincias />} />
-                  <Route path="cartilla" element={<Cartilla/>}/>
-                  <Route path="registro_provincias" element={<Registro_provincias />} />
+                  <Route path="cartilla" element={<Cartilla />} />
+                  <Route
+                    path="registro_provincias"
+                    element={<Registro_provincias />}
+                  />
                   <Route path="municipios" element={<Municipios />} />
-                  <Route path="registro_hospitales" element={<Registro_hospitales />} />
+                  <Route
+                    path="registro_hospitales"
+                    element={<Registro_hospitales />}
+                  />
                   <Route path="control_filtros" element={<Control_Filtros />} />
                   <Route path="registro_usuario" element={<Register />} />
+                  <Route path="resultados" element={<Resultadoform />} />
                 </Route>
               </Routes>
               <Modal />
