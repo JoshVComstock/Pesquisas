@@ -134,10 +134,18 @@ const AdminComponent = () => {
   </Linkes> */}
       {/* <Linkes to="/rellamados">
     <Img src={Rellamadosicons} alt="" /> Rellamados
+<<<<<<< HEAD
+  </Linkes>*/}
+      <Linkes to="/resultados">
+        <Img src={Cartilla} alt="" />Resultados
+      </Linkes>
+    </>
+=======
   </Linkes>
  
 </>*/}
     </Master>
+>>>>>>> 19514aa8d7739593b0b66a378791c2c255ed0071
   );
 };
 

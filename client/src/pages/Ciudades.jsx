@@ -8,6 +8,7 @@ import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 import {
   Container,
   Titulo,
@@ -29,6 +30,9 @@ import {
   Tbody,
   Th,
   Trdatos,
+<<<<<<< HEAD
+  Tabla,
+=======
   Dippadretabla,
   Sectiontabla,
   Tabla,
@@ -38,7 +42,7 @@ import {
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
-
+import { getciudadpdf } from "../reports/ciudadpdf";
 const Ciudades = () => {
 
 // solo para el select
@@ -47,6 +51,7 @@ const [isExpanded, setIsExpanded] = useState(false);
 
   const [ciudadactual, setCiudadactual] = useState({});
   const { getApi, data: ciudades } = UseFech(getCiudades);
+  const { data } = UseFech(getciudadpdf);
   const { openModal, closeModal } = useModal(
     Object.keys(ciudadactual).length > 0 ? "Editar Ciudad" : "Agregar ciudad",
     <CiudadesForm
@@ -64,6 +69,21 @@ const [isExpanded, setIsExpanded] = useState(false);
       openModal();
     }
   }, [ciudadactual]);
+  const mostrarpdf = async () => {
+    const response = await fetch(
+      `${baseUrl}Ciudades-pdf`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    return response;
+  };
 
   return (
     <Container>
@@ -108,7 +128,7 @@ const [isExpanded, setIsExpanded] = useState(false);
         <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo
         </Botonespdf2>
-        <Botonespdf1>
+        <Botonespdf1 onClick={mostrarpdf}>
           <Img src={Pdf} alt="" />
           PDF
         </Botonespdf1>
@@ -116,6 +136,67 @@ const [isExpanded, setIsExpanded] = useState(false);
           <Img src={Excel} alt="" />
           Excel
         </Botonespdf>{" "}
+<<<<<<< HEAD
+      </Divbotones>
+      <Divsearchpadre>
+        <Divsearch>
+          <Search
+            type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)}
+          />
+          <Botonsearch>
+            <Img src={Searchicons} alt="" />{" "}
+          </Botonsearch>
+        </Divsearch>
+      </Divsearchpadre>
+      <Divtabla>
+        <Tabla>
+          <Thead>
+            <Th>Nº</Th>
+            <Th>CIUDAD</Th>
+            <Th>ACCIONES</Th>
+          </Thead>
+          {ciudades
+            .filter((v) =>
+              v.ciudad.toLowerCase().includes(filtro.toLowerCase())
+            )
+            .map((v, i) => (
+              <Tbody key={i}>
+                <tr>
+                  <Trdatos data-label="Nº">{i + 1}</Trdatos>
+                  <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
+                  <Trdatos data-label="ACCIONES">
+                    <Botonacciones>
+                      <div>
+                        <Botonesacciones>
+                          <Iconsacciones
+                            src={Editar}
+                            alt=""
+                            onClick={() => {
+                              setCiudadactual(v);
+                            }}
+                          />
+                        </Botonesacciones>
+                      </div>
+                      <div>
+                        <Botonesacciones
+                          onClick={() => {
+                            deleteCiudades(v.id, getApi);
+                          }}
+                        >
+                          <Iconsacciones1 src={Eliminar} alt="" />
+                        </Botonesacciones>
+                      </div>
+                    </Botonacciones>
+                  </Trdatos>
+                </tr>
+              </Tbody>
+            ))}
+        </Tabla>
+      </Divtabla>
+=======
       </Divbotones> */}
         {/* <Divsearchpadre>
           <Divsearch>
@@ -199,6 +280,7 @@ Nuevo
           </Sectiontabla>
         </Dippadretabla>
       </Sectionpa>
+>>>>>>> 19514aa8d7739593b0b66a378791c2c255ed0071
     </Container>
   );
 };

@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\cartillapdfController;
 use App\Http\Controllers\CartillasController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CiudadesController;
 use App\Http\Controllers\CentrosController;
+use App\Http\Controllers\ciudadpdfController;
 use App\Http\Controllers\RedesController;
 use App\Http\Controllers\SeguimientosController;
 use App\Http\Controllers\EnfermedadesController;
@@ -89,4 +91,7 @@ Route::delete('/control_filtros/{id}', [Control_filtrosController::class, 'destr
 Route::get('/cartillas', [CartillasController::class, 'index']);
 Route::post('/cartillas', [CartillasController::class, 'store']);
 
-Route::post('/resulst',[ResultsController::class,'results']);
+Route::post('/resulst', [ResultsController::class, 'results']);
+
+Route::get('Ciudades-pdf', [ciudadpdfController::class, 'indexciudadpdf']);
+Route::get('cartilla-pdf',[cartillapdfController::class,'indexcartillapdf']);
