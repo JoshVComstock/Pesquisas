@@ -29,7 +29,10 @@ import {
   Sectiontabla,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
+
 import { deleteMunicipios, getMunicipios } from "../services/Municipios";
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
+
 const Municipios = () => {
   const [municipioactual, setMunicipioactual] = useState({});
   const { getApi, data: mnicipios } = UseFech(getMunicipios);
@@ -55,7 +58,7 @@ const Municipios = () => {
 
   const mostrarpdf = async () => {
     const response = await fetch(
-      `${baseUrl}Centros-pdf`,
+      `${baseUrl}Municipios-pdf`,
       {
         method: "GET",
         headers: {
@@ -73,7 +76,7 @@ const Municipios = () => {
     <>
       <section>
         <button onClick={openModal}>Ecxel</button>
-        <button onClick={openModal}>Pdf</button>
+        <button onClick={mostrarpdf}>Pdf</button>
         <button onClick={openModal}>+</button>
         <h2>Registros Municipio</h2>
       </section>

@@ -58,14 +58,18 @@ tr:nth-child(even) {
   justify-content: space-between;
   align-items: center;
 }
-
+img{
+    width: auto;
+    height: 30px;
+}
 
     </style>
 </head>
 
 <body>
     <section class="sec">
-        <img src="s" alt="logo">
+        <img src="https://www.biotech.com.bo/Administrador/images/logo.png" alt="logo">
+
         <h1>Exportacion de datos de Municipios</h1>
     <h2>Tamizaje neonatal</h2>
     <p><strong>Fecha de exportación:</strong>  {{ date('d-m-Y ') }}</p>
@@ -84,14 +88,14 @@ tr:nth-child(even) {
             <tr>
                 <td>{{$mun->id}}</td>
             <td>{{$mun->municipio}}</td>
-            <td>{{$mun->idprovi}}</td>
+            <td>{{$mun->provincia}}</td>
             </tr>
             @endforeach
         </tbody>
         <tfoot>
             <tr>
                 <th>Total de Municipios:</th>
-                <td>{{ $municipios->count() }}</td>
+                <td>{{ count($municipios) }}</td>
             </tr>
         </tfoot>
     </table>

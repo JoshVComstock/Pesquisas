@@ -25,7 +25,7 @@ import {
   Tabla,
   Sectionpa,
   Divreport,
-  Divbotonesa
+  Divbotonesa,Divmayor
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
@@ -96,33 +96,23 @@ const apiUrl = `${baseUrl}ciudades`;
           <div>
           <img src="src\img\gestion.png" alt="" />
             <section>
-              <h3>2</h3>
+              <h3>3</h3>
               <p>n° registros</p>
               <p>Provincia</p>
             </section>
          
           </div>
-          <div>
-          <img src="src\img\gestion.png" alt="" />
-            <section>
-              <h3>126</h3>
-              <p>gestion</p>
-            </section>
-         
-          </div>
-          <div>
-          <img src="src\img\gestion.png" alt="" />
-            <section>
-              <h3>126</h3>
-              <p>gestion</p>
-            </section>
-         
-          </div>
+        
       
         </Divreport>
       
      <Sectiond>
+
      <Dippadretabla>
+     <Divmayor><label >buscar</label> <input  type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)} /></Divmayor>
        <section>
        <button >
     <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
@@ -200,7 +190,7 @@ gap:2em;
 `;
 export const Dippadretabla = styled.div`
   width: 47.8%;
-  gap:0.5em;
+  
   margin: 0 auto;
   background: rgb(255, 255, 255);
   overflow: hidden;
@@ -216,22 +206,23 @@ export const Dippadretabla = styled.div`
     flex-direction: row-reverse;
     justify-content: flex-end;
     & > button {
+      
       width: 2.8em;
       height: 2.8em;
-      margin: 0.5em 0 0 0;
-      background-color: #4e4ee2;
+      background-color: rgb(34, 152, 202);
       color: #fff;
-      border-radius: 5px;
+      border-radius: 0 0 8px 8px;
       font-size: 15px;
-      transition: all 0.5s ease-in-out;
-      &:nth-child(2) {
-  background-color:rgb(138, 30, 10);
+      transition: all 0.5s ease;
+      box-shadow:0 5px 5px #00002271;
+      /* &:nth-child(2) {
+  background-color:rgba(145, 22, 0, 0.802);
   color:#fff;}
   &:nth-child(1) {
-  background-color: #1a8727;
-  color:#fff;}
+  background-color: #008610c3;
+  color:#fff;} */
       &:hover {
-        transform:translatey(8px);
+      height: 3em;
       }
     }
     & h2 {

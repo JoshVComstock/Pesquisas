@@ -9,7 +9,7 @@ class Municipiospdfcontroller extends Controller
 {
     public function indexmunicipiopdf()
     {
-        $municipios = DB::select('SELECT m.id,m.municipio,p.id as idprovi,p.provincia FROM municipios as m, provincias as p WHERE m.id_provincias=p.id');
+        $municipios =DB::select('SELECT m.id,m.municipio,p.id as idprovi,p.provincia FROM municipios as m, provincias as p WHERE m.id_provincias=p.id');
 
         $pdf = PDF::loadView('municipios', ['municipios' => $municipios]);
         return $pdf->stream();

@@ -94,6 +94,41 @@ export const Divreport = styled.div`
     }
   }
 `;
+
+export const Divmayor = styled.div`
+ background-color:rgb(34, 152, 202);
+ border:solid 1px #0002;
+ width:100%;
+ height:3em;
+ color:#fff;
+ display:flex;
+ justify-content:center;
+  align-items:center;
+  box-shadow:0 5px 2px #0005;
+  border-radius:0 0 8px  8px ;
+  margin-bottom:0.5em;
+  & label{
+    margin:2px 2em 0 0;
+    height:100%;
+    color:#fff;
+    padding:0.2em  1em 0 0;
+    text-transform:uppercase;
+    font-size:15px;
+
+  }
+ & input{
+border:none;
+border-bottom:solid 1px #fff;
+background-color:transparent;
+color:#fff;outline: none;
+width:60%;
+place-content:#fff;
+  &:focus {
+    color:#fff;outline: none;
+
+  }
+ }
+`;
 export const Divbotonesa = styled.div`
  
 `;
@@ -146,7 +181,7 @@ export const Botonacciones = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
+  flex-direction:  row;
   gap: 0.2em;
 `;
 export const Iconsacciones = styled.button`

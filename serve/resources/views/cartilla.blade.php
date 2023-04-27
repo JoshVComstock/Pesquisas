@@ -38,10 +38,16 @@
             background-color: #04aa6d;
             color: white;
         }
+        img{
+    width: auto;
+    height: 30px;
+}
     </style>
 </head>
 
 <body>
+    <img src="https://www.biotech.com.bo/Administrador/images/logo.png" alt="logo">
+
     <h1>Cartilla</h1>
     <p><strong>Fecha de exportación:</strong>  {{ date('d-m-Y ') }}</p>
     <p><strong>Fecha de hora:</strong>  {{ date('H:i:s') }}</p>
