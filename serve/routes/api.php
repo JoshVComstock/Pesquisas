@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CiudadesController;
 use App\Http\Controllers\CentrosController;
-use App\Http\Controllers\ciudadpdfController;
 use App\Http\Controllers\RedesController;
 use App\Http\Controllers\SeguimientosController;
 use App\Http\Controllers\EnfermedadesController;
@@ -19,6 +18,11 @@ use App\Http\Controllers\Registro_provinciasController;
 use App\Http\Controllers\Registro_hospitalesController;
 use App\Http\Controllers\Control_filtrosController;
 use App\Http\Controllers\ResultsController;
+// pdf
+use App\Http\Controllers\ciudadpdfController;
+use App\Http\Controllers\Provinciapdfcontroller;
+use App\Http\Controllers\Centropdfcontroller;
+use App\Http\Controllers\Municipiospdfcontroller;
 use GuzzleHttp\Middleware;
 
 Route::post('register', [UserController::class, 'register']);
@@ -95,3 +99,6 @@ Route::post('/resulst', [ResultsController::class, 'results']);
 
 Route::get('Ciudades-pdf', [ciudadpdfController::class, 'indexciudadpdf']);
 Route::get('cartilla-pdf',[cartillapdfController::class,'indexcartillapdf']);
+Route::get('Provincias-pdf',[Provinciapdfcontroller::class,'indexprovinciapdf']);
+Route::get('Centros-pdf',[Centropdfcontroller::class,'indexcentropdf']);
+Route::get('Municipios-pdf',[Municipiospdfcontroller::class,'indexmunicipiopdf']);

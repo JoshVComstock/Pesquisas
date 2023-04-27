@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 *{
   margin: 0;
   border: 0;
@@ -7,6 +9,12 @@
   font-weight: lighter;
 
 }
+h5{
+  font-family: 'Parisienne', cursive;
+  font-weight: 800;
+  
+}
+
 ::-webkit-scrollbar {
   width: 7px;
 }

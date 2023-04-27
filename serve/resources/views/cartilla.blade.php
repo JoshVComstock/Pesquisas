@@ -43,6 +43,8 @@
 
 <body>
     <h1>Cartilla</h1>
+    <p><strong>Fecha de exportación:</strong>  {{ date('d-m-Y ') }}</p>
+    <p><strong>Fecha de hora:</strong>  {{ date('H:i:s') }}</p>
     <table id="customers">
        <tr>
         <th>#</th>
@@ -54,7 +56,7 @@
             <td>{{$cartill->id}}</td>
             <td>{{$cartill->codigo_barras}}</td>
             <td>{{$cartill->madre}}</td>
-            
+
         </tr>
         @endforeach
     </table>

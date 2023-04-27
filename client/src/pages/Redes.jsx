@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
-import RedesForm from "../models/RedesForm";
+
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
@@ -12,10 +12,7 @@ import {
   Container,
   Titulo,
   Divbotones,
-  Botonespdf,
-  Botonespdf1,
-  Botonespdf2,
-  Img,
+  
   Divsearchpadre,
   Divsearch,
   Search,
@@ -59,7 +56,7 @@ const Redes = () => {
     <Container>
       <Sectionpa>
       <Titulo>Redes de Salud</Titulo>
-      <Divbotones>
+      {/* <Divbotones>
         <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo
         </Botonespdf2>
@@ -84,7 +81,7 @@ const Redes = () => {
             <Img src={Searchicons} alt="" />{" "}
           </Botonsearch>
         </Divsearch>
-      </Divsearchpadre>
+      </Divsearchpadre> */}
       <Divtabla>
         <Tabla>
           <Thead>

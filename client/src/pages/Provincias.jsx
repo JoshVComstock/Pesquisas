@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
 import ProvinciasForm from "../models/ProvinciasForm";
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
@@ -12,29 +13,25 @@ import { UseFech } from "../hooks/useFech";
 import { deleteProvincias, getProvincias } from "../services/provincias";
 import {
   Container,
-  Titulo,
-  Divbotones,
-  Botonespdf,
-  Botonespdf1,
-  Botonespdf2,
-  Img,
-  Divsearchpadre,
-  Divsearch,
-  Search,
-  Botonsearch,
   Botonacciones,
   Iconsacciones,
   Iconsacciones1,
-  Botonesacciones,
   Divtabla,
   Thead,
   Tbody,
   Th,
   Trdatos,
   Tabla,
+  Sectiontabla,
 } from "../styles/crud";
+import CSVExporter from "../pages/Reportescom";
 
 const Provincias = () => {
+
+// para ecxel
+const apiUrl = `${baseUrl}provincias`;
+    const csvHeaders = ["id", "provincia","id_ciudades"];
+
   const [provinciaactual, setProviciaactual] = useState({});
   const { getApi, data: provicias } = UseFech(getProvincias);
   const { openModal, closeModal } = useModal(
@@ -54,42 +51,43 @@ const Provincias = () => {
       openModal();
     }
   }, [provinciaactual]);
+  
+  const mostrarpdf = async () => {
+    const response = await fetch(
+      `${baseUrl}Provincias-pdf`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    return response;
+  };
+
   return (
-    <Container>
-      <Titulo>Provincias</Titulo>
-      <Divbotones>
-        <Botonespdf2 onClick={openModal}>
-          <Img src={New} alt="" /> Nuevo
-        </Botonespdf2>
-        <Botonespdf1>
-          <Img src={Pdf} alt="" />
-          PDF
-        </Botonespdf1>
-        <Botonespdf>
-          <Img src={Excel} alt="" />
-          Excel
-        </Botonespdf>
-      </Divbotones>
-      <Divsearchpadre>
-        <Divsearch>
-          <Search
-            type="text"
-            placeholder="Buscar"
-            value={filtro}
-            onChange={(e) => setFiltro(e.target.value)}
-          />
-          <Botonsearch>
-            <Img src={Searchicons} alt="" />{" "}
-          </Botonsearch>
-        </Divsearch>
-      </Divsearchpadre>
+    <>
+    <section>
+    <button >
+    <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
+    </button>
+
+      <button onClick={mostrarpdf}>Pdf</button>
+
+        <button onClick={openModal}>+</button>
+        <h2>Registros Provincia</h2>
+      </section>
+  <Sectiontabla>
       <Divtabla>
         <Tabla >
           <Thead>
             <tr>
-              <th>Nº</th>
-              <th>PROVINCIA</th>
-              <th>CIUDAD</th>
+              <Th>Nº</Th>
+              <Th>PROVINCIA</Th>
+              <Th>CIUDAD</Th>
               <Th>ACCIONES</Th>
             </tr>
           </Thead>
@@ -106,22 +104,18 @@ const Provincias = () => {
                   <Trdatos>
                     <Botonacciones>
                       <div>
-                        <Botonesacciones>
+                     
                           <Iconsacciones
-                            src={Editar}
-                            alt=""
-                            onClick={() => {
-                              setProviciaactual(v);
-                            }}
-                          />
-                        </Botonesacciones>
+                           onClick={() => {
+                            setProviciaactual(v);
+                          }}
+                          >Editar</Iconsacciones>
+                      
                       </div>
                       <div>
-                        <Botonesacciones
-                          onClick={() => deleteProvincias(v.id, getApi)}
-                        >
-                          <Iconsacciones1 src={Eliminar} alt="" />
-                        </Botonesacciones>
+                          <Iconsacciones1  onClick={() => deleteProvincias(v.id, getApi)}>
+                            Eliminar
+                          </Iconsacciones1>
                       </div>
                     </Botonacciones>
                   </Trdatos>
@@ -130,8 +124,10 @@ const Provincias = () => {
             ))}
         </Tabla>
       </Divtabla>
-    </Container>
+      </Sectiontabla>
+    </>
   );
 };
 
 export default Provincias;
+  

@@ -1,12 +1,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Ciudades</title>
+    <title>Reporte de Centros</title>
     <style>
 
 h1 {
@@ -44,6 +43,7 @@ td {
 th {
     background-color: #132d73;
     color: white;
+    font-weight: 200;
 }
 tr th{
 margin: 1em 0;
@@ -58,38 +58,54 @@ tr:nth-child(even) {
   justify-content: space-between;
   align-items: center;
 }
-
+img{
+    width: auto;
+    height: 30px;
+}
 
     </style>
 </head>
 
 <body>
     <section class="sec">
-        <img src="s" alt="logo">
-        <h1>Exportacion de datos de Ciudades</h1>
+        <img src="https://www.biotech.com.bo/Administrador/images/logo.png" alt="logo">
+        <h1>Exportacion de registros de Centros </h1>
     <h2>Tamizaje neonatal</h2>
     <p><strong>Fecha de exportación:</strong>  {{ date('d-m-Y ') }}</p>
     <p><strong>Fecha de hora:</strong>  {{ date('H:i:s') }}</p>
+
     </section>
     <table>
         <thead>
             <tr>
                 <th>#</th>
-                <th>Ciudad</th>
+                <th>nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Municipio</th>
+                <th>Area</th>
+                <th>Seguimiento</th>
+                <th>Contacto</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($ciudad as $ciuda)
+            @foreach($centros as $cen)
             <tr>
-                <td>{{$ciuda->id}}</td>
-            <td>{{$ciuda->ciudad}}</td>
+                <td>{{$cen->id}}</td>
+            <td>{{$cen->nombre}}</td>
+            <td>{{$cen->direccion}}</td>
+            <td>{{$cen->telefono}}</td>
+            <td>{{$cen->municipio}}</td>
+            <td>{{$cen->area}}</td>
+            <td>{{$cen->seguimiento_casos}}</td>
+            <td>{{$cen->contacto}}</td>
             </tr>
             @endforeach
         </tbody>
         <tfoot>
             <tr>
                 <th>Total de Ciudades:</th>
-                <td>{{ $ciudad->count() }}</td>
+                <td>{{ count($centros) }}</td>
             </tr>
         </tfoot>
     </table>
