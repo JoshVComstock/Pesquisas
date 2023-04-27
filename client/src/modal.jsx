@@ -31,7 +31,6 @@ const Botoncerrar=styled.button`
   transition: 0.5s;
   &:hover{
     background: rgba(0,0,0,.1);
-    transition: 0.5s;
   }
 `;
 const DivModalContainer = styled.div`
@@ -55,7 +54,6 @@ const DivAtras = styled.div`
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
   animation-name: transitionBackground;
-  animation-duration: 1s;
   @keyframes transitionBackground {
     0% {
       background-color: rgba(0, 0, 0, 0.1);

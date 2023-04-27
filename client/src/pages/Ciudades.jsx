@@ -2,12 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
 import CiudadesForm from "../Models/CiudadesForm";
-import New from "./../img/new.jpg";
-import Pdf from "./../img/pdf.jpg";
-import Excel from "./../img/doc.jpg";
-import Searchicons from "./../img/search.jpg";
-import Editar from "./../img/icons/Editar.jpg";
-import Eliminar from "./../img/icons/Delete.jpg";
+import styled from "styled-components";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 import {
   Container,
@@ -30,10 +25,6 @@ import {
   Tbody,
   Th,
   Trdatos,
-<<<<<<< HEAD
-  Tabla,
-=======
-  Dippadretabla,
   Sectiontabla,
   Tabla,
   Sectionpa,
@@ -43,11 +34,15 @@ import {
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
 import { getciudadpdf } from "../reports/ciudadpdf";
+import Provincias from "./Provincias"
+import { deleteProvincias, getProvincias } from "../services/provincias";
+
 const Ciudades = () => {
 
 // solo para el select
 const [isExpanded, setIsExpanded] = useState(false);
 //------
+
 
   const [ciudadactual, setCiudadactual] = useState({});
   const { getApi, data: ciudades } = UseFech(getCiudades);
@@ -84,25 +79,27 @@ const [isExpanded, setIsExpanded] = useState(false);
     window.open(url, "_blank");
     return response;
   };
+  // ---------------
 
   return (
     <Container>
       <Sectionpa>
-        {/* <Titulo>Ciudades</Titulo> */}
         <Divreport>
           <div>
           <img src="src\img\gestion.png" alt="" />
             <section>
-              <h3>126</h3>
-              <p>gestion</p>
+              <h3>{ciudades.length}</h3>
+              <p>n° registros</p>
+              <p>Ciudades</p>
             </section>
          
           </div>
           <div>
           <img src="src\img\gestion.png" alt="" />
             <section>
-              <h3>126</h3>
-              <p>gestion</p>
+              <h3>2</h3>
+              <p>n° registros</p>
+              <p>Provincia</p>
             </section>
          
           </div>
@@ -124,110 +121,28 @@ const [isExpanded, setIsExpanded] = useState(false);
           </div>
       
         </Divreport>
-        {/* <Divbotones>
-        <Botonespdf2 onClick={openModal}>
-          <Img src={New} alt="" /> Nuevo
-        </Botonespdf2>
-        <Botonespdf1 onClick={mostrarpdf}>
-          <Img src={Pdf} alt="" />
-          PDF
-        </Botonespdf1>
-        <Botonespdf>
-          <Img src={Excel} alt="" />
-          Excel
-        </Botonespdf>{" "}
-<<<<<<< HEAD
-      </Divbotones>
-      <Divsearchpadre>
-        <Divsearch>
-          <Search
-            type="text"
-            placeholder="Buscar"
-            value={filtro}
-            onChange={(e) => setFiltro(e.target.value)}
-          />
-          <Botonsearch>
-            <Img src={Searchicons} alt="" />{" "}
-          </Botonsearch>
-        </Divsearch>
-      </Divsearchpadre>
-      <Divtabla>
-        <Tabla>
-          <Thead>
-            <Th>Nº</Th>
-            <Th>CIUDAD</Th>
-            <Th>ACCIONES</Th>
-          </Thead>
-          {ciudades
-            .filter((v) =>
-              v.ciudad.toLowerCase().includes(filtro.toLowerCase())
-            )
-            .map((v, i) => (
-              <Tbody key={i}>
-                <tr>
-                  <Trdatos data-label="Nº">{i + 1}</Trdatos>
-                  <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
-                  <Trdatos data-label="ACCIONES">
-                    <Botonacciones>
-                      <div>
-                        <Botonesacciones>
-                          <Iconsacciones
-                            src={Editar}
-                            alt=""
-                            onClick={() => {
-                              setCiudadactual(v);
-                            }}
-                          />
-                        </Botonesacciones>
-                      </div>
-                      <div>
-                        <Botonesacciones
-                          onClick={() => {
-                            deleteCiudades(v.id, getApi);
-                          }}
-                        >
-                          <Iconsacciones1 src={Eliminar} alt="" />
-                        </Botonesacciones>
-                      </div>
-                    </Botonacciones>
-                  </Trdatos>
-                </tr>
-              </Tbody>
-            ))}
-        </Tabla>
-      </Divtabla>
-=======
-      </Divbotones> */}
-        {/* <Divsearchpadre>
-          <Divsearch>
-            <Search
-              type="text"
-              placeholder="Buscar"
-              value={filtro}
-              onChange={(e) => setFiltro(e.target.value)}
-            />
-            <Botonsearch>
-              <Img src={Searchicons} alt="" />{" "}
-            </Botonsearch>
-          </Divsearch>
-        </Divsearchpadre> */}
+      
 <Divbotonesa>
 <div  onClick={() => setIsExpanded(!isExpanded)}>
  <section>
- Escoge
+ Generar
   <img src="src\img\abajo.png" alt="" />
   </section>
 {isExpanded && (
-<option onClick={openModal}> 
-Nuevo
+<option onClick={mostrarpdf}> 
+Pdf
 </option>
 )}
 
 
 </div>
 </Divbotonesa>
-        <Dippadretabla>
+     <Sectiond>
+     <Dippadretabla>
+       <section>
+       <button onClick={openModal} >+</button>
         <h2>Registros Ciudades</h2>
+       </section>
           <Sectiontabla>
             <Divtabla>
            
@@ -251,7 +166,6 @@ Nuevo
                         <Trdatos data-label="ACCIONES">
                           <Botonacciones>
                             <div>
-                              <Botonesacciones>
                                 <Iconsacciones
                                   onClick={() => {
                                     setCiudadactual(v);
@@ -259,16 +173,12 @@ Nuevo
                                 >
                                   Editar
                                 </Iconsacciones>
-                              </Botonesacciones>
                             </div>
                             <div>
-                              <Botonesacciones
-                                onClick={() => {
+                                <Iconsacciones1  onClick={() => {
                                   deleteCiudades(v.id, getApi);
-                                }}
-                              >
-                                <Iconsacciones1>Eliinar</Iconsacciones1>
-                              </Botonesacciones>
+                                }}>Eliminar</Iconsacciones1>
+                           
                             </div>
                           </Botonacciones>
                         </Trdatos>
@@ -279,9 +189,65 @@ Nuevo
             </Divtabla>
           </Sectiontabla>
         </Dippadretabla>
+
+        <Dippadretabla>
+         <Provincias/> 
+        </Dippadretabla>
+     </Sectiond>
       </Sectionpa>
->>>>>>> 19514aa8d7739593b0b66a378791c2c255ed0071
     </Container>
   );
 };
 export default Ciudades;
+
+export const Sectiond = styled.div`
+width:100%;
+display:flex;
+flex-direction:row;
+flex-wrap: wrap;
+gap:2em;
+
+`;
+
+
+
+export const Dippadretabla = styled.div`
+  width: 48%;
+  gap:0.5em;
+  margin: 0 auto;
+  background: rgb(255, 255, 255);
+  overflow: hidden;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: solid 1px #0002;
+  & section {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    & > button {
+      width: 2.5em;
+      height: 2.5em;
+      margin: 0.5em 0 0 0;
+      background-color: #4e4ee2;
+      color: #fff;
+      border-radius: 5px;
+      font-size: 15px;
+      transition: all 2s ease-in-out;
+      &:hover {
+        transform: rotate(180deg);
+      }
+    }
+    & h2 {
+      font-size: 1em;
+      padding: 0.5em 2em;
+      letter-spacing: 1.5px;
+      &::first-letter {
+        color: blue;
+        font-size: 1.2em;
+      }
+    }
+  }
+`;

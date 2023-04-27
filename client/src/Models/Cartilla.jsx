@@ -2,14 +2,16 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { horaactual, Actualdate } from "../services/date";
+
 const Cartilla = () => {
+
+
   const [sexo, setSexo] = useState("");
   const [fecha, setFecha] = useState(Actualdate);
   return (
     <Container>
       <h2>
-        SERVICIO DEPARTAMENTAL DE SALUD - SEDES - SANTA CRUZ PROGRAMA
-        DEPARTAMENTAL DE TAMIZAJE NEONATAL
+   Cartilla 
       </h2>
       <Card>
         <Divnameco>
@@ -35,14 +37,14 @@ const Cartilla = () => {
           </div>
           <Divcartilla>
             <Labelname htmlFor="">CODIGO CARTILLA</Labelname>
-            <Inputname type="number" />
+            <Inputname type="number"  />
           </Divcartilla>
         </Divnameco>
         <Divname>
           <Labelname>
             <strong>FECHA DE NACIMIENTO:</strong>
           </Labelname>
-          <Divdatetime>
+          <Divdatetime>◘
             <Divinputdate>
               <Labeldate htmlFor="">HORA</Labeldate>
               <Inputname
@@ -208,11 +210,13 @@ const Cartilla = () => {
 export default Cartilla;
 
 const Container = styled.div`
-  width: 100%;
+  width: 90%;
   height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin:0 auto;
+  
 `;
 const Card = styled.div`
   margin-top: 30px;
@@ -237,9 +241,9 @@ const Inputname = styled.input`
   text-transform: uppercase;
   width: 70%;
   height: 30px;
-  border-radius: 15px;
-  box-shadow: 0px 0.5px 0px 1px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+
+  border: 1px solid #0005;
   outline: none;
   padding: 10px;
   font-size:13px;

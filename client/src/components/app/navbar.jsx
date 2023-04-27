@@ -26,26 +26,18 @@ const Navbar = () => {
       <Divheader>
         <Topnav>
           <Logo>
-            <H>Tamizaje</H>
+            <H>Tamizaje Neonatal</H>
           </Logo>
           <User>
           <Topnavimg src="src\img\avatar.png" alt="" />
-          <Select>
-                <Option>{user.nombre}</Option>
-                  <Option >
-                  <Logout onClick={Cerrasesion}>Salir</Logout>
-                  </Option>
+          <Select >
+                <Option >{user.nombre}</Option>
+                  <option onClick={Cerrasesion}>Salir
+                  </option>
               </Select>
 
-<<<<<<< HEAD
-       {user.rol == "laboratorio" && (
-             <LaboratorioComponent />
-       )}
-        </Header>
-=======
           </User>
         </Topnav>
->>>>>>> 19514aa8d7739593b0b66a378791c2c255ed0071
         <Navuser>
           <Header>
             {user.rol == "administrador" && <AdminComponent />}
@@ -68,16 +60,6 @@ const Divheader = styled.div`
   display: flex;
   flex-direction: column;
 
-<<<<<<< HEAD
-const Header = styled.header`
-  min-width: 280px;
-  height: 100vh;
-  background:rgb(10, 74, 138);
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 0 8px 2px;
-=======
->>>>>>> 19514aa8d7739593b0b66a378791c2c255ed0071
 `;
 
 const Select = styled.select`
@@ -134,9 +116,10 @@ const User = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const H = styled.h1`
+const H = styled.h5`
   color: #000000;
   font-size: 1.3em;
+
   &::first-letter {
     font-size: 1.2em;
     color: blue;

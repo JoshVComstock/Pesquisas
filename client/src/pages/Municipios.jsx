@@ -30,6 +30,7 @@ import {
   Th,
   Trdatos,
   Tabla,
+  Sectiontabla,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteMunicipios, getMunicipios } from "../services/Municipios";
@@ -56,84 +57,61 @@ const Municipios = () => {
     }
   }, [municipioactual]);
   return (
-    <Container>
-      <Titulo>Municipios</Titulo>
-      <Divbotones>
-        <Botonespdf2 onClick={openModal}>
-          <Img src={New} alt="" /> Nuevo
-        </Botonespdf2>
-        <Botonespdf1>
-          <Img src={Pdf} alt="" />
-          PDF
-        </Botonespdf1>
-        <Botonespdf>
-          <Img src={Excel} alt="" />
-          Excel
-        </Botonespdf>{" "}
-      </Divbotones>
-      <Divsearchpadre>
-        <Divsearch>
-          <Search
-            type="text"
-            placeholder="Buscar"
-            value={filtro}
-            onChange={(e) => setFiltro(e.target.value)}
-          />
-          <Botonsearch>
-            <Img src={Searchicons} alt="" />
-          </Botonsearch>
-        </Divsearch>
-      </Divsearchpadre>
-      <Divtabla>
-        <Tabla>
-          <Thead>
-            <tr>
-              <th>Nº</th>
-              <th>MUNICIPIO</th>
-              <th>CIUDAD</th>
-              <Th>ACCIONES</Th>
-            </tr>
-          </Thead>
-          {mnicipios
-            .filter((v) =>
-              v.municipio.toLowerCase().includes(filtro.toLowerCase())
-            )
-            .map((v, i) => (
-              <Tbody key={i}>
-                <tr>
-                  <Trdatos>{i + 1}</Trdatos>
-                  <Trdatos>{v.municipio}</Trdatos>
-                  <Trdatos>{v.provincia}</Trdatos>
-                  <Trdatos>
-                    <Botonacciones>
-                      <div>
-                        <Botonesacciones>
-                          <Iconsacciones
-                            src={Editar}
-                            alt=""
+    <>
+      <section>
+        <button onClick={openModal}>+</button>
+        <h2>Registros Municipio</h2>
+      </section>
+      <Sectiontabla>
+        <Divtabla>
+          <Tabla>
+            <Thead>
+              <tr>
+                <Th>Nº</Th>
+                <Th>MUNICIPIO</Th>
+                <Th>Provincias</Th>
+                <Th>ACCIONES</Th>
+              </tr>
+            </Thead>
+            {mnicipios
+              .filter((v) =>
+                v.municipio.toLowerCase().includes(filtro.toLowerCase())
+              )
+              .map((v, i) => (
+                <Tbody key={i}>
+                  <tr>
+                    <Trdatos>{i + 1}</Trdatos>
+                    <Trdatos>{v.municipio}</Trdatos>
+                    <Trdatos>{v.provincia}</Trdatos>
+                    <Trdatos>
+                      <Botonacciones>
+                        <div>
+                            <Iconsacciones
+                              onClick={() => {
+                                setMunicipioactual(v);
+                              }}
+                            >
+                              Editar
+                            </Iconsacciones>
+                        </div>
+                        <div>
+                          <Iconsacciones1
                             onClick={() => {
-                              setMunicipioactual(v);
+                              deleteMunicipios(v.id, getApi);
                             }}
-                          />
-                        </Botonesacciones>
-                      </div>
-                      <div>
-                        <Botonesacciones
-                          onClick={() => {
-                            deleteMunicipios(v.id, getApi);
-                          }}
-                        >
-                          <Iconsacciones1 src={Eliminar} alt="" />
-                        </Botonesacciones>
-                      </div>
-                    </Botonacciones>
-                  </Trdatos>
-                </tr>
-              </Tbody>
-            ))}
-        </Tabla>
-      </Divtabla>
-    </Container>
+                          >
+                            Eliminar
+                          </Iconsacciones1>
+                        </div>
+                      </Botonacciones>
+                    </Trdatos>
+                  </tr>
+                </Tbody>
+              ))}
+          </Tabla>
+        </Divtabla>
+      </Sectiontabla>
+    </>
   );
 };
 

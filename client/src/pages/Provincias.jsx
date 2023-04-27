@@ -12,26 +12,16 @@ import { UseFech } from "../hooks/useFech";
 import { deleteProvincias, getProvincias } from "../services/provincias";
 import {
   Container,
-  Titulo,
-  Divbotones,
-  Botonespdf,
-  Botonespdf1,
-  Botonespdf2,
-  Img,
-  Divsearchpadre,
-  Divsearch,
-  Search,
-  Botonsearch,
   Botonacciones,
   Iconsacciones,
   Iconsacciones1,
-  Botonesacciones,
   Divtabla,
   Thead,
   Tbody,
   Th,
   Trdatos,
   Tabla,
+  Sectiontabla,
 } from "../styles/crud";
 
 const Provincias = () => {
@@ -54,35 +44,15 @@ const Provincias = () => {
       openModal();
     }
   }, [provinciaactual]);
+  
   return (
-    <Container>
-      <Titulo>Provincias</Titulo>
-      <Divbotones>
-        <Botonespdf2 onClick={openModal}>
-          <Img src={New} alt="" /> Nuevo
-        </Botonespdf2>
-        <Botonespdf1>
-          <Img src={Pdf} alt="" />
-          PDF
-        </Botonespdf1>
-        <Botonespdf>
-          <Img src={Excel} alt="" />
-          Excel
-        </Botonespdf>
-      </Divbotones>
-      <Divsearchpadre>
-        <Divsearch>
-          <Search
-            type="text"
-            placeholder="Buscar"
-            value={filtro}
-            onChange={(e) => setFiltro(e.target.value)}
-          />
-          <Botonsearch>
-            <Img src={Searchicons} alt="" />{" "}
-          </Botonsearch>
-        </Divsearch>
-      </Divsearchpadre>
+    <>
+    <section>
+        <button onClick={openModal}>+</button>
+        <h2>Registros Provincia</h2>
+      </section>
+
+  <Sectiontabla>
       <Divtabla>
         <Tabla >
           <Thead>
@@ -106,22 +76,18 @@ const Provincias = () => {
                   <Trdatos>
                     <Botonacciones>
                       <div>
-                        <Botonesacciones>
+                     
                           <Iconsacciones
-                            src={Editar}
-                            alt=""
-                            onClick={() => {
-                              setProviciaactual(v);
-                            }}
-                          />
-                        </Botonesacciones>
+                           onClick={() => {
+                            setProviciaactual(v);
+                          }}
+                          >Editar</Iconsacciones>
+                      
                       </div>
                       <div>
-                        <Botonesacciones
-                          onClick={() => deleteProvincias(v.id, getApi)}
-                        >
-                          <Iconsacciones1 src={Eliminar} alt="" />
-                        </Botonesacciones>
+                          <Iconsacciones1  onClick={() => deleteProvincias(v.id, getApi)}>
+                            Eliminar
+                          </Iconsacciones1>
                       </div>
                     </Botonacciones>
                   </Trdatos>
@@ -130,8 +96,10 @@ const Provincias = () => {
             ))}
         </Tabla>
       </Divtabla>
-    </Container>
+      </Sectiontabla>
+    </>
   );
 };
 
 export default Provincias;
+  
