@@ -58,12 +58,12 @@ const AdminComponent = () => {
               <Img src={Centros} alt="" /> Centros
             </Linkes>
             <Linkes to="/provincias">
-        <Img src={Provinciasicons} alt="" /> Provincias
-      </Linkes>
-      <Linkes to="/laboratorios">
-        {" "}
-        <Img src={Laboratorioicons} alt="" /> Laboratorios
-      </Linkes>
+              <Img src={Provinciasicons} alt="" /> Provincias
+            </Linkes>
+            <Linkes to="/laboratorios">
+              {" "}
+              <Img src={Laboratorioicons} alt="" /> Laboratorios
+            </Linkes>
           </Options>
         )}
       </Diva>
@@ -119,11 +119,6 @@ const AdminComponent = () => {
       <Linkes to="/registro_usuario">
         <Img src={Usericons} alt="" /> Registrar Usuario
       </Linkes>
-  
-   
-
-     
-
       {/* <Linkes to="/primera_muestra">
         <Img src={Primeramuestraicons} alt="" /> /Primera Muestra
       </Linkes> */}
@@ -135,18 +130,12 @@ const AdminComponent = () => {
   </Linkes> */}
       {/* <Linkes to="/rellamados">
     <Img src={Rellamadosicons} alt="" /> Rellamados
-<<<<<<< HEAD
   </Linkes>*/}
       <Linkes to="/resultados">
-        <Img src={Cartilla} alt="" />Resultados
+        <Img src={Cartilla} alt="" />
+        Resultados
       </Linkes>
-    </>
-=======
-  </Linkes>
- 
-</>*/}
     </Master>
->>>>>>> 19514aa8d7739593b0b66a378791c2c255ed0071
   );
 };
 

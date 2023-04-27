@@ -25,9 +25,7 @@ const Ciudadgrafic = () => {
         <ResponsiveContainer width="50%" aspect={2}>
           <PieChart>
             <Pie dataKey="id" data={ciudad} innerRadius={5} >
-              {ciudad.map((v, i) => (
-                <Cell key={`cell- ${i}`} fill={COLOR[i % COLOR.length]} />
-              ))}
+              
             </Pie>
             <Tooltip />
           </PieChart>

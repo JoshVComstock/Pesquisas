@@ -19,12 +19,8 @@ import { Navcontextprovider } from "./context/navcontext";
 import { Usercontextprovider } from "./context/userContext";
 import ProtectedRoute from "./wrappers/ProtectedRoute";
 import Control_Filtros from "./pages/Control_Filtros";
-<<<<<<< HEAD
 import Cartilla from "./models/Cartilla";
 import Resultadoform from "./models/Resultadoform";
-=======
-import Cartilla from "./Models/Cartilla";
->>>>>>> 19514aa8d7739593b0b66a378791c2c255ed0071
 
 function App() {
   return (

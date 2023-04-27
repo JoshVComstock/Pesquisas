@@ -30,15 +30,9 @@ import {
   Tbody,
   Th,
   Trdatos,
-<<<<<<< HEAD
   Tabla,
-=======
-  Dippadretabla,
-  Sectiontabla,
-  Tabla,
-  Sectionpa,
   Divreport,
->>>>>>> 19514aa8d7739593b0b66a378791c2c255ed0071
+  Sectionpa,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
@@ -82,7 +76,7 @@ const Ciudades = () => {
 
   return (
     <Container>
-      <Sectionpa>
+     <Sectionpa>
         {/* <Titulo>Ciudades</Titulo> */}
         <Divreport>
           <div>
@@ -117,9 +111,8 @@ const Ciudades = () => {
             </section>
          
           </div>
-      
         </Divreport>
-        {/* <Divbotones>
+         <Divbotones>
         <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo
         </Botonespdf2>
@@ -131,7 +124,6 @@ const Ciudades = () => {
           <Img src={Excel} alt="" />
           Excel
         </Botonespdf>{" "}
-<<<<<<< HEAD
       </Divbotones>
       <Divsearchpadre>
         <Divsearch>
@@ -180,8 +172,8 @@ const Ciudades = () => {
                           onClick={() => {
                             deleteCiudades(v.id, getApi);
                           }}
-                        >
-                          <Iconsacciones1 src={Eliminar} alt="" />
+                        > 
+                          <Iconsacciones1 src={Eliminar} alt="Eliminar" />
                         </Botonesacciones>
                       </div>
                     </Botonacciones>
@@ -191,75 +183,7 @@ const Ciudades = () => {
             ))}
         </Tabla>
       </Divtabla>
-=======
-      </Divbotones> */}
-        <Divsearchpadre>
-          <Divsearch>
-            <Search
-              type="text"
-              placeholder="Buscar"
-              value={filtro}
-              onChange={(e) => setFiltro(e.target.value)}
-            />
-            <Botonsearch>
-              <Img src={Searchicons} alt="" />{" "}
-            </Botonsearch>
-          </Divsearch>
-        </Divsearchpadre>
-
-        <Dippadretabla>
-          <Sectiontabla>
-            <Divtabla>
-              <Tabla>
-                <Thead>
-                  <tr>
-                    <Th>Nº</Th>
-                    <Th>CIUDAD</Th>
-                    <Th>ACCIONES</Th>
-                  </tr>
-                </Thead>
-                {ciudades
-                  .filter((v) =>
-                    v.ciudad.toLowerCase().includes(filtro.toLowerCase())
-                  )
-                  .map((v, i) => (
-                    <Tbody key={i}>
-                      <tr>
-                        <Trdatos data-label="Nº">{i + 1}</Trdatos>
-                        <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
-                        <Trdatos data-label="ACCIONES">
-                          <Botonacciones>
-                            <div>
-                              <Botonesacciones>
-                                <Iconsacciones
-                                  onClick={() => {
-                                    setCiudadactual(v);
-                                  }}
-                                >
-                                  Editar
-                                </Iconsacciones>
-                              </Botonesacciones>
-                            </div>
-                            <div>
-                              <Botonesacciones
-                                onClick={() => {
-                                  deleteCiudades(v.id, getApi);
-                                }}
-                              >
-                                <Iconsacciones1>Eliinar</Iconsacciones1>
-                              </Botonesacciones>
-                            </div>
-                          </Botonacciones>
-                        </Trdatos>
-                      </tr>
-                    </Tbody>
-                  ))}
-              </Tabla>
-            </Divtabla>
-          </Sectiontabla>
-        </Dippadretabla>
       </Sectionpa>
->>>>>>> 19514aa8d7739593b0b66a378791c2c255ed0071
     </Container>
   );
 };
