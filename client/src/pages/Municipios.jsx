@@ -12,10 +12,6 @@ import {
   Container,
   Titulo,
   Divbotones,
-  Botonespdf,
-  Botonespdf1,
-  Botonespdf2,
-  Img,
   Divsearchpadre,
   Divsearch,
   Search,
@@ -56,9 +52,28 @@ const Municipios = () => {
       openModal();
     }
   }, [municipioactual]);
+
+  const mostrarpdf = async () => {
+    const response = await fetch(
+      `${baseUrl}Centros-pdf`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    return response;
+  };
+
   return (
     <>
       <section>
+        <button onClick={openModal}>Ecxel</button>
+        <button onClick={openModal}>Pdf</button>
         <button onClick={openModal}>+</button>
         <h2>Registros Municipio</h2>
       </section>

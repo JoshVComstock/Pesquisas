@@ -6,14 +6,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Ciudades</title>
+    <title>Reporte de Municipios</title>
     <style>
 
 h1 {
     text-align: center;
     display: flex;
     font-size: 1.5em;
-  margin: 15px auto ;
+     margin: 15px auto ;
     width: 50%;
 }
 
@@ -66,7 +66,7 @@ tr:nth-child(even) {
 <body>
     <section class="sec">
         <img src="s" alt="logo">
-        <h1>Exportacion de datos de Ciudades</h1>
+        <h1>Exportacion de datos de Municipios</h1>
     <h2>Tamizaje neonatal</h2>
     <p><strong>Fecha de exportación:</strong>  {{ date('d-m-Y ') }}</p>
     <p><strong>Fecha de hora:</strong>  {{ date('H:i:s') }}</p>
@@ -75,21 +75,23 @@ tr:nth-child(even) {
         <thead>
             <tr>
                 <th>#</th>
-                <th>Ciudad</th>
+                <th>municipio</th>
+                <th>Provinci al que pertenece</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($ciudad as $ciuda)
+            @foreach($municipios as $mun)
             <tr>
-                <td>{{$ciuda->id}}</td>
-            <td>{{$ciuda->ciudad}}</td>
+                <td>{{$mun->id}}</td>
+            <td>{{$mun->municipio}}</td>
+            <td>{{$mun->idprovi}}</td>
             </tr>
             @endforeach
         </tbody>
         <tfoot>
             <tr>
-                <th>Total de Ciudades:</th>
-                <td>{{ $ciudad->count() }}</td>
+                <th>Total de Municipios:</th>
+                <td>{{ $municipios->count() }}</td>
             </tr>
         </tfoot>
     </table>

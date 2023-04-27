@@ -50,12 +50,10 @@ const AdminComponent = () => {
               <Img src={Redess} alt="" /> Redes
             </Linkes>
 
-            <Linkes to="/municipios">
-              <Img src={Municiosicons} alt="" /> Municipios
-            </Linkes>
+          
 
             <Linkes to="/centros">
-              <Img src={Centros} alt="" /> Centros
+              <Img src={Centros} alt="" /> Centros-Municipios
             </Linkes>
       <Linkes to="/laboratorios">
         <Img src={Laboratorioicons} alt="" /> Laboratorios
@@ -155,7 +153,7 @@ export const Master = styled.nav`
       padding: 3em 0em 1em 2.5em;
     }
   }
-  height: 95vh;
+  height: 88vh;
   overflow-y: scroll;
 `;
 

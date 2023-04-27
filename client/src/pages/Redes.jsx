@@ -12,10 +12,7 @@ import {
   Container,
   Titulo,
   Divbotones,
-  Botonespdf,
-  Botonespdf1,
-  Botonespdf2,
-  Img,
+  
   Divsearchpadre,
   Divsearch,
   Search,
@@ -58,7 +55,7 @@ const Redes = () => {
   return (
     <Container>
       <Titulo>Redes de Salud</Titulo>
-      <Divbotones>
+      {/* <Divbotones>
         <Botonespdf2 onClick={openModal}>
           <Img src={New} alt="" /> Nuevo
         </Botonespdf2>
@@ -83,7 +80,7 @@ const Redes = () => {
             <Img src={Searchicons} alt="" />{" "}
           </Botonsearch>
         </Divsearch>
-      </Divsearchpadre>
+      </Divsearchpadre> */}
       <Divtabla>
         <Tabla>
           <Thead>

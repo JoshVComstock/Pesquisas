@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction:row;
 `;
 export const Sectionpa = styled.section`
   width: 95%;
@@ -29,13 +30,13 @@ export const Divreport = styled.div`
   gap: 2em;
   & div {
     color:#fff;
-    &:nth-child(2n) {
+    /* &:nth-child(2n) {
   background-color: #fff;
   color:#000;
 }
 
   &:nth-child(2n+1) {
-  background-color: #30A9DE; }
+  background-color: #30A9DE; } */
     width: calc(100% / 4);
     height: 80%;
     display: flex;
@@ -46,7 +47,9 @@ export const Divreport = styled.div`
     padding: 1em;
     position: relative;
     z-index: 1;
+    color:#000;
     border-radius: 5px;
+    background-color:#fff;
     &::before {
       content: "";
       bottom: -0.8em;
@@ -77,13 +80,13 @@ export const Divreport = styled.div`
       justify-content: space-around;
       width: 50%;
       & h3 {
-        background-color: #4e4ee2;
+        background-color: rgb(34, 152, 202);
         width: 100%;
         height: 50%;
         color: #fff;
         text-align: center;
         font-size: 1.5em;
-        border: solid 2px #0002;
+        border: solid 1px #0002;
         &::first-letter {
           font-size: 1.6em;
         }
@@ -92,65 +95,7 @@ export const Divreport = styled.div`
   }
 `;
 export const Divbotonesa = styled.div`
-  height: auto;
-  background-color: rgb(119, 90, 216);
-  width: calc(90% / 4);
-  display: flex;
-  flex-direction: row;
-  border: solid 1px #9494941f;
-  border-radius: 3px;
-  margin: 0 0 1em 0;
-  position: relative;
-  z-index: 4;
-
-
-  &::before {
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 100%;
-    border: solid 1px #0002;
-
-    z-index: -1;
-    bottom: -5px;
-    right: -5px;
-  }
-  & div {
-    width: 100%;
-    height: auto;
-    background-color: transparent;
-    color: #ffffff;
-    position: relative;
-    margin: 0 1em;
-    & section {
-      display: flex;
-      justify-content: space-evenly;
-      padding: 0.5em 0;
-      & img {
-        margin-top: 0.5em;
-        height: 12px;
-        width: 12px;
-        filter: invert(100%);
-      }
-    }
-
-    & option {
-      display: flex;
-      justify-content: center;
-      position: relative;
-      text-transform: uppercase;
-      left: 2em;
-      width: calc(100% - 1em);
-      background-color: #ffffff;
-      color: #000;
-      border: solid 1px #0002;
-      font-size:1em;
-      &::first-letter{
-        font-size:1.2em;
-        color:blue;
-      }
-    }
-  }
+ 
 `;
 export const Botonespdf = styled.button`
   padding: 0.8em 4.5em;
@@ -206,7 +151,7 @@ export const Botonacciones = styled.div`
 `;
 export const Iconsacciones = styled.button`
   background: #1d7faa;
-  width: 70px;
+  width: 60px;
   height: 25px;
   cursor: pointer;
   border-radius: 0.3em;
@@ -214,7 +159,7 @@ export const Iconsacciones = styled.button`
 `;
 export const Iconsacciones1 = styled.button`
   background: rgb(185, 25, 52);
-  width: 70px;
+  width: 60px;
   height: 25px;
   cursor: pointer;
   border-radius: 0.3em;

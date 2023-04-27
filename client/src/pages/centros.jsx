@@ -3,12 +3,9 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
 import CentroForm from "../models/CentroForm";
-import New from "./../img/new.jpg";
-import Pdf from "./../img/pdf.jpg";
-import Excel from "./../img/doc.jpg";
-import Searchicons from "./../img/search.jpg";
-import Editar from "./../img/icons/Editar.jpg";
-import Eliminar from "./../img/icons/Delete.jpg";
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
+
+
 import {
   Container,
   Botonacciones,
@@ -28,9 +25,11 @@ import {
 import { UseFech } from "../hooks/useFech";
 import { deleteCentros, getCentros } from "../services/centros";
 import Municipios from "./Municipios";
-const Centros = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+import CSVExporter from "../pages/Reportescom";
 
+const Centros = () => {
+  const apiUrl = `${baseUrl}centros`;
+  const csvHeaders = ["id", "nombre","direccion","telefono","id_municipios","area","seguimiento_casos","contacto"];
   const [centroactual, setCentroactual] = useState({});
   const { getApi, data: cntros } = UseFech(getCentros);
   const { openModal, closeModal } = useModal(
@@ -54,7 +53,7 @@ const Centros = () => {
   }, [centroactual]);
   const mostrarpdf = async () => {
     const response = await fetch(
-      `${baseUrl}centros-pdf`,
+      `${baseUrl}Centros-pdf`,
       {
         method: "GET",
         headers: {
@@ -109,15 +108,15 @@ const Centros = () => {
           <div>
             <img src="src\img\gestion.png" alt="" />
             <section>
-              <h3>3</h3>
+              <h3>{cntros.length}</h3>
               <p>n° registros</p>
-              <p>Provincia</p>
+              <p>Centros</p>
             </section>
           </div>
           <div>
             <img src="src\img\gestion.png" alt="" />
             <section>
-              <h3>126</h3>
+              <h3>{cntros.length}</h3>
               <p>gestion</p>
             </section>
           </div>
@@ -129,7 +128,7 @@ const Centros = () => {
             </section>
           </div>
         </Divreport>
-        <Divbotonesa>
+        {/* <Divbotonesa>
           <div onClick={() => setIsExpanded(!isExpanded)}>
             <section>
               Generar
@@ -137,10 +136,14 @@ const Centros = () => {
             </section>
             {isExpanded && <option onClick={mostrarpdf}>Pdf</option>}
           </div>
-        </Divbotonesa>
+        </Divbotonesa> */}
         <Sectiond>
+  
+
           <Dippadretabla>
             <section>
+              <button><CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} /></button>
+              <button onClick={mostrarpdf}>Pdf</button>
               <button onClick={openModal}>+</button>
               <h2>Registros Centro</h2>
             </section>
@@ -149,14 +152,14 @@ const Centros = () => {
               <Tabla>
                 <Thead>
                   <tr>
-                    <th>Nº</th>
-                    <th>NOMBRE</th>
-                    <th>DIRECCIÓN</th>
-                    <th>TELEFONO</th>
-                    <th>MUNICIPIO</th>
-                    <th>AREA</th>
-                    <th>SEGUIMIENTO</th>
-                    <th>CONTACTO</th>
+                    <Th>Nº</Th>
+                    <Th>NOMBRE</Th>
+                    <Th>DIRECCIÓN</Th>
+                    <Th>TELEFONO</Th>
+                    <Th>MUNICIPIO</Th>
+                    <Th>AREA</Th>
+                    <Th>SEGUIMIENTO</Th>
+                    <Th>CONTACTO</Th>
                     <Th>ACCIONES</Th>
                   </tr>
                 </Thead>
@@ -178,7 +181,7 @@ const Centros = () => {
                         <Trdatos>
                           <Botonacciones>
                             <div>
-                              <Botonesacciones>
+                           
                                 <Iconsacciones
                                   onClick={() => {
                                     setCentroactual(v);
@@ -186,16 +189,14 @@ const Centros = () => {
                                 >
                                   Editar
                                 </Iconsacciones>
-                              </Botonesacciones>
+                           
                             </div>
                             <div>
-                              <Botonesacciones
-                                onClick={() => {
+                            
+                                <Iconsacciones1   onClick={() => {
                                   deleteCentros(v.id, getApi);
-                                }}
-                              >
-                                <Iconsacciones1>Eliminar</Iconsacciones1>
-                              </Botonesacciones>
+                                }}>Eliminar</Iconsacciones1>
+                            
                             </div>
                           </Botonacciones>
                         </Trdatos>
@@ -222,40 +223,53 @@ export const Sectiond = styled.div`
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: wrap;
-  gap: 2em;
+  gap: 0.5em;
 `;
 export const Dippadretabla = styled.div`
-  width: auto;
-  gap: 0.5em;
+  gap: 0.2em;
   margin: 0 auto;
   background: rgb(255, 255, 255);
   overflow: hidden;
   height: 50vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   border: solid 1px #0002;
+  &:nth-child(2){
+  width: 38%;
+  }
+  &:nth-child(1){
+  width: 60%;
+  }
   & section {
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: flex-end;
+    justify-content: center;
+    gap:1em;
     & > button {
-      width: 2.5em;
-      height: 2.5em;
-      margin: 0.5em 0 0 0;
-      background-color: #4e4ee2;
+      
+      width: 2.8em;
+      height: 2.8em;
+      background-color: #000091c6;
       color: #fff;
-      border-radius: 5px;
+      border-radius: 0 0 8px 8px;
       font-size: 15px;
-      transition: all 2s ease-in-out;
+      transition: all 0.5s ease;
+      /* &:nth-child(2) {
+  background-color:rgba(145, 22, 0, 0.802);
+  color:#fff;}
+  &:nth-child(1) {
+  background-color: #008610c3;
+  color:#fff;} */
       &:hover {
-        transform: rotate(180deg);
+      height: 3em;
+
       }
     }
     & h2 {
       font-size: 1em;
-      padding: 0.5em 2em;
+      padding: 0.5em 1em;
       letter-spacing: 1.5px;
       &::first-letter {
         color: blue;

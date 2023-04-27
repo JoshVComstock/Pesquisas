@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Ciudades</title>
+    <title>Reporte de Provincia</title>
     <style>
 
 h1 {
@@ -75,21 +75,25 @@ tr:nth-child(even) {
         <thead>
             <tr>
                 <th>#</th>
-                <th>Ciudad</th>
+                <th>provincia</th>
+                <th>ciudades</th>
+
             </tr>
         </thead>
         <tbody>
-            @foreach($ciudad as $ciuda)
+            @foreach($provincia as $prov)
             <tr>
-                <td>{{$ciuda->id}}</td>
-            <td>{{$ciuda->ciudad}}</td>
+                <td>{{$prov->id}}</td>
+            <td>{{$prov->provincia}}</td>
+            <td>{{$prov->ciudad}}</td>
             </tr>
             @endforeach
         </tbody>
         <tfoot>
             <tr>
-                <th>Total de Ciudades:</th>
-                <td>{{ $ciudad->count() }}</td>
+                <th>Total de Provincias con sus ciudades es:</th>
+                {{-- <td>{{ $provincia->count() }}</td> --}}
+                <td>{{ count($provincia) }}</td>
             </tr>
         </tfoot>
     </table>

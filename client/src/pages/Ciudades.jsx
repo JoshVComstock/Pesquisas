@@ -8,10 +8,6 @@ import {
   Container,
   Titulo,
   Divbotones,
-  Botonespdf,
-  Botonespdf1,
-  Botonespdf2,
-  Img,
   Divsearchpadre,
   Divsearch,
   Search,
@@ -36,12 +32,15 @@ import { deleteCiudades, getCiudades } from "../services/Ciudades";
 import { getciudadpdf } from "../reports/ciudadpdf";
 import Provincias from "./Provincias"
 import { deleteProvincias, getProvincias } from "../services/provincias";
+import CSVExporter from "../pages/Reportescom";
 
 const Ciudades = () => {
 
 // solo para el select
 const [isExpanded, setIsExpanded] = useState(false);
 //------
+const apiUrl = `${baseUrl}ciudades`;
+    const csvHeaders = ["id", "ciudad"];
 
 
   const [ciudadactual, setCiudadactual] = useState({});
@@ -122,24 +121,15 @@ const [isExpanded, setIsExpanded] = useState(false);
       
         </Divreport>
       
-<Divbotonesa>
-<div  onClick={() => setIsExpanded(!isExpanded)}>
- <section>
- Generar
-  <img src="src\img\abajo.png" alt="" />
-  </section>
-{isExpanded && (
-<option onClick={mostrarpdf}> 
-Pdf
-</option>
-)}
-
-
-</div>
-</Divbotonesa>
      <Sectiond>
      <Dippadretabla>
        <section>
+       <button >
+    <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
+
+       </button>
+
+       <button onClick={mostrarpdf} >Pdf</button>
        <button onClick={openModal} >+</button>
         <h2>Registros Ciudades</h2>
        </section>
@@ -208,11 +198,8 @@ flex-wrap: wrap;
 gap:2em;
 
 `;
-
-
-
 export const Dippadretabla = styled.div`
-  width: 48%;
+  width: 47.8%;
   gap:0.5em;
   margin: 0 auto;
   background: rgb(255, 255, 255);
@@ -224,20 +211,27 @@ export const Dippadretabla = styled.div`
   border: solid 1px #0002;
   & section {
     width: 100%;
-    display: flex;
+    display: flex; 
+    gap:0.5em;
     flex-direction: row-reverse;
     justify-content: flex-end;
     & > button {
-      width: 2.5em;
-      height: 2.5em;
+      width: 2.8em;
+      height: 2.8em;
       margin: 0.5em 0 0 0;
       background-color: #4e4ee2;
       color: #fff;
       border-radius: 5px;
       font-size: 15px;
-      transition: all 2s ease-in-out;
+      transition: all 0.5s ease-in-out;
+      &:nth-child(2) {
+  background-color:rgb(138, 30, 10);
+  color:#fff;}
+  &:nth-child(1) {
+  background-color: #1a8727;
+  color:#fff;}
       &:hover {
-        transform: rotate(180deg);
+        transform:translatey(8px);
       }
     }
     & h2 {
