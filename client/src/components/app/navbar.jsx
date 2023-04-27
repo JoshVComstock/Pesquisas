@@ -29,6 +29,9 @@ const Navbar = () => {
             <H>Tamizaje Neonatal</H>
           </Logo>
           <User>
+<<<<<<< HEAD
+            <Topnavimg src="src\img\avatar.png" alt="" />
+=======
           <Topnavimg src="src\img\avatar.png" alt="" />
           <Select >
                 <Option >{user.nombre}</Option>
@@ -36,8 +39,19 @@ const Navbar = () => {
                   </option>
               </Select>
 
+>>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
           </User>
+          <Select>
+            <Option>{user.nombre}</Option>
+            <Option>
+              <Logout onClick={Cerrasesion}>Salir</Logout>
+            </Option>
+          </Select>
         </Topnav>
+<<<<<<< HEAD
+        <Header>{user.rol == "laboratorio" && <LaboratorioComponent />}</Header>
+=======
+>>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
         <Navuser>
           <Header>
             {user.rol == "administrador" && <AdminComponent />}
@@ -53,31 +67,35 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
 const Divheader = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
+=======
 
+>>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
 `;
 
+
 const Select = styled.select`
-border:none;
-text-align:center;
-transition: height 0.5s ease;
-outline: none;
-cursor:pointer;
+  border: none;
+  text-align: center;
+  transition: height 0.5s ease;
+  outline: none;
+  cursor: pointer;
 `;
 
 const Option = styled.option`
-outline: none;
-border:none;
-text-align:start;
-color: blue;
+  outline: none;
+  border: none;
+  text-align: start;
+  color: blue;
 
-&::first-letter {
-  font-size: 1.2em;}
+  &::first-letter {
+    font-size: 1.2em;
+  }
 `;
 const Topnav = styled.div`
   width: 100%;
@@ -88,15 +106,15 @@ const Topnav = styled.div`
   align-items: center;
   flex-direction: row;
   box-shadow: 0px 0px 2px 0px #0000004e;
-  padding:0 3em;
-  z-index:2;
+  padding: 0 3em;
+  z-index: 2;
 `;
 
 const Logo = styled.div`
-height:100%;
-display:flex;
-justify-content:center;
-align-items:center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 const Navuser = styled.div`
   width: 100%;
@@ -106,10 +124,10 @@ const Navuser = styled.div`
 `;
 
 const Topnavimg = styled.img`
-height: 35px;
-filter: saturate(0%) ;`;
-const Logout = styled.button`
+  height: 35px;
+  filter: saturate(0%);
 `;
+const Logout = styled.button``;
 const User = styled.div`
   height: 100%;
   display: flex;
@@ -126,12 +144,12 @@ const H = styled.h5`
   }
 `;
 const Divo = styled.div`
-width: 100%;
+  width: 100%;
 
 `;
 const Header = styled.header`
-width:300px;
-box-shadow: 0px 0px 2px 0px #0000004e;
-z-index:1;
-height:100%;
+  width: 300px;
+  box-shadow: 0px 0px 2px 0px #0000004e;
+  z-index: 1;
+  height: 100%;
 `;

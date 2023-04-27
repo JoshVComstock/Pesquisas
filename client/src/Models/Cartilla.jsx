@@ -4,15 +4,48 @@ import styled from "styled-components";
 import { horaactual, Actualdate } from "../services/date";
 
 const Cartilla = () => {
+<<<<<<< HEAD
+  const [fechamuestra, setFechamuestra] = useState(Actualdate);
+  const [primerapellido, setPrimerapellido] = useState("");
+  const [segundoapellido, setSegundoapellido] = useState("");
+  const [nombrepaciente, setNombrepaciente] = useState("");
+  const [codigocartilla, setCodigocartilla] = useState();
+  const [horanacimiento, setHoranacimiento] = useState("");
+  const [fechanacimiento, setFechanacimiento] = useState("");
+=======
 
 
+>>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
   const [sexo, setSexo] = useState("");
-  const [fecha, setFecha] = useState(Actualdate);
+  const [muestra, setMuestra] = useState();
+  const [pesonaci, setPesonaci] = useState("");
+  const [nacitermino, setNacitermino] = useState();
+  const [edadsemana, setEdadsemana] = useState();
+  const [edaddia, setEdaddia] = useState();
+  const [transfucion, setTransfucion] = useState();
+  const [fechatrans, setFechatrans] = useState("");
+  const [antibioticos, setAntibioticos] = useState("");
+  const [idcentro, setIdcentro] = useState();
+  const [nombremadre, setNombremadre] = useState("");
+  const [apellidomadre, setApellidomadre] = useState("");
+  const [carnetmadre, setCarnetmadre] = useState();
+  const [idciudad, setCiudad] = useState();
+  const [direccion, setDireccion] = useState("");
+  const [telefono, setTelefono] = useState();
+  const [telefono2, setTelefono2] = useState();
+  const [tratahiper, setTratahiper] = useState("");
+  const [tratahipo, setTratahipo] = useState("");
+  const [enfermedadmadre, setEnfermedadmadre] = useState("");
+  const [detalledireccion, setDetalledireccion] = useState("");
   return (
     <Container>
+<<<<<<< HEAD
+      <h2>REGISTRO DE CARTILLAS</h2>
+=======
       <h2>
    Cartilla 
       </h2>
+>>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
       <Card>
         <Divnameco>
           <div>
@@ -20,24 +53,44 @@ const Cartilla = () => {
               <Labelname htmlFor="">
                 <strong>PRIMER APELLIDO</strong>
               </Labelname>
-              <Inputname type="text" />
+              <Inputname
+                type="text"
+                value={primerapellido}
+                onChange={(e) => setPrimerapellido(e.target.value)}
+              />
             </Divname>
             <Divname>
               <Labelname htmlFor="">
                 <strong>SEGUNDO APELLIDO</strong>
               </Labelname>
-              <Inputname type="text" />
+              <Inputname
+                type="text"
+                value={segundoapellido}
+                onChange={(e) => setSegundoapellido(e.target.value)}
+              />
             </Divname>
             <Divname>
               <Labelname htmlFor="">
                 <strong>NOMBRE</strong>
               </Labelname>
-              <Inputname type="text" />
+              <Inputname
+                type="text"
+                value={nombrepaciente}
+                onChange={(e) => setNombrepaciente(e.target.value)}
+              />
             </Divname>
           </div>
           <Divcartilla>
             <Labelname htmlFor="">CODIGO CARTILLA</Labelname>
+<<<<<<< HEAD
+            <Inputname
+              type="number"
+              value={codigocartilla}
+              onChange={(e) => setCodigocartilla(e.target.value)}
+            />
+=======
             <Inputname type="number"  />
+>>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
           </Divcartilla>
         </Divnameco>
         <Divname>
@@ -49,13 +102,17 @@ const Cartilla = () => {
               <Labeldate htmlFor="">HORA</Labeldate>
               <Inputname
                 type="time"
-                name=""
-                onChange={(e) => setFecha(e.target.value)}
+                value={horanacimiento}
+                onChange={(e) => setHoranacimiento(e.target.value)}
               />
             </Divinputdate>
             <Divinputdate>
               <Labeldate htmlFor="">FECHA</Labeldate>
-              <Inputname type="date" />
+              <Inputname
+                type="date"
+                value={fechanacimiento}
+                onChange={(e) => setFechanacimiento(e.target.value)}
+              />
             </Divinputdate>
             <Divinputdate>
               <Labeldate htmlFor="">SEXO</Labeldate>
@@ -93,16 +150,26 @@ const Cartilla = () => {
                 type="time"
                 name=""
                 value={horaactual}
-                onChange={(e) => setFecha(e.target.value)}
+                onChange={(e) => setFechamuestra(e.target.value)}
               />
             </Divinputdate>
             <Divinputdate>
               <Labeldate htmlFor="">FECHA</Labeldate>
-              <Inputname type="date" value={Actualdate} />
+              <Inputname
+                type="date"
+                value={Actualdate}
+                onChange={(e) =>
+                  setFechamuestra(e.target.value + ":" + horaactual)
+                }
+              />
             </Divinputdate>
             <Divinputdate>
               <Labeldate htmlFor="">MUESTRA</Labeldate>
-              <Inputname type="number" />
+              <Inputname
+                type="number"
+                value={muestra}
+                onChange={(e) => setMuestra(e.target.value)}
+              />
             </Divinputdate>
           </Divdatetime>
         </Divname>
@@ -112,24 +179,44 @@ const Cartilla = () => {
           </Labeldate>
           <Divinputdate>
             <Labeldate htmlFor="">SI</Labeldate>
-            <Inputsexo type="radio" name="nacitermino" />
+            <Inputsexo
+              type="radio"
+              name="nacitermino"
+              onChange={() => setNacitermino(1)}
+            />
             <Labeldate htmlFor="">NO</Labeldate>
-            <Inputsexo type="radio" name="nacitermino" />
+            <Inputsexo
+              type="radio"
+              name="nacitermino"
+              onChange={() => setNacitermino(0)}
+            />
           </Divinputdate>
           <Labeldate htmlFor="">
             <strong>EDAD GESTIONAL:</strong>{" "}
           </Labeldate>
           <Edadges>
             <Labeldate htmlFor="">SEMANAS</Labeldate>
-            <Inputname type="number" />
+            <Inputname
+              type="number"
+              value={edadsemana}
+              onChange={(e) => setEdadsemana(e.target.value)}
+            />
             <Labeldate htmlFor="">DIAS</Labeldate>
-            <Inputname type="number" />
+            <Inputname
+              type="number"
+              value={edaddia}
+              onChange={(e) => setEdaddia(e.target.value)}
+            />
           </Edadges>
           <Labeldate htmlFor="">
             <strong>PESO AL NACER:</strong>
           </Labeldate>
           <Pesnacerinput>
-            <Inputname type="number" />
+            <Inputname
+              type="number"
+              value={pesonaci}
+              onChange={(e) => setPesonaci(e.target.value)}
+            />
             <P>Gramos</P>
           </Pesnacerinput>
         </Divname>
@@ -139,25 +226,43 @@ const Cartilla = () => {
           </Labeldate>
           <Divinputdate>
             <Labeldate htmlFor="">SI</Labeldate>
-            <Inputsexo type="radio" />
+            <Inputsexo
+              type="radio"
+              name="transfucion"
+              onChange={() => setTransfucion(1)}
+            />
             <Labeldate htmlFor="">NO</Labeldate>
-            <Inputsexo type="radio" />
+            <Inputsexo
+              type="radio"
+              name="transfucion"
+              onChange={() => setTransfucion(0)}
+            />
           </Divinputdate>
           <Labeldate htmlFor="">
             <strong>FECHA</strong>
           </Labeldate>
-          <Inputname type="date" />
+          <Inputname
+            type="date"
+            value={fechatrans}
+            onChange={(e) => setFechatrans(e.target.value)}
+          />
           <Labeldate htmlFor="">
             <strong>ANTIBIOTICOS</strong>
           </Labeldate>
-          <Inputname type="text" />
+          <Inputname
+            type="text"
+            value={antibioticos}
+            onChange={(e) => setAntibioticos(e.target.value)}
+          />
         </Divname>
         <Divname>
           <Labeldate htmlFor="">
             <strong>CENTRO DE SALUD</strong>
           </Labeldate>
-          <Select name="" id="">
-            <option value="">Seleccione el centro</option>
+          <Select name="" value={idcentro}>
+            <option onChange={(e) => setIdcentro(e.target.value)}>
+              Seleccione el centro
+            </option>
           </Select>
         </Divname>
         <Divmadre>
@@ -170,34 +275,74 @@ const Cartilla = () => {
             </Labeldate>
             <Inputname type="text" />
             <Labeldate htmlFor="">APELLIDO</Labeldate>
-            <Inputname type="text" />
+            <Inputname
+              type="text"
+              value={apellidomadre}
+              onChange={(e) => setApellidomadre(e.target.value)}
+            />
             <Labeldate htmlFor="">CARNET</Labeldate>
-            <Inputname type="number" />
+            <Inputname
+              type="number"
+              value={carnetmadre}
+              onChange={(e) => setCarnetmadre(e.target.value)}
+            />
             <Labeldate htmlFor="">TELEFONO</Labeldate>
-            <Inputname type="number" />
+            <Inputname
+              type="number"
+              value={telefono}
+              onChange={(e) => setTelefono(e.target.value)}
+            />
           </Divdatosmadre>
           <Divdirectionmadre>
             <Labeldate htmlFor="">DIRECCION</Labeldate>
-            <Inputname type="text" />
+            <Inputname
+              type="text"
+              value={direccion}
+              onChange={(e) => setDireccion(e.target.value)}
+            />
             <Labeldate htmlFor="">DETALLE DIRECCION</Labeldate>
-            <Inputname type="text" />
+            <Inputname
+              type="text"
+              value={detalledireccion}
+              onChange={(e) => setDetalledireccion(e.target.value)}
+            />
             <Labeldate htmlFor="">CIUDAD</Labeldate>
-            <Select name="" id="">
+            <Select
+              name=""
+              value={idciudad}
+              onChange={(e) => setCiudad(e.target.value)}
+            >
               <option value="">Seleccione Ciudad</option>
             </Select>
             <Labeldate htmlFor="">TELEFONO</Labeldate>
-            <Inputname type="number" />
+            <Inputname
+              type="number"
+              value={telefono2}
+              onChange={(e) => setTelefono2(e.target.value)}
+            />
           </Divdirectionmadre>
           <Divenfermedad>
             <div>
               <Labeldate htmlFor="">TRATAMIENTO HIPERTIROIDISMO</Labeldate>
-              <Inputname type="text" />
+              <Inputname
+                type="text"
+                value={tratahiper}
+                onChange={(e) => setTratahiper(e.target.value)}
+              />
               <Labeldate htmlFor="">TRATAMIENTO HIPOTIROIDISMO</Labeldate>
-              <Inputname type="text" />
+              <Inputname
+                type="text"
+                value={tratahipo}
+                onChange={(e) => setTratahipo(e.target.value)}
+              />
             </div>
             <div>
               <Labeldate htmlFor="">ENFERMEDAD:</Labeldate>
-              <Inputname type="text" />
+              <Inputname
+                type="text"
+                value={enfermedadmadre}
+                onChange={(e) => setEnfermedadmadre(e.target.value)}
+              />
               <Boton type="button">Agregar</Boton>
             </div>
           </Divenfermedad>
@@ -233,7 +378,7 @@ const Labelname = styled.label`
   margin: 10px;
   width: 15%;
   user-select: none;
-  font-size:13px;
+  font-size: 13px;
 `;
 const Inputname = styled.input`
   margin-top: 5px;
@@ -246,7 +391,7 @@ const Inputname = styled.input`
   border: 1px solid #0005;
   outline: none;
   padding: 10px;
-  font-size:13px;
+  font-size: 13px;
   &:focus {
     border: 1.5px solid #034078;
   }
@@ -274,7 +419,7 @@ const Labeldate = styled.label`
   margin-right: 10px;
   margin-left: 10px;
   user-select: none;
-  font-size:12px;
+  font-size: 12px;
 `;
 const Divsexo = styled.div`
   display: flex;
@@ -360,11 +505,11 @@ const Select = styled.select`
   box-shadow: 0px 0.5px 0px 1px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(0, 0, 0, 0.3);
   outline: none;
-  font-size:13px;
+  font-size: 13px;
 `;
-const Boton=styled.button`
-  background:#0e3392c9;
-  border-radius:20px;
-  height:30px;
-  color:#fff;
+const Boton = styled.button`
+  background: #0e3392c9;
+  border-radius: 20px;
+  height: 30px;
+  color: #fff;
 `;

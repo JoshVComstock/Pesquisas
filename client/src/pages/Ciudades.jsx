@@ -21,11 +21,17 @@ import {
   Tbody,
   Th,
   Trdatos,
+<<<<<<< HEAD
+  Tabla,
+  Divreport,
+  Sectionpa,
+=======
   Sectiontabla,
   Tabla,
   Sectionpa,
   Divreport,
   Divbotonesa,Divmayor
+>>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
@@ -82,7 +88,12 @@ const apiUrl = `${baseUrl}ciudades`;
 
   return (
     <Container>
+<<<<<<< HEAD
+     <Sectionpa>
+        {/* <Titulo>Ciudades</Titulo> */}
+=======
       <Sectionpa>
+>>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
         <Divreport>
           <div>
           <img src="src\img\gestion.png" alt="" />
@@ -102,9 +113,97 @@ const apiUrl = `${baseUrl}ciudades`;
             </section>
          
           </div>
-        
+          <div>
+          <img src="src\img\gestion.png" alt="" />
+            <section>
+              <h3>126</h3>
+              <p>gestion</p>
+            </section>
+         
+          </div>
+          <div>
+          <img src="src\img\gestion.png" alt="" />
+            <section>
+              <h3>126</h3>
+              <p>gestion</p>
+            </section>
+         
+          </div>
       
         </Divreport>
+<<<<<<< HEAD
+         <Divbotones>
+        <Botonespdf2 onClick={openModal}>
+          <Img src={New} alt="" /> Nuevo
+        </Botonespdf2>
+        <Botonespdf1 onClick={mostrarpdf}>
+          <Img src={Pdf} alt="" />
+          PDF
+        </Botonespdf1>
+        <Botonespdf>
+          <Img src={Excel} alt="" />
+          Excel
+        </Botonespdf>{" "}
+      </Divbotones>
+      <Divsearchpadre>
+        <Divsearch>
+          <Search
+            type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)}
+          />
+          <Botonsearch>
+            <Img src={Searchicons} alt="" />{" "}
+          </Botonsearch>
+        </Divsearch>
+      </Divsearchpadre>
+      <Divtabla>
+        <Tabla>
+          <Thead>
+            <Th>Nº</Th>
+            <Th>CIUDAD</Th>
+            <Th>ACCIONES</Th>
+          </Thead>
+          {ciudades
+            .filter((v) =>
+              v.ciudad.toLowerCase().includes(filtro.toLowerCase())
+            )
+            .map((v, i) => (
+              <Tbody key={i}>
+                <tr>
+                  <Trdatos data-label="Nº">{i + 1}</Trdatos>
+                  <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
+                  <Trdatos data-label="ACCIONES">
+                    <Botonacciones>
+                      <div>
+                        <Botonesacciones>
+                          <Iconsacciones
+                            src={Editar}
+                            alt=""
+                            onClick={() => {
+                              setCiudadactual(v);
+                            }}
+                          />
+                        </Botonesacciones>
+                      </div>
+                      <div>
+                        <Botonesacciones
+                          onClick={() => {
+                            deleteCiudades(v.id, getApi);
+                          }}
+                        > 
+                          <Iconsacciones1 src={Eliminar} alt="Eliminar" />
+                        </Botonesacciones>
+                      </div>
+                    </Botonacciones>
+                  </Trdatos>
+                </tr>
+              </Tbody>
+            ))}
+        </Tabla>
+      </Divtabla>
+=======
       
      <Sectiond>
 
@@ -174,6 +273,7 @@ const apiUrl = `${baseUrl}ciudades`;
          <Provincias/> 
         </Dippadretabla>
      </Sectiond>
+>>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
       </Sectionpa>
     </Container>
   );

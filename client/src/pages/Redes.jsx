@@ -27,10 +27,10 @@ import {
   Th,
   Trdatos,
   Tabla,
+  Sectionpa,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteRedes, getRedes } from "../services/Redes";
-import RedesForm from "../models/RedesForm"
 const Redes = () => {
   const [redactual, setRedactual] = useState({});
   const { data: redes, getApi } = UseFech(getRedes);
@@ -54,6 +54,7 @@ const Redes = () => {
 
   return (
     <Container>
+      <Sectionpa>
       <Titulo>Redes de Salud</Titulo>
       {/* <Divbotones>
         <Botonespdf2 onClick={openModal}>
@@ -128,6 +129,7 @@ const Redes = () => {
             ))}
         </Tabla>
       </Divtabla>
+      </Sectionpa>
     </Container>
   );
 };
