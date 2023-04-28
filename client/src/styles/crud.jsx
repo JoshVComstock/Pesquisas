@@ -137,11 +137,10 @@ export const Botonespdf = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(63, 0, 151);
+  background-color: rgb(34, 152, 202);
   color: rgb(255, 255, 255);
   font-size: 1em;
   border-radius: 1em;
-  box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.524);
   cursor: pointer;
 `;
 export const Botonespdf1 = styled.button`
@@ -149,21 +148,20 @@ export const Botonespdf1 = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(63, 0, 151);
+  background-color: rgb(34, 152, 202);
   color: rgb(255, 255, 255);
   font-size: 1em;
   border-radius: 1em;
-  box-shadow: 0px 2px 5px 1px #000;
+ 
   cursor: pointer;
 `;
 export const Botonespdf2 = styled.button`
-  box-shadow: 0px 2px 5px 1px #000;
   cursor: pointer;
   padding: 0.8em 4.5em;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(63, 0, 151);
+   background-color: rgb(34, 152, 202);
   color: rgb(255, 255, 255);
   font-size: 1em;
   border-radius: 1em;
@@ -212,7 +210,9 @@ export const Thead = styled.thead`
   color: #000;
   background-color: rgb(34, 152, 202);
 `;
-export const Divbotones = styled.div``;
+export const Divbotones = styled.div`
+display:flex;
+`;
 
 export const Dippadretabla = styled.div`
   width: 100%;
@@ -279,4 +279,19 @@ export const Tabla = styled.table`
   border-collapse: collapse;
   font-size: 0.9rem;
   overflow-y: scroll;
+`;
+export const Inputs = styled.input`
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  width: 100%;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid #0005;
+  outline: none;
+  padding: 10px;
+  font-size: 13px;
+  &:focus {
+    border: 1.5px solid #034078;
+  }
 `;

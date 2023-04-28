@@ -56,18 +56,7 @@ export const updateRegistroprovincias = async (registroactual,callback) => {
     }
   }
   export const postRegistroprovincia = async (hora,fecha,id_redes,id_centros,cantidad_recibida,cantidad_entregada,cod_tarjeta,entregado_por,telefono,recibido_por,callback) => {
-    console.log( body: JSON.stringify({
-      hora: hora,
-      fecha: fecha,
-      id_redes: id_redes,
-      id_centros: id_centros,
-      cantidad_recibida: cantidad_recibida,
-      cantidad_entregada: cantidad_entregada,
-      cod_tarjeta: cod_tarjeta,
-      entregado_por: entregado_por,
-      telefono: telefono,
-      recibido_por: recibido_por,
-  }));
+    
     const response = await fetch(`${baseUrl}registro_hospitales`, {
       method: "POST",
       headers: {

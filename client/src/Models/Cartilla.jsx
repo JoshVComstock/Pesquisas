@@ -8,7 +8,6 @@ import { getCentros } from "../services/centros";
 import { getCiudades } from "../services/Ciudades";
 
 const Cartilla = () => {
-<<<<<<< HEAD
   const { data: ciudades } = UseFech(getCiudades);
   const { data: centros } = UseFech(getCentros);
   const [fechamuestra, setFechamuestra] = useState(
@@ -22,9 +21,6 @@ const Cartilla = () => {
   const [fechanacimiento, setFechanacimiento] = useState("");
   const [nombrepaciente, setNombrepaciente] = useState("");
   const [codigocartilla, setCodigocartilla] = useState("");
-=======
-  const [sexo, setSexo] = useState("");
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
   const [muestra, setMuestra] = useState();
   const [pesonaci, setPesonaci] = useState();
   const [nacitermino, setNacitermino] = useState();
@@ -48,101 +44,9 @@ const Cartilla = () => {
   const [tratahipo, setTratahipo] = useState("");
   const [enfermedadmadre, setEnfermedadmadre] = useState("");
   const [detalledireccion, setDetalledireccion] = useState("");
-  console.log(primerapellido);
-  console.log(fechanacimiento);
-  console.log(segundoapellido);
-  console.log(sexo);
-  console.log(horanacimiento);
-  console.log(fechamuestra);
-  console.log(nombrepaciente);
-  console.log(codigocartilla);
-  console.log(muestra);
-  console.log(pesonaci);
-  console.log(nacitermino);
-  console.log(edadsemana);
-  console.log(edaddia);
-  console.log(transfucion);
-  console.log(fechatrans);
-  console.log(antibioticos);
-  console.log(idcentro);
-  console.log(nombremadre);
-  console.log(apellidomadre);
-  console.log(carnetmadre);
-  console.log(idciudad);
-  console.log(direccion);
-  console.log(telefono);
-  console.log(telefono2);
-  console.log(tratahiper);
-  console.log(tratahipo);
-  console.log(enfermedadmadre);
-  console.log(detalledireccion);
-  const Agregar = () => {
-    postCartilla(
-      nombremadre,
-      apellidomadre,
-      idciudad,
-      direccion,
-      telefono,
-      telefono2,
-      tratahiper,
-      tratahipo,
-      enfermedadmadre,
-      detalledireccion,
-      nombrepaciente,
-      primerapellido,
-      segundoapellido,
-      sexo,
-      fechanacimiento,
-      horanacimiento,
-      codigocartilla,
-      fechamuestra,
-      nacitermino,
-      edadsemana,
-      edaddia,
-      muestra,
-      pesonaci,
-      transfucion,
-      fechatrans,
-      antibioticos,
-      idcentro,
-      () => {
-        setNombremadre("");
-        setApellidomadre("");
-        setDireccion("");
-        setTelefono("");
-        setTelefono2("");
-        setTratahiper("");
-        setTratahipo("");
-        setEnfermedadmadre("");
-        setDetalledireccion("");
-        setNombrepaciente("");
-        setPrimerapellido("");
-        setSegundoapellido("");
-        setSexo("");
-        setFechanacimiento("");
-        setHoranacimiento("");
-        setCodigocartilla("");
-        setFechamuestra("");
-        setNacitermino("");
-        setEdadsemana("");
-        setEdaddia("");
-        setMuestra("");
-        setPesonaci("");
-        setTransfucion("");
-        setFechatrans("");
-        setAntibioticos("");
-      }
-    );
-  };
   return (
     <Container>
-<<<<<<< HEAD
       <h2>REGISTRO DE CARTILLAS</h2>
-=======
-      <h2>
-   Cartilla 
-      </h2>
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
       <Card>
         <Divnameco>
           <div>
@@ -179,15 +83,11 @@ const Cartilla = () => {
           </div>
           <Divcartilla>
             <Labelname htmlFor="">CODIGO CARTILLA</Labelname>
-<<<<<<< HEAD
             <Inputname
               type="number"
               value={codigocartilla}
               onChange={(e) => setCodigocartilla(e.target.value)}
             />
-=======
-            <Inputname type="number"  />
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
           </Divcartilla>
         </Divnameco>
         <Divname>

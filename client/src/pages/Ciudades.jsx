@@ -115,7 +115,6 @@ const Ciudades = () => {
               <p>gestion</p>
             </section>
           </div>
-      
         </Divreport>
       
      <Sectiond>
@@ -188,22 +187,25 @@ const Ciudades = () => {
                                 >
                                   Editar
                                 </Iconsacciones>
-                            </div>
-                            <div>
-                                <Iconsacciones1  onClick={() => {
-                                  deleteCiudades(v.id, getApi);
-                                }}>Eliminar</Iconsacciones1>
-                           
-                            </div>
-                          </Botonacciones>
-                        </Trdatos>
-                      </tr>
-                    </Tbody>
-                  ))}
-              </Tabla>
-            </Divtabla>
-          </Sectiontabla>
-        </Dippadretabla>
+                              </div>
+                              <div>
+                                <Iconsacciones1
+                                  onClick={() => {
+                                    deleteCiudades(v.id, getApi);
+                                  }}
+                                >
+                                  Eliminar
+                                </Iconsacciones1>
+                              </div>
+                            </Botonacciones>
+                          </Trdatos>
+                        </tr>
+                      </Tbody>
+                    ))}
+                </Tabla>
+              </Divtabla>
+            </Sectiontabla>
+          </Dippadretabla>
 
         <Dippadretabla>
          <Provincias/> 

@@ -70,33 +70,6 @@ const Centros = () => {
   return (
     <Container>
       <Sectionpa>
-        {/* <Divsearchpadre>
-        <Divsearch>
-          <Search
-            type="text"
-            placeholder="Buscar"
-            value={filtro}
-            onChange={(e) => setFiltro(e.target.value)}
-          />
-          <Botonsearch>
-            <Img src={Searchicons} alt="" />{" "}
-          </Botonsearch>
-        </Divsearch>
-      </Divsearchpadre> */}
-        {/* <Divbotones>
-        <Botonespdf2 onClick={openModal}>
-          <Img src={New} alt="" /> Nuevo
-        </Botonespdf2>
-        <Botonespdf1>
-          <Img src={Pdf} alt="" />
-          PDF
-        </Botonespdf1>
-        <Botonespdf>
-          <Img src={Excel} alt="" />
-          Excel
-        </Botonespdf>{" "}
-      </Divbotones> */}
-
         <Divreport>
           <div>
             <img src="src\img\gestion.png" alt="" />

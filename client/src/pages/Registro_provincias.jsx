@@ -54,7 +54,7 @@ const Registro_provincia = () => {
   const apiUrl = `${baseUrl}registroprovincias`;
   const csvHeaders = ["id", "ciudad"];
 
-  const [registroactuald, setRegistroactual] = useState(1);
+  const [registroactuald, setRegistroactual] = useState({});
   const { getApi, data: registroprovincias } = UseFech(getRegistroprovincias);
   const { openModal, closeModal } = useModal(
     Object.keys(registroactuald).length > 0
@@ -158,7 +158,7 @@ const Registro_provincia = () => {
 
             <button onClick={mostrarpdf}>Pdf</button>
             <button onClick={openModal}>+</button>
-            <h2>Registro Provincias  Seguimiento</h2>
+            <h2>Registro Provincias Seguimiento</h2>
           </section>
           <Sectiontabla>
             <Divtabla>
