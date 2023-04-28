@@ -46,17 +46,14 @@ const AdminComponent = () => {
               <Img src={City} alt="" />
               Ciudades - Provincia
             </Linkes>
-            <Linkes to="/redes">
+            {/* <Linkes to="/redes">
               <Img src={Redess} alt="" /> Redes
-            </Linkes>
-
-          
-
+            </Linkes> */}
             <Linkes to="/centros">
               <Img src={Centros} alt="" /> Centros-Municipios
             </Linkes>
       <Linkes to="/laboratorios">
-        <Img src={Laboratorioicons} alt="" /> Laboratorios
+        <Img src={Laboratorioicons} alt="" /> Laboratorios -Redes
       </Linkes>
           </Options>
         )}
@@ -97,9 +94,7 @@ const AdminComponent = () => {
         </Divd>
         {isExpandedpaciente && (
           <Options>
-            <Linkes to="/pacientes">
-              <Img src={Pacienteicons} alt="" /> /Pacientes
-            </Linkes>
+            
             <Linkes to="/cartilla">
               <Img src={Cartilla} alt="" /> Cartilla
             </Linkes>

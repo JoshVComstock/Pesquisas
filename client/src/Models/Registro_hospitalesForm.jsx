@@ -3,23 +3,21 @@ import styled from "styled-components";
 import { useState, useEffect } from "react"
 
 const Registro_hospitalesForm = ({ MostrarReHospitales }) => {
-  const [hora, setHora] = useState([]);
-  const [fecha, setFecha] = useState([]);
-  const [id_redes, setId_redes] = useState({});
-  const [id_centros, setId_centros] = useState({});
-  const [cantidad_recibida, setCantidad_recibida] = useState("");
-  const [cantidad_entregada, setCantidad_entregada] = useState("");
+  const [hora, setHora] = useState("");
+  const [fecha, setFecha] = useState("");
+  const [id_redes, setId_redes] = useState();
+  const [id_centros, setId_centros] = useState();
+  const [cantidad_recibida, setCantidad_recibida] = useState();
+  const [cantidad_entregada, setCantidad_entregada] = useState();
   const [cod_tarjeta, setCod_tarjeta] = useState("");
   const [entregado_por, setEntregado_por] = useState("");
-  const [telefono, setTelefono] = useState("");
+  const [telefono, setTelefono] = useState();
   const [recibido_por, setRecibido_por] = useState("");
   const [redes , setRedes] = useState([]);
   const [centros, setCentros] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const enviar = async (e) => {
-    e.preventDefault();
-    setLoading(true);
     const response = await fetch("http://127.0.0.1:8000/api/registro_hospitales", {
       method: "POST",
       headers: {
