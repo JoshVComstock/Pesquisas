@@ -1,36 +1,35 @@
-
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
-import { useModalContext } from './context/modalContext';
+import { useModalContext } from "./context/modalContext";
 const Modal = () => {
   const { openModal, setOpenModal, titulo, contenido } = useModalContext();
-  if(openModal) return (
-    <DivModalContainer>
-      <DivAtras onClick={() => setOpenModal(false)}></DivAtras>
-      <DivChildContainer>
-        <DivCabecera>
-          <PTitulo>{titulo}</PTitulo>
-          <Botoncerrar onClick={() => setOpenModal(false)}>X</Botoncerrar>
-        </DivCabecera>
-        <DivBody>{contenido}</DivBody>
-      </DivChildContainer>
-      
-    </DivModalContainer>
-  );
+  if (openModal)
+    return (
+      <DivModalContainer>
+        <DivAtras onClick={() => setOpenModal(false)}></DivAtras>
+        <DivChildContainer>
+          <DivCabecera>
+            <PTitulo>{titulo}</PTitulo>
+            <Botoncerrar onClick={() => setOpenModal(false)}>X</Botoncerrar>
+          </DivCabecera>
+          <DivBody>{contenido}</DivBody>
+        </DivChildContainer>
+      </DivModalContainer>
+    );
 };
 
 export default Modal;
-const Botoncerrar=styled.button`
+const Botoncerrar = styled.button`
   height: 35px;
   width: 35px;
-  font-size: 15px;
-  border: solid 1px #0002;
-  border-radius: 20px;
-  color:black;
+  font-size: 20px;
+  color: #fff;
+  background: none;
   cursor: pointer;
-  transition: 0.5s;
-  &:hover{
-    background: rgba(0,0,0,.1);
+ 
+  &:hover {
+    border-bottom: 3px solid #fff;
+    
   }
 `;
 const DivModalContainer = styled.div`
@@ -42,8 +41,7 @@ const DivModalContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index:5;
-  
+  z-index: 5;
 `;
 
 const DivAtras = styled.div`
@@ -77,34 +75,20 @@ const DivChildContainer = styled.div`
 const PTitulo = styled.p`
   width: 100%;
   font-weight: 400;
-  font-size: 20px;
-  display:flex;
+  font-size: 22px;
+  display: flex;
   justify-content: center;
   color: #fff;
-
-
 `;
 const DivCabecera = styled.div`
   width: 100%;
   padding: 10px 26px;
-  display: flex ;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #034078;
-background: linear-gradient(90deg, rgba(22,18,89,1) 0%, rgba(27,98,158,1) 49%, rgba(5,6,79,1) 100%);
-  position:relative;
-
-  &::before{
-position:absolute;
-content:"";
-bottom:-15px;
-left:50%;
-width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right:12px solid transparent;
-  border-top: 16px solid #034078;
-}
+  background-color: rgb(34, 152, 202);
+  position: relative;
+  border-radius: 8px 8px 0 0;
 `;
 const DivBody = styled.div`
   padding: 26px;
