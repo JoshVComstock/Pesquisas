@@ -19,11 +19,7 @@ import { Navcontextprovider } from "./context/navcontext";
 import { Usercontextprovider } from "./context/userContext";
 import ProtectedRoute from "./wrappers/ProtectedRoute";
 import Control_Filtros from "./pages/Control_Filtros";
-<<<<<<< HEAD
-import Cartilla from "./models/Cartilla";
-=======
 import Cartilla from "./Models/Cartilla";
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
 import Resultadoform from "./models/Resultadoform";
 import Pacientes from "./pages/Pacientes";
 

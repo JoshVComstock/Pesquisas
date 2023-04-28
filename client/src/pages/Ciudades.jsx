@@ -22,21 +22,12 @@ import {
   Tbody,
   Th,
   Trdatos,
-<<<<<<< HEAD
-  Tabla,
-  Divreport,
-  Sectionpa,
-  Botonespdf2,
-  Botonespdf1,
-  Botonespdf,
-  Img,
-=======
   Sectiontabla,
   Tabla,
   Sectionpa,
   Divreport,
-  Divbotonesa,Divmayor
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
+  Divbotonesa,
+  Divmayor,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
@@ -94,10 +85,6 @@ const Ciudades = () => {
   return (
     <Container>
       <Sectionpa>
-<<<<<<< HEAD
-        {/* <Titulo>Ciudades</Titulo> */}
-=======
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
         <Divreport>
           <div>
             <img src="src\img\gestion.png" alt="" />
@@ -129,120 +116,73 @@ const Ciudades = () => {
               <p>gestion</p>
             </section>
           </div>
-      
         </Divreport>
-<<<<<<< HEAD
-        <Divbotones>
-          <Botonespdf2 onClick={openModal}>
-            <Img src={New} alt="" /> Nuevo
-          </Botonespdf2>
-          <Botonespdf1 onClick={mostrarpdf}>
-            <Img src={Pdf} alt="" />
-            PDF
-          </Botonespdf1>
-          <Botonespdf>
-            <Img src={Excel} alt="" />
-            Excel
-          </Botonespdf>{" "}
-        </Divbotones>
-        <Divsearchpadre>
-          <Divsearch>
-            <Search
-              type="text"
-              placeholder="Buscar"
-              value={filtro}
-              onChange={(e) => setFiltro(e.target.value)}
-            />
-            <Botonsearch>
-              <Img src={Searchicons} alt="" />{" "}
-            </Botonsearch>
-          </Divsearch>
-        </Divsearchpadre>
-        <Divtabla>
-          <Tabla>
-            <Thead>
-              <Th>Nº</Th>
-              <Th>CIUDAD</Th>
-              <Th>ACCIONES</Th>
-            </Thead>
-            {ciudades
-              .filter((v) =>
-                v.ciudad.toLowerCase().includes(filtro.toLowerCase())
-              )
-              .map((v, i) => (
-                <Tbody key={i}>
-=======
-      
-     <Sectiond>
 
-     <Dippadretabla>
-     <Divmayor><label >buscar</label> <input  type="text"
-            placeholder="Buscar"
-            value={filtro}
-            onChange={(e) => setFiltro(e.target.value)} /></Divmayor>
-       <section>
-       <button >
-    <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
+        <Sectiond>
+          <Dippadretabla>
+            <Divmayor>
+              <label>buscar</label>{" "}
+              <input
+                type="text"
+                placeholder="Buscar"
+                value={filtro}
+                onChange={(e) => setFiltro(e.target.value)}
+              />
+            </Divmayor>
+            <section>
+              <button>
+                <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
+              </button>
 
-       </button>
-
-       <button onClick={mostrarpdf} >Pdf</button>
-       <button onClick={openModal} >+</button>
-        <h2>Registros Ciudades</h2>
-       </section>
-          <Sectiontabla>
-            <Divtabla>
-           
-              <Tabla>
-                <Thead>
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
-                  <tr>
-                    <Trdatos data-label="Nº">{i + 1}</Trdatos>
-                    <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
-                    <Trdatos data-label="ACCIONES">
-                      <Botonacciones>
-                        <div>
-                          <Botonesacciones>
-                            <Iconsacciones
-                              src={Editar}
-                              alt=""
+              <button onClick={mostrarpdf}>Pdf</button>
+              <button onClick={openModal}>+</button>
+              <h2>Registros Ciudades</h2>
+            </section>
+            <Sectiontabla>
+              <Divtabla>
+                <Tabla>
+                  <Thead>
+                    <tr>
+                      <Trdatos data-label="Nº"></Trdatos>
+                      <Trdatos data-label="CIUDAD"></Trdatos>
+                      <Trdatos data-label="ACCIONES">
+                        <Botonacciones>
+                          <div>
+                            <Botonesacciones>
+                              <Iconsacciones
+                                src={Editar}
+                                alt=""
+                                onClick={() => {
+                                  setCiudadactual(v);
+                                }}
+                              />
+                            </Botonesacciones>
+                          </div>
+                          <div>
+                            <Botonesacciones
                               onClick={() => {
-                                setCiudadactual(v);
+                                deleteCiudades(v.id, getApi);
                               }}
-                            />
-                          </Botonesacciones>
-                        </div>
-                        <div>
-                          <Botonesacciones
-                            onClick={() => {
-                              deleteCiudades(v.id, getApi);
-                            }}
-                          >
-                            <Iconsacciones1 src={Eliminar} alt="Eliminar" />
-                          </Botonesacciones>
-                        </div>
-                      </Botonacciones>
-                    </Trdatos>
-                  </tr>
-<<<<<<< HEAD
-                </Tbody>
-              ))}
-          </Tabla>
-        </Divtabla>
-=======
-                </Thead>
-                {ciudades
-                  .filter((v) =>
-                    v.ciudad.toLowerCase().includes(filtro.toLowerCase())
-                  )
-                  .map((v, i) => (
-                    <Tbody key={i}>
-                      <tr>
-                        <Trdatos data-label="Nº">{i + 1}</Trdatos>
-                        <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
-                        <Trdatos data-label="ACCIONES">
-                          <Botonacciones>
-                            <div>
+                            >
+                              <Iconsacciones1 src={Eliminar} alt="Eliminar" />
+                            </Botonesacciones>
+                          </div>
+                        </Botonacciones>
+                      </Trdatos>
+                    </tr>
+                  </Thead>
+                  {ciudades
+                    .filter((v) =>
+                      v.ciudad.toLowerCase().includes(filtro.toLowerCase())
+                    )
+                    .map((v, i) => (
+                      <Tbody key={i}>
+                        <tr>
+                          <Trdatos data-label="Nº">{i + 1}</Trdatos>
+                          <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
+                          <Trdatos data-label="ACCIONES">
+                            <Botonacciones>
+                              <div>
                                 <Iconsacciones
                                   onClick={() => {
                                     setCiudadactual(v);
@@ -250,28 +190,30 @@ const Ciudades = () => {
                                 >
                                   Editar
                                 </Iconsacciones>
-                            </div>
-                            <div>
-                                <Iconsacciones1  onClick={() => {
-                                  deleteCiudades(v.id, getApi);
-                                }}>Eliminar</Iconsacciones1>
-                           
-                            </div>
-                          </Botonacciones>
-                        </Trdatos>
-                      </tr>
-                    </Tbody>
-                  ))}
-              </Tabla>
-            </Divtabla>
-          </Sectiontabla>
-        </Dippadretabla>
+                              </div>
+                              <div>
+                                <Iconsacciones1
+                                  onClick={() => {
+                                    deleteCiudades(v.id, getApi);
+                                  }}
+                                >
+                                  Eliminar
+                                </Iconsacciones1>
+                              </div>
+                            </Botonacciones>
+                          </Trdatos>
+                        </tr>
+                      </Tbody>
+                    ))}
+                </Tabla>
+              </Divtabla>
+            </Sectiontabla>
+          </Dippadretabla>
 
-        <Dippadretabla>
-         <Provincias/> 
-        </Dippadretabla>
-     </Sectiond>
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
+          <Dippadretabla>
+            <Provincias />
+          </Dippadretabla>
+        </Sectiond>
       </Sectionpa>
     </Container>
   );

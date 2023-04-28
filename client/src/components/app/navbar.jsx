@@ -29,9 +29,6 @@ const Navbar = () => {
             <H>Tamizaje Neonatal</H>
           </Logo>
           <User>
-<<<<<<< HEAD
-            <Topnavimg src="src\img\avatar.png" alt="" />
-=======
           <Topnavimg src="src\img\avatar.png" alt="" />
           <Select >
                 <Option >{user.nombre}</Option>
@@ -39,14 +36,9 @@ const Navbar = () => {
                   </option>
               </Select>
 
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
           </User>
         
         </Topnav>
-<<<<<<< HEAD
-        <Header>{user.rol == "laboratorio" && <LaboratorioComponent />}</Header>
-=======
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
         <Navuser>
           <Header>
             {user.rol == "administrador" && <AdminComponent />}
