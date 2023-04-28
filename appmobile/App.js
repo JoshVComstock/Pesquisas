@@ -1,13 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Login from './components/Login';
-import Results from './components/Results';
-import Home from './components/Home';
 
+import Nav from './components/nav';
 export default function App() {
   return (
     <View style={styled.Container}>
-      <Results/>
+      <Nav />
     </View>
   );
 }

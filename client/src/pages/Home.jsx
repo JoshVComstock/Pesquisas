@@ -15,8 +15,10 @@ import {
 import Provinciasgrafic from "../components/app/Grafic/Provinciasgrafic";
 import styled from "styled-components";
 import Ciudadgrafic from "../components/app/Grafic/Ciudadgrafic";
+import { useContext } from "react";
 const Home = () => {
   const { data: ciudad } = UseFech(getCiudades);
+  const {user}=useContext();
   const mostrarpdf = async () => {
     const response = await fetch(`${baseUrl}cartilla-pdf`, {
       method: "GET",
@@ -29,6 +31,7 @@ const Home = () => {
     window.open(url, "_blank");
     return response;
   };
+  console.log(user);
   return (
     <div>
       <Divgrafic>

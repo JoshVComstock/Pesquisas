@@ -6,6 +6,7 @@ import { useNavContext } from "../../context/navcontext";
 import { useuserContext } from "../../context/userContext";
 import AdminComponent from "./routesToRole/admin";
 import LaboratorioComponent from "./routesToRole/laboratorio";
+import Recepcionista from "./routesToRole/recepcionista";
 
 const Navbar = () => {
   const { logged } = useNavContext;
@@ -16,7 +17,7 @@ const Navbar = () => {
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
-  const Cerrasesion = async () => {
+  const Cerrasesion =() => {
     localStorage.removeItem("user");
     navegation("/login");
   };
@@ -29,20 +30,19 @@ const Navbar = () => {
             <H>Tamizaje Neonatal</H>
           </Logo>
           <User>
-          <Topnavimg src="src\img\avatar.png" alt="" />
-          <Select >
-                <Option >{user.nombre}</Option>
-                  <option onClick={Cerrasesion}>Salir
-                  </option>
-              </Select>
-
+            <Topnavimg src="src\img\avatar.png" alt="" />
+            <Select>
+              <Option>{user.nombre}</Option>
+              
+            </Select>
+            <button onClick={Cerrasesion}>Salir</button>
           </User>
-        
         </Topnav>
         <Navuser>
           <Header>
             {user.rol == "administrador" && <AdminComponent />}
             {user.rol == "laboratorio" && <LaboratorioComponent />}
+            {user.rol=="recepcionista" && <Recepcionista/>}
           </Header>
           <Divo>
             <Outlet />
@@ -60,7 +60,6 @@ const Divheader = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
 
 const Select = styled.select`
   border: none;
@@ -128,7 +127,6 @@ const H = styled.h5`
 `;
 const Divo = styled.div`
   width: 100%;
-
 `;
 const Header = styled.header`
   width: 300px;

@@ -41,6 +41,7 @@ import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
+
 const Ciudades = () => {
   // solo para el select
   const [isExpanded, setIsExpanded] = useState(false);
@@ -62,6 +63,7 @@ const Ciudades = () => {
       }}
     />
   );
+
   const [filtro, setFiltro] = useState("");
   useEffect(() => {
     if (Object.keys(ciudadactual).length > 0) {
@@ -81,7 +83,7 @@ const Ciudades = () => {
     return response;
   };
   // ---------------
-
+  
   return (
     <Container>
       <Sectionpa>
@@ -143,32 +145,13 @@ const Ciudades = () => {
                 <Tabla>
                   <Thead>
                     <tr>
-                      <Trdatos data-label="Nº"></Trdatos>
-                      <Trdatos data-label="CIUDAD"></Trdatos>
-                      <Trdatos data-label="ACCIONES">
+                      <Th data-label="Nº">Nº</Th>
+                      <Th data-label="CIUDAD">CIUDAD</Th>
+                      <Th data-label="ACCIONES">ACCIONES
                         <Botonacciones>
-                          <div>
-                            <Botonesacciones>
-                              <Iconsacciones
-                                src={Editar}
-                                alt=""
-                                onClick={() => {
-                                  setCiudadactual(v);
-                                }}
-                              />
-                            </Botonesacciones>
-                          </div>
-                          <div>
-                            <Botonesacciones
-                              onClick={() => {
-                                deleteCiudades(v.id, getApi);
-                              }}
-                            >
-                              <Iconsacciones1 src={Eliminar} alt="Eliminar" />
-                            </Botonesacciones>
-                          </div>
+                          
                         </Botonacciones>
-                      </Trdatos>
+                      </Th>
                     </tr>
                   </Thead>
                   {ciudades

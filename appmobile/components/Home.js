@@ -12,10 +12,12 @@ import {
   import FontSize from "../constans/FontSize";
   import Colors from "../constans/Colors";
   import Font from "../constans/Font";
+import { useNavigation } from "@react-navigation/native";
   
   
   
   const Home = () => {
+    const Navigation=useNavigation();
     return (
       <SafeAreaView style={styles.Container}>
         <View>
@@ -74,7 +76,7 @@ import {
             }}
           >
             <TouchableOpacity
-              
+               onPress={()=>Navigation.navigate("Login")}
               style={{
                 backgroundColor: Colors.primary,
                 paddingVertical: Spacing * 1.5,
