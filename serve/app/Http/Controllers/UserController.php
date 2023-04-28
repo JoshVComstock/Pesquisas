@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-
-
+    public function mostrarusu()
+    {
+        return DB::select("SELECT u.nombre,u.email,u.telefono,u.rol,u.password FROM users as u");
+    }
     public function register(Request $request)
     {
         $request->validate([
@@ -21,7 +23,6 @@ class UserController extends Controller
             'rol' => 'required',
             'password' => 'required|confirmed'
         ]);
-
         $User = new user();
         $User->nombre = $request->nombre;
         $User->email = $request->email;

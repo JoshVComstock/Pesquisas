@@ -15,13 +15,27 @@ import {
   import AppTextInput from "../components/AppTextInput";
   import { useEffect } from "react";
   import { useState } from "react";
+import { useDatos } from "../context/datos";
   const Results =() => {
-
+   const {carnet,barras}=useDatos();
     const [results, setResults] = useState([]);
+
     const Mostratresults= async()=>{
-     const reponse= await fetch(`http://127.0.0.1:8000/api/cartillas`)
+     const reponse= await fetch(`http://127.0.0.1:8000/api/resulst`,
+     {
+      method:"POST",
+      headers:{
+        "Accept": "application/json",
+        "Content-type": "application/json"
+      },
+      body:JSON.stringify({
+        ci:carnet,
+        codigo_barras:barras
+      })
+     })
      const datos= await reponse?.json();
      setResults(datos);
+     
     }
     console.log(results)
     useEffect(() => {

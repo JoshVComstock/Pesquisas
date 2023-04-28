@@ -13,8 +13,10 @@ import {
   import Font from "../constans/Font";
   import { Ionicons } from "@expo/vector-icons";
   import AppTextInput from "../components/AppTextInput";
+import { useDatos } from "../context/datos";
   
   const Login =() => {
+    const {carnet,barras,setBarras,setCarnet}=useDatos();
     return (
       <SafeAreaView style={styles.Container}>
         <View
@@ -53,8 +55,8 @@ import {
               marginVertical: Spacing * 3,
             }}
           >
-            <AppTextInput placeholder="Codigo de barra" />
-            <AppTextInput placeholder="Carnet de madre" />
+            <AppTextInput placeholder="Codigo de barra"  value={barras} onChangeText={(text)=>setBarras(text)} />
+            <AppTextInput placeholder="Carnet de madre" value={carnet} onChangeText={text=>setCarnet(text)} />
           </View>
   
           <View>

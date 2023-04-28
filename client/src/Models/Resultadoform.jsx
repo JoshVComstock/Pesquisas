@@ -2,7 +2,20 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { horaactual, Actualdate } from "../services/date";
+import { UseFech } from "../hooks/useFech";
+import { getLaboratorios } from "../services/Laboratorios";
 const Resultadoform = () => {
+  const { data: laboratorio } = UseFech(getLaboratorios);
+  const [idcartilla, setIdcartilla] = useState();
+  const [idlaboratorio, setIdlaboratorio] = useState();
+  const [fechaingreso, setFechaingreso] = useState("");
+  const [fecharesultado, setFecharesultado] = useState("");
+  const [fechaentregado, setFechaentregado] = useState("");
+  const [resultado, setResultado] = useState("");
+  const [metodo, setMetodo] = useState("");
+  const [valorresultado, setValorresultado] = useState("");
+  const [valorreferencia, setValorreferencia] = useState("");
+  const [observaciones, setObservaciones] = useState("");
   return (
     <Container>
       <h2>RESULTADO</h2>
@@ -55,34 +68,67 @@ const Resultadoform = () => {
         </Divname>
         <Divname>
           <Labeldate htmlFor="">FECHA DE INGRESO</Labeldate>
-          <Inputname type="date" />
+          <Inputname
+            type="date"
+            value={fechaingreso}
+            onChange={(e) => setFechaingreso(e.target.value)}
+          />
           <Labeldate htmlFor="">FECHA RESULTADO</Labeldate>
-          <Inputname type="date" />
+          <Inputname
+            type="date"
+            value={fecharesultado}
+            onChange={(e) => setFecharesultado(e.target.value)}
+          />
           <Labeldate htmlFor="">FECHA ENTRAGADO</Labeldate>
-          <Inputname type="date" />
+          <Inputname
+            type="date"
+            value={fechaentregado}
+            onChange={(e) => fechaentregado(e.target.value)}
+          />
         </Divname>
         <Divname>
           <Labeldate htmlFor="">LABORATORIO</Labeldate>
-          <Select name="" id="">
+          <Select name="" onChange={(e) => setIdlaboratorio(e.target.value)}>
             <option value="">Seleccionar Laboratorio</option>
+            {laboratorio.map((v, i) => (
+              <option key={i} value={v.id}>
+                {v.nombre}
+              </option>
+            ))}
           </Select>
         </Divname>
         <Divname>
           <Labeldate htmlFor="">METODO</Labeldate>
-          <Inputname type="text" />
+          <Inputname
+            type="text"
+            value={metodo}
+            onChange={(e) => setMetodo(e.target.value)}
+          />
           <Labeldate htmlFor="">VALOR RESULTADO</Labeldate>
-          <Inputname type="text" />
+          <Inputname
+            type="text"
+            value={valorresultado}
+            onChange={(e) => setValorresultado(e.target.value)}
+          />
           <Labeldate htmlFor="">VALOR REFERENCIA</Labeldate>
-          <Inputname type="text" />
+          <Inputname
+            type="text"
+            value={valorreferencia}
+            onChange={(e) => setValorreferencia(e.target.value)}
+          />
         </Divname>
         <Divname>
           <Labeldate htmlFor="">OBSERVACIONES</Labeldate>
-          <Tareatext type="text" />
-          <Labeldate htmlFor="">RESULTADO</Labeldate>
-          <Select>
-            <option value="">POSITIVO</option>
-            <option value="">NEGATIVO</option>
-            <option value="">SOSPECHOSO</option>
+          <Tareatext
+            type="text"
+            value={observaciones}
+            onChange={(e) => setObservaciones(e.target.value)}
+          />
+          <Labeldate>RESULTADO</Labeldate>
+          <Select onChange={(e) => setResultado(e.target.value)}>
+            <option value="POSITIVO">POSITIVO</option>
+            <option value="NEGATIVO">NEGATIVO</option>
+            <option value="SOSPECHOSO">SOSPECHOSO</option>
           </Select>
         </Divname>
         <Divboton>

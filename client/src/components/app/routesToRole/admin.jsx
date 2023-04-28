@@ -55,7 +55,6 @@ const AdminComponent = () => {
             <Linkes to="/centros">
               <Img src={Centros} alt="" /> Centros-Municipios
             </Linkes>
-<<<<<<< HEAD
             <Linkes to="/provincias">
               <Img src={Provinciasicons} alt="" /> Provincias
             </Linkes>
@@ -63,11 +62,6 @@ const AdminComponent = () => {
               {" "}
               <Img src={Laboratorioicons} alt="" /> Laboratorios
             </Linkes>
-=======
-      <Linkes to="/laboratorios">
-        <Img src={Laboratorioicons} alt="" /> Laboratorios
-      </Linkes>
->>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
           </Options>
         )}
       </Diva>
@@ -81,7 +75,7 @@ const AdminComponent = () => {
         {isExpandedcartilla && (
           <Options>
             <Linkes to="/Registro_hospitales">
-              <Img src={Registrohospitalesicons} alt="" /> /Registro Hospitales
+              <Img src={Registrohospitalesicons} alt="" /> Registro Hospitales
             </Linkes>
             <Linkes to="/registro_provincias">
               <Img src={Registropronviciasicons} alt="" /> Registro provincias
@@ -108,13 +102,13 @@ const AdminComponent = () => {
         {isExpandedpaciente && (
           <Options>
             <Linkes to="/pacientes">
-              <Img src={Pacienteicons} alt="" /> /Pacientes
+              <Img src={Pacienteicons} alt="" />Pacientes
             </Linkes>
             <Linkes to="/cartilla">
               <Img src={Cartilla} alt="" /> Cartilla
             </Linkes>
             <Linkes to="/resultados">
-              <Img src="" alt="" /> /Resultados
+              <Img src="" alt="" /> Resultados
             </Linkes>
           </Options>
         )}
@@ -134,17 +128,11 @@ const AdminComponent = () => {
   </Linkes> */}
       {/* <Linkes to="/rellamados">
     <Img src={Rellamadosicons} alt="" /> Rellamados
-<<<<<<< HEAD
   </Linkes>*/}
       <Linkes to="/resultados">
         <Img src={Cartilla} alt="" />
         Resultados
       </Linkes>
-=======
-  </Linkes>
- 
-</>*/}
->>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
     </Master>
   );
 };

@@ -2,50 +2,137 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { horaactual, Actualdate } from "../services/date";
+import { postCartilla } from "../services/cartilla";
+import { UseFech } from "../hooks/useFech";
+import { getCentros } from "../services/centros";
+import { getCiudades } from "../services/Ciudades";
 
 const Cartilla = () => {
-<<<<<<< HEAD
-  const [fechamuestra, setFechamuestra] = useState(Actualdate);
+  const { data: ciudades } = UseFech(getCiudades);
+  const { data: centros } = UseFech(getCentros);
+  const [fechamuestra, setFechamuestra] = useState(
+    Actualdate + " " + horaactual
+  );
+  const converfecha = fechamuestra.toString();
   const [primerapellido, setPrimerapellido] = useState("");
   const [segundoapellido, setSegundoapellido] = useState("");
-  const [nombrepaciente, setNombrepaciente] = useState("");
-  const [codigocartilla, setCodigocartilla] = useState();
+  const [sexo, setSexo] = useState("");
   const [horanacimiento, setHoranacimiento] = useState("");
   const [fechanacimiento, setFechanacimiento] = useState("");
-=======
-
-
->>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
-  const [sexo, setSexo] = useState("");
+  const [nombrepaciente, setNombrepaciente] = useState("");
+  const [codigocartilla, setCodigocartilla] = useState("");
   const [muestra, setMuestra] = useState();
-  const [pesonaci, setPesonaci] = useState("");
+  const [pesonaci, setPesonaci] = useState();
   const [nacitermino, setNacitermino] = useState();
   const [edadsemana, setEdadsemana] = useState();
   const [edaddia, setEdaddia] = useState();
   const [transfucion, setTransfucion] = useState();
   const [fechatrans, setFechatrans] = useState("");
+
   const [antibioticos, setAntibioticos] = useState("");
   const [idcentro, setIdcentro] = useState();
   const [nombremadre, setNombremadre] = useState("");
   const [apellidomadre, setApellidomadre] = useState("");
   const [carnetmadre, setCarnetmadre] = useState();
-  const [idciudad, setCiudad] = useState();
+
+  const [idciudad, setIdciudad] = useState();
   const [direccion, setDireccion] = useState("");
   const [telefono, setTelefono] = useState();
   const [telefono2, setTelefono2] = useState();
   const [tratahiper, setTratahiper] = useState("");
+
   const [tratahipo, setTratahipo] = useState("");
   const [enfermedadmadre, setEnfermedadmadre] = useState("");
   const [detalledireccion, setDetalledireccion] = useState("");
+  console.log(primerapellido);
+  console.log(fechanacimiento);
+  console.log(segundoapellido);
+  console.log(sexo);
+  console.log(horanacimiento);
+  console.log(fechamuestra);
+  console.log(nombrepaciente);
+  console.log(codigocartilla);
+  console.log(muestra);
+  console.log(pesonaci);
+  console.log(nacitermino);
+  console.log(edadsemana);
+  console.log(edaddia);
+  console.log(transfucion);
+  console.log(fechatrans);
+  console.log(antibioticos);
+  console.log(idcentro);
+  console.log(nombremadre);
+  console.log(apellidomadre);
+  console.log(carnetmadre);
+  console.log(idciudad);
+  console.log(direccion);
+  console.log(telefono);
+  console.log(telefono2);
+  console.log(tratahiper);
+  console.log(tratahipo);
+  console.log(enfermedadmadre);
+  console.log(detalledireccion);
+  const Agregar = () => {
+    postCartilla(
+      nombremadre,
+      apellidomadre,
+      idciudad,
+      direccion,
+      telefono,
+      telefono2,
+      tratahiper,
+      tratahipo,
+      enfermedadmadre,
+      detalledireccion,
+      nombrepaciente,
+      primerapellido,
+      segundoapellido,
+      sexo,
+      fechanacimiento,
+      horanacimiento,
+      codigocartilla,
+      fechamuestra,
+      nacitermino,
+      edadsemana,
+      edaddia,
+      muestra,
+      pesonaci,
+      transfucion,
+      fechatrans,
+      antibioticos,
+      idcentro,
+      () => {
+        setNombremadre("");
+        setApellidomadre("");
+        setDireccion("");
+        setTelefono("");
+        setTelefono2("");
+        setTratahiper("");
+        setTratahipo("");
+        setEnfermedadmadre("");
+        setDetalledireccion("");
+        setNombrepaciente("");
+        setPrimerapellido("");
+        setSegundoapellido("");
+        setSexo("");
+        setFechanacimiento("");
+        setHoranacimiento("");
+        setCodigocartilla("");
+        setFechamuestra("");
+        setNacitermino("");
+        setEdadsemana("");
+        setEdaddia("");
+        setMuestra("");
+        setPesonaci("");
+        setTransfucion("");
+        setFechatrans("");
+        setAntibioticos("");
+      }
+    );
+  };
   return (
     <Container>
-<<<<<<< HEAD
       <h2>REGISTRO DE CARTILLAS</h2>
-=======
-      <h2>
-   Cartilla 
-      </h2>
->>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
       <Card>
         <Divnameco>
           <div>
@@ -82,22 +169,19 @@ const Cartilla = () => {
           </div>
           <Divcartilla>
             <Labelname htmlFor="">CODIGO CARTILLA</Labelname>
-<<<<<<< HEAD
             <Inputname
               type="number"
               value={codigocartilla}
               onChange={(e) => setCodigocartilla(e.target.value)}
             />
-=======
-            <Inputname type="number"  />
->>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
           </Divcartilla>
         </Divnameco>
         <Divname>
           <Labelname>
             <strong>FECHA DE NACIMIENTO:</strong>
           </Labelname>
-          <Divdatetime>◘
+          <Divdatetime>
+            ◘
             <Divinputdate>
               <Labeldate htmlFor="">HORA</Labeldate>
               <Inputname
@@ -122,7 +206,7 @@ const Cartilla = () => {
                   <Inputsexo
                     type="radio"
                     name="sexo"
-                    value={"MASCULINO"}
+                    value={"M"}
                     onChange={(e) => setSexo(e.target.value)}
                   />
                 </Divinputsex>
@@ -131,7 +215,7 @@ const Cartilla = () => {
                   <Inputsexo
                     type="radio"
                     name="sexo"
-                    value={"FEMENINO"}
+                    value={"F"}
                     onChange={(e) => setSexo(e.target.value)}
                   />
                 </Divinputsex>
@@ -146,22 +230,11 @@ const Cartilla = () => {
           <Divdatetime>
             <Divinputdate>
               <Labeldate htmlFor="">HORA</Labeldate>
-              <Inputname
-                type="time"
-                name=""
-                value={horaactual}
-                onChange={(e) => setFechamuestra(e.target.value)}
-              />
+              <Inputname type="time" name="" value={horaactual} />
             </Divinputdate>
             <Divinputdate>
               <Labeldate htmlFor="">FECHA</Labeldate>
-              <Inputname
-                type="date"
-                value={Actualdate}
-                onChange={(e) =>
-                  setFechamuestra(e.target.value + ":" + horaactual)
-                }
-              />
+              <Inputname type="date" value={Actualdate} />
             </Divinputdate>
             <Divinputdate>
               <Labeldate htmlFor="">MUESTRA</Labeldate>
@@ -259,10 +332,13 @@ const Cartilla = () => {
           <Labeldate htmlFor="">
             <strong>CENTRO DE SALUD</strong>
           </Labeldate>
-          <Select name="" value={idcentro}>
-            <option onChange={(e) => setIdcentro(e.target.value)}>
-              Seleccione el centro
-            </option>
+          <Select name="" onChange={(e) => setIdcentro(e.target.value)}>
+            <option>Seleccione el centro</option>
+            {centros.map((v, i) => (
+              <option key={i} value={v.id}>
+                {v.nombre}
+              </option>
+            ))}
           </Select>
         </Divname>
         <Divmadre>
@@ -273,7 +349,11 @@ const Cartilla = () => {
             <Labeldate DE SALUD htmlFor="">
               NOMBRE
             </Labeldate>
-            <Inputname type="text" />
+            <Inputname
+              type="text"
+              value={nombremadre}
+              onChange={(e) => setNombremadre(e.target.value)}
+            />
             <Labeldate htmlFor="">APELLIDO</Labeldate>
             <Inputname
               type="text"
@@ -307,12 +387,13 @@ const Cartilla = () => {
               onChange={(e) => setDetalledireccion(e.target.value)}
             />
             <Labeldate htmlFor="">CIUDAD</Labeldate>
-            <Select
-              name=""
-              value={idciudad}
-              onChange={(e) => setCiudad(e.target.value)}
-            >
+            <Select onChange={(e) => setIdciudad(e.target.value)}>
               <option value="">Seleccione Ciudad</option>
+              {ciudades.map((v, i) => (
+                <option key={i} value={v.id}>
+                  {v.ciudad}
+                </option>
+              ))}
             </Select>
             <Labeldate htmlFor="">TELEFONO</Labeldate>
             <Inputname
@@ -343,7 +424,69 @@ const Cartilla = () => {
                 value={enfermedadmadre}
                 onChange={(e) => setEnfermedadmadre(e.target.value)}
               />
-              <Boton type="button">Agregar</Boton>
+              <Boton
+                onClick={() =>
+                  postCartilla(
+                    nombremadre,
+                    apellidomadre,
+                    carnetmadre,
+                    idciudad,
+                    direccion,
+                    telefono,
+                    telefono2,
+                    tratahiper,
+                    tratahipo,
+                    enfermedadmadre,
+                    detalledireccion,
+                    nombrepaciente,
+                    primerapellido,
+                    segundoapellido,
+                    sexo,
+                    fechanacimiento,
+                    horanacimiento,
+                    codigocartilla,
+                    converfecha,
+                    nacitermino,
+                    edadsemana,
+                    edaddia,
+                    muestra,
+                    pesonaci,
+                    transfucion,
+                    fechatrans,
+                    antibioticos,
+                    idcentro,
+                    () => {
+                      setNombremadre("");
+                      setApellidomadre("");
+                      setDireccion("");
+                      setTelefono("");
+                      setTelefono2("");
+                      setTratahiper("");
+                      setTratahipo("");
+                      setEnfermedadmadre("");
+                      setDetalledireccion("");
+                      setNombrepaciente("");
+                      setPrimerapellido("");
+                      setSegundoapellido("");
+                      setSexo("");
+                      setFechanacimiento("");
+                      setHoranacimiento("");
+                      setCodigocartilla("");
+                      setFechamuestra("");
+                      setNacitermino("");
+                      setEdadsemana("");
+                      setEdaddia("");
+                      setMuestra("");
+                      setPesonaci("");
+                      setTransfucion("");
+                      setFechatrans("");
+                      setAntibioticos("");
+                    }
+                  )
+                }
+              >
+                Agregar
+              </Boton>
             </div>
           </Divenfermedad>
         </Divmadre>
@@ -360,8 +503,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin:0 auto;
-  
+  margin: 0 auto;
 `;
 const Card = styled.div`
   margin-top: 30px;
@@ -512,4 +654,5 @@ const Boton = styled.button`
   border-radius: 20px;
   height: 30px;
   color: #fff;
+  cursor: pointer;
 `;

@@ -19,12 +19,9 @@ import { Navcontextprovider } from "./context/navcontext";
 import { Usercontextprovider } from "./context/userContext";
 import ProtectedRoute from "./wrappers/ProtectedRoute";
 import Control_Filtros from "./pages/Control_Filtros";
-<<<<<<< HEAD
 import Cartilla from "./models/Cartilla";
-=======
-import Cartilla from "./Models/Cartilla";
->>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
 import Resultadoform from "./models/Resultadoform";
+import Pacientes from "./pages/Pacientes";
 
 function App() {
   return (
@@ -62,6 +59,7 @@ function App() {
                   <Route path="control_filtros" element={<Control_Filtros />} />
                   <Route path="registro_usuario" element={<Register />} />
                   <Route path="resultados" element={<Resultadoform />} />
+                  <Route path="pacientes" element={<Pacientes />} />
                 </Route>
               </Routes>
               <Modal />
