@@ -8,6 +8,8 @@ import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
+
 import {
   Container,
   Titulo,
@@ -26,11 +28,12 @@ import {
   Tbody,
   Th,
   Trdatos,
-  Tabla,
-  Sectionpa,
+  Tabla,Divmayor,Sectiontabla
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteRedes, getRedes } from "../services/Redes";
+import RedesForm from "../models/RedesForm";
+
 const Redes = () => {
   const [redactual, setRedactual] = useState({});
   const { data: redes, getApi } = UseFech(getRedes);
@@ -51,37 +54,34 @@ const Redes = () => {
       openModal();
     }
   }, [redactual]);
-
+  const mostrarpdf = async () => {
+    const response = await fetch(
+      `${baseUrl}Municipios-pdf`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    return response;
+  };
   return (
-    <Container>
-      <Sectionpa>
-      <Titulo>Redes de Salud</Titulo>
-      {/* <Divbotones>
-        <Botonespdf2 onClick={openModal}>
-          <Img src={New} alt="" /> Nuevo
-        </Botonespdf2>
-        <Botonespdf1>
-          <Img src={Pdf} alt="" />
-          PDF
-        </Botonespdf1>
-        <Botonespdf>
-          <Img src={Excel} alt="" />
-          Excel
-        </Botonespdf>{" "}
-      </Divbotones>
-      <Divsearchpadre>
-        <Divsearch>
-          <Search
-            type="text"
+    <>
+      <Divmayor><label >buscar</label> <input  type="text"
             placeholder="Buscar"
             value={filtro}
-            onChange={(e) => setFiltro(e.target.value)}
-          />
-          <Botonsearch>
-            <Img src={Searchicons} alt="" />{" "}
-          </Botonsearch>
-        </Divsearch>
-      </Divsearchpadre> */}
+            onChange={(e) => setFiltro(e.target.value)} /></Divmayor>
+              <section>
+        <button onClick={openModal}>Ecxel</button>
+        <button onClick={mostrarpdf}>Pdf</button>
+        <button onClick={openModal}>+</button>
+        <h2>Registros Municipio</h2>
+      </section>
+    <Sectiontabla>
       <Divtabla>
         <Tabla>
           <Thead>
@@ -103,24 +103,22 @@ const Redes = () => {
                   <Trdatos>
                     <Botonacciones>
                       <div>
-                        <Botonesacciones>
+                      
                           <Iconsacciones
                             src={Editar}
                             alt=""
                             onClick={() => {
                               setRedactual(v);
                             }}
-                          />
-                        </Botonesacciones>
+                          >Editar</Iconsacciones>
+                   
                       </div>
                       <div>
-                        <Botonesacciones
-                          onClick={() => {
+
+                          <Iconsacciones1  onClick={() => {
                             deleteRedes(v.id, getApi);
-                          }}
-                        >
-                          <Iconsacciones1 src={Eliminar} alt="" />
-                        </Botonesacciones>
+                          }}>Eliminar</Iconsacciones1>
+                      
                       </div>
                     </Botonacciones>
                   </Trdatos>
@@ -129,8 +127,9 @@ const Redes = () => {
             ))}
         </Tabla>
       </Divtabla>
-      </Sectionpa>
-    </Container>
+      </Sectiontabla>
+   
+    </>
   );
 };
 

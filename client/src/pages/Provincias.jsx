@@ -22,7 +22,7 @@ import {
   Th,
   Trdatos,
   Tabla,
-  Sectiontabla,
+  Sectiontabla,Divmayor
 } from "../styles/crud";
 import CSVExporter from "../pages/Reportescom";
 
@@ -70,6 +70,10 @@ const apiUrl = `${baseUrl}provincias`;
 
   return (
     <>
+    <Divmayor><label >buscar</label> <input  type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)} /></Divmayor>
     <section>
     <button >
     <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />

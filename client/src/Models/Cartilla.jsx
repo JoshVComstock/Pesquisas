@@ -8,6 +8,7 @@ import { getCentros } from "../services/centros";
 import { getCiudades } from "../services/Ciudades";
 
 const Cartilla = () => {
+<<<<<<< HEAD
   const { data: ciudades } = UseFech(getCiudades);
   const { data: centros } = UseFech(getCentros);
   const [fechamuestra, setFechamuestra] = useState(
@@ -21,6 +22,9 @@ const Cartilla = () => {
   const [fechanacimiento, setFechanacimiento] = useState("");
   const [nombrepaciente, setNombrepaciente] = useState("");
   const [codigocartilla, setCodigocartilla] = useState("");
+=======
+  const [sexo, setSexo] = useState("");
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
   const [muestra, setMuestra] = useState();
   const [pesonaci, setPesonaci] = useState();
   const [nacitermino, setNacitermino] = useState();
@@ -132,7 +136,13 @@ const Cartilla = () => {
   };
   return (
     <Container>
+<<<<<<< HEAD
       <h2>REGISTRO DE CARTILLAS</h2>
+=======
+      <h2>
+   Cartilla 
+      </h2>
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
       <Card>
         <Divnameco>
           <div>
@@ -169,11 +179,15 @@ const Cartilla = () => {
           </div>
           <Divcartilla>
             <Labelname htmlFor="">CODIGO CARTILLA</Labelname>
+<<<<<<< HEAD
             <Inputname
               type="number"
               value={codigocartilla}
               onChange={(e) => setCodigocartilla(e.target.value)}
             />
+=======
+            <Inputname type="number"  />
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
           </Divcartilla>
         </Divnameco>
         <Divname>

@@ -2,19 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { UseFech } from "../hooks/useFech";
+import { postRegistroprovincia ,updateRegistroprovincias} from "../services/Registroprovincias";
+import {getCentros} from "../services/centros";
+const Registro_provinciaForm = ({getApi,registroactuald,setRegistroactual,closeModal}) => {
 
-const Registro_provinciaForm = () => {
-  const [hora, setHora] = useState([]);
-  const [fecha, setFecha] = useState([]);
-  const [id_provincias, setId_provincias] = useState("");
-  const { data: provincias } = UseFech(getProvincias);
-
-  const [id_municipios, setId_municipios] = useState("");
-  const { data: municipios } = UseFech(getMunicipios);
-
-  const [id_centros, setId_centros] = useState("");
-  const { data: centros } = UseFech(getCentros);
-
+  const [hora, setHora] = useState("");
+  const [fecha, setFecha] = useState("");
+  const [id_centros, setId_centros] = useState(3);
+  const { data: centrosa } = UseFech(getCentros);
   const [cantidad_recibida, setCantidad_recibida] = useState("");
   const [cantidad_entregada, setCantidad_entregada] = useState("");
   const [cod_tarjeta, setCod_tarjeta] = useState("");
@@ -23,29 +18,30 @@ const Registro_provinciaForm = () => {
   const [recibido_por, setRecibido_por] = useState("");
 
   useEffect(() => {
-    if (Object.keys(registroactual).length > 0) {
-      setHora(registroactual.hora);
-      setFecha(registroactual.fecha);
-      setCantidad_recibida(registroactual.cantidad_recibida);
-      setCantidad_entregada(registroactual.cantidad_entregada);
-      setCod_tarjeta(registroactual.cod_tarjeta);
-      setEntregado_por(registroactual.entregado_por);
-      setTelefono(registroactual.telefono);
-      setRecibido_por(registroactual.recibido_por);
+    if (Object.keys(registroactuald).length > 0) {
+      setHora(registroactuald.hora);
+      setFecha(registroactuald.fecha);
+      setCantidad_recibida(registroactuald.cantidad_recibida);
+      setCantidad_entregada(registroactuald.cantidad_entregada);
+      setCod_tarjeta(registroactuald.cod_tarjeta);
+      setEntregado_por(registroactuald.entregado_por);
+      setTelefono(registroactuald.telefono);
+      setRecibido_por(registroactuald.recibido_por);
     }
     return () => {
       setRegistroactual({});
     };
-  }, [registroactual]);
+  }, [registroactuald]);
 
-  const updatepost = (e) => {
+  const updateposts = (e) => {
     e.preventDefault();
-    if (Object.keys(registroactual).length > 0) {
+    if (Object.keys(registroactuald).length === 0) {
       updateRegistroprovincias(
         {
-          id: registroactual.id,
+          id:registroactuald.id,
           hora: hora,
           fecha: fecha,
+          id_centros:id_centros,
           cantidad_recibida: cantidad_recibida,
           cantidad_entregada: cantidad_entregada,
           cod_tarjeta: cod_tarjeta,
@@ -71,8 +67,6 @@ const Registro_provinciaForm = () => {
       postRegistroprovincia(
         hora,
         fecha,
-        id_provincias,
-        id_municipios,
         id_centros,
         cantidad_recibida,
         cantidad_entregada,
@@ -94,125 +88,206 @@ const Registro_provinciaForm = () => {
           getApi();
         }
       );
-    }
-  };
+    }  }
   return (
+    // <Container>
+    //   <div>
+    //     <form>
+    //       <div>
+    //         <div>
+    //           <label htmlFor="">hora </label>
+    //           <Input type="time" placeholder='Ingrese Hora' value={hora} onChange={(e) => setHora(e.target.value)}/>
+             
+    //         </div>
+    //         <div>
+    //           <label htmlFor="">fecha </label>
+    //           <Input
+    //             type="date"
+    //             value={fecha}
+    //             onChange={(e) => setFecha(e.target.value)}
+    //           />
+    //         </div>
+    //         <div>
+    //           <label>Centro de Salud:</label>
+
+    //           <Select
+    //             value={id_centros}
+    //             onChange={(e) => setId_centros(e.target.value)}
+    //           >
+    //             <option value="">Seleccione el centro</option>
+    //             {centrosa.map((v, i) => (
+    //                <option key={i} value={v.id}>
+    //                {v.nombre}
+    //              </option>
+                 
+    //             ))}
+    //           </Select>
+    //         </div>
+           
+
+    //         {/* ----------- */}
+    //         <div>
+    //           <label htmlFor="">cantidad_recibida</label>
+    //           <Input
+    //             type="number"
+    //             value={cantidad_recibida}
+    //             onChange={(e) => setCantidad_recibida(e.target.value)}
+    //           />
+    //         </div>
+    //         <div>
+    //           <label htmlFor="">cantidad_entregada,</label>
+    //           <Input
+    //             type="number"
+    //             value={cantidad_entregada}
+    //             onChange={(e) => setCantidad_entregada(e.target.value)}
+    //           />
+    //         </div>
+    //         <div>
+    //           <label htmlFor="">cod_tarjeta,</label>
+    //           <Input
+    //             type="number"
+    //             value={cod_tarjeta}
+    //             onChange={(e) => setCod_tarjeta(e.target.value)}
+    //           />
+    //         </div>
+    //         <div>
+    //           <label htmlFor="">entregado_por</label>
+    //           <Input
+    //             type="text"
+    //             value={entregado_por}
+    //             onChange={(e) => setEntregado_por(e.target.value)}
+    //           />
+    //         </div>
+    //         <div>
+    //           <label htmlFor="">telefono</label>
+    //           <Input
+    //             type="number"
+    //             value={telefono}
+    //             onChange={(e) => setTelefono(e.target.value)}
+    //           />
+    //         </div>
+    //         <div>
+    //           <label htmlFor="">recibido_por</label>
+    //           <Input
+    //             type="text"
+    //             value={recibido_por}
+    //             onChange={(e) => setRecibido_por(e.target.value)}
+    //           />
+    //         </div>
+    //       </div>
+    //       <Botonagregar  onClick={(e) => updateposts(e)}>
+    //           {Object.keys(registroactuald).length > 0 ? "Editar" : "Agregar"}
+    //         </Botonagregar>
+    //     </form>
+    //   </div>
+    // </Container>
     <Container>
       <div>
         <form>
-          <div>
-            <div>
-              <label htmlFor="">hora </label>
+        <Divinput>
+            <Divinputlabel>
+              <label>Hora:</label>
               <Input
-                type="time"
-                required
+                type="text"
                 value={hora}
                 onChange={(e) => setHora(e.target.value)}
               />
-            </div>
-            <div>
-              <label htmlFor="">fecha </label>
+            </Divinputlabel>
+          </Divinput> 
+          <Divinput>
+            <Divinputlabel>
+              <label>Fecha:</label>
               <Input
-                type="date"
+                type="text"
                 value={fecha}
                 onChange={(e) => setFecha(e.target.value)}
               />
-            </div>
-            <div>
-              <label>Centro de Salud:</label>
-
-              <select
-                name="select"
+            </Divinputlabel>
+          </Divinput>
+          <Divinput>
+            <Divinputlabel>
+              <label>centros</label>
+              <Select onChange={(e) => setId_centros(e.target.value)}>
+                <option >Seleccione un centro</option>
+                {centrosa.map((v, i) => (
+                  <option key={i} value={v.id_centros}>
+                    {v.nombre}
+                  </option>
+                ))}
+              </Select>
+               {/* <Input
+                type="text"
+                value={id_centros}
                 onChange={(e) => setId_centros(e.target.value)}
-              >
-                {centros.map((v, i) => (
-                  <option key={i} value={v.id}>
-                    {v.id_centros}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label> Municipio :</label>
-              <select
-                name="select"
-                onChange={(e) => setId_municipios(e.target.value)}
-              >
-                {municipios.map((v, i) => (
-                  <option key={i} value={v.id}>
-                    {v.id_municipios}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label> Provincias :</label>
-              <select
-                name="select"
-                onChange={(e) => setId_provincias(e.target.value)}
-              >
-                {provincias.map((v, i) => (
-                  <option key={i} value={v.id}>
-                    {v.id_provincias}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* ----------- */}
-            <div>
-              <label htmlFor="">cantidad_recibida</label>
+              /> */}
+            </Divinputlabel>
+          </Divinput>
+          <Divinput>
+              <label>Cantidad Recibida:</label>
+            <Divinputlabel>
               <Input
                 type="number"
                 value={cantidad_recibida}
                 onChange={(e) => setCantidad_recibida(e.target.value)}
               />
-            </div>
-            <div>
-              <label htmlFor="">cantidad_entregada,</label>
+            </Divinputlabel>
+          </Divinput>
+          <Divinput>
+              <label>Cantidad entregada:</label>
+            <Divinputlabel>
               <Input
-                type="number"
+                type="text"
                 value={cantidad_entregada}
                 onChange={(e) => setCantidad_entregada(e.target.value)}
               />
-            </div>
-            <div>
-              <label htmlFor="">cod_tarjeta,</label>
+            </Divinputlabel>
+          </Divinput>
+
+          <Divinput>
+              <label>Codigo Targeta:</label>
+            <Divinputlabel>
               <Input
-                type="number"
+                type="text"
                 value={cod_tarjeta}
                 onChange={(e) => setCod_tarjeta(e.target.value)}
               />
-            </div>
-            <div>
-              <label htmlFor="">entregado_por</label>
+            </Divinputlabel>
+          </Divinput>
+          <Divinput>
+              <label>Entregado por :</label>
+            <Divinputlabel>
               <Input
                 type="text"
                 value={entregado_por}
                 onChange={(e) => setEntregado_por(e.target.value)}
               />
-            </div>
-            <div>
-              <label htmlFor="">telefono</label>
+            </Divinputlabel>
+          </Divinput>
+          <Divinput>
+              <label>Telefono :</label>
+            <Divinputlabel>
               <Input
-                type="number"
+              type="number"
                 value={telefono}
                 onChange={(e) => setTelefono(e.target.value)}
               />
-            </div>
-            <div>
-              <label htmlFor="">recibido_por</label>
+            </Divinputlabel>
+          </Divinput>
+          <Divinput>
+              <label>Recivido por :</label>
+            <Divinputlabel>
               <Input
                 type="text"
                 value={recibido_por}
                 onChange={(e) => setRecibido_por(e.target.value)}
               />
-            </div>
-          </div>
-          <Botonagregar  onClick={(e) => updatepost(e)}>
-              {Object.keys(registroactual).length > 0 ? "Editar" : "Agregar"}
+            </Divinputlabel>
+          </Divinput>
+          <Divboton>
+            <Botonagregar  onClick={(e) => updateposts(e)}>
+              {Object.keys(registroactuald).length > 0 ? "Editar" : "Agregar"}
             </Botonagregar>
+          </Divboton>
         </form>
       </div>
     </Container>
@@ -220,6 +295,7 @@ const Registro_provinciaForm = () => {
 };
 
 export default Registro_provinciaForm;
+
 
 const Container = styled.div``;
 const Divinputlabel = styled.div`
@@ -243,7 +319,10 @@ const Input = styled.input`
     border: 1.5px solid #034078;
   }
 `;
-
+const Divboton = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 const Botonagregar = styled.button`
   padding: 10px;
   cursor: pointer;
@@ -253,4 +332,12 @@ const Botonagregar = styled.button`
   &:hover {
     background: #0077b6;
   }
+`;
+const Select = styled.select`
+  width: 180px;
+  outline: none;
+  font-size: 16px;
+  padding: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
 `;

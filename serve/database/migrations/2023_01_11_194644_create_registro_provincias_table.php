@@ -6,19 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateRegistroProvinciasTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('registro_provincias', function (Blueprint $table) {
             $table->id();
             $table->time('hora');
             $table->date('fecha');
-            //$table->foreignId('id_provincias')->constrained('provincias')->cascadeOnUpdate()->cascadeOnDelete();
-            //$table->foreignId('id_municipios')->constrained('municipios')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('id_centros')->constrained('centros')->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('cantidad_recibida');
             $table->integer('cantidad_entregada');
@@ -27,7 +21,10 @@ class CreateRegistroProvinciasTable extends Migration
             $table->integer('telefono');
             $table->string('recibido_por');
             $table->timestamps();
+
         });
+    
+
     }
 
     /**

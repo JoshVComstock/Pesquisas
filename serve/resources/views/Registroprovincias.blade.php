@@ -32,6 +32,7 @@ table {
     border-collapse: collapse;
     width: 100%;
     margin: 0 auto ;
+
 }
 
 th,
@@ -39,6 +40,7 @@ td {
 
     text-align: left;
     padding: 8px;
+    width: 100%;
 }
 
 th {
@@ -70,7 +72,7 @@ img{
     <section class="sec">
         <img src="https://www.biotech.com.bo/Administrador/images/logo.png" alt="logo">
 
-        <h1>Exportacion de datos de Ciudades</h1>
+        <h1>Exportacion de datos de Seguimiento de cartilla por Provincias</h1>
     <h2>Tamizaje neonatal</h2>
     <p><strong>Fecha de exportación:</strong>  {{ date('d-m-Y ') }}</p>
     <p><strong>Fecha de hora:</strong>  {{ date('H:i:s') }}</p>
@@ -79,21 +81,38 @@ img{
         <thead>
             <tr>
                 <th>#</th>
-                <th>Ciudad</th>
+                <th>Hora</th>
+                <th>Fecha</th>
+                <th>id_centros</th>
+                <th>Cantidad recibida</th>
+                <th>Cantidad entregada</th>
+                <th>cod_targeta</th>
+                <th>entregado por</th>
+                <th>telefono</th>
+                <th>recibido_por</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($ciudad as $ciuda)
+            @foreach($Registroprovincias as $regp)
             <tr>
-                <td>{{$ciuda->id}}</td>
-            <td>{{$ciuda->ciudad}}</td>
+            <td>{{$regp->id}}</td>
+            <td>{{$regp->hora}}</td>
+            <td>{{$regp->fecha}}</td>
+            <td>{{$regp->nombre_centro}}</td>
+            <td>{{$regp->cantidad_recibida}}</td>
+            <td>{{$regp->cantidad_entregada}}</td>
+            <td>{{$regp->cod_tarjeta}}</td>
+            <td>{{$regp->entregado_por}}</td>
+            <td>{{$regp->telefono}}</td>
+            <td>{{$regp->recibido_por}}</td>
             </tr>
             @endforeach
         </tbody>
         <tfoot>
             <tr>
-                <th>Total de Ciudades:</th>
-                <td>{{ $ciudad->count() }}</td>
+                <th>Total de registro Provincia:</th>
+                <td>{{ count($Registroprovincias) }}</td>
+
             </tr>
         </tfoot>
     </table>

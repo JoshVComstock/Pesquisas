@@ -1,7 +1,7 @@
 import React from "react";
+import MunicipiosForm from "../models/MunicipiosForm";
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
-import MunicipiosForm from "../models/MunicipiosForm";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
 import Excel from "./../img/doc.jpg";
@@ -9,7 +9,7 @@ import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
 import {
-  Container,
+  Container,Divmayor,
   Titulo,
   Divbotones,
   Divsearchpadre,
@@ -29,7 +29,10 @@ import {
   Sectiontabla,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
+
 import { deleteMunicipios, getMunicipios } from "../services/Municipios";
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
+
 const Municipios = () => {
   const [municipioactual, setMunicipioactual] = useState({});
   const { getApi, data: mnicipios } = UseFech(getMunicipios);
@@ -55,7 +58,7 @@ const Municipios = () => {
 
   const mostrarpdf = async () => {
     const response = await fetch(
-      `${baseUrl}Centros-pdf`,
+      `${baseUrl}Municipios-pdf`,
       {
         method: "GET",
         headers: {
@@ -71,9 +74,13 @@ const Municipios = () => {
 
   return (
     <>
+    <Divmayor><label >buscar</label> <input  type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)} /></Divmayor>
       <section>
         <button onClick={openModal}>Ecxel</button>
-        <button onClick={openModal}>Pdf</button>
+        <button onClick={mostrarpdf}>Pdf</button>
         <button onClick={openModal}>+</button>
         <h2>Registros Municipio</h2>
       </section>

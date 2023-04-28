@@ -104,7 +104,7 @@ img{
         </tbody>
         <tfoot>
             <tr>
-                <th>Total de Ciudades:</th>
+                <th>Total de Centros:</th>
                 <td>{{ count($centros) }}</td>
             </tr>
         </tfoot>

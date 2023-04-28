@@ -29,16 +29,24 @@ const Navbar = () => {
             <H>Tamizaje Neonatal</H>
           </Logo>
           <User>
+<<<<<<< HEAD
             <Topnavimg src="src\img\avatar.png" alt="" />
+=======
+          <Topnavimg src="src\img\avatar.png" alt="" />
+          <Select >
+                <Option >{user.nombre}</Option>
+                  <option onClick={Cerrasesion}>Salir
+                  </option>
+              </Select>
+
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
           </User>
-          <Select>
-            <Option>{user.nombre}</Option>
-            <Option>
-              <Logout onClick={Cerrasesion}>Salir</Logout>
-            </Option>
-          </Select>
+        
         </Topnav>
+<<<<<<< HEAD
         <Header>{user.rol == "laboratorio" && <LaboratorioComponent />}</Header>
+=======
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
         <Navuser>
           <Header>
             {user.rol == "administrador" && <AdminComponent />}
@@ -59,10 +67,6 @@ const Divheader = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
-=======
-
->>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
 `;
 
 

@@ -22,6 +22,7 @@ import {
   Tbody,
   Th,
   Trdatos,
+<<<<<<< HEAD
   Tabla,
   Divreport,
   Sectionpa,
@@ -29,6 +30,13 @@ import {
   Botonespdf1,
   Botonespdf,
   Img,
+=======
+  Sectiontabla,
+  Tabla,
+  Sectionpa,
+  Divreport,
+  Divbotonesa,Divmayor
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
@@ -86,7 +94,10 @@ const Ciudades = () => {
   return (
     <Container>
       <Sectionpa>
+<<<<<<< HEAD
         {/* <Titulo>Ciudades</Titulo> */}
+=======
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
         <Divreport>
           <div>
             <img src="src\img\gestion.png" alt="" />
@@ -99,7 +110,7 @@ const Ciudades = () => {
           <div>
             <img src="src\img\gestion.png" alt="" />
             <section>
-              <h3>2</h3>
+              <h3>3</h3>
               <p>n° registros</p>
               <p>Provincia</p>
             </section>
@@ -118,7 +129,9 @@ const Ciudades = () => {
               <p>gestion</p>
             </section>
           </div>
+      
         </Divreport>
+<<<<<<< HEAD
         <Divbotones>
           <Botonespdf2 onClick={openModal}>
             <Img src={New} alt="" /> Nuevo
@@ -158,6 +171,31 @@ const Ciudades = () => {
               )
               .map((v, i) => (
                 <Tbody key={i}>
+=======
+      
+     <Sectiond>
+
+     <Dippadretabla>
+     <Divmayor><label >buscar</label> <input  type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)} /></Divmayor>
+       <section>
+       <button >
+    <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
+
+       </button>
+
+       <button onClick={mostrarpdf} >Pdf</button>
+       <button onClick={openModal} >+</button>
+        <h2>Registros Ciudades</h2>
+       </section>
+          <Sectiontabla>
+            <Divtabla>
+           
+              <Tabla>
+                <Thead>
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
                   <tr>
                     <Trdatos data-label="Nº">{i + 1}</Trdatos>
                     <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
@@ -186,10 +224,54 @@ const Ciudades = () => {
                       </Botonacciones>
                     </Trdatos>
                   </tr>
+<<<<<<< HEAD
                 </Tbody>
               ))}
           </Tabla>
         </Divtabla>
+=======
+                </Thead>
+                {ciudades
+                  .filter((v) =>
+                    v.ciudad.toLowerCase().includes(filtro.toLowerCase())
+                  )
+                  .map((v, i) => (
+                    <Tbody key={i}>
+                      <tr>
+                        <Trdatos data-label="Nº">{i + 1}</Trdatos>
+                        <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
+                        <Trdatos data-label="ACCIONES">
+                          <Botonacciones>
+                            <div>
+                                <Iconsacciones
+                                  onClick={() => {
+                                    setCiudadactual(v);
+                                  }}
+                                >
+                                  Editar
+                                </Iconsacciones>
+                            </div>
+                            <div>
+                                <Iconsacciones1  onClick={() => {
+                                  deleteCiudades(v.id, getApi);
+                                }}>Eliminar</Iconsacciones1>
+                           
+                            </div>
+                          </Botonacciones>
+                        </Trdatos>
+                      </tr>
+                    </Tbody>
+                  ))}
+              </Tabla>
+            </Divtabla>
+          </Sectiontabla>
+        </Dippadretabla>
+
+        <Dippadretabla>
+         <Provincias/> 
+        </Dippadretabla>
+     </Sectiond>
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
       </Sectionpa>
     </Container>
   );
@@ -205,7 +287,11 @@ export const Sectiond = styled.div`
 `;
 export const Dippadretabla = styled.div`
   width: 47.8%;
+<<<<<<< HEAD
   gap: 0.5em;
+=======
+  
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
   margin: 0 auto;
   background: rgb(255, 255, 255);
   overflow: hidden;
@@ -221,13 +307,14 @@ export const Dippadretabla = styled.div`
     flex-direction: row-reverse;
     justify-content: flex-end;
     & > button {
+      
       width: 2.8em;
       height: 2.8em;
-      margin: 0.5em 0 0 0;
-      background-color: #4e4ee2;
+      background-color: rgb(34, 152, 202);
       color: #fff;
-      border-radius: 5px;
+      border-radius: 0 0 8px 8px;
       font-size: 15px;
+<<<<<<< HEAD
       transition: all 0.5s ease-in-out;
       &:nth-child(2) {
         background-color: rgb(138, 30, 10);
@@ -239,6 +326,18 @@ export const Dippadretabla = styled.div`
       }
       &:hover {
         transform: translatey(8px);
+=======
+      transition: all 0.5s ease;
+      box-shadow:0 5px 5px #00002271;
+      /* &:nth-child(2) {
+  background-color:rgba(145, 22, 0, 0.802);
+  color:#fff;}
+  &:nth-child(1) {
+  background-color: #008610c3;
+  color:#fff;} */
+      &:hover {
+      height: 3em;
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
       }
     }
     & h2 {

@@ -46,15 +46,13 @@ const AdminComponent = () => {
               <Img src={City} alt="" />
               Ciudades - Provincia
             </Linkes>
-            <Linkes to="/redes">
+            {/* <Linkes to="/redes">
               <Img src={Redess} alt="" /> Redes
-            </Linkes>
-
-          
-
+            </Linkes> */}
             <Linkes to="/centros">
               <Img src={Centros} alt="" /> Centros-Municipios
             </Linkes>
+<<<<<<< HEAD
             <Linkes to="/provincias">
               <Img src={Provinciasicons} alt="" /> Provincias
             </Linkes>
@@ -62,6 +60,11 @@ const AdminComponent = () => {
               {" "}
               <Img src={Laboratorioicons} alt="" /> Laboratorios
             </Linkes>
+=======
+      <Linkes to="/laboratorios">
+        <Img src={Laboratorioicons} alt="" /> Laboratorios -Redes
+      </Linkes>
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
           </Options>
         )}
       </Diva>
@@ -101,9 +104,13 @@ const AdminComponent = () => {
         </Divd>
         {isExpandedpaciente && (
           <Options>
+<<<<<<< HEAD
             <Linkes to="/pacientes">
               <Img src={Pacienteicons} alt="" />Pacientes
             </Linkes>
+=======
+            
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
             <Linkes to="/cartilla">
               <Img src={Cartilla} alt="" /> Cartilla
             </Linkes>
@@ -128,11 +135,17 @@ const AdminComponent = () => {
   </Linkes> */}
       {/* <Linkes to="/rellamados">
     <Img src={Rellamadosicons} alt="" /> Rellamados
+<<<<<<< HEAD
   </Linkes>*/}
       <Linkes to="/resultados">
         <Img src={Cartilla} alt="" />
         Resultados
       </Linkes>
+=======
+  </Linkes>
+ 
+</>*/}
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
     </Master>
   );
 };

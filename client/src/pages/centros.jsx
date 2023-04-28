@@ -20,7 +20,7 @@ import {
   Tabla,
   Sectionpa,
   Divreport,
-  Divbotonesa,Sectiontabla,
+  Divbotonesa,Sectiontabla,Divmayor
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCentros, getCentros } from "../services/centros";
@@ -33,7 +33,7 @@ const Centros = () => {
   const [centroactual, setCentroactual] = useState({});
   const { getApi, data: cntros } = UseFech(getCentros);
   const { openModal, closeModal } = useModal(
-    Object.keys(centroactual).lengTh > 0
+    Object.keys(centroactual).length > 0
       ? "Editar Centro de Salud"
       : "Agregar Centro de Salud",
     <CentroForm
@@ -45,9 +45,10 @@ const Centros = () => {
       }}
     />
   );
+
   const [filtro, setFiltro] = useState("");
   useEffect(() => {
-    if (Object.keys(centroactual).lengTh > 0) {
+    if (Object.keys(centroactual).length > 0) {
       openModal();
     }
   }, [centroactual]);
@@ -138,9 +139,11 @@ const Centros = () => {
           </div>
         </Divbotonesa> */}
         <Sectiond>
-  
-
           <Dippadretabla>
+          <Divmayor><label >buscar</label> <input  type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)} /></Divmayor>
             <section>
               <button><CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} /></button>
               <button onClick={mostrarpdf}>Pdf</button>
@@ -182,9 +185,9 @@ const Centros = () => {
                           <Botonacciones>
                             <div>
                            
-                                <Iconsacciones
-                                  onClick={() => {
+                                <Iconsacciones onClick={() => {
                                     setCentroactual(v);
+                                    console.log("se ejecuta");
                                   }}
                                 >
                                   Editar
@@ -193,9 +196,13 @@ const Centros = () => {
                             </div>
                             <div>
                             
-                                <Iconsacciones1   onClick={() => {
+                               <button onClick={() => {
                                   deleteCentros(v.id, getApi);
-                                }}>Eliminar</Iconsacciones1>
+                                  console.log("se ejecuta");
+                                  
+                                }}>
+                               <Iconsacciones1  >Eliminar</Iconsacciones1>
+                               </button>
                             
                             </div>
                           </Botonacciones>
@@ -251,11 +258,12 @@ export const Dippadretabla = styled.div`
       
       width: 2.8em;
       height: 2.8em;
-      background-color: #000091c6;
+      background-color: rgb(34, 152, 202);
       color: #fff;
       border-radius: 0 0 8px 8px;
       font-size: 15px;
       transition: all 0.5s ease;
+      box-shadow:0 5px 5px #00002271;
       /* &:nth-child(2) {
   background-color:rgba(145, 22, 0, 0.802);
   color:#fff;}

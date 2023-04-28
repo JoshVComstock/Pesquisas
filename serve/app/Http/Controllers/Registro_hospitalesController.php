@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 use App\Models\Registro_hospitales;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class Registro_hospitalesController extends Controller
 {
     public function index()
     {
-        return Registro_hospitales::all();
+        return DB::select('SELECT r.hora, r.fecha, r.cod_tarjeta, r.cantidad_recibida, r.cantidad_entregada, c.nombre as nombre_centro, r.entregado_por, r.telefono, e.nombre as nombre_red, r.recibido_por FROM Registro_hospitales r JOIN Centros c ON r.id_centros = c.id JOIN Redes e ON r.id_redes = e.id;
+        ');
     }
     public function store(Request $request)
     {

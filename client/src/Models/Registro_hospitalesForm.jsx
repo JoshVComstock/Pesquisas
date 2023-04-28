@@ -3,23 +3,21 @@ import styled from "styled-components";
 import { useState, useEffect } from "react"
 
 const Registro_hospitalesForm = ({ MostrarReHospitales }) => {
-  const [hora, setHora] = useState([]);
-  const [fecha, setFecha] = useState([]);
-  const [id_redes, setId_redes] = useState("");
-  const [id_centros, setId_centros] = useState("");
-  const [cantidad_recibida, setCantidad_recibida] = useState("");
-  const [cantidad_entregada, setCantidad_entregada] = useState("");
+  const [hora, setHora] = useState("");
+  const [fecha, setFecha] = useState("");
+  const [id_redes, setId_redes] = useState();
+  const [id_centros, setId_centros] = useState();
+  const [cantidad_recibida, setCantidad_recibida] = useState();
+  const [cantidad_entregada, setCantidad_entregada] = useState();
   const [cod_tarjeta, setCod_tarjeta] = useState("");
   const [entregado_por, setEntregado_por] = useState("");
-  const [telefono, setTelefono] = useState("");
+  const [telefono, setTelefono] = useState();
   const [recibido_por, setRecibido_por] = useState("");
   const [redes , setRedes] = useState([]);
   const [centros, setCentros] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const enviar = async (e) => {
-    e.preventDefault();
-    setLoading(true);
     const response = await fetch("http://127.0.0.1:8000/api/registro_hospitales", {
       method: "POST",
       headers: {
@@ -38,6 +36,7 @@ const Registro_hospitalesForm = ({ MostrarReHospitales }) => {
         telefono: telefono,
         recibido_por: recibido_por,
       }),
+
 
     });
     const respuesta = await response?.json();
@@ -103,10 +102,12 @@ const Registro_hospitalesForm = ({ MostrarReHospitales }) => {
             <Divinput>
               <Divinputlabel>
                 <label>Red de Salud:</label>
-                <select value={id_redes} onChange={(e) => setId_redes(e.target.value)} >
+                <select onChange={(e) => setId_redes(e.target.value)} >
                   {redes.map((v, i) => (
-                    <option key={i} value={v.id}  >
-                      {v.nombre}
+               
+                    <option key={i} value={v.id_redes}  >
+                      {v.nombre }
+                    
                     </option>
                   ))}
                 </select>
@@ -115,9 +116,9 @@ const Registro_hospitalesForm = ({ MostrarReHospitales }) => {
             <Divinput>
               <Divinputlabel>
                 <label>Centro de Salud:</label>
-                <select value={id_centros} onChange={(e) => setId_centros(e.target.value)} >
+                <select  onChange={(e) => setId_centros(e.target.value)} >
                   {centros.map((v, i) => (
-                    <option key={i} value={v.id}  >
+                    <option key={i} value={v.id_centros}  >
                       {v.nombre}
                     </option>
                   ))}

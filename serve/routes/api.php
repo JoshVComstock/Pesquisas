@@ -22,8 +22,14 @@ use App\Http\Controllers\ResultsController;
 use App\Http\Controllers\ciudadpdfController;
 use App\Http\Controllers\Provinciapdfcontroller;
 use App\Http\Controllers\Centropdfcontroller;
+use App\Http\Controllers\LaboratoriopdfController;
 use App\Http\Controllers\Municipiospdfcontroller;
+<<<<<<< HEAD
 use App\Http\Controllers\PacientesController;
+=======
+use App\Http\Controllers\RegistroHospitalespdfController;
+use App\Http\Controllers\RegistroProvinciaspdfController;
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
 use GuzzleHttp\Middleware;
 
 Route::post('register', [UserController::class, 'register']);
@@ -76,13 +82,13 @@ Route::delete('/municipios/{id}', [MunicipiosController::class, 'destroy']);
 
 Route::get('/provincias', [ProvinciasController::class, 'index']);
 Route::post('/provincias', [ProvinciasController::class, 'store']);
-Route::put('/provincias/{id}', [ProvinciasController::class, 'update']);
+Route::PUT('/provincias/{id}', [ProvinciasController::class, 'update']);
 Route::delete('/provincias/{id}', [ProvinciasController::class, 'destroy']);
 
 
 Route::get('/registro_provincias', [Registro_provinciasController::class, 'index']);
-Route::post('/registro_provincias', [Registro_provinciasController::class, 'store']);
 Route::put('/registro_provincias/{id}', [Registro_provinciasController::class, 'update']);
+Route::post('/registro_provincias', [Registro_provinciasController::class, 'store']);
 Route::delete('/registro_provincias/{id}', [Registro_provinciasController::class, 'destroy']);
 
 Route::get('/registro_hospitales', [Registro_hospitalesController::class, 'index']);
@@ -100,7 +106,17 @@ Route::post('/resulst', [ResultsController::class, 'results']);
 Route::get('/pacientes', [PacientesController::class, 'index']);
 Route::get('/usuarios', [UserController::class, 'mostrarusu']);
 Route::get('Ciudades-pdf', [ciudadpdfController::class, 'indexciudadpdf']);
+<<<<<<< HEAD
 Route::get('cartilla-pdf', [cartillapdfController::class, 'indexcartillapdf']);
 Route::get('Provincias-pdf', [Provinciapdfcontroller::class, 'indexprovinciapdf']);
 Route::get('Centros-pdf', [Centropdfcontroller::class, 'indexcentropdf']);
 Route::get('Municipios-pdf', [Municipiospdfcontroller::class, 'indexmunicipiopdf']);
+=======
+Route::get('cartilla-pdf',[cartillapdfController::class,'indexcartillapdf']);
+Route::get('Provincias-pdf',[Provinciapdfcontroller::class,'indexprovinciapdf']);
+Route::get('Centros-pdf',[Centropdfcontroller::class,'indexcentropdf']);
+Route::get('Municipios-pdf',[Municipiospdfcontroller::class,'indexmunicipiopdf']);
+Route::get('RegistroH-pdf',[RegistroHospitalespdfController::class,'indexregistrohospitalespdf']);
+Route::get('RegistroP-pdf',[RegistroProvinciaspdfController::class,'indexregistroprovinciaspdf']);
+Route::get('Laboratorio-pdf',[LaboratoriopdfController::class,'indexlaboratoriopdf']);
+>>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090

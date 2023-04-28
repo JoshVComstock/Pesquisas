@@ -79,21 +79,28 @@ img{
         <thead>
             <tr>
                 <th>#</th>
-                <th>Ciudad</th>
+                <th>nombre</th>
+                <th>Direccion</th>
+                <th>telefono</th>
+                <th>Provincia al que pertenece</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($ciudad as $ciuda)
+            @foreach($laboratorio as $lab)
             <tr>
-                <td>{{$ciuda->id}}</td>
-            <td>{{$ciuda->ciudad}}</td>
+                <td>{{$lab->id}}</td>
+            <td>{{$lab->nombre}}</td>
+            <td>{{$lab->direccion}}</td>
+            <td>{{$lab->telefono}}</td>
+            <td>{{$lab->idprovincia}}</td>
             </tr>
             @endforeach
         </tbody>
         <tfoot>
             <tr>
                 <th>Total de Ciudades:</th>
-                <td>{{ $ciudad->count() }}</td>
+                <td>{{ count($laboratorio) }}</td>
+
             </tr>
         </tfoot>
     </table>
