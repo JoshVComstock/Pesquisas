@@ -26,8 +26,7 @@ import {
   Tabla,
   Sectionpa,
   Divreport,
-  Divbotonesa,
-  Divmayor,
+  Divbotonesa,Divmayor
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
@@ -119,23 +118,19 @@ const Ciudades = () => {
             </section>
           </div>
         </Divreport>
+      
+     <Sectiond>
 
-        <Sectiond>
-          <Dippadretabla>
-            <Divmayor>
-              <label>buscar</label>{" "}
-              <input
-                type="text"
-                placeholder="Buscar"
-                value={filtro}
-                onChange={(e) => setFiltro(e.target.value)}
-              />
-            </Divmayor>
-            <section>
-              <button>
-                <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
-              </button>
+     <Dippadretabla>
+     <Divmayor><label >buscar</label> <input  type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)} /></Divmayor>
+       <section>
+       <button >
+    <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
 
+<<<<<<< HEAD
               <button onClick={mostrarpdf}>Pdf</button>
               <button onClick={openModal}>+</button>
               <h2>Registros Ciudades</h2>
@@ -166,6 +161,60 @@ const Ciudades = () => {
                           <Trdatos data-label="ACCIONES">
                             <Botonacciones>
                               <div>
+=======
+       </button>
+
+       <button onClick={mostrarpdf} >Pdf</button>
+       <button onClick={openModal} >+</button>
+        <h2>Registros Ciudades</h2>
+       </section>
+          <Sectiontabla>
+            <Divtabla>
+           
+              <Tabla>
+                <Thead>
+                  <tr>
+                    <Trdatos data-label="Nº">{i + 1}</Trdatos>
+                    <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
+                    <Trdatos data-label="ACCIONES">
+                      <Botonacciones>
+                        <div>
+                          <Botonesacciones>
+                            <Iconsacciones
+                              src={Editar}
+                              alt=""
+                              onClick={() => {
+                                setCiudadactual(v);
+                              }}
+                            />
+                          </Botonesacciones>
+                        </div>
+                        <div>
+                          <Botonesacciones
+                            onClick={() => {
+                              deleteCiudades(v.id, getApi);
+                            }}
+                          >
+                            <Iconsacciones1 src={Eliminar} alt="Eliminar" />
+                          </Botonesacciones>
+                        </div>
+                      </Botonacciones>
+                    </Trdatos>
+                  </tr>
+                </Thead>
+                {ciudades
+                  .filter((v) =>
+                    v.ciudad.toLowerCase().includes(filtro.toLowerCase())
+                  )
+                  .map((v, i) => (
+                    <Tbody key={i}>
+                      <tr>
+                        <Trdatos data-label="Nº">{i + 1}</Trdatos>
+                        <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
+                        <Trdatos data-label="ACCIONES">
+                          <Botonacciones>
+                            <div>
+>>>>>>> 924338683f1c98c5be302bcedbe83bbc0d7945c4
                                 <Iconsacciones
                                   onClick={() => {
                                     setCiudadactual(v);
@@ -193,10 +242,10 @@ const Ciudades = () => {
             </Sectiontabla>
           </Dippadretabla>
 
-          <Dippadretabla>
-            <Provincias />
-          </Dippadretabla>
-        </Sectiond>
+        <Dippadretabla>
+         <Provincias/> 
+        </Dippadretabla>
+     </Sectiond>
       </Sectionpa>
     </Container>
   );
@@ -212,11 +261,7 @@ export const Sectiond = styled.div`
 `;
 export const Dippadretabla = styled.div`
   width: 47.8%;
-<<<<<<< HEAD
-  gap: 0.5em;
-=======
   
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
   margin: 0 auto;
   background: rgb(255, 255, 255);
   overflow: hidden;
@@ -239,19 +284,6 @@ export const Dippadretabla = styled.div`
       color: #fff;
       border-radius: 0 0 8px 8px;
       font-size: 15px;
-<<<<<<< HEAD
-      transition: all 0.5s ease-in-out;
-      &:nth-child(2) {
-        background-color: rgb(138, 30, 10);
-        color: #fff;
-      }
-      &:nth-child(1) {
-        background-color: #1a8727;
-        color: #fff;
-      }
-      &:hover {
-        transform: translatey(8px);
-=======
       transition: all 0.5s ease;
       box-shadow:0 5px 5px #00002271;
       /* &:nth-child(2) {
@@ -262,7 +294,6 @@ export const Dippadretabla = styled.div`
   color:#fff;} */
       &:hover {
       height: 3em;
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
       }
     }
     & h2 {

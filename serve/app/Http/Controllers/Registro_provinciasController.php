@@ -11,7 +11,7 @@ class Registro_provinciasController extends Controller
 {
     public function index()
     {
-        return DB::select('SELECT r.id,r.hora, r.fecha, r.cod_tarjeta, r.cantidad_recibida, r.cantidad_entregada, c.nombre as nombre_centro, r.entregado_por, r.telefono, r.recibido_por FROM registro_provincias r JOIN Centros c ON r.id_centros = c.id
+        return DB::select('SELECT r.id,r.hora, r.fecha, r.cod_tarjeta, r.cantidad_recibida, r.cantidad_entregada, c.nombre as nombre_centro, r.entregado_por, r.telefono, r.recibido_por FROM Registro_provincias r JOIN Centros c ON r.id_centros = c.id
         ');
         // return DB::select('SELECT p.id,p.provincia,c.ciudad,c.id as id_ciudades FROM provincias as p, ciudades as c WHERE p.id_ciudades=c.id;
         // ');

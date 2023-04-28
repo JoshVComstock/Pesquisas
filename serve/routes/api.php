@@ -24,7 +24,10 @@ use App\Http\Controllers\Provinciapdfcontroller;
 use App\Http\Controllers\Centropdfcontroller;
 use App\Http\Controllers\LaboratoriopdfController;
 use App\Http\Controllers\Municipiospdfcontroller;
-use App\Http\Controllers\PacientesController;
+use App\Http\Controllers\PacientepffController;
+use App\Http\Controllers\RedespdfController;
+use App\Http\Controllers\RegistroHospitalespdfController;
+use App\Http\Controllers\RegistroProvinciaspdfController;
 use GuzzleHttp\Middleware;
 
 Route::post('register', [UserController::class, 'register']);
@@ -109,3 +112,5 @@ Route::get('Municipios-pdf',[Municipiospdfcontroller::class,'indexmunicipiopdf']
 Route::get('RegistroH-pdf',[RegistroHospitalespdfController::class,'indexregistrohospitalespdf']);
 Route::get('RegistroP-pdf',[RegistroProvinciaspdfController::class,'indexregistroprovinciaspdf']);
 Route::get('Laboratorio-pdf',[LaboratoriopdfController::class,'indexlaboratoriopdf']);
+Route::get('Redes-pdf',[RedespdfController::class,'indexredespdf']);
+Route::get('Pacientes-pdf',[PacientepffController::class,'indexpacientepdfcontroller']);

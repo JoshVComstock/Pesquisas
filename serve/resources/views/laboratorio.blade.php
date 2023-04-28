@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Ciudades</title>
+    <title>Exportacion de datos de laboratorio</title>
     <style>
 
 h1 {
@@ -70,7 +70,7 @@ img{
     <section class="sec">
         <img src="https://www.biotech.com.bo/Administrador/images/logo.png" alt="logo">
 
-        <h1>Exportacion de datos de Ciudades</h1>
+        <h1>Exportacion de datos de laboratorio</h1>
     <h2>Tamizaje neonatal</h2>
     <p><strong>Fecha de exportación:</strong>  {{ date('d-m-Y ') }}</p>
     <p><strong>Fecha de hora:</strong>  {{ date('H:i:s') }}</p>
