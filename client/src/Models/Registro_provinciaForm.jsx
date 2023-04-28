@@ -4,11 +4,11 @@ import styled from "styled-components";
 import { UseFech } from "../hooks/useFech";
 import { postRegistroprovincia ,updateRegistroprovincias} from "../services/Registroprovincias";
 import {getCentros} from "../services/centros";
-const Registro_provinciaForm = ({getApi,registroactuald,setRegistroactual,closeModal}) => {
+const Registro_provinciaForm = ({getApi, registroactuald, setRegistroactual, closeModal}) => {
 
   const [hora, setHora] = useState("");
   const [fecha, setFecha] = useState("");
-  const [id_centros, setId_centros] = useState(3);
+  const [id_centros, setId_centros] = useState();
   const { data: centrosa } = UseFech(getCentros);
   const [cantidad_recibida, setCantidad_recibida] = useState("");
   const [cantidad_entregada, setCantidad_entregada] = useState("");
@@ -35,7 +35,7 @@ const Registro_provinciaForm = ({getApi,registroactuald,setRegistroactual,closeM
 
   const updateposts = (e) => {
     e.preventDefault();
-    if (Object.keys(registroactuald).length === 0) {
+    if (Object.keys(registroactuald).length > 0) {
       updateRegistroprovincias(
         {
           id:registroactuald.id,
@@ -90,97 +90,7 @@ const Registro_provinciaForm = ({getApi,registroactuald,setRegistroactual,closeM
       );
     }  }
   return (
-    // <Container>
-    //   <div>
-    //     <form>
-    //       <div>
-    //         <div>
-    //           <label htmlFor="">hora </label>
-    //           <Input type="time" placeholder='Ingrese Hora' value={hora} onChange={(e) => setHora(e.target.value)}/>
-             
-    //         </div>
-    //         <div>
-    //           <label htmlFor="">fecha </label>
-    //           <Input
-    //             type="date"
-    //             value={fecha}
-    //             onChange={(e) => setFecha(e.target.value)}
-    //           />
-    //         </div>
-    //         <div>
-    //           <label>Centro de Salud:</label>
-
-    //           <Select
-    //             value={id_centros}
-    //             onChange={(e) => setId_centros(e.target.value)}
-    //           >
-    //             <option value="">Seleccione el centro</option>
-    //             {centrosa.map((v, i) => (
-    //                <option key={i} value={v.id}>
-    //                {v.nombre}
-    //              </option>
-                 
-    //             ))}
-    //           </Select>
-    //         </div>
-           
-
-    //         {/* ----------- */}
-    //         <div>
-    //           <label htmlFor="">cantidad_recibida</label>
-    //           <Input
-    //             type="number"
-    //             value={cantidad_recibida}
-    //             onChange={(e) => setCantidad_recibida(e.target.value)}
-    //           />
-    //         </div>
-    //         <div>
-    //           <label htmlFor="">cantidad_entregada,</label>
-    //           <Input
-    //             type="number"
-    //             value={cantidad_entregada}
-    //             onChange={(e) => setCantidad_entregada(e.target.value)}
-    //           />
-    //         </div>
-    //         <div>
-    //           <label htmlFor="">cod_tarjeta,</label>
-    //           <Input
-    //             type="number"
-    //             value={cod_tarjeta}
-    //             onChange={(e) => setCod_tarjeta(e.target.value)}
-    //           />
-    //         </div>
-    //         <div>
-    //           <label htmlFor="">entregado_por</label>
-    //           <Input
-    //             type="text"
-    //             value={entregado_por}
-    //             onChange={(e) => setEntregado_por(e.target.value)}
-    //           />
-    //         </div>
-    //         <div>
-    //           <label htmlFor="">telefono</label>
-    //           <Input
-    //             type="number"
-    //             value={telefono}
-    //             onChange={(e) => setTelefono(e.target.value)}
-    //           />
-    //         </div>
-    //         <div>
-    //           <label htmlFor="">recibido_por</label>
-    //           <Input
-    //             type="text"
-    //             value={recibido_por}
-    //             onChange={(e) => setRecibido_por(e.target.value)}
-    //           />
-    //         </div>
-    //       </div>
-    //       <Botonagregar  onClick={(e) => updateposts(e)}>
-    //           {Object.keys(registroactuald).length > 0 ? "Editar" : "Agregar"}
-    //         </Botonagregar>
-    //     </form>
-    //   </div>
-    // </Container>
+   
     <Container>
       <div>
         <form>
@@ -188,7 +98,7 @@ const Registro_provinciaForm = ({getApi,registroactuald,setRegistroactual,closeM
             <Divinputlabel>
               <label>Hora:</label>
               <Input
-                type="text"
+                type="time"
                 value={hora}
                 onChange={(e) => setHora(e.target.value)}
               />
@@ -198,7 +108,7 @@ const Registro_provinciaForm = ({getApi,registroactuald,setRegistroactual,closeM
             <Divinputlabel>
               <label>Fecha:</label>
               <Input
-                type="text"
+                type="date"
                 value={fecha}
                 onChange={(e) => setFecha(e.target.value)}
               />
@@ -210,7 +120,7 @@ const Registro_provinciaForm = ({getApi,registroactuald,setRegistroactual,closeM
               <Select onChange={(e) => setId_centros(e.target.value)}>
                 <option >Seleccione un centro</option>
                 {centrosa.map((v, i) => (
-                  <option key={i} value={v.id_centros}>
+                  <option key={i} value={v.id}>
                     {v.nombre}
                   </option>
                 ))}
@@ -236,7 +146,7 @@ const Registro_provinciaForm = ({getApi,registroactuald,setRegistroactual,closeM
               <label>Cantidad entregada:</label>
             <Divinputlabel>
               <Input
-                type="text"
+                type="number"
                 value={cantidad_entregada}
                 onChange={(e) => setCantidad_entregada(e.target.value)}
               />
