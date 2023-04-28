@@ -2,19 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { UseFech } from "../hooks/useFech";
+import { postRegistroprovincia ,updateRegistroprovincias} from "../services/Registroprovincias";
+import {getCentros} from "../services/centros"
+const Registro_provinciaForm = ({getApi,registroactuald,setRegistroactual,closeModal}) => {
 
-const Registro_provinciaForm = () => {
-  const [hora, setHora] = useState([]);
-  const [fecha, setFecha] = useState([]);
-  const [id_provincias, setId_provincias] = useState("");
-  const { data: provincias } = UseFech(getProvincias);
-
-  const [id_municipios, setId_municipios] = useState("");
-  const { data: municipios } = UseFech(getMunicipios);
-
+  const [hora, setHora] = useState("");
+  const [fecha, setFecha] = useState("");
   const [id_centros, setId_centros] = useState("");
-  const { data: centros } = UseFech(getCentros);
-
+  const { data: centrosa } = UseFech(getCentros);
   const [cantidad_recibida, setCantidad_recibida] = useState("");
   const [cantidad_entregada, setCantidad_entregada] = useState("");
   const [cod_tarjeta, setCod_tarjeta] = useState("");
@@ -23,29 +18,30 @@ const Registro_provinciaForm = () => {
   const [recibido_por, setRecibido_por] = useState("");
 
   useEffect(() => {
-    if (Object.keys(registroactual).length > 0) {
-      setHora(registroactual.hora);
-      setFecha(registroactual.fecha);
-      setCantidad_recibida(registroactual.cantidad_recibida);
-      setCantidad_entregada(registroactual.cantidad_entregada);
-      setCod_tarjeta(registroactual.cod_tarjeta);
-      setEntregado_por(registroactual.entregado_por);
-      setTelefono(registroactual.telefono);
-      setRecibido_por(registroactual.recibido_por);
+    if (Object.keys(registroactuald).length > 0) {
+      setHora(registroactuald.hora);
+      setFecha(registroactuald.fecha);
+      setCantidad_recibida(registroactuald.cantidad_recibida);
+      setCantidad_entregada(registroactuald.cantidad_entregada);
+      setCod_tarjeta(registroactuald.cod_tarjeta);
+      setEntregado_por(registroactuald.entregado_por);
+      setTelefono(registroactuald.telefono);
+      setRecibido_por(registroactuald.recibido_por);
     }
     return () => {
       setRegistroactual({});
     };
-  }, [registroactual]);
+  }, [registroactuald]);
 
   const updatepost = (e) => {
     e.preventDefault();
-    if (Object.keys(registroactual).length > 0) {
+    if (Object.keys(registroactuald).length > 0) {
       updateRegistroprovincias(
         {
-          id: registroactual.id,
+          id: registroactuald.id,
           hora: hora,
           fecha: fecha,
+          id_centros:id_centros,
           cantidad_recibida: cantidad_recibida,
           cantidad_entregada: cantidad_entregada,
           cod_tarjeta: cod_tarjeta,
@@ -71,8 +67,6 @@ const Registro_provinciaForm = () => {
       postRegistroprovincia(
         hora,
         fecha,
-        id_provincias,
-        id_municipios,
         id_centros,
         cantidad_recibida,
         cantidad_entregada,
@@ -103,12 +97,8 @@ const Registro_provinciaForm = () => {
           <div>
             <div>
               <label htmlFor="">hora </label>
-              <Input
-                type="time"
-                required
-                value={hora}
-                onChange={(e) => setHora(e.target.value)}
-              />
+              <Input type="time" placeholder='Ingrese Hora' value={hora} onChange={(e) => setHora(e.target.value)}/>
+             
             </div>
             <div>
               <label htmlFor="">fecha </label>
@@ -121,44 +111,20 @@ const Registro_provinciaForm = () => {
             <div>
               <label>Centro de Salud:</label>
 
-              <select
-                name="select"
+              <Select
+                value={id_centros}
                 onChange={(e) => setId_centros(e.target.value)}
               >
-                {centros.map((v, i) => (
-                  <option key={i} value={v.id}>
-                    {v.id_centros}
-                  </option>
+                <option value="">Seleccione el centro</option>
+                {centrosa.map((v, i) => (
+                   <option key={i} value={v.id}>
+                   {v.nombre}
+                 </option>
+                 
                 ))}
-              </select>
+              </Select>
             </div>
-            <div>
-              <label> Municipio :</label>
-              <select
-                name="select"
-                onChange={(e) => setId_municipios(e.target.value)}
-              >
-                {municipios.map((v, i) => (
-                  <option key={i} value={v.id}>
-                    {v.id_municipios}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label> Provincias :</label>
-              <select
-                name="select"
-                onChange={(e) => setId_provincias(e.target.value)}
-              >
-                {provincias.map((v, i) => (
-                  <option key={i} value={v.id}>
-                    {v.id_provincias}
-                  </option>
-                ))}
-              </select>
-            </div>
+           
 
             {/* ----------- */}
             <div>
@@ -253,4 +219,12 @@ const Botonagregar = styled.button`
   &:hover {
     background: #0077b6;
   }
+`;
+const Select = styled.select`
+  width: 180px;
+  outline: none;
+  font-size: 16px;
+  padding: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
 `;

@@ -9,7 +9,7 @@ import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
 import {
-  Container,
+  Container,Divmayor,
   Titulo,
   Divbotones,
   Divsearchpadre,
@@ -74,6 +74,10 @@ const Municipios = () => {
 
   return (
     <>
+    <Divmayor><label >buscar</label> <input  type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)} /></Divmayor>
       <section>
         <button onClick={openModal}>Ecxel</button>
         <button onClick={mostrarpdf}>Pdf</button>

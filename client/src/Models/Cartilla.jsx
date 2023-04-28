@@ -4,18 +4,6 @@ import styled from "styled-components";
 import { horaactual, Actualdate } from "../services/date";
 
 const Cartilla = () => {
-<<<<<<< HEAD
-  const [fechamuestra, setFechamuestra] = useState(Actualdate);
-  const [primerapellido, setPrimerapellido] = useState("");
-  const [segundoapellido, setSegundoapellido] = useState("");
-  const [nombrepaciente, setNombrepaciente] = useState("");
-  const [codigocartilla, setCodigocartilla] = useState();
-  const [horanacimiento, setHoranacimiento] = useState("");
-  const [fechanacimiento, setFechanacimiento] = useState("");
-=======
-
-
->>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
   const [sexo, setSexo] = useState("");
   const [muestra, setMuestra] = useState();
   const [pesonaci, setPesonaci] = useState("");
@@ -39,13 +27,9 @@ const Cartilla = () => {
   const [detalledireccion, setDetalledireccion] = useState("");
   return (
     <Container>
-<<<<<<< HEAD
-      <h2>REGISTRO DE CARTILLAS</h2>
-=======
       <h2>
    Cartilla 
       </h2>
->>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
       <Card>
         <Divnameco>
           <div>
@@ -82,15 +66,7 @@ const Cartilla = () => {
           </div>
           <Divcartilla>
             <Labelname htmlFor="">CODIGO CARTILLA</Labelname>
-<<<<<<< HEAD
-            <Inputname
-              type="number"
-              value={codigocartilla}
-              onChange={(e) => setCodigocartilla(e.target.value)}
-            />
-=======
             <Inputname type="number"  />
->>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
           </Divcartilla>
         </Divnameco>
         <Divname>

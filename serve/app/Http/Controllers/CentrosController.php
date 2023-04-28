@@ -29,7 +29,6 @@ class CentrosController extends Controller
         $centros->seguimiento_casos = $request->seguimiento_casos;
         $centros->contacto = $request->contacto;
         $centros->save();
-
         return $centros;
     }
     public function update(Request $request, $id)

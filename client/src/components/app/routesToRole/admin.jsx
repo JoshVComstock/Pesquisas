@@ -55,19 +55,9 @@ const AdminComponent = () => {
             <Linkes to="/centros">
               <Img src={Centros} alt="" /> Centros-Municipios
             </Linkes>
-<<<<<<< HEAD
-            <Linkes to="/provincias">
-              <Img src={Provinciasicons} alt="" /> Provincias
-            </Linkes>
-            <Linkes to="/laboratorios">
-              {" "}
-              <Img src={Laboratorioicons} alt="" /> Laboratorios
-            </Linkes>
-=======
       <Linkes to="/laboratorios">
         <Img src={Laboratorioicons} alt="" /> Laboratorios
       </Linkes>
->>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
           </Options>
         )}
       </Diva>
@@ -134,17 +124,9 @@ const AdminComponent = () => {
   </Linkes> */}
       {/* <Linkes to="/rellamados">
     <Img src={Rellamadosicons} alt="" /> Rellamados
-<<<<<<< HEAD
-  </Linkes>*/}
-      <Linkes to="/resultados">
-        <Img src={Cartilla} alt="" />
-        Resultados
-      </Linkes>
-=======
   </Linkes>
  
 </>*/}
->>>>>>> 0326b6feeee85d28df0942a7550f2866c25a122c
     </Master>
   );
 };

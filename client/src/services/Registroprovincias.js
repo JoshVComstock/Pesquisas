@@ -41,8 +41,6 @@ export const updateRegistroprovincias = async (registroactual,callback) => {
       body: JSON.stringify({
         hora: registroactual.hora,
         fecha: registroactual.fecha,
-        id_provincias: registroactual.id_provincias,
-        id_municipios: registroactual.id_municipios,
         id_centros: registroactual.id_centros,
         cantidad_recibida: registroactual.cantidad_recibida,
         cantidad_entregada: registroactual.cantidad_entregada,
@@ -56,7 +54,7 @@ export const updateRegistroprovincias = async (registroactual,callback) => {
       callback();
     }
   }
-  export const postRegistroprovincia = async (hora,fecha,id_provincias,id_municipios,id_centros,cantidad_entregada,cantidad_recibida,cod_tarjeta,entregado_por,telefono,recibido_por,callback) => {
+  export const postRegistroprovincia = async (hora,fecha,id_centros,cantidad_recibida,cantidad_entregada,cod_tarjeta,entregado_por,telefono,recibido_por,callback) => {
     const response = await fetch(`${baseUrl}registro_provincias`, {
       method: "POST",
       headers: {
@@ -66,8 +64,6 @@ export const updateRegistroprovincias = async (registroactual,callback) => {
       body: JSON.stringify({
         hora: hora,
         fecha: fecha,
-        id_provincias: id_provincias,
-        id_municipios: id_municipios,
         id_centros: id_centros,
         cantidad_recibida: cantidad_recibida,
         cantidad_entregada: cantidad_entregada,

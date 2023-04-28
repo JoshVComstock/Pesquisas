@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
+
 import Registro_provinciaForm from "../models/Registro_provinciaForm";
 import New from "./../img/new.jpg";
 import Pdf from "./../img/pdf.jpg";
@@ -8,6 +10,7 @@ import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
+import CSVExporter from "../pages/Reportescom";
 
 import { UseFech } from "../hooks/useFech";
 import { deleteRegistroprovincias,getRegistroprovincias } from "../services/Registroprovincias";
@@ -25,7 +28,7 @@ import {
   Search,
   Botonsearch,
   Botonacciones,
-  Iconsacciones,
+  Iconsacciones,Sectionpa
 } from "../styles/crud";
 import {
   Iconsacciones1,
@@ -34,18 +37,25 @@ import {
   Thead,
   Tbody,
   Th,
-  Trdatos,
+  Trdatos,Divreport,Divmayor,Tabla,Sectiontabla
 } from "../styles/crud";
+import { Dippadretabla } from './Registro_hospitales';
 
 const Registro_provincia = () => {
 
-    const [registroactual, setRegistroactual] = useState({});
+  const [sumaCantidadRecibida, setSumaCantidadRecibida] = useState(0);
+  const [sumaCantidadEntregada, setSumaCantidadEntregada] = useState(0);
+
+  const apiUrl = `${baseUrl}registroprovincias`;
+  const csvHeaders = ["id", "ciudad"];
+
+    const [registroactuald, setRegistroactual] = useState({});
     const { getApi, data: registroprovincias } = UseFech(getRegistroprovincias);
     const { openModal, closeModal } = useModal(
-      Object.keys(registroactual).length > 0 ? "Editar Registros" : "Agregar Registros",
+      Object.keys(registroactuald).length > 0 ? "Editar Registros" : "Agregar Registros",
       <Registro_provinciaForm
         getApi={getApi}
-        registroactual={registroactual}
+        registroactual={registroactuald}
         setRegistroactual={setRegistroactual}
         closeModal={() => {
           closeModal();
@@ -55,97 +65,160 @@ const Registro_provincia = () => {
     
   const [filtro, setFiltro] = useState("");
   useEffect(() => {
-    if (Object.keys(registroactual).length > 0) {
+    if (Object.keys(registroactuald).length > 0) {
       openModal();
     }
-  }, [registroactual]);
+  }, [registroactuald]);
+
+  useEffect(() => {
+    const suma = registroprovincias.reduce((suma, hospital) => suma + hospital.cantidad_recibida, 0);
+    setSumaCantidadRecibida(suma);
+  }, [registroprovincias]);
+  useEffect(() => {
+    const suma = registroprovincias.reduce((suma, hospital) => suma + hospital.cantidad_entregada, 0);
+    setSumaCantidadEntregada(suma);
+  }, [registroprovincias]);
+
+
+  const mostrarpdf = async () => {
+    const response = await fetch(
+      `${baseUrl}RegistroP-pdf`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    return response;
+  };
+
+
   return (
     <Container>
-      <Titulo>Registro de Provincias</Titulo>
-      <Divbotones>
-      <Botonespdf2 onClick={openModal}>
-          <Img src={New} alt="" /> Nuevo
-        </Botonespdf2>
-        <Botonespdf1>
-          <Img src={Pdf} alt="" />
-          PDF
-        </Botonespdf1>
-        <Botonespdf>
-          <Img src={Excel} alt="" />
-          Excel
-        </Botonespdf>{" "}
-      </Divbotones>
-      <Divsearchpadre>
-        <Divsearch>
-          <Search
-            type="text"
+   <Sectionpa>
+   <Divreport>
+          <div>
+          <img src="src\img\gestion.png" alt="" />
+            <section>
+              <h3>{registroprovincias.length}</h3>
+              <p>n° registros</p>
+              <p>Registro Hospitales</p>
+            </section>
+         
+          </div>
+          <div>
+          <img src="src\img\gestion.png" alt="" />
+            <section>
+              <h3>{sumaCantidadRecibida}</h3>
+              <p>Cantidad Total</p>
+              <p>Cartillas recividas</p>
+            </section>
+         
+          </div>
+          <div>
+          <img src="src\img\gestion.png" alt="" />
+            <section>
+              <h3>{sumaCantidadEntregada}</h3>
+              <p>Cantidad Total</p>
+              <p>Cartillas Entregadas</p>
+            </section>
+         
+          </div>
+          <div>
+          <img src="src\img\gestion.png" alt="" />
+            <section>
+              <h3>126</h3>
+              <p>gestion</p>
+            </section>
+         
+          </div>
+      
+        </Divreport>
+        <Dippadretabla>
+        <Divmayor><label >buscar</label> <input  type="text"
             placeholder="Buscar"
             value={filtro}
-            onChange={(e) => setFiltro(e.target.value)}
-          />
-          <Botonsearch>
-            <Img src={Searchicons} alt="" />{" "}
-          </Botonsearch>
-        </Divsearch>
-      </Divsearchpadre>
+            onChange={(e) => setFiltro(e.target.value)} 
+            />
+            </Divmayor>
+       <section>
+       <button >
+    <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
+
+       </button>
+
+       <button onClick={mostrarpdf} >Pdf</button>
+       <button  onClick={openModal}>+</button>
+        <h2>Registro Hospitales Seguimiento</h2>
+       </section>
+       <Sectiontabla>
      <Divtabla>
-        <table className='table'>
+        <Tabla>
           <Thead>
             <tr>
-              <th>Nº</th>
-              <th>HORA</th>
-              <th>FECHA</th>
-              <th>PROVINCIA</th>
-              <th>MUNICIPIO</th>
-              <th>CENTRO SALUD</th>
-              <th>C. RECIBIDA</th>
-              <th>C. ENTREGADA</th>
-              <th>COD. TARJETA</th>
-              <th>ENTREADO Por</th>
-              <th>TELÉFONO</th>
-              <th>RECIBIDO Por</th>
+              <Th>Nº</Th>
+              <Th>HORA</Th>
+              <Th>FECHA</Th>
+              <Th>CENTRO SALUD</Th>
+              <Th>C. RECIBIDA</Th>
+              <Th>C. ENTREGADA</Th>
+              <Th>COD. TARJETA</Th>
+              <Th>ENTREADO Por</Th>
+              <Th>TELÉFONO</Th>
+              <Th>RECIBIDO Por</Th>
               <Th>Acciones</Th>
             </tr>
           </Thead>
           {
-              registroprovincias.map((v, i) => (
-                <tbody key={i} >
+              registroprovincias.filter((v) =>
+              v.entregado_por.toLowerCase().includes(filtro.toLowerCase())
+            ).map((v, i) => (
+                <Tbody key={i} >
                   <tr>
-                    <th>{v.id}</th>
-                    <th>{v.hora}</th>
-                    <th>{v.fecha}</th>
-                    <th>{v.id_provincias}</th>
-                    <th>{v.id_municipios}</th>
-                    <th>{v.id_centros}</th>
-                    <th>{v.cantidad_recibida}</th>
-                    <th>{v.cantidad_entregada}</th>
-                    <th>{v.cod_tarjeta}</th>
-                    <th>{v.	entregado_por}</th>
-                    <th>{v.	telefono}</th>
-                    <th>{v.recibido_por}</th>
-                    <th>
+                    <Trdatos>{v.id}</Trdatos>
+                    <Trdatos>{v.hora}</Trdatos>
+                    <Trdatos>{v.fecha}</Trdatos>
+                    <Trdatos>{v.nombre_centro}</Trdatos>
+                    <Trdatos>{v.cantidad_recibida}</Trdatos>
+                    <Trdatos>{v.cantidad_entregada}</Trdatos>
+                    <Trdatos>{v.cod_tarjeta}</Trdatos>
+                    <Trdatos>{v.	entregado_por}</Trdatos>
+                    <Trdatos>{v.	telefono}</Trdatos>
+                    <Trdatos>{v.recibido_por}</Trdatos>
+                    <Trdatos>
                       <Botonacciones >
                         <div>
-                          <Botonesacciones><Iconsacciones src={Editar}
+                          <Iconsacciones src={Editar}
                             alt=""
                             onClick={() => {
                               setRegistroactual(v);
-                            }}/></Botonesacciones>
+                            }}>
+                              Editar
+                            </Iconsacciones>
                         </div>
                         <div>
                           
-                          <Botonesacciones  onClick={() => {
-                            deleteRegistroprovincias(v.id, getApi);
-                          }}> <Iconsacciones1 src={Eliminar} alt="" /></Botonesacciones>
+                        
+                          <Iconsacciones1 onClick={() => {
+                            deleteRegistroprovincias(v.id, getApi); }}>
+
+                          </Iconsacciones1>
                         </div>
                       </Botonacciones>
-                    </th>
+                    </Trdatos>
                   </tr>
-                </tbody>
+                </Tbody>
               ))
             }
-        </table>
+        </Tabla>
       </Divtabla>
+      </Sectiontabla>
+      </Dippadretabla>
+      </Sectionpa>
     </Container>
   )
 }

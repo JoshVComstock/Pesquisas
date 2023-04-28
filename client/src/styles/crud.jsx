@@ -202,7 +202,7 @@ export const Iconsacciones1 = styled.button`
 `;
 export const Botonesacciones = styled.button``;
 
-export const Divtabla = styled.table`
+export const Divtabla = styled.div`
   width: 95%;
   margin: 1em auto;
   border-collapse: collapse;

@@ -20,7 +20,7 @@ import {
   Tabla,
   Sectionpa,
   Divreport,
-  Divbotonesa,Sectiontabla,
+  Divbotonesa,Sectiontabla,Divmayor
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCentros, getCentros } from "../services/centros";
@@ -139,9 +139,11 @@ const Centros = () => {
           </div>
         </Divbotonesa> */}
         <Sectiond>
-  
-
           <Dippadretabla>
+          <Divmayor><label >buscar</label> <input  type="text"
+            placeholder="Buscar"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)} /></Divmayor>
             <section>
               <button><CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} /></button>
               <button onClick={mostrarpdf}>Pdf</button>
@@ -256,7 +258,7 @@ export const Dippadretabla = styled.div`
       
       width: 2.8em;
       height: 2.8em;
-      background-color: #000091c6;
+      background-color: rgb(34, 152, 202);
       color: #fff;
       border-radius: 0 0 8px 8px;
       font-size: 15px;

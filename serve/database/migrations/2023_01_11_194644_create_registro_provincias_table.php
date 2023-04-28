@@ -17,8 +17,7 @@ class CreateRegistroProvinciasTable extends Migration
             $table->id();
             $table->time('hora');
             $table->date('fecha');
-            //$table->foreignId('id_provincias')->constrained('provincias')->cascadeOnUpdate()->cascadeOnDelete();
-            //$table->foreignId('id_municipios')->constrained('municipios')->cascadeOnUpdate()->cascadeOnDelete();
+
             $table->foreignId('id_centros')->constrained('centros')->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('cantidad_recibida');
             $table->integer('cantidad_entregada');
