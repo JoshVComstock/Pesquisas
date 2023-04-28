@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Seguimiento de cartilla por Hospitales</title>
+    <title>Exportacion de datos de Redes</title>
     <style>
 
 h1 {
@@ -32,7 +32,6 @@ table {
     border-collapse: collapse;
     width: 100%;
     margin: 0 auto ;
-
 }
 
 th,
@@ -40,7 +39,6 @@ td {
 
     text-align: left;
     padding: 8px;
-    width: 100%;
 }
 
 th {
@@ -72,7 +70,7 @@ img{
     <section class="sec">
         <img src="https://www.biotech.com.bo/Administrador/images/logo.png" alt="logo">
 
-        <h1>Exportacion de datos de Seguimiento de cartilla por Hospitales</h1>
+        <h1>Exportacion de datos de redes</h1>
     <h2>Tamizaje neonatal</h2>
     <p><strong>Fecha de exportación:</strong>  {{ date('d-m-Y ') }}</p>
     <p><strong>Fecha de hora:</strong>  {{ date('H:i:s') }}</p>
@@ -81,39 +79,23 @@ img{
         <thead>
             <tr>
                 <th>#</th>
-                <th>Hora</th>
-                <th>Fecha</th>
-                <th>Redes</th>
-                <th>centro</th>
-                <th>Cantidad recibida</th>
-                <th>Cantidad entregada</th>
-                <th>cod_targeta</th>
-                <th>entregado por</th>
-                <th>telefono</th>
-                <th>recibido_por</th>
+                <th>nombre</th>
+               
             </tr>
         </thead>
         <tbody>
-            @foreach($Registrohospitales as $regh)
+            @foreach($Redes as $re)
             <tr>
-                <td>{{$regh->id}}</td>
-            <td>{{$regh->hora}}</td>
-            <td>{{$regh->fecha}}</td>
-            <td>{{$regh->nombre_red}}</td>
-            <td>{{$regh->nombre_centro}}</td>
-            <td>{{$regh->cantidad_recibida}}</td>
-            <td>{{$regh->cantidad_entregada}}</td>
-            <td>{{$regh->cod_tarjeta}}</td>
-            <td>{{$regh->entregado_por}}</td>
-            <td>{{$regh->telefono}}</td>
-            <td>{{$regh->recibido_por}}</td>
+                <td>{{$re->id}}</td>
+            <td>{{$re->nombre}}</td>
+            
             </tr>
             @endforeach
         </tbody>
         <tfoot>
             <tr>
-                <th>Total de Registro Hospitales:</th>
-                <td>{{ count($Registrohospitales) }}</td>
+                <th>Total de Redes:</th>
+                <td>{{ count($Redes) }}</td>
 
             </tr>
         </tfoot>
