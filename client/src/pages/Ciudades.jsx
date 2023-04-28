@@ -22,21 +22,11 @@ import {
   Tbody,
   Th,
   Trdatos,
-<<<<<<< HEAD
-  Tabla,
-  Divreport,
-  Sectionpa,
-  Botonespdf2,
-  Botonespdf1,
-  Botonespdf,
-  Img,
-=======
   Sectiontabla,
   Tabla,
   Sectionpa,
   Divreport,
   Divbotonesa,Divmayor
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
@@ -94,10 +84,6 @@ const Ciudades = () => {
   return (
     <Container>
       <Sectionpa>
-<<<<<<< HEAD
-        {/* <Titulo>Ciudades</Titulo> */}
-=======
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
         <Divreport>
           <div>
             <img src="src\img\gestion.png" alt="" />
@@ -131,47 +117,6 @@ const Ciudades = () => {
           </div>
       
         </Divreport>
-<<<<<<< HEAD
-        <Divbotones>
-          <Botonespdf2 onClick={openModal}>
-            <Img src={New} alt="" /> Nuevo
-          </Botonespdf2>
-          <Botonespdf1 onClick={mostrarpdf}>
-            <Img src={Pdf} alt="" />
-            PDF
-          </Botonespdf1>
-          <Botonespdf>
-            <Img src={Excel} alt="" />
-            Excel
-          </Botonespdf>{" "}
-        </Divbotones>
-        <Divsearchpadre>
-          <Divsearch>
-            <Search
-              type="text"
-              placeholder="Buscar"
-              value={filtro}
-              onChange={(e) => setFiltro(e.target.value)}
-            />
-            <Botonsearch>
-              <Img src={Searchicons} alt="" />{" "}
-            </Botonsearch>
-          </Divsearch>
-        </Divsearchpadre>
-        <Divtabla>
-          <Tabla>
-            <Thead>
-              <Th>Nº</Th>
-              <Th>CIUDAD</Th>
-              <Th>ACCIONES</Th>
-            </Thead>
-            {ciudades
-              .filter((v) =>
-                v.ciudad.toLowerCase().includes(filtro.toLowerCase())
-              )
-              .map((v, i) => (
-                <Tbody key={i}>
-=======
       
      <Sectiond>
 
@@ -195,7 +140,6 @@ const Ciudades = () => {
            
               <Tabla>
                 <Thead>
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
                   <tr>
                     <Trdatos data-label="Nº">{i + 1}</Trdatos>
                     <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
@@ -224,12 +168,6 @@ const Ciudades = () => {
                       </Botonacciones>
                     </Trdatos>
                   </tr>
-<<<<<<< HEAD
-                </Tbody>
-              ))}
-          </Tabla>
-        </Divtabla>
-=======
                 </Thead>
                 {ciudades
                   .filter((v) =>
@@ -271,7 +209,6 @@ const Ciudades = () => {
          <Provincias/> 
         </Dippadretabla>
      </Sectiond>
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
       </Sectionpa>
     </Container>
   );
@@ -287,11 +224,7 @@ export const Sectiond = styled.div`
 `;
 export const Dippadretabla = styled.div`
   width: 47.8%;
-<<<<<<< HEAD
-  gap: 0.5em;
-=======
   
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
   margin: 0 auto;
   background: rgb(255, 255, 255);
   overflow: hidden;
@@ -314,19 +247,6 @@ export const Dippadretabla = styled.div`
       color: #fff;
       border-radius: 0 0 8px 8px;
       font-size: 15px;
-<<<<<<< HEAD
-      transition: all 0.5s ease-in-out;
-      &:nth-child(2) {
-        background-color: rgb(138, 30, 10);
-        color: #fff;
-      }
-      &:nth-child(1) {
-        background-color: #1a8727;
-        color: #fff;
-      }
-      &:hover {
-        transform: translatey(8px);
-=======
       transition: all 0.5s ease;
       box-shadow:0 5px 5px #00002271;
       /* &:nth-child(2) {
@@ -337,7 +257,6 @@ export const Dippadretabla = styled.div`
   color:#fff;} */
       &:hover {
       height: 3em;
->>>>>>> a5e16d015cb47bceaab590e4a3d91d7d568b1090
       }
     }
     & h2 {
