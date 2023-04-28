@@ -30,24 +30,24 @@ export const deleteRegistroprovincias = async (id, callback) => {
         callback();
     }
 };
-export const updateRegistroprovincias = async (registroactual,callback) => {
+export const updateRegistroprovincias = async (registroactuald,callback) => {
   
-    const response = await fetch(`${baseUrl}registro_provincias/${registroactual.id}`, {
+    const response = await fetch(`${baseUrl}registro_provincias/${registroactuald.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         accept: "application/json",
       },
       body: JSON.stringify({
-        hora: registroactual.hora,
-        fecha: registroactual.fecha,
-        id_centros: registroactual.id_centros,
-        cantidad_recibida: registroactual.cantidad_recibida,
-        cantidad_entregada: registroactual.cantidad_entregada,
-        cod_tarjeta: registroactual.cod_tarjeta,
-        entregado_por: registroactual.entregado_por,
-        telefono: registroactual.telefono,
-        recibido_por: registroactual.recibido_por,
+        hora: registroactuald.hora,
+        fecha: registroactuald.fecha,
+        id_centros: registroactuald.id_centros,
+        cantidad_recibida: registroactuald.cantidad_recibida,
+        cantidad_entregada: registroactuald.cantidad_entregada,
+        cod_tarjeta: registroactuald.cod_tarjeta,
+        entregado_por: registroactuald.entregado_por,
+        telefono: registroactuald.telefono,
+        recibido_por: registroactuald.recibido_por,
 
     })});
     if(response.ok){

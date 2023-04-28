@@ -77,13 +77,13 @@ Route::delete('/municipios/{id}', [MunicipiosController::class, 'destroy']);
 
 Route::get('/provincias', [ProvinciasController::class, 'index']);
 Route::post('/provincias', [ProvinciasController::class, 'store']);
-Route::put('/provincias/{id}', [ProvinciasController::class, 'update']);
+Route::PUT('/provincias/{id}', [ProvinciasController::class, 'update']);
 Route::delete('/provincias/{id}', [ProvinciasController::class, 'destroy']);
 
 
 Route::get('/registro_provincias', [Registro_provinciasController::class, 'index']);
-Route::post('/registro_provincias', [Registro_provinciasController::class, 'store']);
 Route::put('/registro_provincias/{id}', [Registro_provinciasController::class, 'update']);
+Route::post('/registro_provincias', [Registro_provinciasController::class, 'store']);
 Route::delete('/registro_provincias/{id}', [Registro_provinciasController::class, 'destroy']);
 
 Route::get('/registro_hospitales', [Registro_hospitalesController::class, 'index']);
