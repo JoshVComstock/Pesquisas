@@ -87,20 +87,8 @@ const Centros = () => {
               <p>Centros</p>
             </section>
           </div>
-          <div>
-            <img src="src\img\gestion.png" alt="" />
-            <section>
-              <h3>{cntros.length}</h3>
-              <p>gestion</p>
-            </section>
-          </div>
-          <div>
-            <img src="src\img\gestion.png" alt="" />
-            <section>
-              <h3>126</h3>
-              <p>gestion</p>
-            </section>
-          </div>
+      
+           
         </Divreport>
         {/* <Divbotonesa>
           <div onClick={() => setIsExpanded(!isExpanded)}>

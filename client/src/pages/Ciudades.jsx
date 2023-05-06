@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
 import CiudadesForm from "../Models/CiudadesForm";
@@ -31,21 +30,18 @@ import {
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
 import { getciudadpdf } from "../reports/ciudadpdf";
-import Provincias from "./Provincias";
+import Provincias from "./Provincias"
 import { deleteProvincias, getProvincias } from "../services/provincias";
 import CSVExporter from "../pages/Reportescom";
-import New from "./../img/new.jpg";
-import Pdf from "./../img/pdf.jpg";
-import Excel from "./../img/doc.jpg";
-import Searchicons from "./../img/search.jpg";
-import Editar from "./../img/icons/Editar.jpg";
-import Eliminar from "./../img/icons/Delete.jpg";
+import Homee from "./Graficoshome";
 const Ciudades = () => {
-  // solo para el select
-  const [isExpanded, setIsExpanded] = useState(false);
-  //------
-  const apiUrl = `${baseUrl}ciudades`;
-  const csvHeaders = ["id", "ciudad"];
+
+// solo para el select
+const [isExpanded, setIsExpanded] = useState(false);
+//------
+const apiUrl = `${baseUrl}ciudades`;
+    const csvHeaders = ["id", "ciudad"];
+
 
   const [ciudadactual, setCiudadactual] = useState({});
   const { getApi, data: ciudades } = UseFech(getCiudades);
@@ -68,12 +64,15 @@ const Ciudades = () => {
     }
   }, [ciudadactual]);
   const mostrarpdf = async () => {
-    const response = await fetch(`${baseUrl}Ciudades-pdf`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${baseUrl}Ciudades-pdf`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     window.open(url, "_blank");
@@ -86,36 +85,26 @@ const Ciudades = () => {
       <Sectionpa>
         <Divreport>
           <div>
-            <img src="src\img\gestion.png" alt="" />
+          <img src="src\img\gestion.png" alt="" />
             <section>
               <h3>{ciudades.length}</h3>
               <p>n° registros</p>
               <p>Ciudades</p>
             </section>
+         
           </div>
           <div>
-            <img src="src\img\gestion.png" alt="" />
+          <img src="src\img\gestion.png" alt="" />
             <section>
               <h3>3</h3>
               <p>n° registros</p>
               <p>Provincia</p>
             </section>
+        
           </div>
-          <div>
-            <img src="src\img\gestion.png" alt="" />
-            <section>
-              <h3>126</h3>
-              <p>gestion</p>
-            </section>
-          </div>
-          <div>
-            <img src="src\img\gestion.png" alt="" />
-            <section>
-              <h3>126</h3>
-              <p>gestion</p>
-            </section>
-          </div>
+     
         </Divreport>
+
       
      <Sectiond>
 
@@ -140,32 +129,9 @@ const Ciudades = () => {
               <Tabla>
                 <Thead>
                   <tr>
-                    <Trdatos data-label="Nº">{i + 1}</Trdatos>
-                    <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
-                    <Trdatos data-label="ACCIONES">
-                      <Botonacciones>
-                        <div>
-                          <Botonesacciones>
-                            <Iconsacciones
-                              src={Editar}
-                              alt=""
-                              onClick={() => {
-                                setCiudadactual(v);
-                              }}
-                            />
-                          </Botonesacciones>
-                        </div>
-                        <div>
-                          <Botonesacciones
-                            onClick={() => {
-                              deleteCiudades(v.id, getApi);
-                            }}
-                          >
-                            <Iconsacciones1 src={Eliminar} alt="Eliminar" />
-                          </Botonesacciones>
-                        </div>
-                      </Botonacciones>
-                    </Trdatos>
+                    <Th>Nº</Th>
+                    <Th>CIUDAD</Th>
+                    <Th>ACCIONES</Th>
                   </tr>
                 </Thead>
                 {ciudades
@@ -187,28 +153,28 @@ const Ciudades = () => {
                                 >
                                   Editar
                                 </Iconsacciones>
-                              </div>
-                              <div>
-                                <Iconsacciones1
-                                  onClick={() => {
-                                    deleteCiudades(v.id, getApi);
-                                  }}
-                                >
-                                  Eliminar
-                                </Iconsacciones1>
-                              </div>
-                            </Botonacciones>
-                          </Trdatos>
-                        </tr>
-                      </Tbody>
-                    ))}
-                </Tabla>
-              </Divtabla>
-            </Sectiontabla>
-          </Dippadretabla>
+                            </div>
+                            <div>
+                                <Iconsacciones1  onClick={() => {
+                                  deleteCiudades(v.id, getApi);
+                                }}>Eliminar</Iconsacciones1>
+                           
+                            </div>
+                          </Botonacciones>
+                        </Trdatos>
+                      </tr>
+                    </Tbody>
+                  ))}
+              </Tabla>
+            </Divtabla>
+          </Sectiontabla>
+        </Dippadretabla>
 
         <Dippadretabla>
          <Provincias/> 
+        </Dippadretabla>
+        <Dippadretabla>
+        <Homee/>
         </Dippadretabla>
      </Sectiond>
       </Sectionpa>
@@ -218,11 +184,12 @@ const Ciudades = () => {
 export default Ciudades;
 
 export const Sectiond = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 2em;
+width:100%;
+display:flex;
+flex-direction:row;
+flex-wrap: wrap;
+gap:2em;
+
 `;
 export const Dippadretabla = styled.div`
   width: 47.8%;
@@ -237,8 +204,8 @@ export const Dippadretabla = styled.div`
   border: solid 1px #0002;
   & section {
     width: 100%;
-    display: flex;
-    gap: 0.5em;
+    display: flex; 
+    gap:0.5em;
     flex-direction: row-reverse;
     justify-content: flex-end;
     & > button {

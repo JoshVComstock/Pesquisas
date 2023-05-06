@@ -1,71 +1,68 @@
 import React from "react";
-import { UseFech } from "../hooks/useFech";
-import { getCiudades } from "../services/Ciudades";
-const baseUrl = import.meta.env.VITE_BACKEND_URL;
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Legend,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
-import Provinciasgrafic from "../components/app/Grafic/Provinciasgrafic";
 import styled from "styled-components";
-import Ciudadgrafic from "../components/app/Grafic/Ciudadgrafic";
+import { Divreport } from "../styles/crud";
+import Homee from "./Graficoshome";
+
+import { getPacientes } from "../services/pacientes";
+import { UseFech } from "../hooks/useFech";
+
+
 const Home = () => {
-  const { data: ciudad } = UseFech(getCiudades);
-  const mostrarpdf = async () => {
-    const response = await fetch(`${baseUrl}cartilla-pdf`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const blob = await response.blob();
-    const url = window.URL.createObjectURL(blob);
-    window.open(url, "_blank");
-    return response;
-  };
+  const { data: pacientes } = UseFech(getPacientes);
   return (
-    <div>
-      <Divgrafic>
-        <h2>Ciudad</h2>
-        <ResponsiveContainer width="50%" aspect={2}>
-          <BarChart
-            data={ciudad}
-            width={500}
-            height={300}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-          >
-            <CartesianGrid strokeDasharray="4 1 2" />
-            <XAxis dataKey="ciudad" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="id" fill="#6b48ff" />
-            <Bar dataKey="id" fill="#1ee3cf" />
-          </BarChart>
-        </ResponsiveContainer>
-        <Provinciasgrafic />
-        <Ciudadgrafic />
-      </Divgrafic>
-      <Botones>
-        <button onClick={mostrarpdf}>Ver reporte de cartillas</button>
-        <button>Ver reporte Paciente</button>
-      </Botones>
-    </div>
+    <>
+      <Divmayor>
+        <Divreport>
+          <div>
+            <img src="src\img\paciente.png" alt="" />
+            <section>
+              <h3>{pacientes.length}</h3>
+              <p>n° registros</p>
+              <p>De Pacientes</p>
+            </section>
+          </div>
+          <div>
+            <img src="src\img\gestion.png" alt="" />
+            <section>
+              <h3>3</h3>
+              <p>n° registros</p>
+              <p>Provincia</p>
+            </section>
+          </div>
+        </Divreport>
+        <Grafia>
+          <section>
+          <Homee />
+          </section>
+    
+         <section>
+         <Homee />
+         </section>
+        </Grafia>
+      </Divmayor>
+    </>
   );
 };
 
 export default Home;
-const Divgrafic = styled.div`
+const Divmayor = styled.div`
   display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 1em auto;
+
 `;
-const Botones = styled.div`
+
+const Grafia = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 90%;
+  flex-direction:row;
+  gap:1em;
+  & section{
+    display: flex;
+    width:40%;
+    flex-direction:column;
+    border:solid 1px #0002;
+  }
+
 `;

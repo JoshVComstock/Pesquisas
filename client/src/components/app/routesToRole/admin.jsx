@@ -76,7 +76,7 @@ const AdminComponent = () => {
           </Options>
         )}
       </Diva>
-      <p>Reportes</p>
+      {/* <p>Reportes</p>
       <Diva onClick={() => setIsExpandedreportes(!isExpandedreportes)}>
         <Divd>
           <Img src="src\img\analitica.png" alt="" />
@@ -84,7 +84,7 @@ const AdminComponent = () => {
           <Imga src="src\img\abajo.png" alt="" />
         </Divd>
         {isExpandedreportes && <Options></Options>}
-      </Diva>
+      </Diva> */}
       <p>Paciente</p>
       <Diva onClick={() => setIsExpandedpaciente(!isExpandedpaciente)}>
         <Divd>
