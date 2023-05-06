@@ -14,8 +14,10 @@ import {
   import { Ionicons } from "@expo/vector-icons";
   import AppTextInput from "../components/AppTextInput";
 import { useDatos } from "../context/datos";
+import { useNavigation } from "@react-navigation/native";
   
   const Login =() => {
+    const navigation=useNavigation();
     const {carnet,barras,setBarras,setCarnet}=useDatos();
     return (
       <SafeAreaView style={styles.Container}>
@@ -73,6 +75,7 @@ import { useDatos } from "../context/datos";
           </View>
   
           <TouchableOpacity
+          onPress={()=>navigation.navigate("Results")}
             style={{
               padding: Spacing * 2,
               backgroundColor: Colors.primary,

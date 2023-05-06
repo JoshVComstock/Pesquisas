@@ -94,7 +94,9 @@ const AdminComponent = () => {
         </Divd>
         {isExpandedpaciente && (
           <Options>
-            
+            <Linkes to="/pacientes">
+              <Img src={Pacienteicons} alt="" /> pacientes
+            </Linkes>
             <Linkes to="/cartilla">
               <Img src={Cartilla} alt="" /> Cartilla
             </Linkes>

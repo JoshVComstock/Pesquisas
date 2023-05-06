@@ -105,7 +105,7 @@ import { useDatos } from "../context/datos";
             </View>
             <View style={styles.Viewrows}>
                 <Text  style={styles.Texlabel}>Resultado:</Text>
-                <Text style={styles.Textdatos}></Text>
+                <Text style={styles.Textdatos}>{v.resultado}</Text>
             </View>
         </View>
               </>  

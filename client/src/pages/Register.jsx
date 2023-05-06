@@ -32,12 +32,12 @@ import {
   Tabla,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
-import { getRegister } from "../services/register";
+import { deleteRegister, getRegister } from "../services/register";
 import { useModal } from "../hooks/useModal";
 import Resgistrousuario from "../models/Resgistrousuario";
 const Register = () => {
   const [filtro, setFiltro] = useState("");
-  const { data: users } = UseFech(getRegister);
+  const { data: users, getApi } = UseFech(getRegister);
   const navigate = useNavigate();
   const { user } = useuserContext();
   const { openModal, closeModal } = useModal(
@@ -49,7 +49,7 @@ const Register = () => {
     //  navigate("/laboratorio")
     // }
   }, []);
-
+ console.log(user);
   return (
     <Container>
       <Sectionpa>
@@ -84,13 +84,13 @@ const Register = () => {
           <Tabla>
             <Thead>
               <tr>
-                <th>Nº</th>
-                <th>NOMBRE</th>
-                <th>EMAIL</th>
-                <th>TELEFONO</th>
-                <th>ROL</th>
-                <th>PASSWORD</th>
-                <Th>ACCIONES</Th>
+                <Th>Nº</Th>
+                <Th>NOMBRE</Th>
+                <Th>EMAIL</Th>
+                <Th>TELEFONO</Th>
+                <Th>ROL</Th>
+                <Th>PASSWORD</Th>
+                <Th>ACCION</Th>
               </tr>
             </Thead>
             {users
@@ -107,21 +107,12 @@ const Register = () => {
                     <Trdatos>{v.rol}</Trdatos>
                     <Trdatos>********</Trdatos>
                     <Trdatos>
-                      <Botonacciones>
-                        <div>
-                          <Botonesacciones>
-                            <Iconsacciones src={Editar} alt="">
-                              Editar
-                            </Iconsacciones>
-                          </Botonesacciones>
-                        </div>
-                        <div>
-                          <Botonesacciones>
-                            <Iconsacciones1 src={Eliminar} alt="">
-                              Eliminar
-                            </Iconsacciones1>
-                          </Botonesacciones>
-                        </div>
+                      <Botonacciones
+                        onClick={() => deleteRegister(v.id,()=> getApi())}
+                      >
+                        <Iconsacciones1 src={Eliminar} alt="">
+                          Eliminar
+                        </Iconsacciones1>
                       </Botonacciones>
                     </Trdatos>
                   </tr>

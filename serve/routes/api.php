@@ -33,6 +33,7 @@ use App\Http\Controllers\ResultadosController;
 use GuzzleHttp\Middleware;
 
 Route::post('register', [UserController::class, 'register']);
+Route::delete('register/{id}', [UserController::class, 'deploy']);
 Route::post('login', [UserController::class, 'login']);
 Route::get('registeruser', [UserController::class, 'register']);
 

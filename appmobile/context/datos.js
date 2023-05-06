@@ -3,8 +3,8 @@ import {
 } from "zustand"
 
 export const useDatos = create(set => ({
-    carnet: "98457854",
-    barras: "1010123456",
+    carnet: "0",
+    barras: "0",
     setCarnet: (nuevocarnet) => set(state => ({
         ...state,
         carnet: nuevocarnet,

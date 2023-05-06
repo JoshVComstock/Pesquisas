@@ -19,9 +19,7 @@ class ResultsController extends Controller
         $carnetmadre=$request->ci;
         $codigo_barras=$request->codigo_barras;
 
-            return DB::select("SELECT m.nombre as madre, m.apellidos,m.ci ,p.nombre,p.ap_paterno,c.codigo_barras,c.fecha_toma_muestra
-             from madres as m,pacientes as p, cartillas as c 
-             where c.id_pacientes=p.id and p.id_madres=m.id and c.codigo_barras=$codigo_barras and m.ci=$carnetmadre
+            return DB::select("SELECT m.nombre as madre, m.apellidos,m.ci ,p.nombre,p.ap_paterno,c.codigo_barras,c.fecha_toma_muestra,r.resultado from madres as m,pacientes as p, cartillas as c, resultados as r where c.id_pacientes=p.id and p.id_madres=m.id and c.codigo_barras=$codigo_barras and m.ci=$carnetmadre and c.id=r.id_cartillas
             ");
         
     }

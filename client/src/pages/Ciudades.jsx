@@ -57,6 +57,7 @@ const apiUrl = `${baseUrl}ciudades`;
       }}
     />
   );
+
   const [filtro, setFiltro] = useState("");
   useEffect(() => {
     if (Object.keys(ciudadactual).length > 0) {
@@ -79,7 +80,7 @@ const apiUrl = `${baseUrl}ciudades`;
     return response;
   };
   // ---------------
-
+  
   return (
     <Container>
       <Sectionpa>

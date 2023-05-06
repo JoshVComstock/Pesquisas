@@ -16,13 +16,14 @@ import Madresicons from "../../../img/icons/Madre.jpg";
 import Pacienteicons from "../../../img/icons/Paciente.jpg";
 import Usericons from "../../../img/user.jpg";
 
+
 import { Linkes, Img } from "../../../styles/roles";
 
 const LaboratorioComponent = () => {
   return (
     <>
-      <Linkes to="/laboratorios">
-        <Img src={Laboratorioicons} alt="" /> Laboratorios
+      <Linkes to="/resultados">
+        <Img src={Redess} alt="" /> Resultados
       </Linkes>
     </>
   );

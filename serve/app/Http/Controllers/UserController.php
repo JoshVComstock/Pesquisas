@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function mostrarusu()
     {
-        return DB::select("SELECT u.nombre,u.email,u.telefono,u.rol,u.password FROM users as u");
+        return DB::select("SELECT u.id, u.nombre,u.email,u.telefono,u.rol,u.password FROM users as u");
     }
     public function register(Request $request)
     {
@@ -85,5 +85,9 @@ class UserController extends Controller
             "status" => 0,
             "msg" => "Cierre de seccion",
         ]);
+    }
+    public function deploy($id)
+    {
+        return User::destroy($id);
     }
 }

@@ -56,6 +56,7 @@ const Resgistrousuario = () => {
             <Divinput>
               <Label htmlFor="">ROL</Label>
               <Select name="" onChange={(e) => setRol(e.target.value)} required>
+                <option value="">SELECCIONE ROL</option>
                 <option value="administrador">ADMINISTRADOR</option>
                 <option value="laboratorio">LABORATORIO</option>
                 <option value="recepcionista">RECEPCIONISTA</option>

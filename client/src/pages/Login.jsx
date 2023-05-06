@@ -28,8 +28,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navegate = useNavigate();
   const { setLogged } = useNavContext();
-  const {user,setUser}=useuserContext();
-
+  const { user, setUser } = useuserContext();
 
   const enviar = async (e) => {
     e.preventDefault();
@@ -46,18 +45,17 @@ const Login = () => {
     });
     if (response.ok) {
       const responsejson = await response?.json();
-/*       console.log(responsejson.user) */
-      setUser(responsejson.user[0])
-     /*  document.cookie = `token=${responsejson.access_token}; max-age=${60 * 60};
+      /*       console.log(responsejson.user) */
+      setUser(responsejson.user[0]);
+      /*  document.cookie = `token=${responsejson.access_token}; max-age=${60 * 60};
         path=/; somesite=stric`; */
-  /*      document.cookie = `user=${JSON.stringify(responsejson.user[0])}; max-age=${60 * 60 * 24};
+      /*      document.cookie = `user=${JSON.stringify(responsejson.user[0])}; max-age=${60 * 60 * 24};
         path=/; somesite=stric`; */
-        localStorage.setItem("user", JSON.stringify(responsejson.user[0]));
-    setLogged(true);
-      setUser(user=>({...user,isLogged:true})); 
+      localStorage.setItem("user", JSON.stringify(responsejson.user[0]));
+      setLogged(true);
+      setUser((user) => ({ ...user, isLogged: true }));
       navegate("/");
     }
-    
   };
   return (
     <Container>
@@ -104,10 +102,12 @@ const Login = () => {
               <Label>Password</Label>
             </Dinput>
           </Divinput>
-          <Boton onClick={enviar}>Ingresar</Boton>
+          <Boton onClick={ enviar}>Ingresar</Boton>
         </Form>
-        <Section><h3>Bienvenido al sistema</h3> <br /><P>
-        Terminos y condiciones</P> </Section>
+        <Section>
+          <h3>Bienvenido al sistema</h3> <br />
+          <P>Terminos y condiciones</P>{" "}
+        </Section>
       </Divlogin>
     </Container>
   );
@@ -121,71 +121,71 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background: #ffffff;
-  font-family: 'Poppins', sans-serif;
- overflow:hidden;
- color:#000000;
-  &::before{
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+  color: #000000;
+  &::before {
     position: absolute;
     content: "";
     background-color: #2b44d1;
     height: 100vh;
-    width:100vh;
-    border-radius:50vw 50vw;
+    width: 100vh;
+    border-radius: 50vw 50vw;
     z-index: 1;
     left: -30%;
-    top:-20%;
-  box-shadow: 5px 5px 6px 8px rgba(0, 0, 0, 0.3);
-    
+    top: -20%;
+    box-shadow: 5px 5px 6px 8px rgba(0, 0, 0, 0.3);
   }
 `;
 
 const Section = styled.section`
-width:300px;
-height:100%;
-text-align:center;
-color :#ffffff;
-background-color:#2b44d1;
-display:flex;
-gap:1em;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-position:relative;
-&::after{
-  position: absolute;
+  width: 300px;
+  height: 100%;
+  text-align: center;
+  color: #ffffff;
+  background-color: #2b44d1;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  &::after {
+    position: absolute;
     content: "";
     background-color: #d12bd17b;
     height: 100px;
-    width:100px;
-    border-radius:50px 50px  ;
+    width: 100px;
+    border-radius: 50px 50px;
     z-index: 1;
-    right:0;
-    bottom:0;
-}&::before{
-  position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &::before {
+    position: absolute;
     content: "";
     background-color: #510d669d;
     height: 100px;
-    width:100px;
-    border-radius:50px 50px  ;
+    width: 100px;
+    border-radius: 50px 50px;
     z-index: 1;
-    right:30px;
-    bottom:20px;
-}
+    right: 30px;
+    bottom: 20px;
+  }
 `;
 const Divlogin = styled.div`
-background-color:transparent;
+  background-color: transparent;
   padding: 20px;
   border-radius: 5px;
   display: flex;
 
-  width:50%;
-  height:60%;
+  width: 50%;
+  height: 60%;
   z-index: 2;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 `;
 const Form = styled.form`
   display: flex;
@@ -200,17 +200,14 @@ const Img = styled.img`
 const H2 = styled.h2`
   font-size: 2.9rem;
   margin: 15px 0;
-
 `;
 const P = styled.h2`
   font-size: 1rem;
-  
 `;
 const Divinput = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
- 
 `;
 const I = styled.div``;
 const Di = styled.i`
@@ -224,7 +221,7 @@ const Iavatar = styled.img`
 const Dinput = styled.div`
   position: relative;
   padding: 1rem;
-  width:100%;
+  width: 100%;
 `;
 const Label = styled.label`
   position: absolute;
@@ -249,13 +246,12 @@ const Input = styled.input`
     transform: translateY(-1.2rem);
     font-size: 13px;
     color: #4285f4;
-    background-color:#ffffff;
+    background-color: #ffffff;
   }
   &:not(:placeholder-shown) + Label {
     transform: translateY(-1.2rem);
     transition: 0.5s;
     font-size: 13px;
-    
   }
 `;
 const Span1 = styled.span`
@@ -268,7 +264,6 @@ const Span1 = styled.span`
   transition: 0.6s;
 `;
 const Boton = styled.button`
-
   width: 100%;
   position: relative;
   padding: 10px 0;
@@ -283,6 +278,6 @@ const Boton = styled.button`
 
   &:hover {
     background: #ffffffa9;
-    color:#4285f4;
+    color: #4285f4;
   }
 `;
