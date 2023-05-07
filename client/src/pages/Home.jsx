@@ -5,7 +5,8 @@ import Homee from "./graficos/Graficoshome";
 import Porcentro from "./graficos/Graficoporcentro";
 import Rescentro from "./graficos/Graficoresultadocentro";
 import Rescentroradar from "./graficos/Grificoradar";
-
+import Resulciudad from "./graficos/Graficoresultadociudad";
+import Porciudad from "./graficos/Graficospociudad";
 import { getPacientes } from "../services/pacientes";
 import { getCiudades } from "../services/Ciudades";
 import { getLaboratorios } from "../services/Laboratorios";
@@ -134,18 +135,26 @@ const Home = () => {
           <Homee />
           </section>
     
+       
          <section>
+          <Rescentroradar />
+          </section>
+          <section>
          <article><h1>Cantidad de Pacientes por Centro</h1><button>Generar reportes</button></article>
          <Porcentro />
          </section>
          <section>
-          <Rescentroradar />
-          </section>
-    
+         <article><h1>Cantidad de casos por Centro</h1><button>Generar reportes</button></article>
+         <Rescentro/>
+         </section>
+         {/*  */}
+          <section>
+         <article><h1>Cantidad de Pacientes por ciudad</h1><button>Generar reportes</button></article>
+         <Porciudad />
+         </section>
          <section>
          <article><h1>Cantidad de casos por Centro</h1><button>Generar reportes</button></article>
-
-         <Rescentro/>
+         <Resulciudad/>
          </section>
         </Grafia>
       </Divmayor>

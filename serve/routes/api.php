@@ -131,5 +131,6 @@ Route::get('Pacientes-pdf',[PacientepffController::class,'indexpacientepdfcontro
 
 
 Route::get('/consultasresultadocentro', [ConsultasController::class, 'resultadocentro']);
+Route::get('/consultasresultadociudad', [ConsultasController::class, 'resultadociudad']);
 Route::get('/consultasciudads', [ConsultasController::class, 'porciudad']);
 Route::get('/consultascentro', [ConsultasController::class, 'porcentro']);
