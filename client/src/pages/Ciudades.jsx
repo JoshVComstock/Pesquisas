@@ -196,7 +196,8 @@ export const Dippadretabla = styled.div`
   width: 47.8%;
   
   margin: 0 auto;
-  background: rgb(255, 255, 255);
+  background-color: rgb(245, 245, 243);
+
   overflow: hidden;
   height: 50vh;
   display: flex;

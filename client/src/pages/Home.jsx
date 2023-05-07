@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Homee from "./graficos/Graficoshome";
 import Porcentro from "./graficos/Graficoporcentro";
 import Rescentro from "./graficos/Graficoresultadocentro";
+import Rescentroradar from "./graficos/Grificoradar";
+
 import { getPacientes } from "../services/pacientes";
 import { getCiudades } from "../services/Ciudades";
 import { getLaboratorios } from "../services/Laboratorios";
@@ -30,7 +32,7 @@ const Home = () => {
   const { data: centro } = UseFech(getCentros);
   const { data: provincia } = UseFech(getProvincias);
   return (
-    <>
+    <Dip>
       <Divmayor>
         <Divreport>
           <div>
@@ -83,7 +85,7 @@ const Home = () => {
             <section>
               <h3>{regpro.length}</h3>
               <p>n° Registro</p>
-              <p>Por Provincias</p>
+              <p> Provincias</p>
             </section>
           </div>
           <div>
@@ -106,7 +108,7 @@ const Home = () => {
           </div>
           
         </Divreport>
-        <Divreport>
+        {/* <Divreport>
           <div>
           <img src="src\img\analitica.png" alt="" />
             <section>
@@ -125,39 +127,45 @@ const Home = () => {
           </div>
         
           
-        </Divreport>
+        </Divreport> */}
         <Grafia>
           <section>
-            <article><h1>casos totales de resultados</h1></article>
+            <article><h1>casos totales de resultados</h1> <button>Generar reportes</button></article>
           <Homee />
           </section>
     
          <section>
-         <article><h1>Cantidad de Pacientes por Centro</h1></article>
+         <article><h1>Cantidad de Pacientes por Centro</h1><button>Generar reportes</button></article>
          <Porcentro />
          </section>
          <section>
-          <Homee />
+          <Rescentroradar />
           </section>
     
          <section>
-         <article><h1>Cantidad de casos por Centro</h1></article>
+         <article><h1>Cantidad de casos por Centro</h1><button>Generar reportes</button></article>
 
          <Rescentro/>
          </section>
         </Grafia>
       </Divmayor>
-    </>
+    </Dip>
   );
 };
 
 export default Home;
+const Dip = styled.div`
+width:100%;
+height:100%;
+background-color: rgb(236, 237, 241);
+padding:2em 0;
+`;
 const Divmayor = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
-  margin: 2em auto;
-
+  margin: 0em auto;
+  background-color:transparent;
 `;
 
 const Grafia = styled.div`
@@ -171,21 +179,36 @@ const Grafia = styled.div`
     width:38%;
     flex-direction:column;
     border:solid 1px #0002;
-    border-radius:15px;
+    background-color:rgb(245, 245, 243);
     padding-bottom:1em;
     &:nth-child(2n){
       width:60%;
     }
   & article{
     width:100%;
-    background-color:rgb(16, 45, 210);
-    border-radius:15px 15px 0 0;
     display:flex;
     justify-content:center;
     align-items:center;
+    color:#000000;
+    border-bottom:solid 1px #0002;
+    padding:1em 0;
+    & button{
+    cursor: pointer;
+    border:solid 1px #0002;
+    margin:0 1em;
+    background-color:rgb(34, 152, 202);
     color:#fff;
+}
     & h1{
+    color:#000000;
+    font-size:0.9em;
 
+&::first-letter{
+  color:blue;
+  text-transform:uppercase;
+  font-size:1.1em;
+
+}
     }
   }
   }
@@ -198,7 +221,6 @@ export const Divreport = styled.div`
   flex-wrap: nowrap;
   gap: 2em;
   & div {
-    color:#fff;
     /* &:nth-child(2n) {
   background-color: #fff;
   color:#000;
@@ -218,7 +240,8 @@ export const Divreport = styled.div`
     z-index: 1;
     color:#000;
     border-radius: 5px;
-    background-color:#fff;
+    background-color:rgb(245, 245, 243);
+
     &::before {
       content: "";
       bottom: -0.8em;
@@ -226,7 +249,8 @@ export const Divreport = styled.div`
       border: solid 1px #0002;
       width: 90%;
       height: 0.69em;
-      background-color: #fff;
+      background-color:rgb(245, 245, 243);
+
       z-index: 1;
       border-radius: 0 0 5px 5px;
     }

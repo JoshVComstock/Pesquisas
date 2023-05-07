@@ -1,4 +1,4 @@
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -36,7 +36,7 @@ const processDataForChart = (data) => {
   return processedData;
 };
 
-const Porcentro = () => {
+const Rescentroradar = () => {
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
@@ -53,28 +53,38 @@ const Porcentro = () => {
     <div>
       <ChartContainer>
         <ResponsiveContainer width="100%" height={250}>
-          <BarChart data={chartData} style={{ borderRadius: "0px" }}>
-            <XAxis dataKey="name" />
-            <YAxis fill="#1b158e" />
+          <PieChart>
+            <Pie
+              data={chartData}
+              dataKey="pacientes"
+              nameKey="name"
+              cx="50%"
+              cy="50%"
+              outerRadius={80}
+              fill="#8884d8"
+              label
+            >
+              {chartData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
             <Tooltip />
             <Legend />
-            <CartesianGrid vertical={false} horizontal={true} stroke="#3700ff71" strokeDasharray="2 2" />
-            <Bar dataKey="pacientes" fill="rgb(148, 58, 232)" barSize={20} />
-            <Bar dataKey="madres" fill="rgb(58, 148, 232)" barSize={20}/>
-          </BarChart>
+          </PieChart>
         </ResponsiveContainer>
       </ChartContainer>
     </div>
   );
 };
 
-export default Porcentro;
+export default Rescentroradar;
 
 const ChartContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   background-color:transparent;
-
   margin-top: 1em;
 `;
+
+const COLORS = ['#302b9e', '#731a87', '#ffc658'];

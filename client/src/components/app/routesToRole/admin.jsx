@@ -160,7 +160,7 @@ export const Options = styled.div`
 `;
 
 export const Diva = styled.div`
-  background: #fff;
+  background: rgb(245, 245, 243);
   cursor: pointer;
   text-decoration: none;
   flex-direction: column;
@@ -169,7 +169,7 @@ export const Diva = styled.div`
   margin: 1em 0;
 `;
 export const Divd = styled.div`
-  background: #fff;
+  background: rgb(245, 245, 243);
   cursor: pointer;
   text-decoration: none;
   color: #000000;

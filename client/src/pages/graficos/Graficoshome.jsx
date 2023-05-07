@@ -81,6 +81,7 @@ const ChartContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:#fff;
+  background-color:transparent;
+
   margin-top:1em;
 `;
