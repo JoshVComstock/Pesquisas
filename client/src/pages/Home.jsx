@@ -128,10 +128,12 @@ const Home = () => {
         </Divreport>
         <Grafia>
           <section>
+            <article><h1>casos totales de resultados</h1></article>
           <Homee />
           </section>
     
          <section>
+         <article><h1>Cantidad de Pacientes por Centro</h1></article>
          <Porcentro />
          </section>
          <section>
@@ -139,6 +141,8 @@ const Home = () => {
           </section>
     
          <section>
+         <article><h1>Cantidad de casos por Centro</h1></article>
+
          <Rescentro/>
          </section>
         </Grafia>
@@ -172,6 +176,18 @@ const Grafia = styled.div`
     &:nth-child(2n){
       width:60%;
     }
+  & article{
+    width:100%;
+    background-color:rgb(16, 45, 210);
+    border-radius:15px 15px 0 0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    & h1{
+
+    }
+  }
   }
 
 `;
