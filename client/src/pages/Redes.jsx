@@ -79,15 +79,15 @@ const Redes = () => {
         <button onClick={openModal}>Ecxel</button>
         <button onClick={mostrarpdf}>Pdf</button>
         <button onClick={openModal}>+</button>
-        <h2>Registros Municipio</h2>
+        <h2>Registros Redes</h2>
       </section>
     <Sectiontabla>
       <Divtabla>
         <Tabla>
           <Thead>
             <tr>
-              <th>Nº</th>
-              <th>RED</th>
+              <Th>Nº</Th>
+              <Th>RED</Th>
               <Th>ACCIONES</Th>
             </tr>
           </Thead>

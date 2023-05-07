@@ -36,6 +36,8 @@ import CSVExporter from "../pages/Reportescom";
 import Homee from "./graficos/Graficoshome";
 const Ciudades = () => {
 
+  const { data: provincias } = UseFech(getProvincias);
+
 // solo para el select
 const [isExpanded, setIsExpanded] = useState(false);
 //------
@@ -97,7 +99,7 @@ const apiUrl = `${baseUrl}ciudades`;
           <div>
           <img src="src\img\gestion.png" alt="" />
             <section>
-              <h3>3</h3>
+              <h3>{provincias.length}</h3>
               <p>n° registros</p>
               <p>Provincia</p>
             </section>
@@ -173,9 +175,6 @@ const apiUrl = `${baseUrl}ciudades`;
 
         <Dippadretabla>
          <Provincias/> 
-        </Dippadretabla>
-        <Dippadretabla>
-        <Homee/>
         </Dippadretabla>
      </Sectiond>
       </Sectionpa>

@@ -26,8 +26,11 @@ import { UseFech } from "../hooks/useFech";
 import { deleteCentros, getCentros } from "../services/centros";
 import Municipios from "./Municipios";
 import CSVExporter from "../pages/Reportescom";
+import { getMunicipios } from "../services/Municipios";
 
 const Centros = () => {
+  const { data: mun } = UseFech(getMunicipios);
+
   const apiUrl = `${baseUrl}centros`;
   const csvHeaders = ["id", "nombre","direccion","telefono","id_municipios","area","seguimiento_casos","contacto"];
   const [centroactual, setCentroactual] = useState({});
@@ -72,15 +75,15 @@ const Centros = () => {
       <Sectionpa>
         <Divreport>
           <div>
-            <img src="src\img\gestion.png" alt="" />
+            <img src="src\img\icons\Municipio.jpg" alt="" />
             <section>
-              <h3>{cntros.length}</h3>
+              <h3>{mun.length}</h3>
               <p>n° registros</p>
-              <p>Ciudades</p>
+              <p>red</p>
             </section>
           </div>
           <div>
-            <img src="src\img\gestion.png" alt="" />
+            <img src="src\img\icons\Centros.jpg" alt="" />
             <section>
               <h3>{cntros.length}</h3>
               <p>n° registros</p>

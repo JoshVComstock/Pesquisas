@@ -418,11 +418,13 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
+  background-color:transparent;
 `;
 const Card = styled.div`
   margin-top: 30px;
   height: 500px;
-  background: #fff;
+  background-color:transparent;
+
 `;
 const Divname = styled.div`
   width: 100%;
