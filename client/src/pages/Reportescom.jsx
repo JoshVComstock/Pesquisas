@@ -38,7 +38,7 @@ const CSVExporter = ({ apiUrl, csvHeaders, getData }) => {
     link.click();
   };
 
-  return <Abutton onClick={fetchAndExportData}>Ecxel</Abutton>;
+  return <Abutton onClick={fetchAndExportData}>Excel</Abutton>;
 };
 
 export default CSVExporter;

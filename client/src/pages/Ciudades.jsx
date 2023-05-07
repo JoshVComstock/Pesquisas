@@ -103,20 +103,8 @@ const Ciudades = () => {
               <p>Provincia</p>
             </section>
           </div>
-          <div>
-            <img src="src\img\gestion.png" alt="" />
-            <section>
-              <h3>126</h3>
-              <p>gestion</p>
-            </section>
-          </div>
-          <div>
-            <img src="src\img\gestion.png" alt="" />
-            <section>
-              <h3>126</h3>
-              <p>gestion</p>
-            </section>
-          </div>
+       
+          
         </Divreport>
       
      <Sectiond>
@@ -130,38 +118,6 @@ const Ciudades = () => {
        <button >
     <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
 
-<<<<<<< HEAD
-              <button onClick={mostrarpdf}>Pdf</button>
-              <button onClick={openModal}>+</button>
-              <h2>Registros Ciudades</h2>
-            </section>
-            <Sectiontabla>
-              <Divtabla>
-                <Tabla>
-                  <Thead>
-                    <tr>
-                      <Th data-label="Nº">Nº</Th>
-                      <Th data-label="CIUDAD">CIUDAD</Th>
-                      <Th data-label="ACCIONES">ACCIONES
-                        <Botonacciones>
-                          
-                        </Botonacciones>
-                      </Th>
-                    </tr>
-                  </Thead>
-                  {ciudades
-                    .filter((v) =>
-                      v.ciudad.toLowerCase().includes(filtro.toLowerCase())
-                    )
-                    .map((v, i) => (
-                      <Tbody key={i}>
-                        <tr>
-                          <Trdatos data-label="Nº">{i + 1}</Trdatos>
-                          <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
-                          <Trdatos data-label="ACCIONES">
-                            <Botonacciones>
-                              <div>
-=======
        </button>
 
        <button onClick={mostrarpdf} >Pdf</button>
@@ -174,32 +130,11 @@ const Ciudades = () => {
               <Tabla>
                 <Thead>
                   <tr>
-                    <Trdatos data-label="Nº">{i + 1}</Trdatos>
-                    <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
-                    <Trdatos data-label="ACCIONES">
-                      <Botonacciones>
-                        <div>
-                          <Botonesacciones>
-                            <Iconsacciones
-                              src={Editar}
-                              alt=""
-                              onClick={() => {
-                                setCiudadactual(v);
-                              }}
-                            />
-                          </Botonesacciones>
-                        </div>
-                        <div>
-                          <Botonesacciones
-                            onClick={() => {
-                              deleteCiudades(v.id, getApi);
-                            }}
-                          >
-                            <Iconsacciones1 src={Eliminar} alt="Eliminar" />
-                          </Botonesacciones>
-                        </div>
-                      </Botonacciones>
-                    </Trdatos>
+                    <Th data-label="Nº">Nº</Th>
+                    <Th data-label="CIUDAD">CIUDAD</Th>
+                    <Th data-label="ACCIONES">
+                    ACCIONES
+                    </Th>
                   </tr>
                 </Thead>
                 {ciudades
@@ -214,7 +149,6 @@ const Ciudades = () => {
                         <Trdatos data-label="ACCIONES">
                           <Botonacciones>
                             <div>
->>>>>>> 924338683f1c98c5be302bcedbe83bbc0d7945c4
                                 <Iconsacciones
                                   onClick={() => {
                                     setCiudadactual(v);

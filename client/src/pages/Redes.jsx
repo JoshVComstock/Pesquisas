@@ -76,7 +76,7 @@ const Redes = () => {
             value={filtro}
             onChange={(e) => setFiltro(e.target.value)} /></Divmayor>
               <section>
-        <button onClick={openModal}>Ecxel</button>
+        <button >Excel</button>
         <button onClick={mostrarpdf}>Pdf</button>
         <button onClick={openModal}>+</button>
         <h2>Registros Municipio</h2>

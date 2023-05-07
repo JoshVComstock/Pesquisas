@@ -25,6 +25,7 @@ use App\Http\Controllers\Centropdfcontroller;
 use App\Http\Controllers\LaboratoriopdfController;
 use App\Http\Controllers\Municipiospdfcontroller;
 use App\Http\Controllers\PacientepffController;
+use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\RedespdfController;
 use App\Http\Controllers\RegistroHospitalespdfController;
 use App\Http\Controllers\RegistroProvinciaspdfController;
