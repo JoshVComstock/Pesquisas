@@ -20,6 +20,7 @@ import { getProvincias} from "../services/provincias";
 
 
 import { UseFech } from "../hooks/useFech";
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Home = () => {
   const { data: pacientes } = UseFech(getPacientes);
@@ -32,6 +33,83 @@ const Home = () => {
   const { data: cartilla } = UseFech(getCartillas);
   const { data: centro } = UseFech(getCentros);
   const { data: provincia } = UseFech(getProvincias);
+
+  const mostrarpdf = async () => {
+    const response = await fetch(
+      `${baseUrl}Grapciudad-pdf`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    return response;
+  };
+  const mostrarpdf2 = async () => {
+    const response = await fetch(
+      `${baseUrl}Grapcentro-pdf`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    return response;
+  };
+  const mostrarpdf3 = async () => {
+    const response = await fetch(
+      `${baseUrl}Grapresultadocentro-pdf`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    return response;
+  };
+  const mostrarpdf4 = async () => {
+    const response = await fetch(
+      `${baseUrl}Grapresultadociudad-pdf`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    return response;
+  };
+  const casos = async () => {
+    const response = await fetch(
+      `${baseUrl}Casostotales-pdf`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    return response;
+  };
+  
   return (
     <Dip>
       <Divmayor>
@@ -131,7 +209,7 @@ const Home = () => {
         </Divreport> */}
         <Grafia>
           <section>
-            <article><h1>casos totales de resultados</h1> <button>Generar reportes</button></article>
+            <article><h1>casos totales de resultados</h1> <button onClick={casos}>Generar Export</button></article>
           <Homee />
           </section>
     
@@ -140,20 +218,20 @@ const Home = () => {
           <Rescentroradar />
           </section>
           <section>
-         <article><h1>Cantidad de Pacientes por Centro</h1><button>Generar reportes</button></article>
+         <article><h1>Cantidad de Pacientes por Centro</h1><button onClick={mostrarpdf2}>Generar Export</button></article>
          <Porcentro />
          </section>
          <section>
-         <article><h1>Cantidad de casos por Centro</h1><button>Generar reportes</button></article>
+         <article><h1>Cantidad de casos por Centro</h1><button onClick={mostrarpdf3}>Generar Export</button></article>
          <Rescentro/>
          </section>
          {/*  */}
           <section>
-         <article><h1>Cantidad de Pacientes por ciudad</h1><button>Generar reportes</button></article>
+         <article><h1>Cantidad de Pacientes por ciudad</h1><button onClick={mostrarpdf}>Generar Export</button></article>
          <Porciudad />
          </section>
          <section>
-         <article><h1>Cantidad de casos por Centro</h1><button>Generar reportes</button></article>
+         <article><h1>Cantidad de casos por Ciudad</h1><button onClick={mostrarpdf4}>Generar Export</button></article>
          <Resulciudad/>
          </section>
         </Grafia>
@@ -192,6 +270,11 @@ const Grafia = styled.div`
     padding-bottom:1em;
     &:nth-child(2n){
       width:60%;
+    }
+    transition:all 0.2s ease-in-out;
+    &:hover{
+      transform:scale(1.01);
+      box-shadow:0 0 5px 2px #0002;
     }
   & article{
     width:100%;
