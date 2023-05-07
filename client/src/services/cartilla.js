@@ -43,3 +43,18 @@ export const postCartilla = async (nombremadre, apellidomadre, carnetmadre, idci
         callback();
     }
 }
+export const getCartillas = async () => {
+    try {
+        const response = await fetch(`${baseUrl}cartillas`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+        })
+        return response;
+
+    } catch (error) {
+        console.log(error);
+    }
+};

@@ -135,7 +135,7 @@ export const Master = styled.nav`
   flex-direction: column;
   gap: 0.2em;
   & p {
-    padding: 1em 0 0 2.5em;
+    padding: 1.5em 0 0 2.5em;
     font-size: 0.7em;
     color: #08103fce;
     font-weight: 400;

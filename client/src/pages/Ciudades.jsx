@@ -33,7 +33,7 @@ import { getciudadpdf } from "../reports/ciudadpdf";
 import Provincias from "./Provincias"
 import { deleteProvincias, getProvincias } from "../services/provincias";
 import CSVExporter from "../pages/Reportescom";
-import Homee from "./Graficoshome";
+import Homee from "./graficos/Graficoshome";
 const Ciudades = () => {
 
 // solo para el select

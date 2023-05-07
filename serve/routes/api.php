@@ -22,6 +22,7 @@ use App\Http\Controllers\ResultsController;
 use App\Http\Controllers\ciudadpdfController;
 use App\Http\Controllers\Provinciapdfcontroller;
 use App\Http\Controllers\Centropdfcontroller;
+use App\Http\Controllers\ConsultasController;
 use App\Http\Controllers\LaboratoriopdfController;
 use App\Http\Controllers\Municipiospdfcontroller;
 use App\Http\Controllers\PacientepffController;
@@ -127,3 +128,8 @@ Route::get('RegistroP-pdf',[RegistroProvinciaspdfController::class,'indexregistr
 Route::get('Laboratorio-pdf',[LaboratoriopdfController::class,'indexlaboratoriopdf']);
 Route::get('Redes-pdf',[RedespdfController::class,'indexredespdf']);
 Route::get('Pacientes-pdf',[PacientepffController::class,'indexpacientepdfcontroller']);
+
+
+Route::get('/consultasresultadocentro', [ConsultasController::class, 'resultadocentro']);
+Route::get('/consultasciudads', [ConsultasController::class, 'porciudad']);
+Route::get('/consultascentro', [ConsultasController::class, 'porcentro']);

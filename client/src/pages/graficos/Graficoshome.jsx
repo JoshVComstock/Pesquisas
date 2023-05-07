@@ -36,9 +36,9 @@ const processDataForChart = (data) => {
     });
   
     const processedData = [
-      { name: 'Positivos', cantidad: Math.max(0, counts.positivos) },
-      { name: 'Sospechosos', cantidad: Math.max(0, counts.sospechosos) },
-      { name: 'Negativos', cantidad: Math.max(0, counts.negativos) },
+      { name: 'Positivos', pacientes: Math.max(0, counts.positivos) },
+      { name: 'Sospechosos', pacientes: Math.max(0, counts.sospechosos) },
+      { name: 'Negativos', pacientes: Math.max(0, counts.negativos) },
     ];
   
     return processedData;
@@ -68,7 +68,7 @@ const Homee = () => {
           <YAxis  fill="#1b158e" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="cantidad" fill="rgb(148, 58, 232)" />
+          <Bar dataKey="pacientes" fill="rgb(148, 58, 232)" />
         </BarChart>
       </ResponsiveContainer>
       </ChartContainer>
