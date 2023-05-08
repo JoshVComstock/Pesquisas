@@ -59,56 +59,49 @@ const Login = () => {
   };
   return (
     <Container>
-      <Divlogin>
-        <Form>
-          <Iavatar src={Avatar} alt="" />
-          <H2>Tamizaje</H2>
-          <P>Neonatal</P>
-          <Divinput>
-            <Di>
-              <I>
-                <Img src={User} alt="" ColorIcon={ColorIcon1} filter={filter} />
-              </I>
-            </Di>
-            <Dinput>
-              <Input
-                type="text"
-                placeholder=" "
-                value={email}
-                onChange={(e) => {
-                  handleChange1();
-                  setEmail(e.target.value);
-                }}
-              />
-              <Label>Usuario</Label>
-            </Dinput>
-          </Divinput>
-          <Divinput>
-            <Di>
-              <I>
-                <Img src={Lock} alt="" ColorIcon={ColorIcon} filter={filter} />
-              </I>
-            </Di>
-            <Dinput>
-              <Input
-                type="password"
-                placeholder=" "
-                value={password}
-                onChange={(e) => {
-                  handleChange();
-                  setPassword(e.target.value);
-                }}
-              />
-              <Label>Password</Label>
-            </Dinput>
-          </Divinput>
-          <Boton onClick={ enviar}>Ingresar</Boton>
-        </Form>
-        <Section>
-          <h3>Bienvenido al sistema</h3> <br />
-          <P>Terminos y condiciones</P>{" "}
-        </Section>
-      </Divlogin>
+      <article>
+        <div>
+          <form>
+            <h1>bienvenido</h1>
+            <p>Tamizaje Neonatal</p>
+            <section>
+              <img src={User} alt="icono" />
+              <label>Usuario</label>
+            </section>
+            <input
+              type="text"
+              placeholder=" "
+              value={email}
+              onChange={(e) => {
+                handleChange1();
+                setEmail(e.target.value);
+              }}
+            />
+            <section>
+              <img src={Lock} alt="img" />
+              <label>Password</label>
+            </section>
+            <input
+              type="password"
+              placeholder=" "
+              value={password}
+              onChange={(e) => {
+                handleChange();
+                setPassword(e.target.value);
+              }}
+            />
+            <button onClick={enviar}>Ingresar</button>
+            <p>Terminos y condiciones</p>
+          </form>
+        </div>
+        <section>
+          <div>
+            <section>
+              <h3>"En cada latido de tu corazón, reside el poder de cuidar"</h3>
+            </section>
+          </div>
+        </section>
+      </article>
     </Container>
   );
 };
@@ -120,164 +113,122 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ffffff;
-  font-family: "Poppins", sans-serif;
-  overflow: hidden;
-  color: #000000;
-  &::before {
-    position: absolute;
-    content: "";
-    background-color: #2b44d1;
-    height: 100vh;
-    width: 100vh;
-    border-radius: 50vw 50vw;
-    z-index: 1;
-    left: -30%;
-    top: -20%;
-    box-shadow: 5px 5px 6px 8px rgba(0, 0, 0, 0.3);
-  }
-`;
+  background: linear-gradient(
+    to right,
+    rgb(196, 219, 245) 50%,
+    rgb(29, 30, 107) 50%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
-const Section = styled.section`
-  width: 300px;
-  height: 100%;
-  text-align: center;
-  color: #ffffff;
-  background-color: #2b44d1;
-  display: flex;
-  gap: 1em;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  &::after {
-    position: absolute;
-    content: "";
-    background-color: #d12bd17b;
-    height: 100px;
-    width: 100px;
-    border-radius: 50px 50px;
-    z-index: 1;
-    right: 0;
-    bottom: 0;
-  }
-  &::before {
-    position: absolute;
-    content: "";
-    background-color: #510d669d;
-    height: 100px;
-    width: 100px;
-    border-radius: 50px 50px;
-    z-index: 1;
-    right: 30px;
-    bottom: 20px;
-  }
-`;
-const Divlogin = styled.div`
-  background-color: transparent;
-  padding: 20px;
-  border-radius: 5px;
-  display: flex;
+  & > article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    width: 60%;
+    height: 70%;
+    border-radius: 0.5em;
+    & > div {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 2em;
+      & img {
+        width: 15px;
+      }
+      & form {
+        width: 65%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.5em;
+        & h1 {
+          text-transform: uppercase;
+          font-weight: 100;
 
-  width: 50%;
-  height: 60%;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-`;
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-const Img = styled.img`
-  width: 25px;
-  height: 25px;
-  filter: ${(p) => (p.ColorIcon ? p.filter : "")};
-`;
-const H2 = styled.h2`
-  font-size: 2.9rem;
-  margin: 15px 0;
-`;
-const P = styled.h2`
-  font-size: 1rem;
-`;
-const Divinput = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-`;
-const I = styled.div``;
-const Di = styled.i`
-  display: flex;
-  align-items: center;
-`;
-const Iavatar = styled.img`
-  width: 75px;
-  height: 75px;
-`;
-const Dinput = styled.div`
-  position: relative;
-  padding: 1rem;
-  width: 100%;
-`;
-const Label = styled.label`
-  position: absolute;
-  top: 25px;
-  left: 2rem;
-  background: white;
-  color: rgb(143, 143, 143);
-  pointer-events: none;
-  transition: all 0.5s;
-  cursor: auto;
-`;
-const Input = styled.input`
-  display: block;
-  padding: 0.5rem 2rem;
-  border-radius: 5px;
-  border: 0;
-  outline: solid 2px rgb(143, 143, 143);
-  &:focus {
-    outline: solid 2px #4285f4;
-  }
-  &:focus + Label {
-    transform: translateY(-1.2rem);
-    font-size: 13px;
-    color: #4285f4;
-    background-color: #ffffff;
-  }
-  &:not(:placeholder-shown) + Label {
-    transform: translateY(-1.2rem);
-    transition: 0.5s;
-    font-size: 13px;
-  }
-`;
-const Span1 = styled.span`
-  position: absolute;
-  background: #000;
-  width: 100%;
-  height: 1.5px;
-  top: 0;
-  left: -100%;
-  transition: 0.6s;
-`;
-const Boton = styled.button`
-  width: 100%;
-  position: relative;
-  padding: 10px 0;
-  border: none;
-  outline: none;
-  background: #0e2447;
-  color: #fff;
-  cursor: pointer;
-  transition: 0.8s;
-  overflow: hidden;
-  font-size: 17px;
+          &::first-letter {
+            font-weight: 100;
+            font-size: 1.8em;
+            color: rgb(29, 30, 107);
+          }
+        }
+        & p {
+          margin: 0 0 2em 0;
+        }
+        & label {
+          font-size: 1em;
+        }
+        & input {
+          width: 100%;
+          padding: 0.7em 0;
+          background-color: transparent;
+          border: solid 1px #0002;
+          border-radius: 0.4em;
+        }
+        & button {
+          background-color: rgb(95, 61, 179);
+          color: #fff;
+          width: 100%;
+          padding: 0.5em 0;
+          font-weight: 100;
+          font-size: 1em;
+          cursor: pointer;
+          transition:all 0.5s ease-in-out;
+          &:hover{
+            background-color:#fff1;
+            color:rgb(95, 61, 179);
+          }
+        }
+      }
+    }
+    & > section {
+      width: 50%;
+      height: 100%;
+      background-color: rgb(217, 218, 225);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+      & div {
+        width: 10em;
+        height: 10em;
+        border-radius: 50%;
+        background-color: rgb(95, 61, 179);
+        transition:all 0.5s ease-in-out;
+        &:hover {
+          background-color:transparent;
+          & section {
+            display: flex;
+            text-transform:uppercase;
+z-index:2;
+font-size:0.8em;
 
-  &:hover {
-    background: #ffffffa9;
-    color: #4285f4;
+            &::first-letter{
+              color:rgb(95, 61, 179);
+              font-size:0.8em;
+            }
+          }
+        }
+      }
+      &::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 50%;
+        bottom: 0;
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        background-color: rgba(255, 255, 255, 0.307);
+      }
+      & section {
+        display: none;
+      }
+    }
   }
 `;

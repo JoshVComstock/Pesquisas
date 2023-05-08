@@ -23,6 +23,7 @@ use App\Http\Controllers\ciudadpdfController;
 use App\Http\Controllers\Provinciapdfcontroller;
 use App\Http\Controllers\Centropdfcontroller;
 use App\Http\Controllers\ConsultasController;
+use App\Http\Controllers\ConsultaspdfController;
 use App\Http\Controllers\LaboratoriopdfController;
 use App\Http\Controllers\Municipiospdfcontroller;
 use App\Http\Controllers\PacientepffController;
@@ -134,3 +135,13 @@ Route::get('/consultasresultadocentro', [ConsultasController::class, 'resultadoc
 Route::get('/consultasresultadociudad', [ConsultasController::class, 'resultadociudad']);
 Route::get('/consultasciudads', [ConsultasController::class, 'porciudad']);
 Route::get('/consultascentro', [ConsultasController::class, 'porcentro']);
+
+
+Route::get('Grapciudad-pdf', [ConsultaspdfController::class, 'indexgrapciudadpdf']);
+Route::get('Grapcentro-pdf', [ConsultaspdfController::class, 'indexgrapcentropdf']);
+Route::get('Grapresultadocentro-pdf', [ConsultaspdfController::class, 'indexgraprescentropdf']);
+Route::get('Grapresultadociudad-pdf', [ConsultaspdfController::class, 'indexgrapresciudadpdf']);
+Route::get('Casostotales-pdf', [ConsultaspdfController::class, 'casostotales']);
+
+
+

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
 import New from "./../img/new.jpg";
@@ -7,10 +7,10 @@ import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
-import LaboratoriosForm from '../models/LaboratoriosForm';
+import LaboratoriosForm from "../models/LaboratoriosForm";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 import CSVExporter from "../pages/Reportescom";
-import styled from 'styled-components';
+import styled from "styled-components";
 import {
   Container,
   Botonacciones,
@@ -22,21 +22,31 @@ import {
   Tbody,
   Th,
   Trdatos,
-  Tabla,Sectionpa,Divreport,Divmayor,Sectiontabla
+  Tabla,
+  Sectionpa,
+  Divreport,
+  Divmayor,
+  Sectiontabla,
 } from "../styles/crud";
 import Laboratorioicons from "../img/icons/Laboratorio.jpg";
-import mun from "../img/icons/Municipio.jpg";
+import mun from "../img/icons/Redes.jpg";
 
 import { UseFech } from "../hooks/useFech";
 import { deleteLaboratorios, getLaboratorios } from "../services/Laboratorios";
-import Redes from './Redes';
+import Redes from "./Redes";
+import { getRedes } from "../services/Redes";
 const Laboratorios = () => {
+  const {  data: redes } = UseFech(getRedes);
+
+
   const apiUrl = `${baseUrl}ciudades`;
-    const csvHeaders = ["id", "ciudad"];
+  const csvHeaders = ["id", "ciudad"];
   const [actual, setLaboratorioactual] = useState({});
   const { getApi, data: laboratorios } = UseFech(getLaboratorios);
   const { openModal, closeModal } = useModal(
-    Object.keys(actual).length > 0 ? "Editar Registro de Laboratorio" : "Agregar Laboratorio",
+    Object.keys(actual).length > 0
+      ? "Editar Registro de Laboratorio"
+      : "Agregar Laboratorio",
     <LaboratoriosForm
       getApi={getApi}
       actual={actual}
@@ -54,15 +64,12 @@ const Laboratorios = () => {
   }, [actual]);
 
   const mostrarpdf = async () => {
-    const response = await fetch(
-      `${baseUrl}Laboratorio-pdf`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${baseUrl}Laboratorio-pdf`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     window.open(url, "_blank");
@@ -70,110 +77,119 @@ const Laboratorios = () => {
   };
   return (
     <Container>
-     <Sectionpa>
-     <Divreport>
+      <Sectionpa>
+        <Divreport>
           <div>
-          <img src={Laboratorioicons} alt="" />
+            <img src={Laboratorioicons} alt="" />
             <section>
               <h3>{laboratorios.length}</h3>
               <p>n° registros</p>
               <p>Laboratorios</p>
             </section>
-         
           </div>
           <div>
-          <img src={mun} alt="" />
+            <img src={mun} alt="" />
             <section>
-              <h3>6</h3>
+              <h3>{redes.length}</h3>
               <p>n° registros</p>
-              <p>Municipio</p>
+              <p>redes</p>
             </section>
-</div>
-      
+          </div>
         </Divreport>
         <Sectiond>
+          <Dippadretabla>
+            <Divmayor>
+              <label>buscar</label>{" "}
+              <input
+                type="text"
+                placeholder="Buscar"
+                value={filtro}
+                onChange={(e) => setFiltro(e.target.value)}
+              />
+            </Divmayor>
+            <section>
+              <button>
+                <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
+              </button>
 
-     <Dippadretabla>
-     <Divmayor><label >buscar</label> <input  type="text"
-            placeholder="Buscar"
-            value={filtro}
-            onChange={(e) => setFiltro(e.target.value)} /></Divmayor>
-       <section>
-       <button >
-    <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
-
-       </button>
-
-       <button onClick={mostrarpdf} >Pdf</button>
-       <button onClick={openModal} >+</button>
-        <h2>Registros Laboratorios</h2>
-       </section>
-          <Sectiontabla>
-      <Divtabla>
-        <Tabla >
-          <Thead>
-            <tr>
-              <Th>Nº</Th>
-              <Th>NOMBRE</Th>
-              <Th>DIRECCIÓN</Th>
-              <Th>TELÉFONO</Th>
-              <Th>PROVINCIA</Th>
-              <Th>ACCIONES</Th>
-            </tr>
-          </Thead>
-          {laboratorios
-            .filter((v) =>
-              v.nombre.toLowerCase().includes(filtro.toLowerCase())
-            )
-            .map((v, i) => (
-              <Tbody key={i}>
-                <tr>
-                  <Trdatos>{i + 1}</Trdatos>
-                  <Trdatos>{v.nombre}</Trdatos>
-                  <Trdatos>{v.direccion}</Trdatos>
-                  <Trdatos>{v.telefono}</Trdatos>
-                  <Trdatos>{v.provincia}</Trdatos>
-                  <Trdatos>
-                    <Botonacciones>
-                      <div>
-                          <Iconsacciones
-                            onClick={() => {setLaboratorioactual(v);}}
-                        >Editar</Iconsacciones>
-                       
-                      </div>
-                      <div>
-                          <Iconsacciones1 onClick={() => deleteLaboratorios(v.id,getApi)}>Eliminar</Iconsacciones1>
-                      </div>
-                    </Botonacciones>
-                  </Trdatos>
-                </tr>
-              </Tbody>
-            ))}
-      </Tabla>
-            </Divtabla>
-          </Sectiontabla>
-        </Dippadretabla>
-        <Dippadretabla>
-         <Redes/> 
-        </Dippadretabla>
-      </Sectiond>
+              <button onClick={mostrarpdf}>Pdf</button>
+              <button onClick={openModal}>+</button>
+              <h2>Registros Laboratorios</h2>
+            </section>
+            <Sectiontabla>
+              <Divtabla>
+                <Tabla>
+                  <Thead>
+                    <tr>
+                      <Th>Nº</Th>
+                      <Th>NOMBRE</Th>
+                      <Th>DIRECCIÓN</Th>
+                      <Th>TELÉFONO</Th>
+                      <Th>PROVINCIA</Th>
+                      <Th>ACCIONES</Th>
+                    </tr>
+                  </Thead>
+                  {laboratorios
+                    .filter((v) =>
+                      v.nombre.toLowerCase().includes(filtro.toLowerCase())
+                    )
+                    .map((v, i) => (
+                      <Tbody key={i}>
+                        <tr>
+                          <Trdatos>{i + 1}</Trdatos>
+                          <Trdatos>{v.nombre}</Trdatos>
+                          <Trdatos>{v.direccion}</Trdatos>
+                          <Trdatos>{v.telefono}</Trdatos>
+                          <Trdatos>{v.provincia}</Trdatos>
+                          <Trdatos>
+                            <Botonacciones>
+                              <div>
+                                <Iconsacciones
+                                  onClick={() => {
+                                    setLaboratorioactual(v);
+                                  }}
+                                >
+                                  Editar
+                                </Iconsacciones>
+                              </div>
+                              <div>
+                                <Iconsacciones1
+                                  onClick={() =>
+                                    deleteLaboratorios(v.id, getApi)
+                                  }
+                                >
+                                  Eliminar
+                                </Iconsacciones1>
+                              </div>
+                            </Botonacciones>
+                          </Trdatos>
+                        </tr>
+                      </Tbody>
+                    ))}
+                </Tabla>
+              </Divtabla>
+            </Sectiontabla>
+          </Dippadretabla>
+          <Dippadretabla>
+            <Redes />
+          </Dippadretabla>
+        </Sectiond>
       </Sectionpa>
     </Container>
-  )
-}
+  );
+};
 
 export default Laboratorios;
 export const Sectiond = styled.div`
-width:100%;
-display:flex;
-flex-direction:row;
-flex-wrap: wrap;
-gap:2em;
-
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2em;
 `;
 export const Dippadretabla = styled.div`
   width: 47.8%;
-  
+
   margin: 0 auto;
   background: rgb(255, 255, 255);
   overflow: hidden;
@@ -184,12 +200,11 @@ export const Dippadretabla = styled.div`
   border: solid 1px #0002;
   & section {
     width: 100%;
-    display: flex; 
-    gap:0.5em;
+    display: flex;
+    gap: 0.5em;
     flex-direction: row-reverse;
     justify-content: flex-end;
     & > button {
-      
       width: 2.8em;
       height: 2.8em;
       background-color: rgb(34, 152, 202);
@@ -197,7 +212,7 @@ export const Dippadretabla = styled.div`
       border-radius: 0 0 8px 8px;
       font-size: 15px;
       transition: all 0.5s ease;
-      box-shadow:0 5px 5px #00002271;
+      box-shadow: 0 5px 5px #00002271;
       /* &:nth-child(2) {
   background-color:rgba(145, 22, 0, 0.802);
   color:#fff;}
@@ -205,7 +220,7 @@ export const Dippadretabla = styled.div`
   background-color: #008610c3;
   color:#fff;} */
       &:hover {
-      height: 3em;
+        height: 3em;
       }
     }
     & h2 {
@@ -219,4 +234,3 @@ export const Dippadretabla = styled.div`
     }
   }
 `;
-
