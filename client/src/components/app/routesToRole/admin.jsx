@@ -76,7 +76,7 @@ const AdminComponent = () => {
           </Options>
         )}
       </Diva>
-      <p>Reportes</p>
+      {/* <p>Reportes</p>
       <Diva onClick={() => setIsExpandedreportes(!isExpandedreportes)}>
         <Divd>
           <Img src="src\img\analitica.png" alt="" />
@@ -84,7 +84,7 @@ const AdminComponent = () => {
           <Imga src="src\img\abajo.png" alt="" />
         </Divd>
         {isExpandedreportes && <Options></Options>}
-      </Diva>
+      </Diva> */}
       <p>Paciente</p>
       <Diva onClick={() => setIsExpandedpaciente(!isExpandedpaciente)}>
         <Divd>
@@ -135,7 +135,7 @@ export const Master = styled.nav`
   flex-direction: column;
   gap: 0.2em;
   & p {
-    padding: 1em 0 0 2.5em;
+    padding: 1.5em 0 0 2.5em;
     font-size: 0.7em;
     color: #08103fce;
     font-weight: 400;
@@ -160,7 +160,7 @@ export const Options = styled.div`
 `;
 
 export const Diva = styled.div`
-  background: #fff;
+  background: rgb(245, 245, 243);
   cursor: pointer;
   text-decoration: none;
   flex-direction: column;
@@ -169,7 +169,7 @@ export const Diva = styled.div`
   margin: 1em 0;
 `;
 export const Divd = styled.div`
-  background: #fff;
+  background: rgb(245, 245, 243);
   cursor: pointer;
   text-decoration: none;
   color: #000000;

@@ -22,6 +22,7 @@ use App\Http\Controllers\ResultsController;
 use App\Http\Controllers\ciudadpdfController;
 use App\Http\Controllers\Provinciapdfcontroller;
 use App\Http\Controllers\Centropdfcontroller;
+use App\Http\Controllers\ConsultasController;
 use App\Http\Controllers\LaboratoriopdfController;
 use App\Http\Controllers\Municipiospdfcontroller;
 use App\Http\Controllers\PacientepffController;
@@ -29,6 +30,7 @@ use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\RedespdfController;
 use App\Http\Controllers\RegistroHospitalespdfController;
 use App\Http\Controllers\RegistroProvinciaspdfController;
+use App\Http\Controllers\ResultadosController;
 use GuzzleHttp\Middleware;
 
 Route::post('register', [UserController::class, 'register']);
@@ -99,6 +101,17 @@ Route::get('/control_filtros', [Control_filtrosController::class, 'index']);
 Route::post('/control_filtros', [Control_filtrosController::class, 'store']);
 Route::delete('/control_filtros/{id}', [Control_filtrosController::class, 'destroy']);
 
+Route::get('/resultados', [ResultadosController::class, 'index']);
+Route::post('/resultados', [ResultadosController::class, 'store']);
+Route::delete('/resultados/{id}', [ResultadosController::class, 'destroy']);
+
+Route::get('/pacientes', [PacientesController::class, 'index']);
+Route::post('/pacientes', [PacientesController::class, 'store']);
+Route::delete('/pacientes/{id}', [PacientesController::class, 'destroy']);
+
+
+
+
 Route::get('/cartillas', [CartillasController::class, 'index']);
 Route::post('/cartillas', [CartillasController::class, 'store']);
 
@@ -115,3 +128,9 @@ Route::get('RegistroP-pdf',[RegistroProvinciaspdfController::class,'indexregistr
 Route::get('Laboratorio-pdf',[LaboratoriopdfController::class,'indexlaboratoriopdf']);
 Route::get('Redes-pdf',[RedespdfController::class,'indexredespdf']);
 Route::get('Pacientes-pdf',[PacientepffController::class,'indexpacientepdfcontroller']);
+
+
+Route::get('/consultasresultadocentro', [ConsultasController::class, 'resultadocentro']);
+Route::get('/consultasresultadociudad', [ConsultasController::class, 'resultadociudad']);
+Route::get('/consultasciudads', [ConsultasController::class, 'porciudad']);
+Route::get('/consultascentro', [ConsultasController::class, 'porcentro']);

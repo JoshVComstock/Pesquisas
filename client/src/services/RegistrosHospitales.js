@@ -1,7 +1,7 @@
 const baseUrl =
     import.meta.env.VITE_BACKEND_URL
 
-export const getRegistroprovincias = async () => {
+export const getRegistrohospitales = async () => {
     try {
         const response = await fetch(`${baseUrl}registro_hospitales`, {
             method: "GET",

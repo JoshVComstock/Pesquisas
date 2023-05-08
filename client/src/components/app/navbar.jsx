@@ -59,6 +59,8 @@ const Divheader = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: rgb(245, 245, 243);
+
 `;
 
 const Select = styled.select`
@@ -67,6 +69,8 @@ const Select = styled.select`
   transition: height 0.5s ease;
   outline: none;
   cursor: pointer;
+  background-color:transparent;
+
 `;
 
 const Option = styled.option`
@@ -82,14 +86,14 @@ const Option = styled.option`
 const Topnav = styled.div`
   width: 100%;
   height: 12vh;
-  background-color: #fdfdfd;
+  background-color: rgb(245, 245, 243);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  box-shadow: 0px 0px 2px 0px #0000004e;
+  box-shadow: 0px 2px 5px 0px #0000004e;
   padding: 0 3em;
-  z-index: 2;
+  z-index: 5;
 `;
 
 const Logo = styled.div`
@@ -130,7 +134,7 @@ const Divo = styled.div`
 `;
 const Header = styled.header`
   width: 300px;
-  box-shadow: 0px 0px 2px 0px #0000004e;
-  z-index: 1;
+  z-index: 4;
   height: 100%;
+  background-color:rgb(245, 245, 243);
 `;

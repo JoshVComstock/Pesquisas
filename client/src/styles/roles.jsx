@@ -6,13 +6,13 @@ export const Img = styled.img`
   width: 22px;
   height: 22px;
   margin: 0 10px;
-  background: #fff;
+  background: transparent;
 `;
 export const Imga = styled.img`
   width: 10px;
   height: 8px;
   margin: 0 20%;
-  background: #fff;
+  background: transparent;
   transition:all ease 2s;
 `;
 

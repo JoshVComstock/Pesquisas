@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   height: 100%;
-  background-color: #f4f4f4;
+  background-color: rgb(236, 237, 241);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,6 +28,7 @@ export const Divreport = styled.div`
   display: flex;
   flex-wrap: nowrap;
   gap: 2em;
+  
   & div {
     color:#fff;
     /* &:nth-child(2n) {
@@ -49,7 +50,8 @@ export const Divreport = styled.div`
     z-index: 1;
     color:#000;
     border-radius: 5px;
-    background-color:#fff;
+    background-color:rgb(245, 245, 243);
+
     &::before {
       content: "";
       bottom: -0.8em;
@@ -57,7 +59,8 @@ export const Divreport = styled.div`
       border: solid 1px #0002;
       width: 90%;
       height: 0.69em;
-      background-color: #fff;
+      background-color: rgb(245, 245, 243);
+
       z-index: 1;
       border-radius: 0 0 5px 5px;
     }
@@ -205,6 +208,8 @@ export const Divtabla = styled.div`
   margin: 1em auto;
   border-collapse: collapse;
   text-align:center;
+  background-color: rgb(245, 245, 243);
+
 `;
 export const Thead = styled.thead`
   color: #000;
@@ -217,7 +222,8 @@ display:flex;
 export const Dippadretabla = styled.div`
   width: 100%;
   margin: 0 auto;
-  background: rgb(255, 255, 255);
+  background-color: rgb(245, 245, 243);
+
   overflow: hidden;
   height: 50vh;
   display: flex;
