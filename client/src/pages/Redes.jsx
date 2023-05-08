@@ -56,7 +56,7 @@ const Redes = () => {
   }, [redactual]);
   const mostrarpdf = async () => {
     const response = await fetch(
-      `${baseUrl}Municipios-pdf`,
+      `${baseUrl}Redes-pdf`,
       {
         method: "GET",
         headers: {

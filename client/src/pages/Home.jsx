@@ -16,8 +16,7 @@ import { getRegistroprovincias } from "../services/Registroprovincias";
 import { getRegistrohospitales } from "../services/RegistrosHospitales";
 import { getCartillas } from "../services/cartilla";
 import { getCentros } from "../services/centros";
-import { getProvincias} from "../services/provincias";
-
+import { getProvincias } from "../services/provincias";
 
 import { UseFech } from "../hooks/useFech";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
@@ -35,81 +34,66 @@ const Home = () => {
   const { data: provincia } = UseFech(getProvincias);
 
   const mostrarpdf = async () => {
-    const response = await fetch(
-      `${baseUrl}Grapciudad-pdf`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${baseUrl}Grapciudad-pdf`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     window.open(url, "_blank");
     return response;
   };
   const mostrarpdf2 = async () => {
-    const response = await fetch(
-      `${baseUrl}Grapcentro-pdf`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${baseUrl}Grapcentro-pdf`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     window.open(url, "_blank");
     return response;
   };
   const mostrarpdf3 = async () => {
-    const response = await fetch(
-      `${baseUrl}Grapresultadocentro-pdf`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${baseUrl}Grapresultadocentro-pdf`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     window.open(url, "_blank");
     return response;
   };
   const mostrarpdf4 = async () => {
-    const response = await fetch(
-      `${baseUrl}Grapresultadociudad-pdf`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${baseUrl}Grapresultadociudad-pdf`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     window.open(url, "_blank");
     return response;
   };
   const casos = async () => {
-    const response = await fetch(
-      `${baseUrl}Casostotales-pdf`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${baseUrl}Casostotales-pdf`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     window.open(url, "_blank");
     return response;
   };
-  
+
   return (
     <Dip>
       <Divmayor>
@@ -131,7 +115,7 @@ const Home = () => {
             </section>
           </div>
           <div>
-          <img src="src\img\icons\Laboratorio.jpg" alt="" />
+            <img src="src\img\icons\Laboratorio.jpg" alt="" />
 
             <section>
               <h3>{laboratorios.length}</h3>
@@ -140,15 +124,14 @@ const Home = () => {
             </section>
           </div>
           <div>
-          <img src="src\img\icons\municipio.jpg" alt="" />
-           
+            <img src="src\img\icons\municipio.jpg" alt="" />
+
             <section>
               <h3>{municipios.length}</h3>
               <p>n° registros</p>
               <p>Municipios</p>
             </section>
           </div>
-          
         </Divreport>
         <Divreport>
           <div>
@@ -168,7 +151,7 @@ const Home = () => {
             </section>
           </div>
           <div>
-          <img src="src\img\registro.png" alt="" />
+            <img src="src\img\registro.png" alt="" />
 
             <section>
               <h3>{reghosp.length}</h3>
@@ -177,15 +160,14 @@ const Home = () => {
             </section>
           </div>
           <div>
-          <img src="src\img\icons\municipio.jpg" alt="" />
-           
+            <img src="src\img\icons\municipio.jpg" alt="" />
+
             <section>
               <h3>{cartilla.length}</h3>
               <p>n° registros</p>
               <p>cartilla</p>
             </section>
           </div>
-          
         </Divreport>
         {/* <Divreport>
           <div>
@@ -209,31 +191,45 @@ const Home = () => {
         </Divreport> */}
         <Grafia>
           <section>
-            <article><h1>casos totales de resultados</h1> <button onClick={casos}>Generar Export</button></article>
-          <Homee />
+            <article>
+              <h1>casos totales de resultados</h1>
+              <button onClick={casos}>Generar Export</button>
+            </article>
+            <Homee />
           </section>
-    
-       
-         <section>
-          <Rescentroradar />
+
+          <section>
+            <Rescentroradar />
           </section>
           <section>
-         <article><h1>Cantidad de Pacientes por Centro</h1><button onClick={mostrarpdf2}>Generar Export</button></article>
-         <Porcentro />
-         </section>
-         <section>
-         <article><h1>Cantidad de casos por Centro</h1><button onClick={mostrarpdf3}>Generar Export</button></article>
-         <Rescentro/>
-         </section>
-         {/*  */}
+            <article>
+              <h1>Cantidad de Pacientes por Centro</h1>
+              <button onClick={mostrarpdf2}>Generar Export</button>
+            </article>
+            <Porcentro />
+          </section>
           <section>
-         <article><h1>Cantidad de Pacientes por ciudad</h1><button onClick={mostrarpdf}>Generar Export</button></article>
-         <Porciudad />
-         </section>
-         <section>
-         <article><h1>Cantidad de casos por Ciudad</h1><button onClick={mostrarpdf4}>Generar Export</button></article>
-         <Resulciudad/>
-         </section>
+            <article>
+              <h1>Cantidad de casos por Centro</h1>
+              <button onClick={mostrarpdf3}>Generar Export</button>
+            </article>
+            <Rescentro />
+          </section>
+          {/*  */}
+          <section>
+            <article>
+              <h1>Cantidad de Pacientes por ciudad</h1>
+              <button onClick={mostrarpdf}>Generar Export</button>
+            </article>
+            <Porciudad />
+          </section>
+          <section>
+            <article>
+              <h1>Cantidad de casos por Ciudad</h1>
+              <button onClick={mostrarpdf4}>Generar Export</button>
+            </article>
+            <Resulciudad />
+          </section>
         </Grafia>
       </Divmayor>
     </Dip>
@@ -242,69 +238,67 @@ const Home = () => {
 
 export default Home;
 const Dip = styled.div`
-width:100%;
-height:100%;
-background-color: rgb(236, 237, 241);
-padding:2em 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(236, 237, 241);
+  padding: 2em 0;
 `;
 const Divmayor = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
   margin: 0em auto;
-  background-color:transparent;
+  background-color: transparent;
 `;
 
 const Grafia = styled.div`
   display: flex;
   width: 100%;
-  flex-direction:row;
-  gap:1em;
-  flex-wrap:wrap;
-  & section{
+  flex-direction: row;
+  gap: 1em;
+  flex-wrap: wrap;
+  & section {
     display: flex;
-    width:38%;
-    flex-direction:column;
-    border:solid 1px #0002;
-    background-color:rgb(245, 245, 243);
-    padding-bottom:1em;
-    &:nth-child(2n){
-      width:60%;
+    width: 38%;
+    flex-direction: column;
+    border: solid 1px #0002;
+    background-color: rgb(245, 245, 243);
+    padding-bottom: 1em;
+    &:nth-child(2n) {
+      width: 60%;
     }
-    transition:all 0.2s ease-in-out;
-    &:hover{
-      transform:scale(1.01);
-      box-shadow:0 0 5px 2px #0002;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 0 5px 2px #0002;
     }
-  & article{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:#000000;
-    border-bottom:solid 1px #0002;
-    padding:1em 0;
-    & button{
-    cursor: pointer;
-    border:solid 1px #0002;
-    margin:0 1em;
-    background-color:rgb(34, 152, 202);
-    color:#fff;
-}
-    & h1{
-    color:#000000;
-    font-size:0.9em;
+    & article {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #000000;
+      border-bottom: solid 1px #0002;
+      padding: 1em 0;
+      & button {
+        cursor: pointer;
+        border: solid 1px #0002;
+        margin: 0 1em;
+        background-color: rgb(34, 152, 202);
+        color: #fff;
+      }
+      & h1 {
+        color: #000000;
+        font-size: 0.9em;
 
-&::first-letter{
-  color:blue;
-  text-transform:uppercase;
-  font-size:1.1em;
-
-}
+        &::first-letter {
+          color: blue;
+          text-transform: uppercase;
+          font-size: 1.1em;
+        }
+      }
     }
   }
-  }
-
 `;
 export const Divreport = styled.div`
   width: 100%;
@@ -330,9 +324,9 @@ export const Divreport = styled.div`
     padding: 1em;
     position: relative;
     z-index: 1;
-    color:#000;
+    color: #000;
     border-radius: 5px;
-    background-color:rgb(245, 245, 243);
+    background-color: rgb(245, 245, 243);
 
     &::before {
       content: "";
@@ -341,7 +335,7 @@ export const Divreport = styled.div`
       border: solid 1px #0002;
       width: 90%;
       height: 0.69em;
-      background-color:rgb(245, 245, 243);
+      background-color: rgb(245, 245, 243);
 
       z-index: 1;
       border-radius: 0 0 5px 5px;
@@ -370,7 +364,7 @@ export const Divreport = styled.div`
         height: 50%;
         color: #fff;
         text-align: center;
-        font-size:1em;
+        font-size: 1em;
         border: solid 1px #0002;
         &::first-letter {
           font-size: 1.6em;

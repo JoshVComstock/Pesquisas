@@ -79,7 +79,7 @@ const Centros = () => {
             <section>
               <h3>{mun.length}</h3>
               <p>n° registros</p>
-              <p>red</p>
+              <p>Municipios</p>
             </section>
           </div>
           <div>
