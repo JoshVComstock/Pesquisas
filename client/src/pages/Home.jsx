@@ -307,13 +307,13 @@ export const Divreport = styled.div`
   flex-wrap: nowrap;
   gap: 2em;
   & div {
-    /* &:nth-child(2n) {
-  background-color: #fff;
+    &:nth-child(2n) {
+  background-color: rgb(245, 245, 243);
   color:#000;
 }
 
   &:nth-child(2n+1) {
-  background-color: #30A9DE; } */
+  }
     width: calc(100% / 4);
     height: 80%;
     display: flex;
@@ -366,6 +366,7 @@ export const Divreport = styled.div`
         text-align: center;
         font-size: 1em;
         border: solid 1px #0002;
+
         &::first-letter {
           font-size: 1.6em;
         }

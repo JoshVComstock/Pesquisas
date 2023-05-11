@@ -46,9 +46,9 @@ const AdminComponent = () => {
               <Img src={City} alt="" />
               Ciudades - Provincia
             </Linkes>
-            {/* <Linkes to="/redes">
-              <Img src={Redess} alt="" /> Redes
-            </Linkes> */}
+             <Linkes to="/consultas">
+              <Img src={Redess} alt="" /> consultas
+            </Linkes> 
             <Linkes to="/centros">
               <Img src={Centros} alt="" /> Centros-Municipios
             </Linkes>

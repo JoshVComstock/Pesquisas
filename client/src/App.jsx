@@ -22,6 +22,7 @@ import Control_Filtros from "./pages/Control_Filtros";
 import Cartilla from "./Models/Cartilla";
 import Resultadoform from "./models/Resultadoform";
 import Pacientes from "./pages/Pacientes";
+import Consultas from "./pages/consultas";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
                   <Route path="laboratorios" element={<Laboratorios />} />
                   <Route path="provincias" element={<Provincias />} />
                   <Route path="cartilla" element={<Cartilla />} />
+                  <Route path="consultas" element={<Consultas />} />
                   <Route
                     path="registro_provincias"
                     element={<Registro_provincias />}

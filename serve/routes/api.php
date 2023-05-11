@@ -142,6 +142,12 @@ Route::get('Grapcentro-pdf', [ConsultaspdfController::class, 'indexgrapcentropdf
 Route::get('Grapresultadocentro-pdf', [ConsultaspdfController::class, 'indexgraprescentropdf']);
 Route::get('Grapresultadociudad-pdf', [ConsultaspdfController::class, 'indexgrapresciudadpdf']);
 Route::get('Casostotales-pdf', [ConsultaspdfController::class, 'casostotales']);
+Route::get('Dinamico-pdf', [ConsultaspdfController::class, 'selectDinamico']);
+Route::get('Dinamico2-pdf', [ConsultaspdfController::class, 'selectDinamico2']);
+
+Route::post('selected', [ConsultaspdfController::class, 'selectDinamicoa']);
+
+
 
 
 
