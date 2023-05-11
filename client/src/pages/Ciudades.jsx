@@ -132,9 +132,11 @@ const apiUrl = `${baseUrl}ciudades`;
               <Tabla>
                 <Thead>
                   <tr>
-                    <Th>Nº</Th>
-                    <Th>CIUDAD</Th>
-                    <Th>ACCIONES</Th>
+                    <Th data-label="Nº">Nº</Th>
+                    <Th data-label="CIUDAD">CIUDAD</Th>
+                    <Th data-label="ACCIONES">
+                    ACCIONES
+                    </Th>
                   </tr>
                 </Thead>
                 {ciudades

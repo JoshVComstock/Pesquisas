@@ -4,91 +4,135 @@ import styled from "styled-components";
 import { horaactual, Actualdate } from "../services/date";
 import { UseFech } from "../hooks/useFech";
 import { getLaboratorios } from "../services/Laboratorios";
+import { getCartillas } from "../services/cartilla";
+import { postResultados } from "../services/resultados";
 const Resultadoform = () => {
+  const { data: cartillass } = UseFech(getCartillas);
   const { data: laboratorio } = UseFech(getLaboratorios);
-  const [idcartilla, setIdcartilla] = useState();
-  const [idlaboratorio, setIdlaboratorio] = useState();
-  const [fechaingreso, setFechaingreso] = useState("");
-  const [fecharesultado, setFecharesultado] = useState("");
-  const [fechaentregado, setFechaentregado] = useState("");
+  const [id_cartillas, setId_cartillas] = useState();
+  const [id_laboratorio, setId_laboratorio] = useState();
+  const [fecha_ingreso, setFecha_ingreso] = useState("");
+  const [fecha_resultado, setFecha_resultado] = useState("");
+  const [fecha_entregado, setFecha_entregado] = useState(Actualdate);
   const [resultado, setResultado] = useState("");
   const [metodo, setMetodo] = useState("");
-  const [valorresultado, setValorresultado] = useState("");
-  const [valorreferencia, setValorreferencia] = useState("");
+  const [valor_resultado, setValor_resultado] = useState("");
+  const [valor_referencia, setValor_referencia] = useState("");
   const [observaciones, setObservaciones] = useState("");
+
+  const enviar = () => {
+    postResultados(
+      id_cartillas,
+      id_laboratorio,
+      fecha_ingreso,
+      fecha_resultado,
+      fecha_entregado,
+      resultado,
+      metodo,
+      valor_resultado,
+      valor_referencia,
+      observaciones,
+      () => {
+        setFecha_ingreso("");
+        setFecha_resultado("");
+        setResultado("");
+        setMetodo("");
+        setValor_resultado("");
+        setValor_referencia("");
+        setObservaciones("");
+        setPacicar({
+          nombre: "",
+          ap_paterno: "",
+          madre: "",
+          fecha_toma_muestra: "",
+        });
+        setBuscar("");
+      }
+    );
+  };
+
+  const [pacicar, setPacicar] = useState({
+    nombre: "",
+    ap_paterno: "",
+    madre: "",
+    fecha_toma_muestra: "",
+  });
+  const [buscar, setBuscar] = useState("");
+
+  const handleSearch = () => {
+    const result = cartillass.find(
+      (paciente) => paciente.codigo_barras === parseInt(buscar)
+    );
+    setPacicar(result);
+    setId_cartillas(result?.id);
+  };
+
+  const handleChange = (e) => {
+    setBuscar(e.target.value);
+  };
+  console.log(id_cartillas);
   return (
     <Container>
       <h2>RESULTADO</h2>
       <Card>
         <Divnameco>
-          <div>
-            <Divname>
-              <Labelname htmlFor="">
-                <strong>PRIMER APELLIDO</strong>
-              </Labelname>
-              <Inputname type="text" />
-            </Divname>
-            <Divname>
-              <Labelname htmlFor="">
-                <strong>SEGUNDO APELLIDO</strong>
-              </Labelname>
-              <Inputname type="text" />
-            </Divname>
-            <Divname>
-              <Labelname htmlFor="">
-                <strong>NOMBRE</strong>
-              </Labelname>
-              <Inputname type="text" />
-            </Divname>
-          </div>
+          {pacicar && (
+            <div>
+              <Divname>
+                <Labelname htmlFor="">
+                  <strong>NOMBRE PACIENTE: </strong>
+                </Labelname>
+                <Inputname type="text" value={pacicar.nombre} readonly />
+              </Divname>
+              <Divname>
+                <Labelname htmlFor="">
+                  <strong>PRIMER APELLIDO: </strong>
+                </Labelname>
+                <Inputname type="text" value={pacicar.ap_paterno} readonly />
+              </Divname>
+              <Divname>
+                <Labelname htmlFor="">
+                  <strong>MADRE: </strong>
+                </Labelname>
+                <Inputname type="text" value={pacicar.madre} readonly />
+              </Divname>
+              <Divname>
+                <Labelname htmlFor="">
+                  <strong>FECHA DE TOMA DE MUESTRA</strong>
+                </Labelname>
+                <Inputname
+                  type="text"
+                  value={pacicar.fecha_toma_muestra}
+                  readonly
+                />
+              </Divname>
+            </div>
+          )}
           <Divcartilla>
             <Labelname htmlFor="">CODIGO CARTILLA</Labelname>
-            <Inputname type="number" />
+            <Inputname type="number" value={buscar} onChange={handleChange} />
+            <input type="submit" value="Buscar" onClick={handleSearch} />
           </Divcartilla>
         </Divnameco>
-        <Divname>
-          <Labelname htmlFor="">
-            <strong>FECHA DE TOMA DE MUESTRA:</strong>
-          </Labelname>
-          <Divdatetime>
-            <Divinputdate>
-              <Labeldate htmlFor="">HORA</Labeldate>
-              <Inputname
-                type="time"
-                name=""
-                value={horaactual}
-                onChange={(e) => setFecha(e.target.value)}
-              />
-            </Divinputdate>
-            <Divinputdate>
-              <Labeldate htmlFor="">FECHA</Labeldate>
-              <Inputname type="date" value={Actualdate} />
-            </Divinputdate>
-          </Divdatetime>
-        </Divname>
         <Divname>
           <Labeldate htmlFor="">FECHA DE INGRESO</Labeldate>
           <Inputname
             type="date"
-            value={fechaingreso}
-            onChange={(e) => setFechaingreso(e.target.value)}
+            value={fecha_ingreso}
+            onChange={(e) => setFecha_ingreso(e.target.value)}
           />
           <Labeldate htmlFor="">FECHA RESULTADO</Labeldate>
           <Inputname
             type="date"
-            value={fecharesultado}
-            onChange={(e) => setFecharesultado(e.target.value)}
+            value={fecha_resultado}
+            onChange={(e) => setFecha_resultado(e.target.value)}
           />
           <Labeldate htmlFor="">FECHA ENTRAGADO</Labeldate>
-          <Inputname
-            type="date"
-            value={fechaentregado}
-            onChange={(e) => fechaentregado(e.target.value)}
-          />
+          <Inputname type="date" value={Actualdate} />
         </Divname>
         <Divname>
           <Labeldate htmlFor="">LABORATORIO</Labeldate>
-          <Select name="" onChange={(e) => setIdlaboratorio(e.target.value)}>
+          <Select name="" onChange={(e) => setId_laboratorio(e.target.value)}>
             <option value="">Seleccionar Laboratorio</option>
             {laboratorio.map((v, i) => (
               <option key={i} value={v.id}>
@@ -107,14 +151,14 @@ const Resultadoform = () => {
           <Labeldate htmlFor="">VALOR RESULTADO</Labeldate>
           <Inputname
             type="text"
-            value={valorresultado}
-            onChange={(e) => setValorresultado(e.target.value)}
+            value={valor_resultado}
+            onChange={(e) => setValor_resultado(e.target.value)}
           />
           <Labeldate htmlFor="">VALOR REFERENCIA</Labeldate>
           <Inputname
             type="text"
-            value={valorreferencia}
-            onChange={(e) => setValorreferencia(e.target.value)}
+            value={valor_referencia}
+            onChange={(e) => setValor_referencia(e.target.value)}
           />
         </Divname>
         <Divname>
@@ -126,13 +170,14 @@ const Resultadoform = () => {
           />
           <Labeldate>RESULTADO</Labeldate>
           <Select onChange={(e) => setResultado(e.target.value)}>
+            <option value="">Selecione resultado</option>
             <option value="POSITIVO">POSITIVO</option>
             <option value="NEGATIVO">NEGATIVO</option>
             <option value="SOSPECHOSO">SOSPECHOSO</option>
           </Select>
         </Divname>
         <Divboton>
-          <Boton>Enviar</Boton>
+          <Boton onClick={enviar}>Enviar</Boton>
         </Divboton>
       </Card>
     </Container>
