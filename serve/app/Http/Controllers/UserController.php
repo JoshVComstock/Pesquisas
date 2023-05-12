@@ -27,7 +27,7 @@ class UserController extends Controller
         $User->nombre = $request->nombre;
         $User->email = $request->email;
         $User->telefono = $request->telefono;
-        $User->rol = Hash::make($request->rol);
+        $User->rol = $request->rol;
         $User->password = Hash::make($request->password);
         $User->save();
         return response()->json([
