@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 import Homee from "./graficos/Graficoshome";
 import Porcentro from "./graficos/Graficoporcentro";
 import Rescentro from "./graficos/Graficoresultadocentro";
@@ -17,10 +16,8 @@ import { getRegistrohospitales } from "../services/RegistrosHospitales";
 import { getCartillas } from "../services/cartilla";
 import { getCentros } from "../services/centros";
 import { getProvincias } from "../services/provincias";
-
 import { UseFech } from "../hooks/useFech";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
-
 const Home = () => {
   const { data: pacientes } = UseFech(getPacientes);
   const { data: ciudades } = UseFech(getCiudades);
@@ -30,9 +27,6 @@ const Home = () => {
   const { data: regpro } = UseFech(getRegistroprovincias);
   const { data: reghosp } = UseFech(getRegistrohospitales);
   const { data: cartilla } = UseFech(getCartillas);
-  const { data: centro } = UseFech(getCentros);
-  const { data: provincia } = UseFech(getProvincias);
-
   const mostrarpdf = async () => {
     const response = await fetch(`${baseUrl}Grapciudad-pdf`, {
       method: "GET",
@@ -93,7 +87,6 @@ const Home = () => {
     window.open(url, "_blank");
     return response;
   };
-
   return (
     <Dip>
       <Divmayor>
@@ -169,26 +162,7 @@ const Home = () => {
             </section>
           </div>
         </Divreport>
-        {/* <Divreport>
-          <div>
-          <img src="src\img\analitica.png" alt="" />
-            <section>
-              <h3>{centro.length}</h3>
-              <p>registro</p>
-              <p> centros</p>
-            </section>
-          </div>
-          <div>
-            <img src="src\img\analitica.png" alt="" />
-            <section>
-              <h3>{provincia.length}</h3>
-              <p>n° registros</p>
-              <p>Provincias</p>
-            </section>
-          </div>
-        
-          
-        </Divreport> */}
+       
         <Grafia>
           <section>
             <article>
@@ -307,13 +281,13 @@ export const Divreport = styled.div`
   flex-wrap: nowrap;
   gap: 2em;
   & div {
-    /* &:nth-child(2n) {
-  background-color: #fff;
+    &:nth-child(2n) {
+  background-color: rgb(245, 245, 243);
   color:#000;
 }
 
   &:nth-child(2n+1) {
-  background-color: #30A9DE; } */
+  }
     width: calc(100% / 4);
     height: 80%;
     display: flex;
@@ -366,6 +340,7 @@ export const Divreport = styled.div`
         text-align: center;
         font-size: 1em;
         border: solid 1px #0002;
+
         &::first-letter {
           font-size: 1.6em;
         }

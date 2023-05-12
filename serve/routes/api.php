@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\cartillapdfController;
 use App\Http\Controllers\CartillasController;
+use App\Http\Controllers\ConsultadinamicaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\CiudadesController;
 use App\Http\Controllers\CentrosController;
 use App\Http\Controllers\RedesController;
@@ -142,6 +142,17 @@ Route::get('Grapcentro-pdf', [ConsultaspdfController::class, 'indexgrapcentropdf
 Route::get('Grapresultadocentro-pdf', [ConsultaspdfController::class, 'indexgraprescentropdf']);
 Route::get('Grapresultadociudad-pdf', [ConsultaspdfController::class, 'indexgrapresciudadpdf']);
 Route::get('Casostotales-pdf', [ConsultaspdfController::class, 'casostotales']);
+Route::get('Dinamico-pdf', [ConsultaspdfController::class, 'selectDinamico']);
+Route::get('Dinamico2-pdf', [ConsultaspdfController::class, 'selectDinamico2']);
+
+Route::post('selected', [ConsultaspdfController::class, 'selectDinamicoa']);
+Route::post('Consultadinamica-pdf', [ConsultadinamicaController::class, 'generar']);
+Route::post('Consultadinamica2-pdf', [ConsultadinamicaController::class, 'generar2']);
+Route::post('Consultadinamica3-pdf', [ConsultadinamicaController::class, 'generar3']);
+Route::post('Consultadinamica-pdf-madres', [ConsultadinamicaController::class, 'generarmadres']);
+Route::post('Consultadinamica-pdf-cartillas', [ConsultadinamicaController::class, 'reporteCartillasPdf']);
+
+
 
 
 

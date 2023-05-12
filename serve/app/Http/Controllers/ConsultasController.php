@@ -25,4 +25,19 @@ class ConsultasController extends Controller
         return DB::select('SELECT p.id AS id_paciente, p.nombre AS nombre_paciente, p.ap_paterno, p.ap_materno, m.id AS id_madre, m.nombre AS nombre_madre, m.apellidos AS apellidos_madre, r.resultado, c.ciudad AS ciudad_pertenencia FROM pacientes p JOIN madres m ON p.id_madres = m.id JOIN cartillas ca ON p.id = ca.id_pacientes JOIN ciudades c ON m.id_ciudades = c.id JOIN resultados r ON ca.id = r.id_cartillas;');
     }
 
+    public function selectDinamicoa(Request $request)
+    {
+        /*
+        {
+        "columnas": ["p.nombre as paciente","p.ap_paterno","p.ap_materno","p.sexo","p.fecha_nacimiento","p.hora_nacimiento","c.codigo_barras","c.fecha_toma_muestra","c.nacimiento_termino","c.edad_gestional_semanas"]
+
+                tablas: ["cartillas as c", "pacientes as p"]
+    }
+            */
+        $tablas = implode(", ", $request->tablas);
+        $columnas = implode(", ", $request->columnas);
+        $consulta = DB::select("SELECT $columnas FROM $tablas WHERE c.id_pacientes = p.id");
+        return $consulta;
+
+    }
 }

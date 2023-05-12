@@ -52,4 +52,52 @@ public function casostotales()
     $pdf->setOption('footer-html', view('footer'));
     return $pdf->stream();
 }
+  /*
+    {
+        "tablas": ["ciudades as c", "provicias as p"],
+        "columas": ["c.nombre", "p.nombre as nombre_provincia"]
+    }
+    */
+public function selectDinamico(Request $request){
+
+    $col = ["c.ciudad", "p.provincia as nombre_provincia"];
+    $tab = ["ciudades as c", "provincias as p"];
+    $columnas = implode(", ", $col);
+    $tablas = implode(", ", $tab);
+    $consulta = DB::select("SELECT $columnas FROM $tablas");
+
+
+    $pdf = PDF::loadView('Resultadostotapdf', ['consulta' => $consulta]);
+    $pdf->setPaper('A4', 'landscape');
+    $pdf->setOption('footer-html', view('footer'));
+    return $consulta;
+}
+
+public function selectDinamico2(Request $request)
+{
+    // Obtener los campos seleccionados para la tabla "paciente"
+    $pacienteCols = [
+        'p.id AS paciente_id', 'paciente', 'ap_paterno', 'ap_materno', 'sexo', 'fecha_nacimiento',
+        'hora_nacimiento', 'id_madres', 'p.created_at AS paciente_created_at'
+    ];
+    // Obtener los campos seleccionados para la tabla "resultados"
+    $resultadosCols = [
+        'r.id AS resultado_id', 'id_cartillas', 'id_laboratorio', 'fecha_ingreso', 'fecha_resultado',
+        'fecha_entregado', 'resultado', 'metodo', 'valor_resultado', 'valor_referencia',
+        'observaciones', 'r.created_at AS resultado_created_at'
+    ];
+    $pacienteColumns = implode(', ', $pacienteCols);
+    $resultadosColumns = implode(', ', $resultadosCols);
+    $consulta = DB::select("SELECT $pacienteColumns, $resultadosColumns
+                            FROM pacientes AS p
+                            JOIN resultados AS r
+                            ON p.id = r.id_paciente");
+
+    // $pdf = PDF::loadView('Resultadostotapdf', ['consulta' => $consulta]);
+    // $pdf->setPaper('A4', 'landscape');
+    // $pdf->setOption('footer-html', view('footer'));
+    return $consulta;
+}
+
+
 }
