@@ -147,7 +147,9 @@ Route::get('Dinamico2-pdf', [ConsultaspdfController::class, 'selectDinamico2']);
 
 Route::post('selected', [ConsultaspdfController::class, 'selectDinamicoa']);
 Route::post('Consultadinamica-pdf', [ConsultadinamicaController::class, 'generar']);
-
+Route::post('Consultadinamica2-pdf', [ConsultadinamicaController::class, 'generar2']);
+Route::post('Consultadinamica3-pdf', [ConsultadinamicaController::class, 'generar3']);
+Route::post('Consultadinamica-pdf-madres', [ConsultadinamicaController::class, 'generarmadres']);
 
 
 

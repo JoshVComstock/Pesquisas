@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as pdf; // Importar la clase PDF correctamente
 use App\Models\Cartillas;
+use App\Models\Madres;
 use App\Models\Pacientes;
 use App\Models\Resultados;
 
@@ -97,4 +98,125 @@ class ConsultadinamicaController extends Controller
 
         return $pdf->stream('reporte.pdf');
     }
+    public function generar2(Request $request)
+{
+    $campos = $request->input('campos');
+    $filtros = $request->input('filtros');
+
+    $query = Pacientes::query();
+    $query->leftJoin('madres', 'pacientes.id_madres', '=', 'madres.id'); // Realizar la unión con la tabla "madres"
+
+    // Aplicar filtros
+    if (isset($filtros['sexo'])) {
+        $query->where('pacientes.sexo', $filtros['sexo']);
+    }
+    if (isset($filtros['fecha_nacimiento']['start']) && isset($filtros['fecha_nacimiento']['end'])) {
+        $query->whereBetween('pacientes.fecha_nacimiento', [$filtros['fecha_nacimiento']['start'], $filtros['fecha_nacimiento']['end']]);
+    }
+    if (isset($filtros['enfermedad'])) {
+        if ($filtros['enfermedad'] === 'si') {
+            $query->whereNotNull('madres.enfermedad');
+        } elseif ($filtros['enfermedad'] === 'no') {
+            $query->whereNull('madres.enfermedad');
+        } elseif ($filtros['enfermedad'] === 'especifica') {
+            $enfermedad = $filtros['enfermedad_especifica'];
+            $query->where('madres.enfermedad', $enfermedad);
+        }
+    }
+
+    $pacientes = $query->get(['pacientes.*', 'madres.nombre', 'madres.apellidos', 'madres.ci', 'madres.direccion', 'madres.telefono1', 'madres.enfermedad', 'madres.detalle_direccion']);
+
+    $data = [];
+    foreach ($pacientes as $paciente) {
+        $item = [];
+        foreach ($campos as $campo) {
+            if (strpos($campo, 'madres.') === 0) {
+                $campoMadre = str_replace('madres.', '', $campo);
+                $item[$campo] = $paciente->$campoMadre;
+            } else {
+                $item[$campo] = $paciente->$campo;
+            }
+        }
+        $data[] = $item;
+    }
+
+    $pdf = FacadePdf::loadView('reporte2', ['campos' => $campos, 'data' => $data]);
+
+    return $pdf->stream('reporte.pdf');
 }
+public function generar3(Request $request)
+{
+    $campos = $request->input('campos');
+
+    $data = [];
+
+    foreach ($campos as $campo) {
+        $tabla = explode('.', $campo)[0];
+        $columna = explode('.', $campo)[1];
+
+        if ($tabla === 'pacientes') {
+            $pacientes = Pacientes::all();
+            foreach ($pacientes as $paciente) {
+                $item = [
+                    'tabla' => $tabla,
+                    'id' => $paciente->id,
+                    'valor' => [
+                        $columna => $paciente->$columna,
+                    ],
+                ];
+                $data[] = $item;
+            }
+        } elseif ($tabla === 'madres') {
+            $madres = Madres::all();
+            foreach ($madres as $madre) {
+                $item = [
+                    'tabla' => $tabla,
+                    'id' => $madre->id,
+                    'valor' => [
+                        $columna => $madre->$columna,
+                    ],
+                ];
+                $data[] = $item;
+            }
+        }
+    }
+
+
+    $pdf = FacadePdf::loadView('Reporte3', ['data' => $data, 'campos' => $campos]);
+    return $pdf->stream('reporte.pdf');
+}
+
+    public function generarmadres(Request $request)
+{
+    $campos = $request->input('campos');
+    $filtros = $request->input('filtros');
+    $query = Madres::query();
+
+    // Aplicar filtro de enfermedad
+    if (isset($filtros['enfermedad'])) {
+        $query->where('enfermedad', $filtros['enfermedad']);
+    }
+    // Aplicar filtro de rango de fechas
+    if (isset($filtros['fecha']['start']) && isset($filtros['fecha']['end'])) {
+        $query->whereBetween('created_at', [$filtros['fecha']['start'], $filtros['fecha']['end']]);
+    }
+
+    $madres = $query->get();
+
+    $data = [];
+    foreach ($madres as $madre) {
+        $item = [];
+        foreach ($campos as $campo) {
+            $item[$campo] = $madre->$campo;
+        }
+        $data[] = $item;
+    }
+
+    $pdf = FacadePdf::loadView('Reportemadre', ['campos' => $campos, 'data' => $data]);
+    $pdf->setPaper('A4', 'landscape');
+    $pdf->setOption('footer-html', view('footer'));
+    return $pdf->stream('reporte.pdf');
+
+}
+}
+

@@ -1,16 +1,23 @@
 import React from 'react'
-import ReporteForm from "./ReporteForm";
+import ReporteForm from "./Reportesdinamicos/ReporteForm";
 import styled from 'styled-components';
+import ReporteFormpacmad from './Reportesdinamicos/ReporteFrompacmad';
+// import Reporte3Form from './Reportesdinamicos/Reportesmapaci';
+import ReportemadreForm from './Reportesdinamicos/ReprotesFromMadres';
 const Reportesdinamicos = () => {
   return (
+ <>
     <Div>
         <section>
         <ReporteForm/>
         </section>
         <section>
-        <ReporteForm/>
+        <ReportemadreForm/>
         </section>
+     
     </Div>
+    {/* <Reporte3Form/> */}
+    </>
   )
 }
 
