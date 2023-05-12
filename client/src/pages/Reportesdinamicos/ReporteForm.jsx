@@ -60,7 +60,8 @@ const ReporteForm = () => {
 
   return (
     <Report>
-      <form onSubmit={handleSubmit}>
+     <article>
+     <form onSubmit={handleSubmit}>
       <h1>Reporte Dinamico Pacientes</h1>
 
         <label>
@@ -116,8 +117,9 @@ const ReporteForm = () => {
         )}
         <button type="submit">Generar Reporte</button>
       </form>
+     </article>
+      <div>
       {pdfUrl && (
-        <div>
           <iframe
             src={pdfUrl}
             width="50vw"
@@ -125,87 +127,72 @@ const ReporteForm = () => {
             title="Vista previa del PDF"
           />
         
-        </div>
       )}
+        </div>
     </Report>
   );
 };
 
 export default ReporteForm;
 export const Report = styled.div`
-  width: 95%;
-  height: 100%;
-  background-color: transparent;
-  margin: 1em auto;
-  display: flex;
-  flex-direction: row;
+width:100%;
+height:auto;
+display:flex;
+  flex-direction:row;
+  
+& > article{
+  padding:1em;
+  background-color:#4615a2;
+  color:#fff;
+  & > article{
+    width:100%;
 
+  }
   & form {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 34%;
-    align-items: center;
-    margin: auto;
-    backdrop-filter: blur(7px) saturate(79%);
-    -webkit-backdrop-filter: blur(7px) saturate(79%);
-    background-color: #6f67d7;
-    border-radius: 12px;
-    border: 1px solid #0002;
-    margin: 1em;
-    gap: 1em;
-    color: #fff;
-    padding: 2%;
-    
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  padding:1.5em;
+  align-items:center;
+  width:24em;
+  gap:1em 3em;
+  position:relative;
+  
     & h1{
-        width:100%;
-        height:1.5em;
-        font-size:1em ;
-        text-transform:uppercase;
-
+      width:100%;
+      height:3em;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      border-bottom:solid 1.5px #ffffff68;
+      text-transform:uppercase;
+      font-size:0.8em;
     }
     & button {
-      width: 100%;
-      padding: 0.6em 0;
-      cursor: pointer;
-      transition:all 0.5s ease;
-      border-radius:5px;
+      width:80%;
+      margin:0 auto;
+     padding:0.5em 2em;
+     
+
       &:hover{
         background-color:#6f67d7;
-        color:#fff;
-        text-transform:uppercase;
-        border:solid 1px #fff5;
+      
       }
     }
-    &::before {
-      content: "";
-      bottom: -0.8em;
-      position: absolute;
-      border: solid 1px #0002;
-      width: 90%;
-      height: 0.69em;
-      background-color: #6e67d7ab;
-      z-index: 1;
-      border-radius: 0 0 5px 5px;
-    }
-    transition:all 0.5s ease-in-out;
 
-    &:hover{
-        width:34%;
-        &::before {
-        opacity:0;
-        }
-    }
-& article{
-    width:100%;
-    font-size:0.8em;
 }
-  }
-& div{
-    margin: 1em;
+}
+& div {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     & iframe {
-    width: 50vw;
-    height:20em;
+      width: 45vw;
+      height: 70vh;
+      border: none;
+    }
   }
-}
+
 `;

@@ -67,6 +67,7 @@ const ReporteFromCartilla = () => {
 
   return (
     <Report>
+        <article>
       <form onSubmit={handleSubmit}>
         <h1>Reporte Dinámico de Cartillas</h1>
 
@@ -87,24 +88,6 @@ const ReporteFromCartilla = () => {
             placeholder="Ingrese el código de barras"
           />
         )}
-
-        {/* <label>
-          <input
-            type="checkbox"
-            value="fecha_toma_muestra"
-            onChange={handleCheckboxChange}
-          />
-          Fecha de Toma de Muestra
-        </label> */}
-
-        {/* {campos.includes("fecha_toma_muestra") && (
-          <article>
-            <label>Desde:</label>
-            <input type="date" name="start" onChange={handleFiltroChange} />
-            <label>Hasta:</label>
-            <input type="date" name="end" onChange={handlehandleFiltroChange} />
-</article>
-)} */}
 
 <label>
           <input
@@ -164,7 +147,7 @@ const ReporteFromCartilla = () => {
 
     <button type="submit">Generar Reporte</button>
   </form>
-
+  </article>
   {pdfUrl && (
     <div>
       <iframe

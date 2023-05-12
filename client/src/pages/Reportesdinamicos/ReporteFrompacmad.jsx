@@ -63,6 +63,7 @@ const ReporteFormpacmad = () => {
 
   return (
     <Report>
+        <article>
       <form onSubmit={handleSubmit}>
         <h1>Reporte Dinámico de Pacientes</h1>
         <label>
@@ -154,6 +155,7 @@ const ReporteFormpacmad = () => {
         </label>
         <button type="submit">Generar Reporte</button>
       </form>
+      </article>
       {pdfUrl && (
         <div>
           <iframe

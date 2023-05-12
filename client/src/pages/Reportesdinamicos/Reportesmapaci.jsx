@@ -46,6 +46,7 @@ const Reporte3Form = () => {
 
   return (
   <>
+  <article>
     <form onSubmit={handleSubmit}>
       <label>
         <input type="checkbox" value="pacientes.nombre" onChange={handleCheckboxChange} />
@@ -78,6 +79,7 @@ Teléfono Madre
 </label>
 <button type="submit">Generar Reporte</button>
 </form>
+</article>
   {pdfUrl && (
         <div>
           <iframe

@@ -68,6 +68,7 @@ const ReportemadreForm = () => {
 
   return (
     <Report>
+      <article>
       <form onSubmit={handleSubmit}>
         <h1>Reporte Dinámico Madres</h1>
 
@@ -168,6 +169,7 @@ const ReportemadreForm = () => {
         )}
         <button type="submit">Generar Reporte</button>
       </form>
+      </article>
       {pdfUrl && (
         <div>
           <iframe
