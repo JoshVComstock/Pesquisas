@@ -218,5 +218,47 @@ public function generar3(Request $request)
     return $pdf->stream('reporte.pdf');
 
 }
+
+public function reporteCartillasPdf(Request $request)
+{
+    $campos = $request->input('campos');
+    $filtros = $request->input('filtros');
+
+    $query = Cartillas::query();
+
+    // Aplicar filtros
+    if (isset($filtros['codigo_barras'])) {
+        $query->where('codigo_barras', $filtros['codigo_barras']);
+    }
+
+    if (isset($filtros['fecha_toma_muestra']['start']) && isset($filtros['fecha_toma_muestra']['end'])) {
+        $query->whereBetween('fecha_toma_muestra', [$filtros['fecha_toma_muestra']['start'], $filtros['fecha_toma_muestra']['end']]);
+    }
+
+    if (isset($filtros['peso_nacimiento'])) {
+        $query->where('peso_nacimiento', $filtros['peso_nacimiento']);
+    }
+
+    if (isset($filtros['transfusion'])) {
+        $query->where('transfusion', $filtros['transfusion']);
+    }
+
+    $cartillas = $query->get();
+
+    $data = [];
+    foreach ($cartillas as $cartilla) {
+        $item = [];
+        foreach ($campos as $campo) {
+            $item[$campo] = $cartilla->$campo;
+        }
+        $data[] = $item;
+    }
+
+    $pdf = FacadePdf::loadView('reportecartillapdf', ['campos' => $campos, 'data' => $data]);
+
+    return $pdf->stream('reporte.pdf');
+}
+
+
 }
 

@@ -150,6 +150,8 @@ Route::post('Consultadinamica-pdf', [ConsultadinamicaController::class, 'generar
 Route::post('Consultadinamica2-pdf', [ConsultadinamicaController::class, 'generar2']);
 Route::post('Consultadinamica3-pdf', [ConsultadinamicaController::class, 'generar3']);
 Route::post('Consultadinamica-pdf-madres', [ConsultadinamicaController::class, 'generarmadres']);
+Route::post('Consultadinamica-pdf-cartillas', [ConsultadinamicaController::class, 'reporteCartillasPdf']);
+
 
 
 

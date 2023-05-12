@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import ReporteFormpacmad from './Reportesdinamicos/ReporteFrompacmad';
 // import Reporte3Form from './Reportesdinamicos/Reportesmapaci';
 import ReportemadreForm from './Reportesdinamicos/ReprotesFromMadres';
+import ReporteFromCartilla from './Reportesdinamicos/ReporteFromcartilladim';
 const Reportesdinamicos = () => {
   return (
  <>
@@ -13,6 +14,9 @@ const Reportesdinamicos = () => {
         </section>
         <section>
         <ReportemadreForm/>
+        </section>
+        <section>
+        <ReporteFromCartilla/>
         </section>
      
     </Div>
