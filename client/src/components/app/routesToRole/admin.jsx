@@ -76,7 +76,12 @@ const AdminComponent = () => {
           </Options>
         )}
       </Diva>
-      {/* <p>Reportes</p>
+      <p>Reportes</p>
+      <Linkes to="/Reportes">
+        <Img src="src\img\analitica.png" alt="" />
+        Reportes
+      </Linkes>
+      {/* 
       <Diva onClick={() => setIsExpandedreportes(!isExpandedreportes)}>
         <Divd>
           <Img src="src\img\analitica.png" alt="" />

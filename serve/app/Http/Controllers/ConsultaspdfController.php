@@ -80,15 +80,12 @@ public function selectDinamico2(Request $request)
         'p.id AS paciente_id', 'paciente', 'ap_paterno', 'ap_materno', 'sexo', 'fecha_nacimiento',
         'hora_nacimiento', 'id_madres', 'p.created_at AS paciente_created_at'
     ];
-
     // Obtener los campos seleccionados para la tabla "resultados"
     $resultadosCols = [
         'r.id AS resultado_id', 'id_cartillas', 'id_laboratorio', 'fecha_ingreso', 'fecha_resultado',
         'fecha_entregado', 'resultado', 'metodo', 'valor_resultado', 'valor_referencia',
         'observaciones', 'r.created_at AS resultado_created_at'
     ];
-
-    // Construir la consulta seleccionando los campos de las tablas
     $pacienteColumns = implode(', ', $pacienteCols);
     $resultadosColumns = implode(', ', $resultadosCols);
     $consulta = DB::select("SELECT $pacienteColumns, $resultadosColumns
@@ -96,9 +93,9 @@ public function selectDinamico2(Request $request)
                             JOIN resultados AS r
                             ON p.id = r.id_paciente");
 
-    $pdf = PDF::loadView('Resultadostotapdf', ['consulta' => $consulta]);
-    $pdf->setPaper('A4', 'landscape');
-    $pdf->setOption('footer-html', view('footer'));
+    // $pdf = PDF::loadView('Resultadostotapdf', ['consulta' => $consulta]);
+    // $pdf->setPaper('A4', 'landscape');
+    // $pdf->setOption('footer-html', view('footer'));
     return $consulta;
 }
 

@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\cartillapdfController;
 use App\Http\Controllers\CartillasController;
+use App\Http\Controllers\ConsultadinamicaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\CiudadesController;
 use App\Http\Controllers\CentrosController;
 use App\Http\Controllers\RedesController;
@@ -146,6 +146,7 @@ Route::get('Dinamico-pdf', [ConsultaspdfController::class, 'selectDinamico']);
 Route::get('Dinamico2-pdf', [ConsultaspdfController::class, 'selectDinamico2']);
 
 Route::post('selected', [ConsultaspdfController::class, 'selectDinamicoa']);
+Route::post('Consultadinamica-pdf', [ConsultadinamicaController::class, 'generar']);
 
 
 
