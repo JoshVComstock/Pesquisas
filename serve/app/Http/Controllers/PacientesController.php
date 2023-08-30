@@ -12,6 +12,12 @@ class PacientesController extends Controller
     {
         return DB::select("SELECT p.id,p.nombre,p.ap_paterno,p.ap_materno,p.sexo,m.nombre as madre,m.telefono1,m.telefono2 FROM madres as m, pacientes as p WHERE p.id_madres=m.id");
     }
+    public function show($id)
+{
+    $recurso = DB::select("SELECT p.id,p.nombre,p.ap_paterno,p.ap_materno,p.sexo,m.nombre as madre,m.telefono1,m.telefono2,m.direccion, p.fecha_nacimiento,p.hora_nacimiento, c.ciudad FROM madres as m, pacientes as p, ciudades as c WHERE p.id_madres=m.id and m.id_ciudades=c.id and p.id= ?", [$id]);
+    return $recurso;
+}
+
     public function store(Request $request)
     {
         $pacientes = new Pacientes();

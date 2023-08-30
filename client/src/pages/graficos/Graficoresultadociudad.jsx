@@ -12,13 +12,10 @@ const fetchDataFromAPI = async () => {
     return [];
   }
 };
-
 const processDataForChart = (data) => {
   const cityData = {};
-
   data.forEach((item) => {
     const { ciudad_pertenencia, resultado } = item;
-
     if (!cityData[ciudad_pertenencia]) {
       cityData[ciudad_pertenencia] = {
         name: ciudad_pertenencia,
@@ -27,7 +24,6 @@ const processDataForChart = (data) => {
         sospechosos: 0,
       };
     }
-
     switch (resultado) {
       case 'positivo':
         cityData[ciudad_pertenencia].positivos++;
@@ -42,27 +38,21 @@ const processDataForChart = (data) => {
         break;
     }
   });
-
   const processedData = Object.values(cityData);
-
   return processedData;
 };
-
 const Resulciudad = () => {
   const [chartData, setChartData] = useState([]);
-
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchDataFromAPI();
       const processedData = processDataForChart(data);
       setChartData(processedData);
     };
-
     fetchData();
   }, []);
-
   return (
-    <div>
+    <>
       <ChartContainer>
         <ResponsiveContainer width="100%" height={250}>
           <BarChart data={chartData} style={{ borderRadius: "0px" }}>
@@ -77,12 +67,10 @@ const Resulciudad = () => {
           </BarChart>
         </ResponsiveContainer>
       </ChartContainer>
-    </div>
+    </>
   );
 };
-
 export default Resulciudad;
-
 const ChartContainer = styled.div`
   display: flex;
   justify-content: center;

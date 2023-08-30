@@ -27,23 +27,16 @@ const Reportesdinamicos = () => {
 
 export default Reportesdinamicos
 export const Div = styled.section`
-width:90%;
-height:100%;
-margin:1em auto;
-display:flex;
-align-items:center;
-gap:1em;
-flex-wrap:wrap;
-  & section{
-width:auto;
-height:auto;
-    &:nth-child(2n){
-        width:35em;
-}
-&:nth-child(3n){
-
-        width:35em;
-}
+  width: 90%;
+  height: 100%;
+  margin: 1em auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  & section {
+    width: auto;
+    height: auto;
   }
-
-`;
+  `
+;

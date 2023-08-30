@@ -34,6 +34,9 @@ import Provincias from "./Provincias"
 import { deleteProvincias, getProvincias } from "../services/provincias";
 import CSVExporter from "../pages/Reportescom";
 import Homee from "./graficos/Graficoshome";
+
+import { ToastContainer } from "react-toastify";
+import { alertnotify } from "../components/app/alert";
 const Ciudades = () => {
 
   const { data: provincias } = UseFech(getProvincias);
@@ -103,11 +106,9 @@ const apiUrl = `${baseUrl}ciudades`;
               <p>n° registros</p>
               <p>Provincia</p>
             </section>
-        
           </div>
-     
         </Divreport>
-
+<ToastContainer/>
       
      <Sectiond>
 
@@ -162,6 +163,7 @@ const apiUrl = `${baseUrl}ciudades`;
                             <div>
                                 <Iconsacciones1  onClick={() => {
                                   deleteCiudades(v.id, getApi);
+                                  alertnotify('Ciudad',' eliminado')
                                 }}>Eliminar</Iconsacciones1>
                            
                             </div>

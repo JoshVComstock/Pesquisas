@@ -96,6 +96,7 @@ Route::delete('/registro_provincias/{id}', [Registro_provinciasController::class
 
 Route::get('/registro_hospitales', [Registro_hospitalesController::class, 'index']);
 Route::post('/registro_hospitales', [Registro_hospitalesController::class, 'store']);
+Route::put('/registro_hospitales/{id}', [Registro_hospitalesController::class, 'update']);
 Route::delete('/registro_hospitales/{id}', [Registro_hospitalesController::class, 'destroy']);
 
 Route::get('/control_filtros', [Control_filtrosController::class, 'index']);
@@ -109,7 +110,7 @@ Route::delete('/resultados/{id}', [ResultadosController::class, 'destroy']);
 Route::get('/pacientes', [PacientesController::class, 'index']);
 Route::post('/pacientes', [PacientesController::class, 'store']);
 Route::delete('/pacientes/{id}', [PacientesController::class, 'destroy']);
-
+Route::get('/historial/{id}',[PacientesController::class,'show']);
 
 
 

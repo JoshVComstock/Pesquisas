@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { postRegister } from "../services/register";
 import { Inputs } from "../styles/crud";
-const Resgistrousuario = () => {
+const Resgistrousuario = ({closemodal,getapi}) => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [telefono, setTelefono] = useState();
@@ -17,6 +17,8 @@ const Resgistrousuario = () => {
       setRol("");
       setPassword("");
       setConpassword("");
+      closemodal();
+      getapi();
     });
   };
   return (

@@ -49,7 +49,7 @@ import { useNavigation } from "@react-navigation/native";
                 textAlign: "center",
               }}
             >
-              Bienenido a la plataforma de Biotech
+              Bienvenido a la plataforma de Biotech
             </Text>
           </View>
           <View

@@ -28,7 +28,7 @@ const Registro_hospitalesForm = ({ MostrarReHospitales }) => {
   console.log(entregado_por);
   console.log(telefono);
   console.log(recibido_por);
-  console.log("hola");
+  
 
   const enviar = async () => {
     const response = await fetch(
@@ -187,7 +187,7 @@ const Registro_hospitalesForm = ({ MostrarReHospitales }) => {
             </Divinputlabel>
           </Divinput>
           <Divboton>
-            <Botonagregar type="submit" onClick={() => enviar()}>
+            <Botonagregar onClick={() => enviar()}>
               Agregar
             </Botonagregar>
           </Divboton>

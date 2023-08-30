@@ -61,56 +61,16 @@ const Redsalud = () => {
       },
     })
     if (response.ok) {
-        MostrarRedes();
+      MostrarRedes();
     }
   }
   useEffect(() => {
     MostrarRedes();
   }, [])
   return (
-  //   <div>
-  //     <div className='Titulo'>
-  //         <div>Listado de Redes de Salud</div>
-  //       </div>
-  //       <br />
-  //       <div>
-  //         <button type="submit" onClick={openModal}>Registrar Nueva Red de Salud</button>
-  //       </div>
-  //     <table>
-  //     <thead>
-  //       <tr>
-  //         <th>ID</th>
-  //         <th>Nombre</th>
 
-  //         <th>Acciones</th>
-  //       </tr>
-  //     </thead>
-  //     <tbody>
-  //       {
-  //         redes.map((v, i) => (
-  //           <body key={i} >
-  //             <tr  >
-  //               <th>{v.id}</th>
-  //               <th>{v.nombre}</th>
-  //               <th>
-  //                 <div className='Acciones'>
-  //                   <div className='Editar'>
-  //                     <button className='BotonEditar'>Editar</button>
-  //                   </div>
-  //                   <div className='Eliminar'>
-  //                     <button className='BotonEliminar' onClick={() => EliminarRedes(v.id)}>Eliminar</button>
-  //                   </div>
-  //                 </div>
-  //               </th>
-  //             </tr>
-  //           </body>
-  //         ))
-  //       }
-  //     </tbody>
-  //     </table>
-  //   </div>
-  // )
-<Container>
+    // )
+    <Container>
       <Titulo>REDES SALUD</Titulo>
       <Divbotones>
         <Botonespdf2 onClick={''}>
@@ -128,10 +88,6 @@ const Redsalud = () => {
       <Divsearchpadre>
         <Divsearch>
           <Search
-            // type="text"
-            // placeholder="Buscar"
-            // value={filtro}
-            // onChange={''}
           />
           <Botonsearch>
             <Img src={Searchicons} alt="" />{" "}
@@ -146,43 +102,10 @@ const Redsalud = () => {
               <th>RED</th>
             </tr>
           </Thead>
-          {/* {ciudades
-            .filter((v) =>
-              v.ciudad.toLowerCase().includes(filtro.toLowerCase())
-            ) */}
-            {/* .map((v, i) => (
-              <Tbody key={i}>
-                <tr>
-                  <Trdatos>{i + 1}</Trdatos>
-                  <Trdatos>{v.ciudad}</Trdatos>
-                  <Trdatos>
-                    <Botonacciones>
-                      <div>
-                        <Botonesacciones>
-                          <Iconsacciones
-                            src={Editar}
-                            alt=""
-                            onClick={() => {
-                              setCiudadactual(v);
-                            }}
-                          />
-                        </Botonesacciones>
-                      </div>
-                      <div>
-                        <Botonesacciones onClick={() => eliminarciudades(v.id)}>
-                          <Iconsacciones1 src={Eliminar} alt="" />
-                        </Botonesacciones>
-                      </div>
-                    </Botonacciones>
-                  </Trdatos>
-                </tr>
-              </Tbody> */}
-            {/* ))} */}
         </table>
       </Divtabla>
     </Container>
   );
 
 }
-
-export default Redsalud
+export default Redsalud;

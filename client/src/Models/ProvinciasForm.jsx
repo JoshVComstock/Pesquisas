@@ -2,19 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { UseFech } from "../hooks/useFech";
-import {
-  getProvincias,
-  postProvincia,
-  updateProvincia,
-} from "../services/provincias";
+import InputValidation from "../components/app/inputvalidation";
+import TextInput from "../components/app/textinput";
+import { postProvincia, updateProvincia } from "../services/provincias";
 import { getCiudades } from "../services/Ciudades";
 
-const ProvinciasForm = ({
-  getApi,
-  provinciaactual,
-  setProviciaactual,
-  closeModal,
-}) => {
+const ProvinciasForm = ({ getApi, provinciaactual, setProviciaactual, closeModal }) => {
+  const [requiredValidation, setRequiredValidation] = useState(false);
   const [provincia, setProvincia] = useState("");
   const [id_ciudad, setId_ciudad] = useState("");
   const [ciudadcli, setciudadcli] = useState(true);
@@ -27,8 +21,10 @@ const ProvinciasForm = ({
       setProviciaactual({});
     };
   }, [provinciaactual]);
+
   const updatepost = (e) => {
     e.preventDefault();
+
     if (Object.keys(provinciaactual).length > 0) {
       updateProvincia(
         {
@@ -51,9 +47,6 @@ const ProvinciasForm = ({
       });
     }
   };
-  const cbx = (e) => {
-    setProvincia(e.target.value);
-  };
   return (
     <Container>
       <div>
@@ -61,11 +54,15 @@ const ProvinciasForm = ({
           <Divinput>
             <Divinputlabel>
               <label>Nombre</label>
-              <Input
+              <TextInput
                 type="text"
                 placeholder="Ingrese una Provincia"
                 value={provincia}
-                onChange={(e) => cbx(e)}
+                onChange={setProvincia}
+              />
+              <InputValidation
+                value={provincia}
+                required={requiredValidation}
               />
             </Divinputlabel>
           </Divinput>
@@ -84,15 +81,17 @@ const ProvinciasForm = ({
           </Divinput>
           <Divboton>
             <Botonagregar
-              type="submit"
               onClick={(e) => {
                 updatepost(e);
               }}
             >
-              Agregar
+              {
+                Object.keys(provincia).length > 0 ? "Editar" : "Agregar"
+              }
             </Botonagregar>
           </Divboton>
         </form>
+        <AlertComponent />
       </div>
     </Container>
   );
@@ -111,17 +110,7 @@ const Divinput = styled.div`
   margin: 5px;
   align-items: center;
 `;
-const Input = styled.input`
-  margin-top: 5px;
-  margin-bottom: 5px;
-  height: 30px;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  outline: none;
-  &:focus {
-    border: 1.5px solid #034078;
-  }
-`;
+
 const Divboton = styled.div`
   display: flex;
   justify-content: center;

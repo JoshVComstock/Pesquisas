@@ -42,14 +42,15 @@ const Register = () => {
   const { user } = useuserContext();
   const { openModal, closeModal } = useModal(
     "Crear nuevo usuario",
-    <Resgistrousuario />
+
+    <Resgistrousuario closemodal={() => closeModal()} getapi={getApi}/>
   );
   useEffect(() => {
     //if(user.rol != "laboratorio"){
     //  navigate("/laboratorio")
     // }
   }, []);
- console.log(user);
+  console.log(user);
   return (
     <Container>
       <Sectionpa>
@@ -108,7 +109,7 @@ const Register = () => {
                     <Trdatos>********</Trdatos>
                     <Trdatos>
                       <Botonacciones
-                        onClick={() => deleteRegister(v.id,()=> getApi())}
+                        onClick={() => deleteRegister(v.id, () => getApi())}
                       >
                         <Iconsacciones1 src={Eliminar} alt="">
                           Eliminar

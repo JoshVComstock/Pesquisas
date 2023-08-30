@@ -23,6 +23,7 @@ import Cartilla from "./Models/Cartilla";
 import Resultadoform from "./models/Resultadoform";
 import Pacientes from "./pages/Pacientes";
 import Consultas from "./pages/consultas";
+import HistorialPaciente from "./pages/HistorialPaciente";
 import Reportesdinamicos from "./pages/Reportesdinamicos";
 
 function App() {
@@ -35,6 +36,10 @@ function App() {
               <Routes>
                 <Route path="login" element={<Login />} />
                 <Route
+                    path="pacientes/:id"
+                    element={<HistorialPaciente />}
+                  />
+                <Route
                   path="/"
                   element={
                     <ProtectedRoute>
@@ -42,7 +47,7 @@ function App() {
                     </ProtectedRoute>
                   }
                 >
-                  <Route path="home" element={<Home />} />
+                  <Route path="/" element={<Home />} />
                   <Route path="centros" element={<Centros />} />
                   <Route path="ciudades" element={<Ciudades />} />
                   <Route path="redes" element={<Redes />} />
@@ -54,6 +59,7 @@ function App() {
                     path="registro_provincias"
                     element={<Registro_provincias />}
                   />
+                  
                   <Route path="municipios" element={<Municipios />} />
                   <Route
                     path="registro_hospitales"

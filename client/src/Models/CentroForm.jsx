@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { UseFech } from "../hooks/useFech";
-import { getCiudades } from "../services/Ciudades";
 import { postCentros, updateCentros } from "../services/centros";
 import { getMunicipios } from "../services/Municipios";
-
+import TextInput from "../components/app/textinput";
+import InputValidation from "../components/app/inputvalidation";
 const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
   const [nombre, setNombre] = useState("");
   const [direccion, SetDireccion] = useState("");
@@ -15,7 +15,7 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
   const [area, setArea] = useState("");
   const [seguimiento_casos, setSeguimiento_casos] = useState("");
   const [contacto, setContacto] = useState("");
-
+  const [validacion, setValidacion] = useState(false);
   useEffect(() => {
     if (Object.keys(centroactual).length > 0) {
       setNombre(centroactual.nombre);
@@ -32,6 +32,13 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
 
   const updatepost = (e) => {
     e.preventDefault();
+    if (nombre.trim() === "") {
+      setValidacion(true);
+      return;
+    } else if (direccion.trim() === "") {
+      setValidacion(true);
+      return;
+    }
     if (Object.keys(centroactual).length > 0) {
       updateCentros(
         {
@@ -88,27 +95,29 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
           <Divinput>
             <Divinputlabel>
               <label>Nombre:</label>
-              <Input
+              <TextInput
                 name="Nombre"
                 placeholder="Ingrese un Nombre"
                 type="text"
                 required
                 value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
+                onChange={setNombre}
               />
+              <InputValidation value={nombre} required={validacion} />
             </Divinputlabel>
           </Divinput>
           <Divinput>
             <Divinputlabel>
               <label>Dirección:</label>
-              <Input
+              <TextInput
                 name="Direccion"
                 placeholder="Ingrese una Dirección"
                 type="text"
                 required
                 value={direccion}
-                onChange={(e) => SetDireccion(e.target.value)}
+                onChange={SetDireccion}
               />
+              <InputValidation value={direccion} required={validacion}/>
             </Divinputlabel>
           </Divinput>
           <Divinput>
@@ -179,7 +188,6 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
               />
             </Divinputlabel>
           </Divinput>
-
           <Divboton>
             <Botonagregar onClick={(e) => updatepost(e)}>
               {Object.keys(centroactual).length > 0 ? "Editar" : "Agregar"}
@@ -193,7 +201,28 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
 
 export default CentroForm;
 
-const Container = styled.div``;
+const Container = styled.div`
+  /* * {
+
+  outline: 1px solid;
+  outline-color: hsla(0, 100%, 50%, 0.3);
+  background-color: hsla(0, 100%, 50%, 0.1);
+} */
+
+  & > div > form {
+    width: 33em;
+    display: flex;
+    flex-wrap: wrap;
+
+    & select {
+      width: 100%;
+    }
+    & button {
+      width: 26em;
+      height: 40px;
+    }
+  }
+`;
 const Divinputlabel = styled.div`
   display: flex;
   flex-direction: column;
@@ -203,7 +232,6 @@ const Divinput = styled.div`
   flex-direction: column;
   margin: 5px;
   align-items: center;
-  
 `;
 const Input = styled.input`
   margin-top: 5px;
@@ -219,6 +247,7 @@ const Input = styled.input`
 const Divboton = styled.div`
   display: flex;
   justify-content: center;
+  align-items: flex-end;
 `;
 const Botonagregar = styled.button`
   padding: 10px;
@@ -231,7 +260,7 @@ const Botonagregar = styled.button`
   }
 `;
 const Select = styled.select`
-  width: 180px;
+  max-width: 165px;
   outline: none;
   font-size: 16px;
   padding: 5px;

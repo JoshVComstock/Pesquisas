@@ -1,3 +1,5 @@
+import { alertnotify } from "../components/app/alert";
+
 const baseUrl =
     import.meta.env.VITE_BACKEND_URL
 
@@ -28,6 +30,7 @@ export const deleteCiudades = async (id, callback) => {
     })
     if (response.ok) {
         callback();
+        
     }
 };
 export const updateCiudades = async (ciudadactual,callback) => {

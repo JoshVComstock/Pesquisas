@@ -45,42 +45,42 @@ const Reporte3Form = () => {
   };
 
   return (
-  <>
-  <article>
-    <form onSubmit={handleSubmit}>
-      <label>
-        <input type="checkbox" value="pacientes.nombre" onChange={handleCheckboxChange} />
-        Nombre
-      </label>
-      <label>
-        <input type="checkbox" value="pacientes.ap_paterno" onChange={handleCheckboxChange} />
-        Apellido Paterno
-      </label>
-      <label>
-        <input type="checkbox" value="pacientes.ap_materno" onChange={handleCheckboxChange} />
-        Apellido Materno
-      </label>
-      <label>
-        <input type="checkbox" value="pacientes.sexo" onChange={handleCheckboxChange} />
-        Sexo
-      </label>
-      <label>
-        <input type="checkbox" value
-="pacientes.fecha_nacimiento" onChange={handleCheckboxChange} />
-Fecha de Nacimiento
-</label>
-<label>
-<input type="checkbox" value="madres.ci" onChange={handleCheckboxChange} />
-CI Madre
-</label>
-<label>
-<input type="checkbox" value="madres.telefono1" onChange={handleCheckboxChange} />
-Teléfono Madre
-</label>
-<button type="submit">Generar Reporte</button>
-</form>
-</article>
-  {pdfUrl && (
+    <>
+      <article>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <input type="checkbox" value="pacientes.nombre" onChange={handleCheckboxChange} />
+            Nombre
+          </label>
+          <label>
+            <input type="checkbox" value="pacientes.ap_paterno" onChange={handleCheckboxChange} />
+            Apellido Paterno
+          </label>
+          <label>
+            <input type="checkbox" value="pacientes.ap_materno" onChange={handleCheckboxChange} />
+            Apellido Materno
+          </label>
+          <label>
+            <input type="checkbox" value="pacientes.sexo" onChange={handleCheckboxChange} />
+            Sexo
+          </label>
+          <label>
+            <input type="checkbox" value
+              ="pacientes.fecha_nacimiento" onChange={handleCheckboxChange} />
+            Fecha de Nacimiento
+          </label>
+          <label>
+            <input type="checkbox" value="madres.ci" onChange={handleCheckboxChange} />
+            CI Madre
+          </label>
+          <label>
+            <input type="checkbox" value="madres.telefono1" onChange={handleCheckboxChange} />
+            Teléfono Madre
+          </label>
+          <button type="submit">Generar Reporte</button>
+        </form>
+      </article>
+      {pdfUrl && (
         <div>
           <iframe
             src={pdfUrl}
@@ -90,6 +90,6 @@ Teléfono Madre
           />
         </div>
       )}</>
-);
+  );
 };
 export default Reporte3Form;

@@ -28,7 +28,7 @@ const AdminComponent = () => {
   return (
     <Master>
       <p>Inicio</p>
-      <Linkes to="/home">
+      <Linkes to="/">
         <Img src="src\img\home.png" alt="" />
         Analytics dashboard
       </Linkes>
@@ -46,15 +46,13 @@ const AdminComponent = () => {
               <Img src={City} alt="" />
               Ciudades - Provincia
             </Linkes>
-             <Linkes to="/consultas">
-              <Img src={Redess} alt="" /> consultas
-            </Linkes> 
+
             <Linkes to="/centros">
               <Img src={Centros} alt="" /> Centros-Municipios
             </Linkes>
-      <Linkes to="/laboratorios">
-        <Img src={Laboratorioicons} alt="" /> Laboratorios -Redes
-      </Linkes>
+            <Linkes to="/laboratorios">
+              <Img src={Laboratorioicons} alt="" /> Laboratorios -Redes
+            </Linkes>
           </Options>
         )}
       </Diva>
@@ -67,11 +65,11 @@ const AdminComponent = () => {
         </Divd>
         {isExpandedcartilla && (
           <Options>
-            <Linkes to="/Registro_hospitales">
-              <Img src={Registrohospitalesicons} alt="" /> Registro Hospitales
-            </Linkes>
             <Linkes to="/registro_provincias">
               <Img src={Registropronviciasicons} alt="" /> Registro provincias
+            </Linkes>
+            <Linkes to="/Registro_hospitales">
+              <Img src={Registrohospitalesicons} alt="" /> Registro Hospitales
             </Linkes>
           </Options>
         )}

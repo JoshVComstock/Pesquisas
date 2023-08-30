@@ -2,10 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { postCiudad, updateCiudades } from "../services/Ciudades";
+import InputValidation from "../components/app/inputvalidation";
+import TextInput from "../components/app/textinput";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Importa los estilos CSS
+import { alertnotify } from "../components/app/alert";
 
-const CiudadesForm = ({getApi,ciudadactual,setCiudadactual,closeModal}) => {
+
+const CiudadesForm = ({ getApi, ciudadactual, setCiudadactual, closeModal }) => {
   const [ciudad, setCiudad] = useState("");
-
+  const [requiredValidation, setRequiredValidation] = useState(false);
   useEffect(() => {
     if (Object.keys(ciudadactual).length > 0) {
       setCiudad(ciudadactual.ciudad);
@@ -17,6 +23,10 @@ const CiudadesForm = ({getApi,ciudadactual,setCiudadactual,closeModal}) => {
   
   const updatepost = (e) => {
     e.preventDefault();
+    if (ciudad.trim() === "") {
+      setRequiredValidation(true);
+      return;
+    }
     if (Object.keys(ciudadactual).length > 0) {
       updateCiudades(
         {
@@ -30,28 +40,30 @@ const CiudadesForm = ({getApi,ciudadactual,setCiudadactual,closeModal}) => {
           getApi();
         }
       );
+      alertnotify("Ciudad", ' editado');
     } else {
       postCiudad(ciudad, () => {
         setCiudad("");
         getApi();
         closeModal();
       });
+      alertnotify('Ciudad', ' agregada');
     }
   };
+
   return (
     <Container>
       <div>
         <form>
           <Divinput>
             <Divinputlabel>
-              <label>Nombre</label>
-              <Input
-                type="text"
-                placholder="Ingrese Ciudad"
+              <label>Ciudad</label>
+              <TextInput
                 value={ciudad}
-                onChange={(e) => setCiudad(e.target.value)}
+                onChange={setCiudad}
               />
             </Divinputlabel>
+            <InputValidation value={ciudad} required={requiredValidation} />
           </Divinput>
           <Divboton>
             <Botonagregar onClick={(e) => updatepost(e)}>

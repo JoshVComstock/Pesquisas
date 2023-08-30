@@ -12,13 +12,10 @@ const fetchDataFromAPI = async () => {
     return [];
   }
 };
-
 const processDataForChart = (data) => {
   const centerData = {};
-
   data.forEach((item) => {
     const { nombre_centro, resultado } = item;
-
     if (!centerData[nombre_centro]) {
       centerData[nombre_centro] = {
         name: nombre_centro,
@@ -27,42 +24,35 @@ const processDataForChart = (data) => {
         sospechosos: 0,
       };
     }
-
     switch (resultado) {
-      case 'positivo':
+      case 'POSITIVO':
         centerData[nombre_centro].positivos++;
         break;
-      case 'negativo':
+      case 'NEGATIVO':
         centerData[nombre_centro].negativos++;
         break;
-      case 'sospechoso':
+      case 'SOSPECHOSO':
         centerData[nombre_centro].sospechosos++;
         break;
       default:
         break;
     }
   });
-
   const processedData = Object.values(centerData);
-
   return processedData;
 };
-
 const Rescentro = () => {
   const [chartData, setChartData] = useState([]);
-
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchDataFromAPI();
       const processedData = processDataForChart(data);
       setChartData(processedData);
     };
-
     fetchData();
   }, []);
-
   return (
-    <div>
+    <>
       <ChartContainer>
         <ResponsiveContainer width="100%" height={250}>
           <BarChart data={chartData} style={{ borderRadius: "0px" }}>
@@ -76,17 +66,14 @@ const Rescentro = () => {
           </BarChart>
         </ResponsiveContainer>
       </ChartContainer>
-    </div>
+    </>
   );
 };
-
 export default Rescentro;
-
 const ChartContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   background-color:transparent;
-
   margin-top: 1em;
 `;

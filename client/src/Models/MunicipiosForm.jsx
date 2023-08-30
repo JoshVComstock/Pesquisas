@@ -4,11 +4,19 @@ import styled from "styled-components";
 import { postMunicipios, updateMunicipios } from "../services/Municipios";
 import { UseFech } from "../hooks/useFech";
 import { getProvincias } from "../services/provincias";
-const MunicipiosForm = ({getApi, municipioactual, setMunicipioactual,closeModal}) => {
-
- const [municipio, setMunicipio] = useState("");
+import TextInput from "../components/app/textinput";
+import InputValidation from "../components/app/inputvalidation";
+const MunicipiosForm = ({
+  getApi,
+  municipioactual,
+  setMunicipioactual,
+  closeModal,
+}) => {
+  const [municipio, setMunicipio] = useState("");
   const [id_provincias, setId_provincias] = useState("");
   const { data: provincia } = UseFech(getProvincias);
+  const [requiredValidation, setRequiredValidation] = useState(false);
+
   useEffect(() => {
     if (Object.keys(municipioactual).length > 0) {
       setMunicipio(municipioactual.municipio);
@@ -20,12 +28,16 @@ const MunicipiosForm = ({getApi, municipioactual, setMunicipioactual,closeModal}
 
   const updatepost = (e) => {
     e.preventDefault();
+    if (municipio.trim() === "") {
+      setRequiredValidation(true);
+      return;
+    }
     if (Object.keys(municipioactual).length > 0) {
       updateMunicipios(
         {
           id: municipioactual.id,
           municipio: municipio,
-          id_provincias:id_provincias,
+          id_provincias: id_provincias,
         },
         () => {
           setMunicipio("");
@@ -42,7 +54,7 @@ const MunicipiosForm = ({getApi, municipioactual, setMunicipioactual,closeModal}
       });
     }
   };
- 
+
   return (
     <Container>
       <div>
@@ -50,11 +62,15 @@ const MunicipiosForm = ({getApi, municipioactual, setMunicipioactual,closeModal}
           <Divinput>
             <Divinputlabel>
               <label>Municipio:</label>
-              <Input
+              <TextInput
                 type="text"
                 placeholder="Ingrese un Municipio"
                 value={municipio}
-                onChange={(e) => setMunicipio(e.target.value)}
+                onChange={setMunicipio}
+              />
+              <InputValidation
+                value={municipio}
+                required={requiredValidation}
               />
             </Divinputlabel>
           </Divinput>
@@ -62,7 +78,7 @@ const MunicipiosForm = ({getApi, municipioactual, setMunicipioactual,closeModal}
             <Divinputlabel>
               <label>Provicia</label>
               <Select onChange={(e) => setId_provincias(e.target.value)}>
-                <option >Seleccione Provincia</option>
+                <option>Seleccione Provincia</option>
                 {provincia.map((v, i) => (
                   <option key={i} value={v.id}>
                     {v.provincia}
@@ -72,7 +88,7 @@ const MunicipiosForm = ({getApi, municipioactual, setMunicipioactual,closeModal}
             </Divinputlabel>
           </Divinput>
           <Divboton>
-            <Botonagregar  onClick={(e) => updatepost(e)}>
+            <Botonagregar onClick={(e) => updatepost(e)}>
               {Object.keys(municipioactual).length > 0 ? "Editar" : "Agregar"}
             </Botonagregar>
           </Divboton>

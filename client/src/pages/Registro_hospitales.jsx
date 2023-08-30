@@ -6,12 +6,6 @@ import styled from "styled-components";
 import { useModal } from "../hooks/useModal";
 import Registro_hospitalesForm from "../Models/Registro_hospitalesForm";
 import RegistroHospitalesEdit from "../Models/Editform/RegistroHospitalesEdit";
-import New from "./../img/new.jpg";
-import Pdf from "./../img/pdf.jpg";
-import Excel from "./../img/doc.jpg";
-import Searchicons from "./../img/search.jpg";
-import Editar from "./../img/icons/Editar.jpg";
-import Eliminar from "./../img/icons/Delete.jpg";
 import { useuserContext } from "../context/userContext";
 import { useNavigate } from "react-router-dom";
 import {
@@ -24,7 +18,6 @@ import {
 } from "../styles/crud";
 import {
   Iconsacciones1,
-  Botonesacciones,
   Divtabla,
   Thead,
   Tbody,

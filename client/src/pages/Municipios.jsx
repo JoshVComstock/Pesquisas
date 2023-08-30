@@ -1,5 +1,6 @@
 import React from "react";
 import MunicipiosForm from "../models/MunicipiosForm";
+
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
 import New from "./../img/new.jpg";
@@ -8,6 +9,7 @@ import Excel from "./../img/doc.jpg";
 import Searchicons from "./../img/search.jpg";
 import Editar from "./../img/icons/Editar.jpg";
 import Eliminar from "./../img/icons/Delete.jpg";
+
 import {
   Container,Divmayor,
   Titulo,
@@ -29,11 +31,17 @@ import {
   Sectiontabla,
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
+import CSVExporter from "../pages/Reportescom";
 
 import { deleteMunicipios, getMunicipios } from "../services/Municipios";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
+const apiUrl = `${baseUrl}municipios`;
+const csvHeaders = ["id", "municipio", "id_provincias"];
+
 const Municipios = () => {
+
+
   const [municipioactual, setMunicipioactual] = useState({});
   const { getApi, data: mnicipios } = UseFech(getMunicipios);
   const { openModal, closeModal } = useModal(
@@ -79,7 +87,9 @@ const Municipios = () => {
             value={filtro}
             onChange={(e) => setFiltro(e.target.value)} /></Divmayor>
       <section>
-        <button >Excel</button>
+      <button>
+          <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
+        </button>
         <button onClick={mostrarpdf}>Pdf</button>
         <button onClick={openModal}>+</button>
         <h2>Registros Municipio</h2>
@@ -89,7 +99,7 @@ const Municipios = () => {
           <Tabla>
             <Thead>
               <tr>
-                <Th>Nº</Th>
+                <Th>NÂº</Th>
                 <Th>MUNICIPIO</Th>
                 <Th>Provincias</Th>
                 <Th>ACCIONES</Th>
