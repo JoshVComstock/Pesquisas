@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import { Report } from "./ReporteForm";
+import { Report } from "../../styles/StylesCruds/StyleReportes";
 
 const ReporteFormpacmad = () => {
   const [campos, setCampos] = useState([]);
@@ -63,10 +62,11 @@ const ReporteFormpacmad = () => {
 
   return (
     <Report>
-        <article>
+    
       <form onSubmit={handleSubmit}>
         <h1>Reporte Dinámico de Pacientes</h1>
-        <label>
+       <article>
+       <label>
           <input
             type="checkbox"
             value="pacientes.nombre"
@@ -153,9 +153,10 @@ const ReporteFormpacmad = () => {
           />
           Detalle de Dirección
         </label>
+       </article>
         <button type="submit">Generar Reporte</button>
       </form>
-      </article>
+ 
       {pdfUrl && (
         <div>
           <iframe

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import { Report } from "./ReporteForm";
+import { Report } from "../../styles/StylesCruds/StyleReportes";
 
 const ReporteFromCartilla = () => {
   const [campos, setCampos] = useState([]);
@@ -71,7 +70,8 @@ const ReporteFromCartilla = () => {
       <form onSubmit={handleSubmit}>
         <h1>Reporte Dinámico de Cartillas</h1>
 
-        <label>
+     <article>
+     <label>
           <input
             type="checkbox"
             value="codigo_barras"
@@ -106,9 +106,6 @@ const ReporteFromCartilla = () => {
             <input type="date" name="end" onChange={handleFiltroChange} />
           </article>
         )}
-
-        <label></label>
-
     <label>
       <input
         type="checkbox"
@@ -144,6 +141,7 @@ const ReporteFromCartilla = () => {
         placeholder="Ingrese la información de la transfusión"
       />
     )}
+     </article>
 
     <button type="submit">Generar Reporte</button>
   </form>

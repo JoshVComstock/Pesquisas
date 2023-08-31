@@ -56,45 +56,36 @@ const MunicipiosForm = ({
   };
 
   return (
-    <Container>
+    <form>
+      <section>
+        <div>
+          <label>Municipio:</label>
+          <TextInput
+            type="text"
+            placeholder="Ingrese un Municipio"
+            value={municipio}
+            onChange={setMunicipio}
+          />
+        </div>
+        <InputValidation value={municipio} required={requiredValidation} />
+        <div>
+          <label>Provicia</label>
+          <select onChange={(e) => setId_provincias(e.target.value)}>
+            <option>Seleccione Provincia</option>
+            {provincia.map((v, i) => (
+              <option key={i} value={v.id}>
+                {v.provincia}
+              </option>
+            ))}
+          </select>
+        </div>
+      </section>
       <div>
-        <form>
-          <Divinput>
-            <Divinputlabel>
-              <label>Municipio:</label>
-              <TextInput
-                type="text"
-                placeholder="Ingrese un Municipio"
-                value={municipio}
-                onChange={setMunicipio}
-              />
-              <InputValidation
-                value={municipio}
-                required={requiredValidation}
-              />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
-              <label>Provicia</label>
-              <Select onChange={(e) => setId_provincias(e.target.value)}>
-                <option>Seleccione Provincia</option>
-                {provincia.map((v, i) => (
-                  <option key={i} value={v.id}>
-                    {v.provincia}
-                  </option>
-                ))}
-              </Select>
-            </Divinputlabel>
-          </Divinput>
-          <Divboton>
-            <Botonagregar onClick={(e) => updatepost(e)}>
-              {Object.keys(municipioactual).length > 0 ? "Editar" : "Agregar"}
-            </Botonagregar>
-          </Divboton>
-        </form>
+        <button onClick={(e) => updatepost(e)}>
+          {Object.keys(municipioactual).length > 0 ? "Editar" : "Agregar"}
+        </button>
       </div>
-    </Container>
+    </form>
   );
 };
 

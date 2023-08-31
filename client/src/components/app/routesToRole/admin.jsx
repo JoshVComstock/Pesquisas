@@ -20,6 +20,11 @@ const AdminComponent = () => {
         <img src="src\img\home.png" alt="" />
         Analytics dashboard
       </Linkes>
+      <p>Reportes</p>
+      <Linkes to="/Reportes">
+        <img src="src\img\analitica.png" alt="" />
+        Reportes
+      </Linkes>
       <p>Resgistros Entidades</p>
       <section onClick={() => setIsExpanded(!isExpanded)}>
         <div>
@@ -60,11 +65,7 @@ const AdminComponent = () => {
           </aside>
         )}
       </section>
-      <p>Reportes</p>
-      <Linkes to="/Reportes">
-        <img src="src\img\analitica.png" alt="" />
-        Reportes
-      </Linkes>
+      
       <p>Paciente</p>
       <section onClick={() => setIsExpandedpaciente(!isExpandedpaciente)}>
         <div>

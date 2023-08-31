@@ -6,11 +6,7 @@ import { Link } from "react-router-dom";
 export const Container = styled.div`
   width: 100%;
   height: 100%;
-  background-color: rgb(236, 237, 241);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
+  ${StyleComun}
 `;
 //------------------- para Reportes --------------------------
 
@@ -25,12 +21,14 @@ export const Divheader = styled.div`
   background-color: rgb(245, 245, 243);
   & > aside {
     ${StyleComun}
+    width:100%;
     align-items: flex-start;
     & > section {
       width: 300px;
     }
     & > div {
       width: 100%;
+      background-color: ${Colores.gris};
     }
   }
   & > nav {
@@ -95,9 +93,8 @@ export const Divheader = styled.div`
 export const Master = styled.nav`
   ${StyleComun}
   flex-direction: column;
-  gap: 0.2em;
+
   & p {
-    padding: 1.5em 0 0 2.5em;
     font-size: 0.7em;
     color: #0009;
     font-weight: 400;
@@ -106,37 +103,36 @@ export const Master = styled.nav`
     border: none;
     border-bottom: solid 0.5px ${Colores.buttons};
     width: 70%;
-    &:first-child {
-      padding: 3em 0em 1em 2.5em;
-    }
+    padding: 2em 0em 1em 2.5em;
   }
   &img {
     width: 33px;
   }
   height: 88vh;
+  box-shadow: 0 5px 10px #0005;
   overflow-y: scroll;
   & > section {
-    background: rgb(245, 245, 243);
+    background-color: ${Colores.buttons};
     cursor: pointer;
     text-decoration: none;
     flex-direction: column;
     align-items: center;
     width: 100%;
     margin: 1em 0;
+    padding: 0.5em 0;
     & div {
-      background: rgb(245, 245, 243);
+      background: transparent;
       cursor: pointer;
       text-decoration: none;
-      color: #000000;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+      color: ${Colores.blanco};
+      ${StyleComun}
       width: 90%;
       font-size: 0.95em;
       margin-left: 10%;
-      gap:.5em;
+      gap: 0.5em;
       & img {
         width: 22px;
+        filter: invert(1);
         &:nth-child(2) {
           width: 10px;
           height: 8px;
@@ -150,25 +146,38 @@ export const Master = styled.nav`
       position: relative;
       top: 0;
       left: 0;
-      background-color: #c1c1c11f;
-      padding: 10px;
+      padding: 0;
       margin-top: 10px;
-      border: solid 1px #0002;
+      /* color: ${Colores.blanco};
+      & img {
+        filter: invert(1);
+      } */
+      background-color: #fff;
     }
   }
 `;
 export const Linkes = styled(Link)`
-  background: transparent;
   cursor: pointer;
   text-decoration: none;
-  color: #0d145b;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  color: ${Colores.buttons};
+  ${StyleComun}
+  justify-content:flex-start;
   width: 90%;
-  margin: 0.5em 0;
+  margin: 0.3em 0;
   font-size: 0.95em;
   margin-left: 10%;
+  padding: 0.5em;
+  gap: 1em;
+  border-radius: 1em 0 0 1em;
+  &:hover {
+    transform: translateX(-5px);
+    box-shadow: 0px 5px 10px #0008;
+    background-color: ${Colores.buttons};
+    color: ${Colores.blanco};
+    & img {
+      filter: invert(1);
+    }
+  }
   & > img {
     width: 22px;
   }

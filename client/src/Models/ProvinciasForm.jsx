@@ -1,6 +1,4 @@
-import React from "react";
 import { useState, useEffect } from "react";
-import styled from "styled-components";
 import { UseFech } from "../hooks/useFech";
 import InputValidation from "../components/app/inputvalidation";
 import TextInput from "../components/app/textinput";
@@ -53,86 +51,41 @@ const ProvinciasForm = ({
     }
   };
   return (
-    <Container>
+    <form>
+      <section>
+        <div>
+          <label>Nombre</label>
+          <TextInput
+            type="text"
+            placeholder="Ingrese una Provincia"
+            value={provincia}
+            onChange={setProvincia}
+          />
+        </div>
+        <InputValidation value={provincia} required={requiredValidation} />
+        <div>
+          <label>Ciudad</label>
+          <select onChange={(e) => setId_ciudad(e.target.value)}>
+            <option>Seleccione ciudad</option>
+            {ciudades.map((v, i) => (
+              <option key={i} value={v.id}>
+                {v.ciudad}
+              </option>
+            ))}
+          </select>
+        </div>
+      </section>
       <div>
-        <form>
-          <Divinput>
-            <Divinputlabel>
-              <label>Nombre</label>
-              <TextInput
-                type="text"
-                placeholder="Ingrese una Provincia"
-                value={provincia}
-                onChange={setProvincia}
-              />
-              <InputValidation
-                value={provincia}
-                required={requiredValidation}
-              />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
-              <label>Ciudad</label>
-              <Select onChange={(e) => setId_ciudad(e.target.value)}>
-                <option>Seleccione ciudad</option>
-                {ciudades.map((v, i) => (
-                  <option key={i} value={v.id}>
-                    {v.ciudad}
-                  </option>
-                ))}
-              </Select>
-            </Divinputlabel>
-          </Divinput>
-          <Divboton>
-            <Botonagregar
-              onClick={(e) => {
-                updatepost(e);
-              }}
-            >
-              {Object.keys(provincia).length > 0 ? "Editar" : "Agregar"}
-            </Botonagregar>
-          </Divboton>
-        </form>
-        {/* <AlertComponent /> */}
+        <button
+          onClick={(e) => {
+            updatepost(e);
+          }}
+        >
+          {Object.keys(provincia).length > 0 ? "Editar" : "Agregar"}
+        </button>
       </div>
-    </Container>
+    </form>
   );
 };
 
 export default ProvinciasForm;
-
-const Container = styled.div``;
-const Divinputlabel = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const Divinput = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  align-items: center;
-`;
-
-const Divboton = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-const Botonagregar = styled.button`
-  padding: 10px;
-  cursor: pointer;
-  background: #034078;
-  color: #fff;
-  border-radius: 7px;
-  &:hover {
-    background: #0077b6;
-  }
-`;
-const Select = styled.select`
-  width: 180px;
-  outline: none;
-  font-size: 16px;
-  padding: 5px;
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
-`;

@@ -8,17 +8,10 @@ import ReporteFromCartilla from './Reportesdinamicos/ReporteFromcartilladim';
 const Reportesdinamicos = () => {
   return (
  <>
-    <Div>
-        <section>
+    <Div>    
         <ReporteForm/>
-        </section>
-        <section>
         <ReportemadreForm/>
-        </section>
-        <section>
-        <ReporteFromCartilla/>
-        </section>
-     
+        <ReporteFromCartilla/>     
     </Div>
     {/* <Reporte3Form/> */}
     </>
