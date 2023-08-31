@@ -7,7 +7,12 @@ import TextInput from "../components/app/textinput";
 import { postProvincia, updateProvincia } from "../services/provincias";
 import { getCiudades } from "../services/Ciudades";
 
-const ProvinciasForm = ({ getApi, provinciaactual, setProviciaactual, closeModal }) => {
+const ProvinciasForm = ({
+  getApi,
+  provinciaactual,
+  setProviciaactual,
+  closeModal,
+}) => {
   const [requiredValidation, setRequiredValidation] = useState(false);
   const [provincia, setProvincia] = useState("");
   const [id_ciudad, setId_ciudad] = useState("");
@@ -85,13 +90,11 @@ const ProvinciasForm = ({ getApi, provinciaactual, setProviciaactual, closeModal
                 updatepost(e);
               }}
             >
-              {
-                Object.keys(provincia).length > 0 ? "Editar" : "Agregar"
-              }
+              {Object.keys(provincia).length > 0 ? "Editar" : "Agregar"}
             </Botonagregar>
           </Divboton>
         </form>
-        <AlertComponent />
+        {/* <AlertComponent /> */}
       </div>
     </Container>
   );

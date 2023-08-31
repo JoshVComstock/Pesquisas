@@ -1,140 +1,58 @@
-import React from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
-import Logos from "../../img/logoo.jpg";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useNavContext } from "../../context/navcontext";
 import { useuserContext } from "../../context/userContext";
 import AdminComponent from "./routesToRole/admin";
 import LaboratorioComponent from "./routesToRole/laboratorio";
 import Recepcionista from "./routesToRole/recepcionista";
-
+import { useState } from "react";
+import { Divheader } from "../../styles/StylesCruds/CrudsStyle";
 const Navbar = () => {
   const { logged } = useNavContext;
   const navegation = useNavigate();
+  const [expandirNav, setExpandirNav] = useState(true);
   const { user, setUser } = useuserContext();
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
-  const Cerrasesion =() => {
+  const Cerrasesion = () => {
     localStorage.removeItem("user");
     navegation("/login");
   };
-
   return (
     <>
       <Divheader>
-        <Topnav>
-          <Logo>
-            <H>Tamizaje Neonatal</H>
-          </Logo>
-          <User>
-            <Topnavimg src="src\img\avatar.png" alt="" />
-            <Select>
-              <Option>{user.nombre}</Option>
-              
-            </Select>
+        <nav>
+          <section>
+            <h1>
+              <strong>Tamizaje</strong> Neonatal
+            </h1>
+            <button onClick={() => setExpandirNav(!expandirNav)}>=</button>
+          </section>
+          <article>
+            <img src="src\img\avatar.png" alt="" />
+            <select>
+              <option>{user.nombre}</option>
+            </select>
             <button onClick={Cerrasesion}>Salir</button>
-          </User>
-        </Topnav>
-        <Navuser>
-          <Header>
-            {user.rol == "administrador" && <AdminComponent />}
-            {user.rol == "laboratorio" && <LaboratorioComponent />}
-            {user.rol=="recepcionista" && <Recepcionista/>}
-          </Header>
-          <Divo>
+          </article>
+        </nav>
+        <aside>
+          {expandirNav && (
+            <section props={expandirNav ? "expanded" : "collapsed"}>
+              {user.rol == "administrador" && <AdminComponent />}
+              {user.rol == "laboratorio" && <LaboratorioComponent />}
+              {user.rol == "recepcionista" && <Recepcionista />}
+            </section>
+          )}
+          <div>
             <Outlet />
-          </Divo>
-        </Navuser>
+          </div>
+        </aside>
       </Divheader>
     </>
   );
 };
 
 export default Navbar;
-const Divheader = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(245, 245, 243);
-
-`;
-
-const Select = styled.select`
-  border: none;
-  text-align: center;
-  transition: height 0.5s ease;
-  outline: none;
-  cursor: pointer;
-  background-color:transparent;
-
-`;
-
-const Option = styled.option`
-  outline: none;
-  border: none;
-  text-align: start;
-  color: blue;
-
-  &::first-letter {
-    font-size: 1.2em;
-  }
-`;
-const Topnav = styled.div`
-  width: 100%;
-  height: 12vh;
-  background-color: rgb(245, 245, 243);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  box-shadow: 0px 2px 5px 0px #0000004e;
-  padding: 0 3em;
-  z-index: 5;
-`;
-
-const Logo = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const Navuser = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-`;
-
-const Topnavimg = styled.img`
-  height: 35px;
-  filter: saturate(0%);
-`;
-const Logout = styled.button``;
-const User = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const H = styled.h5`
-  color: #000000;
-  font-size: 1.3em;
-
-  &::first-letter {
-    font-size: 1.2em;
-    color: blue;
-  }
-`;
-const Divo = styled.div`
-  width: 100%;
-`;
-const Header = styled.header`
-  width: 300px;
-  z-index: 4;
-  height: 100%;
-  background-color:rgb(245, 245, 243);
-`;

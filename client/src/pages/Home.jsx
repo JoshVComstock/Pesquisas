@@ -17,6 +17,7 @@ import { getCartillas } from "../services/cartilla";
 import { getCentros } from "../services/centros";
 import { getProvincias } from "../services/provincias";
 import { UseFech } from "../hooks/useFech";
+import { Colores } from "../styles/StylesCruds/DataStyle";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 const Home = () => {
   const { data: pacientes } = UseFech(getPacientes);
@@ -220,7 +221,6 @@ const DivReport = styled.div`
   display: flex;
   flex-wrap: nowrap;
   gap: 2em;
-
   & div {
     width: calc(100% / 4);
     height: 80%;
@@ -235,10 +235,12 @@ const DivReport = styled.div`
     background-color: rgb(245, 245, 243);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease-in-out;
-
     &:hover {
       transform: scale(1.02);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      &::before{
+      background-color: ${Colores.primary};
+      }
     }
 
     &::before {
