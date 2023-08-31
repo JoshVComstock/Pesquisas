@@ -25,7 +25,7 @@ import {
   Tabla,
   Sectionpa,
   Divreport,
-  Divbotonesa,Divmayor
+  Divbotonesa, Divmayor
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
@@ -38,19 +38,11 @@ import Homee from "./graficos/Graficoshome";
 import { ToastContainer } from "react-toastify";
 import { alertnotify } from "../components/app/alert";
 const Ciudades = () => {
-
   const { data: provincias } = UseFech(getProvincias);
-
-// solo para el select
-const [isExpanded, setIsExpanded] = useState(false);
-//------
-const apiUrl = `${baseUrl}ciudades`;
-    const csvHeaders = ["id", "ciudad"];
-
-
+  const apiUrl = `${baseUrl}ciudades`;
+  const csvHeaders = ["id", "ciudad"];
   const [ciudadactual, setCiudadactual] = useState({});
   const { getApi, data: ciudades } = UseFech(getCiudades);
-  const { data } = UseFech(getciudadpdf);
   const { openModal, closeModal } = useModal(
     Object.keys(ciudadactual).length > 0 ? "Editar Ciudad" : "Agregar ciudad",
     <CiudadesForm
@@ -62,7 +54,6 @@ const apiUrl = `${baseUrl}ciudades`;
       }}
     />
   );
-
   const [filtro, setFiltro] = useState("");
   useEffect(() => {
     if (Object.keys(ciudadactual).length > 0) {
@@ -84,74 +75,70 @@ const apiUrl = `${baseUrl}ciudades`;
     window.open(url, "_blank");
     return response;
   };
-  // ---------------
-  
   return (
     <Container>
       <Sectionpa>
         <Divreport>
           <div>
-          <img src="src\img\gestion.png" alt="" />
+            <img src="src\img\gestion.png" alt="" />
             <section>
               <h3>{ciudades.length}</h3>
               <p>n° registros</p>
               <p>Ciudades</p>
             </section>
-         
+
           </div>
           <div>
-          <img src="src\img\gestion.png" alt="" />
+            <img src="src\img\gestion.png" alt="" />
             <section>
               <h3>{provincias.length}</h3>
-              <p>n° registros</p>
+              <p>N° registros</p>
               <p>Provincia</p>
             </section>
           </div>
         </Divreport>
-<ToastContainer/>
-      
-     <Sectiond>
-
-     <Dippadretabla>
-     <Divmayor><label >buscar</label> <input  type="text"
-            placeholder="Buscar"
-            value={filtro}
-            onChange={(e) => setFiltro(e.target.value)} /></Divmayor>
-       <section>
-       <button >
-    <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
-
-       </button>
-
-       <button onClick={mostrarpdf} >Pdf</button>
-       <button onClick={openModal} >+</button>
-        <h2>Registros Ciudades</h2>
-       </section>
-          <Sectiontabla>
-            <Divtabla>
-           
-              <Tabla>
-                <Thead>
-                  <tr>
-                    <Th data-label="Nº">Nº</Th>
-                    <Th data-label="CIUDAD">CIUDAD</Th>
-                    <Th data-label="ACCIONES">
-                    ACCIONES
-                    </Th>
-                  </tr>
-                </Thead>
-                {ciudades
-                  .filter((v) =>
-                    v.ciudad.toLowerCase().includes(filtro.toLowerCase())
-                  )
-                  .map((v, i) => (
-                    <Tbody key={i}>
-                      <tr>
-                        <Trdatos data-label="Nº">{i + 1}</Trdatos>
-                        <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
-                        <Trdatos data-label="ACCIONES">
-                          <Botonacciones>
-                            <div>
+        <ToastContainer />
+        <Sectiond>
+          <Dippadretabla>
+            <Divmayor>
+              <label >Buscar</label>
+              <input type="text"
+                placeholder="Buscar"
+                value={filtro}
+                onChange={(e) => setFiltro(e.target.value)} />
+            </Divmayor>
+            <section>
+              <button >
+                <CSVExporter apiUrl={apiUrl} csvHeaders={csvHeaders} />
+              </button>
+              <button onClick={mostrarpdf} >Pdf</button>
+              <button onClick={openModal} >+</button>
+              <h2>Registros Ciudades</h2>
+            </section>
+            <Sectiontabla>
+              <Divtabla>
+                <Tabla>
+                  <Thead>
+                    <tr>
+                      <Th>Nº</Th>
+                      <Th>CIUDAD</Th>
+                      <Th>
+                        ACCIONES
+                      </Th>
+                    </tr>
+                  </Thead>
+                  {ciudades
+                    .filter((v) =>
+                      v.ciudad.toLowerCase().includes(filtro.toLowerCase())
+                    )
+                    .map((v, i) => (
+                      <Tbody key={i}>
+                        <tr>
+                          <Trdatos data-label="Nº">{i + 1}</Trdatos>
+                          <Trdatos data-label="CIUDAD">{v.ciudad}</Trdatos>
+                          <Trdatos data-label="ACCIONES">
+                            <Botonacciones>
+                              <div>
                                 <Iconsacciones
                                   onClick={() => {
                                     setCiudadactual(v);
@@ -159,28 +146,26 @@ const apiUrl = `${baseUrl}ciudades`;
                                 >
                                   Editar
                                 </Iconsacciones>
-                            </div>
-                            <div>
-                                <Iconsacciones1  onClick={() => {
+                              </div>
+                              <div>
+                                <Iconsacciones1 onClick={() => {
                                   deleteCiudades(v.id, getApi);
-                                  alertnotify('Ciudad',' eliminado')
+                                  alertnotify('Ciudad', ' eliminado')
                                 }}>Eliminar</Iconsacciones1>
-                           
-                            </div>
-                          </Botonacciones>
-                        </Trdatos>
-                      </tr>
-                    </Tbody>
-                  ))}
-              </Tabla>
-            </Divtabla>
-          </Sectiontabla>
-        </Dippadretabla>
-
-        <Dippadretabla>
-         <Provincias/> 
-        </Dippadretabla>
-     </Sectiond>
+                              </div>
+                            </Botonacciones>
+                          </Trdatos>
+                        </tr>
+                      </Tbody>
+                    ))}
+                </Tabla>
+              </Divtabla>
+            </Sectiontabla>
+          </Dippadretabla>
+          <Dippadretabla>
+            <Provincias />
+          </Dippadretabla>
+        </Sectiond>
       </Sectionpa>
     </Container>
   );
@@ -193,14 +178,11 @@ display:flex;
 flex-direction:row;
 flex-wrap: wrap;
 gap:2em;
-
 `;
 export const Dippadretabla = styled.div`
   width: 47.8%;
-  
   margin: 0 auto;
   background-color: rgb(245, 245, 243);
-
   overflow: hidden;
   height: 50vh;
   display: flex;
@@ -223,12 +205,6 @@ export const Dippadretabla = styled.div`
       font-size: 15px;
       transition: all 0.5s ease;
       box-shadow:0 5px 5px #00002271;
-      /* &:nth-child(2) {
-  background-color:rgba(145, 22, 0, 0.802);
-  color:#fff;}
-  &:nth-child(1) {
-  background-color: #008610c3;
-  color:#fff;} */
       &:hover {
       height: 3em;
       }

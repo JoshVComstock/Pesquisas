@@ -17,7 +17,6 @@ const CiudadesEdit = ({ciudadactual,mostrarciudades}) => {
         ciudad: ciudad,
       }),
     });
-
     if ((response.ok)) {
       setCiudad(" ");
       mostrarciudades();

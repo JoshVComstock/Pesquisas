@@ -1,7 +1,6 @@
 import { Linkes, Img } from "../../../styles/roles";
 import React from "react";
 import Cartilla from "../../../img/icons/Primeramuestra.jpg";
-
 const Recepcionista = () => {
   return (
     <>

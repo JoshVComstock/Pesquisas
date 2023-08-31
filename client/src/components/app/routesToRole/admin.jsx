@@ -1,30 +1,19 @@
 import React, { useState } from "react";
 import { Linkes, Img, Imga } from "../../../styles/roles";
 import Centros from "../../../img/icons/Centros.jpg";
-import Logos from "../../../img/logoo.jpg";
 import City from "../../../img/icons/City.jpg";
-import Redess from "../../../img/icons/Redes.jpg";
 import Laboratorioicons from "../../../img/icons/Laboratorio.jpg";
-import Provinciasicons from "../../../img/icons/Provincias.jpg";
 import Registropronviciasicons from "../../../img/icons/Registropronvicias.jpg";
-import Enfermedadesicons from "../../../img/icons/Enfermedades.jpg";
 import Registrohospitalesicons from "../../../img/icons/Registrohospitales.jpg";
-import Municiosicons from "../../../img/icons/Municipio.jpg";
-import Primeramuestraicons from "../../../img/icons/Primeramuestra.jpg";
-import Rellamadosicons from "../../../img/icons/Rellamados.jpg";
-import Madresicons from "../../../img/icons/Madre.jpg";
 import Pacienteicons from "../../../img/icons/Paciente.jpg";
 import Usericons from "../../../img/user.jpg";
 import Cartilla from "../../../img/icons/Primeramuestra.jpg";
 
 import styled from "styled-components";
-
 const AdminComponent = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isExpandedcartilla, setIsExpandedcartilla] = useState(false);
-  const [isExpandedreportes, setIsExpandedreportes] = useState(false);
   const [isExpandedpaciente, setIsExpandedpaciente] = useState(false);
-
   return (
     <Master>
       <p>Inicio</p>
@@ -33,7 +22,6 @@ const AdminComponent = () => {
         Analytics dashboard
       </Linkes>
       <p>Resgistros Entidades</p>
-
       <Diva onClick={() => setIsExpanded(!isExpanded)}>
         <Divd>
           <Img src="src\img\registro.png" alt="" />
@@ -79,15 +67,6 @@ const AdminComponent = () => {
         <Img src="src\img\analitica.png" alt="" />
         Reportes
       </Linkes>
-      {/* 
-      <Diva onClick={() => setIsExpandedreportes(!isExpandedreportes)}>
-        <Divd>
-          <Img src="src\img\analitica.png" alt="" />
-          Reportes
-          <Imga src="src\img\abajo.png" alt="" />
-        </Divd>
-        {isExpandedreportes && <Options></Options>}
-      </Diva> */}
       <p>Paciente</p>
       <Diva onClick={() => setIsExpandedpaciente(!isExpandedpaciente)}>
         <Divd>
@@ -113,26 +92,10 @@ const AdminComponent = () => {
       <Linkes to="/registro_usuario">
         <Img src={Usericons} alt="" /> Registrar Usuario
       </Linkes>
-      {/* <Linkes to="/primera_muestra">
-        <Img src={Primeramuestraicons} alt="" /> /Primera Muestra
-      </Linkes> */}
-      {/*  <Linkes to="/Registro_hospitales">
-    <Img src={Registrohospitalesicons} alt="" /> /Registro Hospitales
-  </Linkes> */}
-      {/*  <Linkes to="/Rellamados">
-    <Img src={Rellamadosicons} alt="" /> /Rellamados
-  </Linkes> */}
-      {/* <Linkes to="/rellamados">
-    <Img src={Rellamadosicons} alt="" /> Rellamados
-  </Linkes>
- 
-</>*/}
     </Master>
   );
 };
-
 export default AdminComponent;
-
 export const Master = styled.nav`
   display: flex;
   flex-direction: column;
@@ -151,7 +114,6 @@ export const Master = styled.nav`
   height: 88vh;
   overflow-y: scroll;
 `;
-
 export const Options = styled.div`
   position: relative;
   top: 0;
