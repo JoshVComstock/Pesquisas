@@ -10,15 +10,14 @@ const TextInput = ({ value, onChange }) => {
   return <Input type="text" value={value} onChange={handleInputChange} />;
 };
 
-const Input = styled.input`
-   margin-top: 5px;
-  margin-bottom: 5px;
+export const Input = styled.input`
   height: 30px;
   border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid #0005;
   outline: none;
   &:focus {
-    border: 1.5px solid #034078;
+  border-radius: 0;
+    border-bottom: 1.5px solid #0084ff;
   }
 `;
 

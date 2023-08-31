@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Linkes, Img, Imga } from "../../../styles/roles";
 import Centros from "../../../img/icons/Centros.jpg";
 import City from "../../../img/icons/City.jpg";
 import Laboratorioicons from "../../../img/icons/Laboratorio.jpg";
@@ -8,8 +7,12 @@ import Registrohospitalesicons from "../../../img/icons/Registrohospitales.jpg";
 import Pacienteicons from "../../../img/icons/Paciente.jpg";
 import Usericons from "../../../img/user.jpg";
 import Cartilla from "../../../img/icons/Primeramuestra.jpg";
+<<<<<<< HEAD
 
 import styled from "styled-components";
+=======
+import { Linkes, Master } from "../../../styles/StylesCruds/CrudsStyle";
+>>>>>>> 32b1a228366781c579ed0e746062393c784bec14
 const AdminComponent = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isExpandedcartilla, setIsExpandedcartilla] = useState(false);
@@ -18,9 +21,10 @@ const AdminComponent = () => {
     <Master>
       <p>Inicio</p>
       <Linkes to="/">
-        <Img src="src\img\home.png" alt="" />
+        <img src="src\img\home.png" alt="" />
         Analytics dashboard
       </Linkes>
+<<<<<<< HEAD
       <p>Resgistros Entidades</p>
       <Diva onClick={() => setIsExpanded(!isExpanded)}>
         <Divd>
@@ -62,40 +66,87 @@ const AdminComponent = () => {
           </Options>
         )}
       </Diva>
+=======
+>>>>>>> 32b1a228366781c579ed0e746062393c784bec14
       <p>Reportes</p>
       <Linkes to="/Reportes">
-        <Img src="src\img\analitica.png" alt="" />
+        <img src="src\img\analitica.png" alt="" />
         Reportes
       </Linkes>
+<<<<<<< HEAD
+=======
+      <p>Resgistros Entidades</p>
+      <section onClick={() => setIsExpanded(!isExpanded)}>
+        <div>
+          <img src="src\img\registro.png" alt="" />
+          Registros
+          <img src="src\img\abajo.png" alt="" />
+        </div>
+        {isExpanded && (
+          <aside>
+            <Linkes to="/ciudades">
+              <img src={City} alt="" />
+              Ciudades - Provincia
+            </Linkes>
+            <Linkes to="/centros">
+              <img src={Centros} alt="" /> Centros-Municipios
+            </Linkes>
+            <Linkes to="/laboratorios">
+              <img src={Laboratorioicons} alt="" /> Laboratorios -Redes
+            </Linkes>
+          </aside>
+        )}
+      </section>
+      <p>Gestion cartilla</p>
+      <section onClick={() => setIsExpandedcartilla(!isExpandedcartilla)}>
+        <div>
+          <img src="src\img\gestion.png" alt="" />
+          Gestion
+          <img src="src\img\abajo.png" alt="" />
+        </div>
+        {isExpandedcartilla && (
+          <aside>
+            <Linkes to="/registro_provincias">
+              <img src={Registropronviciasicons} alt="" /> Registro provincias
+            </Linkes>
+            <Linkes to="/Registro_hospitales">
+              <img src={Registrohospitalesicons} alt="" /> Registro Hospitales
+            </Linkes>
+          </aside>
+        )}
+      </section>
+      
+>>>>>>> 32b1a228366781c579ed0e746062393c784bec14
       <p>Paciente</p>
-      <Diva onClick={() => setIsExpandedpaciente(!isExpandedpaciente)}>
-        <Divd>
-          <Img src="src\img\paciente.png" alt="" />
+      <section onClick={() => setIsExpandedpaciente(!isExpandedpaciente)}>
+        <div>
+          <img src="src\img\paciente.png" alt="" />
           Paciente
-          <Imga src="src\img\abajo.png" alt="" />
-        </Divd>
+          <img src="src\img\abajo.png" alt="" />
+        </div>
         {isExpandedpaciente && (
-          <Options>
+          <aside>
             <Linkes to="/pacientes">
-              <Img src={Pacienteicons} alt="" /> pacientes
+              <img src={Pacienteicons} alt="" /> pacientes
             </Linkes>
             <Linkes to="/cartilla">
-              <Img src={Cartilla} alt="" /> Cartilla
+              <img src={Cartilla} alt="" /> Cartilla
             </Linkes>
             <Linkes to="/resultados">
-              <Img src="" alt="" /> Resultados
+              <img src="" alt="" /> Resultados
             </Linkes>
-          </Options>
+          </aside>
         )}
-      </Diva>
+      </section>
       <p>usuarios</p>
       <Linkes to="/registro_usuario">
-        <Img src={Usericons} alt="" /> Registrar Usuario
+        <img src={Usericons} alt="" /> Registrar Usuario
       </Linkes>
     </Master>
   );
 };
 export default AdminComponent;
+<<<<<<< HEAD
 export const Master = styled.nav`
   display: flex;
   flex-direction: column;
@@ -145,3 +196,5 @@ export const Divd = styled.div`
   font-size: 0.95em;
   margin-left: 10%;
 `;
+=======
+>>>>>>> 32b1a228366781c579ed0e746062393c784bec14

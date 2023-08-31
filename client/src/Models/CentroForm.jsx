@@ -1,10 +1,9 @@
 import React from "react";
-import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { UseFech } from "../hooks/useFech";
 import { postCentros, updateCentros } from "../services/centros";
 import { getMunicipios } from "../services/Municipios";
-import TextInput from "../components/app/textinput";
+import TextInput, { Input } from "../components/app/textinput";
 import InputValidation from "../components/app/inputvalidation";
 const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
   const [nombre, setNombre] = useState("");
@@ -89,181 +88,102 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
   };
 
   return (
-    <Container>
-      <div>
-        <form>
-          <Divinput>
-            <Divinputlabel>
-              <label>Nombre:</label>
-              <TextInput
-                name="Nombre"
-                placeholder="Ingrese un Nombre"
-                type="text"
-                required
-                value={nombre}
-                onChange={setNombre}
-              />
-              <InputValidation value={nombre} required={validacion} />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
-              <label>Dirección:</label>
-              <TextInput
-                name="Direccion"
-                placeholder="Ingrese una Dirección"
-                type="text"
-                required
-                value={direccion}
-                onChange={SetDireccion}
-              />
-              <InputValidation value={direccion} required={validacion}/>
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
-              <label>Municipio:</label>
-              <Select
-                value={id_municipios}
-                onChange={(e) => setId_municipios(e.target.value)}
-              >
-                <option> Seleccione una municipio </option>
-                {municipios.map((v, i) => (
-                  <option key={i} value={v.id}>
-                    {v.municipio}
-                  </option>
-                ))}
-              </Select>
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
-              <label>Teléfono:</label>
-              <Input
-                name="Telefono"
-                placeholder="Ingrese un Teléfono"
-                type="number"
-                value={telefono}
-                required
-                onChange={(e) => setTelefono(e.target.value)}
-              />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
-              <label>Área:</label>
-              <Input
-                name="Area"
-                placeholder="Ingrese una Área"
-                type="text"
-                value={area}
-                required
-                onChange={(e) => setArea(e.target.value)}
-              />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
-              <label>Seguimiento de Casos:</label>
-              <Input
-                name="Telefono"
-                placeholder="Seguimiento de Casos"
-                type="text"
-                value={seguimiento_casos}
-                required
-                onChange={(e) => setSeguimiento_casos(e.target.value)}
-              />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
-              <label>Contacto:</label>
-              <Input
-                name="Contacto"
-                placeholder="Ingrese un Contacto"
-                type="number"
-                required
-                value={contacto}
-                onChange={(e) => setContacto(e.target.value)}
-              />
-            </Divinputlabel>
-          </Divinput>
-          <Divboton>
-            <Botonagregar onClick={(e) => updatepost(e)}>
-              {Object.keys(centroactual).length > 0 ? "Editar" : "Agregar"}
-            </Botonagregar>
-          </Divboton>
-        </form>
-      </div>
-    </Container>
+    <>
+      <form>
+        <section>
+          <div>
+            <label>Nombre:</label>
+            <TextInput
+              name="Nombre"
+              placeholder="Ingrese un Nombre"
+              type="text"
+              required
+              value={nombre}
+              onChange={setNombre}
+            />
+          </div>
+          <InputValidation value={nombre} required={validacion} />
+      
+          <div>
+            <label>Dirección:</label>
+            <TextInput
+              name="Direccion"
+              placeholder="Ingrese una Dirección"
+              type="text"
+              required
+              value={direccion}
+              onChange={SetDireccion}
+            />
+          </div>
+          <InputValidation value={direccion} required={validacion} />
+       
+        <div>
+          <label>Municipio:</label>
+          <select
+            value={id_municipios}
+            onChange={(e) => setId_municipios(e.target.value)}
+          >
+            <option> Seleccione una municipio </option>
+            {municipios.map((v, i) => (
+              <option key={i} value={v.id}>
+                {v.municipio}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label>Teléfono:</label>
+          <input
+            name="Telefono"
+            placeholder="Ingrese un Teléfono"
+            type="number"
+            value={telefono}
+            required
+            onChange={(e) => setTelefono(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Área:</label>
+          <input
+            name="Area"
+            placeholder="Ingrese una Área"
+            type="text"
+            value={area}
+            required
+            onChange={(e) => setArea(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Seguimiento de Casos:</label>
+          <input
+            name="Telefono"
+            placeholder="Seguimiento de Casos"
+            type="text"
+            value={seguimiento_casos}
+            required
+            onChange={(e) => setSeguimiento_casos(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Contacto:</label>
+          <input
+            name="Contacto"
+            placeholder="Ingrese un Contacto"
+            type="number"
+            required
+            value={contacto}
+            onChange={(e) => setContacto(e.target.value)}
+          />
+        </div>
+        </section>
+        <div>
+          <button onClick={(e) => updatepost(e)}>
+            {Object.keys(centroactual).length > 0 ? "Editar" : "Agregar"}
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 
 export default CentroForm;
-
-const Container = styled.div`
-  /* * {
-
-  outline: 1px solid;
-  outline-color: hsla(0, 100%, 50%, 0.3);
-  background-color: hsla(0, 100%, 50%, 0.1);
-} */
-
-  & > div > form {
-    width: 33em;
-    display: flex;
-    flex-wrap: wrap;
-
-    & select {
-      width: 100%;
-    }
-    & button {
-      width: 26em;
-      height: 40px;
-    }
-  }
-`;
-const Divinputlabel = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const Divinput = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  align-items: center;
-`;
-const Input = styled.input`
-  margin-top: 5px;
-  margin-bottom: 5px;
-  height: 30px;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  outline: none;
-  &:focus {
-    border: 1.5px solid #034078;
-  }
-`;
-const Divboton = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-`;
-const Botonagregar = styled.button`
-  padding: 10px;
-  cursor: pointer;
-  background: #034078;
-  color: #fff;
-  border-radius: 7px;
-  &:hover {
-    background: #0077b6;
-  }
-`;
-const Select = styled.select`
-  max-width: 165px;
-  outline: none;
-  font-size: 16px;
-  padding: 5px;
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
-`;
