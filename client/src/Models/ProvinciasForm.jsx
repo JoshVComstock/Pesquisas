@@ -3,18 +3,13 @@ import { UseFech } from "../hooks/useFech";
 import InputValidation from "../components/app/inputvalidation";
 import TextInput from "../components/app/textinput";
 import { postProvincia, updateProvincia } from "../services/provincias";
+import { alertnotify } from "../components/app/alert";
 import { getCiudades } from "../services/Ciudades";
 
-const ProvinciasForm = ({
-  getApi,
-  provinciaactual,
-  setProviciaactual,
-  closeModal,
-}) => {
+const ProvinciasForm = ({getApi, provinciaactual, setProviciaactual,closeModal}) => {
   const [requiredValidation, setRequiredValidation] = useState(false);
   const [provincia, setProvincia] = useState("");
   const [id_ciudad, setId_ciudad] = useState("");
-  const [ciudadcli, setciudadcli] = useState(true);
   const { data: ciudades } = UseFech(getCiudades);
   useEffect(() => {
     if (Object.keys(provinciaactual).length > 0) {
@@ -27,7 +22,6 @@ const ProvinciasForm = ({
 
   const updatepost = (e) => {
     e.preventDefault();
-
     if (Object.keys(provinciaactual).length > 0) {
       updateProvincia(
         {
@@ -41,13 +35,17 @@ const ProvinciasForm = ({
           getApi();
           closeModal();
         }
+        
       );
+      alertnotify("Provincia"+ " editada");
+
     } else {
       postProvincia(provincia, id_ciudad, () => {
         setProvincia("");
         getApi();
         closeModal();
       });
+      alertnotify("Provincia"+ " agregada");
     }
   };
   return (
@@ -81,7 +79,7 @@ const ProvinciasForm = ({
             updatepost(e);
           }}
         >
-          {Object.keys(provincia).length > 0 ? "Editar" : "Agregar"}
+          {Object.keys(provinciaactual).length > 0 ? "Editar" : "Agregar"}
         </button>
       </div>
     </form>
