@@ -13,9 +13,9 @@ const InputValidation = ({ value, required }) => {
 };
 
 const ValidationMessage = styled.div`
-  color: #c85555;
+  color:red;
   width: 80%;
-  font-size: 14px;
+  font-size: 20px;
   display: ${(props) => (props.show ? "block" : "none")};
   
 `;

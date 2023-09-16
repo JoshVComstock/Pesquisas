@@ -23,6 +23,7 @@ import {
   Divmayor,
 } from "../styles/crud";
 import CSVExporter from "../pages/Reportescom";
+import { alertnotify } from "../components/app/alert";
 const Provincias = () => {
   // para ecxel
   const apiUrl = `${baseUrl}provincias`;
@@ -116,7 +117,11 @@ const Provincias = () => {
                         </div>
                         <div>
                           <Iconsacciones1
-                            onClick={() => deleteProvincias(v.id, getApi)}
+                            onClick={() => {
+                              deleteProvincias(v.id, getApi);
+                              alertnotify("Provincia" + " eliminada");
+                            }
+                            }
                           >
                             Eliminar
                           </Iconsacciones1>
