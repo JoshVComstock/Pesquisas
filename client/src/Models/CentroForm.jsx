@@ -142,6 +142,7 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
             onChange={(e) => setTelefono(e.target.value)}
           />
         </div>
+        <InputValidation value={telefono} required={validacion} />
         <div>
           <label>Área:</label>
           <input

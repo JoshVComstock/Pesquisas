@@ -5,7 +5,6 @@ const baseUrl = import.meta.env.VITE_BACKEND_URL;
 import styled from "styled-components";
 import { useModal } from "../hooks/useModal";
 import Registro_hospitalesForm from "../Models/Registro_hospitalesForm";
-import RegistroHospitalesEdit from "../Models/Editform/RegistroHospitalesEdit";
 import { useuserContext } from "../context/userContext";
 import { useNavigate } from "react-router-dom";
 import {

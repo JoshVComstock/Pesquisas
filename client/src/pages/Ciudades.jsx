@@ -38,7 +38,6 @@ import Homee from "./graficos/Graficoshome";
 import { ToastContainer } from "react-toastify";
 import { alertnotify } from "../components/app/alert";
 const Ciudades = () => {
-  const { data: provincias } = UseFech(getProvincias);
   const apiUrl = `${baseUrl}ciudades`;
   const csvHeaders = ["id", "ciudad"];
   const [ciudadactual, setCiudadactual] = useState({});
