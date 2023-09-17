@@ -6,16 +6,12 @@ import LaboratorioComponent from "./routesToRole/laboratorio";
 import Recepcionista from "./routesToRole/recepcionista";
 import { useState } from "react";
 import { Divheader } from "../../styles/StylesCruds/CrudsStyle";
+import Logout from "../../assets/iconsnav/sign-out-alt-solid.svg";
+import Docuser from '../../assets/iconsnav/user-md-solid.svg';
 const Navbar = () => {
-  const { logged } = useNavContext;
   const navegation = useNavigate();
   const [expandirNav, setExpandirNav] = useState(true);
-  const { user, setUser } = useuserContext();
-  function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
-  }
+  const { user } = useuserContext();
   const Cerrasesion = () => {
     localStorage.removeItem("user");
     navegation("/login");
@@ -28,14 +24,14 @@ const Navbar = () => {
             <h1>
               <strong>Tamizaje</strong> Neonatal
             </h1>
-            <button onClick={() => setExpandirNav(!expandirNav)}>=</button>
+            <button onClick={() => setExpandirNav(!expandirNav)}>◀</button>
           </section>
           <article>
-            <img src="src\img\avatar.png" alt="" />
-            <select>
-              <option>{user.nombre}</option>
-            </select>
-            <button onClick={Cerrasesion}>Salir</button>
+            <div>
+              <img src={Docuser} alt="" />
+              <p>{user.nombre}</p>
+            </div>
+            <button onClick={Cerrasesion}><img src={Logout} alt="" /> Salir</button>
           </article>
         </nav>
         <aside>

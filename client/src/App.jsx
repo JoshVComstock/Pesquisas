@@ -1,5 +1,4 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+
 import Centros from "./pages/centros";
 import Ciudades from "./pages/Ciudades";
 import Redes from "./pages/Redes";
@@ -12,7 +11,7 @@ import Registro_provincias from "./pages/Registro_provincias";
 import Municipios from "./pages/Municipios";
 import Registro_hospitales from "./pages/Registro_hospitales";
 import Modal from "./modal";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, BrowserRouter } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { Navcontextprovider } from "./context/navcontext";
@@ -25,11 +24,12 @@ import Pacientes from "./pages/Pacientes";
 import Consultas from "./pages/consultas";
 import HistorialPaciente from "./pages/HistorialPaciente";
 import Reportesdinamicos from "./pages/Reportesdinamicos";
-
+import {Toaster} from "react-hot-toast";
 function App() {
   return (
     <>
-      <BrowserRouter>
+   <Toaster position="top-center" reverseOrder={false}/>
+      <HashRouter>
         <ModalContextProvider>
           <Usercontextprovider>
             <Navcontextprovider>
@@ -76,7 +76,7 @@ function App() {
             </Navcontextprovider>
           </Usercontextprovider>
         </ModalContextProvider>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }

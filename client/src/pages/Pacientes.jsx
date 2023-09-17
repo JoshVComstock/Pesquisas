@@ -3,6 +3,7 @@ import { getPacientes } from "../services/pacientes";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import a from "../img/holapa.jpg";
+import { Colors } from "../styles/colors";
 
 const Pacientes = () => {
   const { data: pacientes } = UseFech(getPacientes);
@@ -14,6 +15,7 @@ const Pacientes = () => {
 
   return (
     <DivTarjetas>
+      <h1>Pacientes</h1>
       {pacientes.map((v, i) => (
         <PacienteCard key={i}>
           <PacienteHeader>
@@ -41,6 +43,11 @@ const DivTarjetas = styled.div`
   grid-gap: 1.5rem;
   overflow-y: auto;
   max-height: 800px;
+  background: ${Colors.gray};
+  &>h1{
+    margin: 30px 0px 0px 30px ;
+    font-size: 40px;
+  }
 `;
 
 const PacienteCard = styled.div`

@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import { Colores, StyleComun } from "./DataStyle";
+import { Colors } from "../colors";
 
 export const DivMayor = styled.div`
   ${StyleComun}
   flex-wrap:wrap;
   flex-direction: column;
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
   background-color: transparent;
   padding: 2em 0;
+  background: ${Colors.gray};
 `;
 export const DivReport = styled.div`
   width: 100%;

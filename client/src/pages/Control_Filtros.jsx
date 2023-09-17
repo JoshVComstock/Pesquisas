@@ -1,9 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { useModal } from "../hooks/useModal";
 import ControlFiltrosForm from "../Models/ControlFiltrosForm";
-import ControlFiltrosEdit from "../Models/Editform/ControlFiltrosEdit";
+
 import New from "./../img/new.jpg"
 import Pdf from "./../img/pdf.jpg"
 import Excel from "./../img/doc.jpg"
