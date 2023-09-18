@@ -91,33 +91,31 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
     <>
       <form>
         <section>
-          <div>
-            <label>Nombre:</label>
-            <TextInput
-              name="Nombre"
-              placeholder="Ingrese un Nombre"
-              type="text"
-              required
-              value={nombre}
-              onChange={setNombre}
-            />
-          </div>
+          <label>Nombre:</label>
+          <TextInput
+            name="Nombre"
+            placeholder="Ingrese un Nombre"
+            type="text"
+            required
+            value={nombre}
+            onChange={setNombre}
+          />
+
           <InputValidation value={nombre} required={validacion} />
-      
-          <div>
-            <label>Dirección:</label>
-            <TextInput
-              name="Direccion"
-              placeholder="Ingrese una Dirección"
-              type="text"
-              required
-              value={direccion}
-              onChange={SetDireccion}
-            />
-          </div>
+        </section>
+        <section>
+          <label>Dirección:</label>
+          <TextInput
+            name="Direccion"
+            placeholder="Ingrese una Dirección"
+            type="text"
+            required
+            value={direccion}
+            onChange={SetDireccion}
+          />
           <InputValidation value={direccion} required={validacion} />
-       
-        <div>
+        </section>
+        <section>
           <label>Municipio:</label>
           <select
             value={id_municipios}
@@ -130,8 +128,8 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
               </option>
             ))}
           </select>
-        </div>
-        <div>
+        </section>
+        <section>
           <label>Teléfono:</label>
           <input
             name="Telefono"
@@ -141,9 +139,10 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
             required
             onChange={(e) => setTelefono(e.target.value)}
           />
-        </div>
-        <InputValidation value={telefono} required={validacion} />
-        <div>
+
+          <InputValidation value={telefono} required={validacion} />
+        </section>
+        <section>
           <label>Área:</label>
           <input
             name="Area"
@@ -153,8 +152,8 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
             required
             onChange={(e) => setArea(e.target.value)}
           />
-        </div>
-        <div>
+        </section>
+        <section>
           <label>Seguimiento de Casos:</label>
           <input
             name="Telefono"
@@ -164,8 +163,8 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
             required
             onChange={(e) => setSeguimiento_casos(e.target.value)}
           />
-        </div>
-        <div>
+        </section>
+        <section>
           <label>Contacto:</label>
           <input
             name="Contacto"
@@ -175,13 +174,12 @@ const CentroForm = ({ getApi, centroactual, setCentroactual, closeModal }) => {
             value={contacto}
             onChange={(e) => setContacto(e.target.value)}
           />
-        </div>
         </section>
-        <div>
+        <article>
           <button onClick={(e) => updatepost(e)}>
             {Object.keys(centroactual).length > 0 ? "Editar" : "Agregar"}
           </button>
-        </div>
+        </article>
       </form>
     </>
   );

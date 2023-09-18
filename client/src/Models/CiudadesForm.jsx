@@ -52,22 +52,18 @@ const CiudadesForm = ({
   };
 
   return (
-    <>
-      <form>
-        <section>
-          <div>
-            <label>Ciudad</label>
-            <TextInput value={ciudad} onChange={setCiudad} />
-          </div>
-          <InputValidation value={ciudad} required={requiredValidation} />
-        </section>
-      <div>
-      <button onClick={(e) => updatepost(e)}>
+    <form>
+      <section>
+        <label>Ciudad</label>
+        <TextInput value={ciudad} onChange={setCiudad} />
+        <InputValidation value={ciudad} required={requiredValidation} />
+      </section>
+      <article>
+        <button onClick={(e) => updatepost(e)}>
           {Object.keys(ciudadactual).length > 0 ? "Editar" : "Agregar"}
         </button>
-      </div>
-      </form>
-    </>
+      </article >
+    </form>
   );
 };
 export default CiudadesForm;

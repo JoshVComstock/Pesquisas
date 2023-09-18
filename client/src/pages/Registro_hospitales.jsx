@@ -40,7 +40,7 @@ const Registro_hospitales = () => {
   const navegate = useNavigate();
   const { openModal: editarOpen, closeModal: editarClose } = useModal(
     "Editar Registro Hospitales",
-    <RegistroHospitalesEdit
+    <Registro_hospitalesForm
       registrohospitalactual={registrohospitalactual}
       MostrarReHospitales={MostrarReHospitales}
     />

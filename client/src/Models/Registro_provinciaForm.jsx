@@ -2,10 +2,17 @@ import React from "react";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { UseFech } from "../hooks/useFech";
-import { postRegistroprovincia ,updateRegistroprovincias} from "../services/Registroprovincias";
-import {getCentros} from "../services/centros";
-const Registro_provinciaForm = ({getApi, registroactuald, setRegistroactual, closeModal}) => {
-
+import {
+  postRegistroprovincia,
+  updateRegistroprovincias,
+} from "../services/Registroprovincias";
+import { getCentros } from "../services/centros";
+const Registro_provinciaForm = ({
+  getApi,
+  registroactuald,
+  setRegistroactual,
+  closeModal,
+}) => {
   const [hora, setHora] = useState("");
   const [fecha, setFecha] = useState("");
   const [id_centros, setId_centros] = useState();
@@ -38,10 +45,10 @@ const Registro_provinciaForm = ({getApi, registroactuald, setRegistroactual, clo
     if (Object.keys(registroactuald).length > 0) {
       updateRegistroprovincias(
         {
-          id:registroactuald.id,
+          id: registroactuald.id,
           hora: hora,
           fecha: fecha,
-          id_centros:id_centros,
+          id_centros: id_centros,
           cantidad_recibida: cantidad_recibida,
           cantidad_entregada: cantidad_entregada,
           cod_tarjeta: cod_tarjeta,
@@ -88,166 +95,92 @@ const Registro_provinciaForm = ({getApi, registroactuald, setRegistroactual, clo
           getApi();
         }
       );
-    }  }
+    }
+  };
   return (
-   
-    <Container>
-      <div>
-        <form>
-        <Divinput>
-            <Divinputlabel>
-              <label>Hora:</label>
-              <Input
-                type="time"
-                value={hora}
-                onChange={(e) => setHora(e.target.value)}
-              />
-            </Divinputlabel>
-          </Divinput> 
-          <Divinput>
-            <Divinputlabel>
-              <label>Fecha:</label>
-              <Input
-                type="date"
-                value={fecha}
-                onChange={(e) => setFecha(e.target.value)}
-              />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
-              <label>centros</label>
-              <Select onChange={(e) => setId_centros(e.target.value)}>
-                <option >Seleccione un centro</option>
-                {centrosa.map((v, i) => (
-                  <option key={i} value={v.id}>
-                    {v.nombre}
-                  </option>
-                ))}
-              </Select>
-               {/* <Input
-                type="text"
-                value={id_centros}
-                onChange={(e) => setId_centros(e.target.value)}
-              /> */}
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-              <label>Cantidad Recibida:</label>
-            <Divinputlabel>
-              <Input
-                type="number"
-                value={cantidad_recibida}
-                onChange={(e) => setCantidad_recibida(e.target.value)}
-              />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-              <label>Cantidad entregada:</label>
-            <Divinputlabel>
-              <Input
-                type="number"
-                value={cantidad_entregada}
-                onChange={(e) => setCantidad_entregada(e.target.value)}
-              />
-            </Divinputlabel>
-          </Divinput>
-
-          <Divinput>
-              <label>Codigo Targeta:</label>
-            <Divinputlabel>
-              <Input
-                type="text"
-                value={cod_tarjeta}
-                onChange={(e) => setCod_tarjeta(e.target.value)}
-              />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-              <label>Entregado por :</label>
-            <Divinputlabel>
-              <Input
-                type="text"
-                value={entregado_por}
-                onChange={(e) => setEntregado_por(e.target.value)}
-              />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-              <label>Telefono :</label>
-            <Divinputlabel>
-              <Input
-              type="number"
-                value={telefono}
-                onChange={(e) => setTelefono(e.target.value)}
-              />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-              <label>Recivido por :</label>
-            <Divinputlabel>
-              <Input
-                type="text"
-                value={recibido_por}
-                onChange={(e) => setRecibido_por(e.target.value)}
-              />
-            </Divinputlabel>
-          </Divinput>
-          <Divboton>
-            <Botonagregar  onClick={(e) => updateposts(e)}>
-              {Object.keys(registroactuald).length > 0 ? "Editar" : "Agregar"}
-            </Botonagregar>
-          </Divboton>
-        </form>
-      </div>
-    </Container>
+    <form>
+      <section>
+        <label>Hora:</label>
+        <input
+          type="time"
+          value={hora}
+          onChange={(e) => setHora(e.target.value)}
+        />
+      </section>
+      <section>
+        <label>Fecha:</label>
+        <input
+          type="date"
+          value={fecha}
+          onChange={(e) => setFecha(e.target.value)}
+        />
+      </section>
+      <section>
+        <label>centros</label>
+        <select onChange={(e) => setId_centros(e.target.value)}>
+          <option>Seleccione un centro</option>
+          {centrosa.map((v, i) => (
+            <option key={i} value={v.id}>
+              {v.nombre}
+            </option>
+          ))}
+        </select>
+      </section>
+      <section>
+        <label>Cantidad Recibida:</label>
+        <input
+          type="number"
+          value={cantidad_recibida}
+          onChange={(e) => setCantidad_recibida(e.target.value)}
+        />
+      </section>
+      <section>
+        <label>Cantidad entregada:</label>
+        <input
+          type="number"
+          value={cantidad_entregada}
+          onChange={(e) => setCantidad_entregada(e.target.value)}
+        />
+      </section>
+      <section>
+        <label>Codigo Targeta:</label>
+        <input
+          type="text"
+          value={cod_tarjeta}
+          onChange={(e) => setCod_tarjeta(e.target.value)}
+        />
+      </section>
+      <section>
+        <label>Entregado por :</label>
+        <input
+          type="text"
+          value={entregado_por}
+          onChange={(e) => setEntregado_por(e.target.value)}
+        />
+      </section>
+      <section>
+        <label>Telefono :</label>
+        <input
+          type="number"
+          value={telefono}
+          onChange={(e) => setTelefono(e.target.value)}
+        />
+      </section>
+      <section>
+        <label>Recivido por :</label>
+        <input
+          type="text"
+          value={recibido_por}
+          onChange={(e) => setRecibido_por(e.target.value)}
+        />
+      </section>
+      <article>
+        <button onClick={(e) => updateposts(e)}>
+          {Object.keys(registroactuald).length > 0 ? "Editar" : "Agregar"}
+        </button>
+      </article>
+    </form>
   );
 };
 
 export default Registro_provinciaForm;
-
-
-const Container = styled.div``;
-const Divinputlabel = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const Divinput = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  align-items: center;
-`;
-const Input = styled.input`
-  margin-top: 5px;
-  margin-bottom: 5px;
-  height: 30px;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  outline: none;
-  &:focus {
-    border: 1.5px solid #034078;
-  }
-`;
-const Divboton = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-const Botonagregar = styled.button`
-  padding: 10px;
-  cursor: pointer;
-  background: #034078;
-  color: #fff;
-  border-radius: 7px;
-  &:hover {
-    background: #0077b6;
-  }
-`;
-const Select = styled.select`
-  width: 180px;
-  outline: none;
-  font-size: 16px;
-  padding: 5px;
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
-`;

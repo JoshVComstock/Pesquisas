@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { UseFech } from "../hooks/useFech";
 import { getRedes } from "../services/Redes";
@@ -18,18 +17,7 @@ const Registro_hospitalesForm = ({ MostrarReHospitales }) => {
   const [recibido_por, setRecibido_por] = useState("");
   const { data: redes } = UseFech(getRedes);
   const { data: centros } = UseFech(getCentros);
-  console.log(hora);
-  console.log(fecha);
-  console.log(id_redes);
-  console.log(id_centros);
-  console.log(cantidad_recibida);
-  console.log(cantidad_entregada);
-  console.log(cod_tarjeta);
-  console.log(entregado_por);
-  console.log(telefono);
-  console.log(recibido_por);
-  
-
+ 
   const enviar = async () => {
     const response = await fetch(
       "http://127.0.0.1:8000/api/registro_hospitales",
@@ -69,33 +57,26 @@ const Registro_hospitalesForm = ({ MostrarReHospitales }) => {
     }
   };
   return (
-    <Container>
-      <div>
         <form>
-          <Divinput>
-            <Divinputlabel>
+            <section>
               <label>Hora:</label>
-              <Input
+              <input
                 type="time"
                 placeholder="Ingrese Hora"
                 value={hora}
                 onChange={(e) => setHora(e.target.value)}
               />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
+            </section>
+            <section>
               <label>Fecha:</label>
-              <Input
+              <input
                 type="date"
                 placeholder="Ingrese Fecha"
                 value={fecha}
                 onChange={(e) => setFecha(e.target.value)}
               />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
+            </section>
+            <section>
               <label>Red de Salud:</label>
               <select onChange={(e) => setId_redes(e.target.value)}>
                 <option>Selecione Red</option>
@@ -105,10 +86,8 @@ const Registro_hospitalesForm = ({ MostrarReHospitales }) => {
                   </option>
                 ))}
               </select>
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
+            </section>
+            <section>
               <label>Centro de Salud:</label>
               <select onChange={(e) => setId_centros(e.target.value)}>
                 <option value="">Seleccione centro</option>
@@ -118,120 +97,69 @@ const Registro_hospitalesForm = ({ MostrarReHospitales }) => {
                   </option>
                 ))}
               </select>
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
+            </section>
+            <section>
               <label>Cantidad Recibida:</label>
-              <Input
+              <input
                 type="number"
                 placeholder="Ingrese C. Recibida"
                 value={cantidad_recibida}
                 onChange={(e) => setCantidad_recibida(e.target.value)}
               />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
+            </section>
+            <section>
               <label>Cantidad Entregada:</label>
-              <Input
+              <input
                 type="number"
                 placeholder="Ingrese C. Entregada"
                 value={cantidad_entregada}
                 onChange={(e) => setCantidad_entregada(e.target.value)}
               />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
+            </section>
+            <section>
               <label>Código de Tarjeta:</label>
-              <Input
+              <input
                 type="text"
                 placeholder="Ingrese Rango"
                 value={cod_tarjeta}
                 onChange={(e) => setCod_tarjeta(e.target.value)}
               />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
+            </section>
+            <section>
               <label>Entregado por:</label>
-              <Input
+              <input
                 type="text"
                 placeholder="Entregado por"
                 value={entregado_por}
                 onChange={(e) => setEntregado_por(e.target.value)}
               />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
+            </section>
+            <section>
               <label>Teléfono:</label>
-              <Input
+              <input
                 type="number"
                 placeholder="Teléfono"
                 value={telefono}
                 onChange={(e) => setTelefono(e.target.value)}
               />
-            </Divinputlabel>
-          </Divinput>
-          <Divinput>
-            <Divinputlabel>
+            </section>
+            <section>
               <label>Recibido por:</label>
-              <Input
+              <input
                 type="text"
                 placeholder="Recibido por"
                 value={recibido_por}
                 onChange={(e) => setRecibido_por(e.target.value)}
               />
-            </Divinputlabel>
-          </Divinput>
-          <Divboton>
-            <Botonagregar onClick={() => enviar()}>
+            </section>
+          <article>
+            <button onClick={() => enviar()}>
               Agregar
-            </Botonagregar>
-          </Divboton>
+            </button>
+          </article>
         </form>
-      </div>
-    </Container>
+
   );
 };
 
 export default Registro_hospitalesForm;
-
-const Container = styled.div``;
-const Divinputlabel = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const Divinput = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  align-items: center;
-`;
-const Input = styled.input`
-  margin-top: 5px;
-  margin-bottom: 5px;
-  height: 30px;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  outline: none;
-  &:focus {
-    border: 1.5px solid #034078;
-  }
-`;
-const Divboton = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-const Botonagregar = styled.button`
-  padding: 10px;
-  cursor: pointer;
-  background: #034078;
-  color: #fff;
-  border-radius: 7px;
-  &:hover {
-    background: #0077b6;
-  }
-`;

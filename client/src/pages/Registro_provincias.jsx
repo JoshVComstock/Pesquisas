@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
 import Registro_provinciaForm from "../Models/Registro_provinciaForm";
-import New from "./../img/new.jpg";
-import Pdf from "./../img/pdf.jpg";
-import Excel from "./../img/doc.jpg";
-import Searchicons from "./../img/search.jpg";
-import Editar from "./../img/icons/Editar.jpg";
-import Eliminar from "./../img/icons/Delete.jpg";
 import CSVExporter from "../pages/Reportescom";
 
 import { UseFech } from "../hooks/useFech";
@@ -17,23 +11,12 @@ import {
 
 import {
   Container,
-  Titulo,
-  Divbotones,
-  Botonespdf,
-  Botonespdf1,
-  Botonespdf2,
-  Img,
-  Divsearchpadre,
-  Divsearch,
-  Search,
-  Botonsearch,
   Botonacciones,
   Iconsacciones,
   Sectionpa,
 } from "../styles/crud";
 import {
   Iconsacciones1,
-  Botonesacciones,
   Divtabla,
   Thead,
   Tbody,

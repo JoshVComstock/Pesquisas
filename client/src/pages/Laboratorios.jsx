@@ -1,12 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
-import New from "./../img/new.jpg";
-import Pdf from "./../img/pdf.jpg";
-import Excel from "./../img/doc.jpg";
-import Searchicons from "./../img/search.jpg";
-import Editar from "./../img/icons/Editar.jpg";
-import Eliminar from "./../img/icons/Delete.jpg";
+
 import LaboratoriosForm from "../models/LaboratoriosForm";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 import CSVExporter from "../pages/Reportescom";
@@ -16,7 +11,6 @@ import {
   Botonacciones,
   Iconsacciones,
   Iconsacciones1,
-  Botonesacciones,
   Divtabla,
   Thead,
   Tbody,

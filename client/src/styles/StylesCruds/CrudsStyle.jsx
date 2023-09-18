@@ -61,7 +61,7 @@ background: ${Colors.gray};
         }
       }
       & > h1 {
-        font-size: 1.8em;
+        font-size: 1.1em;
         & > strong {
           color: ${Colors.primary400};
           font-weight: 600;

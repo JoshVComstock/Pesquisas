@@ -1,6 +1,6 @@
 import { useModalContext } from "../context/modalContext";
 
-export const useModal = (titulo, contenido) => {
+export const useModal = (titulo, contenido,icono) => {
   const { setOpenModal, setTitulo, setContenido } = useModalContext();
 
   const openModal = () => {

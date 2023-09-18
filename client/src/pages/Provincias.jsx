@@ -2,14 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useModal } from "../hooks/useModal";
 import ProvinciasForm from "../models/ProvinciasForm";
+import CiudadIcon from "../../src/assets/iconsnav/city-solid.svg";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
-
-import Editar from "./../img/icons/Editar.jpg";
-import Eliminar from "./../img/icons/Delete.jpg";
 import { UseFech } from "../hooks/useFech";
 import { deleteProvincias, getProvincias } from "../services/provincias";
 import {
-  Container,
   Botonacciones,
   Iconsacciones,
   Iconsacciones1,
@@ -32,7 +29,7 @@ const Provincias = () => {
   const [provinciaactual, setProviciaactual] = useState({});
   const { getApi, data: provicias } = UseFech(getProvincias);
   const { openModal, closeModal } = useModal(
-    Object.keys(provinciaactual).length > 0 ? "Editar" : "Agregar",
+    Object.keys(provinciaactual).length > 0 ? "Editar" : "Agregar Provincias",
     <ProvinciasForm
       getApi={getApi}
       provinciaactual={provinciaactual}
@@ -41,6 +38,7 @@ const Provincias = () => {
         closeModal();
       }}
     />
+    
   );
   const [filtro, setFiltro] = useState("");
   useEffect(() => {

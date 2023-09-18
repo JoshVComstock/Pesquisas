@@ -6,7 +6,12 @@ import { postProvincia, updateProvincia } from "../services/provincias";
 import { alertnotify } from "../components/app/alert";
 import { getCiudades } from "../services/Ciudades";
 
-const ProvinciasForm = ({getApi, provinciaactual, setProviciaactual,closeModal}) => {
+const ProvinciasForm = ({
+  getApi,
+  provinciaactual,
+  setProviciaactual,
+  closeModal,
+}) => {
   const [requiredValidation, setRequiredValidation] = useState(false);
   const [provincia, setProvincia] = useState("");
   const [id_ciudad, setId_ciudad] = useState("");
@@ -35,45 +40,41 @@ const ProvinciasForm = ({getApi, provinciaactual, setProviciaactual,closeModal})
           getApi();
           closeModal();
         }
-        
       );
-      alertnotify("Provincia"+ " editada");
-
+      alertnotify("Provincia" + " editada");
     } else {
       postProvincia(provincia, id_ciudad, () => {
         setProvincia("");
         getApi();
         closeModal();
       });
-      alertnotify("Provincia"+ " agregada");
+      alertnotify("Provincia" + " agregada");
     }
   };
   return (
     <form>
       <section>
-        <div>
-          <label>Nombre</label>
-          <TextInput
-            type="text"
-            placeholder="Ingrese una Provincia"
-            value={provincia}
-            onChange={setProvincia}
-          />
-        </div>
+        <label>Nombre</label>
+        <TextInput
+          type="text"
+          placeholder="Ingrese una Provincia"
+          value={provincia}
+          onChange={setProvincia}
+        />
         <InputValidation value={provincia} required={requiredValidation} />
-        <div>
-          <label>Ciudad</label>
-          <select onChange={(e) => setId_ciudad(e.target.value)}>
-            <option>Seleccione ciudad</option>
-            {ciudades.map((v, i) => (
-              <option key={i} value={v.id}>
-                {v.ciudad}
-              </option>
-            ))}
-          </select>
-        </div>
       </section>
-      <div>
+      <section>
+        <label>Ciudad</label>
+        <select onChange={(e) => setId_ciudad(e.target.value)}>
+          <option>Seleccione ciudad</option>
+          {ciudades.map((v, i) => (
+            <option key={i} value={v.id}>
+              {v.ciudad}
+            </option>
+          ))}
+        </select>
+      </section>
+      <article>
         <button
           onClick={(e) => {
             updatepost(e);
@@ -81,7 +82,7 @@ const ProvinciasForm = ({getApi, provinciaactual, setProviciaactual,closeModal})
         >
           {Object.keys(provinciaactual).length > 0 ? "Editar" : "Agregar"}
         </button>
-      </div>
+      </article>
     </form>
   );
 };

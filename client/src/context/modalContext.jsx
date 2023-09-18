@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useMemo, useState } from "react";
-
+import icon from"../assets/iconsnav/city-solid.svg"
 export const ModalContext = createContext(null);
 
 export const useModalContext = () => {
@@ -17,9 +17,10 @@ export const ModalContextProvider = ({ children }) => {
   const [titulo, setTitulo] = useState("");
   const [contenido, setContenido] = useState(null);
 
+
   const value = useMemo(() => (
-    { openModal, setOpenModal, titulo, setTitulo, contenido, setContenido }
-  ), [openModal, setOpenModal, titulo, setTitulo, contenido, setContenido]);
+    { openModal, setOpenModal, titulo,setTitulo, contenido ,setContenido }
+  ), [openModal, setOpenModal, titulo, setTitulo, contenido,setContenido]);
   return (
     <ModalContext.Provider value={value}>
       { children }

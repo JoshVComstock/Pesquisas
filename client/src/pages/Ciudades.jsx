@@ -6,16 +6,11 @@ import styled from "styled-components";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 import {
   Container,
-  Titulo,
-  Divbotones,
-  Divsearchpadre,
-  Divsearch,
-  Search,
-  Botonsearch,
+ 
   Botonacciones,
   Iconsacciones,
   Iconsacciones1,
-  Botonesacciones,
+
   Divtabla,
   Thead,
   Tbody,
@@ -25,16 +20,12 @@ import {
   Tabla,
   Sectionpa,
   Divreport,
-  Divbotonesa, Divmayor
+  Divmayor
 } from "../styles/crud";
 import { UseFech } from "../hooks/useFech";
 import { deleteCiudades, getCiudades } from "../services/Ciudades";
-import { getciudadpdf } from "../reports/ciudadpdf";
 import Provincias from "./Provincias"
-import { deleteProvincias, getProvincias } from "../services/provincias";
 import CSVExporter from "../pages/Reportescom";
-import Homee from "./graficos/Graficoshome";
-
 import { ToastContainer } from "react-toastify";
 import { alertnotify } from "../components/app/alert";
 const Ciudades = () => {
@@ -90,7 +81,7 @@ const Ciudades = () => {
           <div>
             <img src="src\img\gestion.png" alt="" />
             <section>
-              <h3>{provincias.length}</h3>
+              <h3>{Provincias.length}</h3>
               <p>N° registros</p>
               <p>Provincia</p>
             </section>
